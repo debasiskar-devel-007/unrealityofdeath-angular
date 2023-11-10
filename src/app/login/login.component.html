@@ -1,0 +1,50 @@
+<div class="login_body">
+    <div class="login_main">
+      <div class="login_logo">
+        <img src="https://d37pbainmkhx6o.cloudfront.net/beto_paredes_nest/login/login_logo.webp" alt="" />
+      </div>
+      <div class="login_form">
+        <form class="form_wrp" autocomplete="off" name="loginForm"   [formGroup]="loginForm">
+          <p>WELCOME TO
+            <br>
+            BETO PAREDES FAMILY OF COMPANIES
+          </p>
+          <div class="email_cls">
+            <div class="iconwrapper"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+            <mat-form-field class="login-full-width">
+              <input matInput placeholder="Email" #email name="email" formControlName="email" required class="form_wrp-field" autocomplete="off" required (keydown)="handleInputChange($event)"/>
+            </mat-form-field>
+          </div>
+          <mat-error *ngIf="errors?.email">Email is required</mat-error>
+  
+          <div class="pass_cls">
+  
+            <mat-form-field class="login-full-width">
+              <input matInput #password [type]="hide ? 'password' : 'text' " type="password" placeholder="Password" name="password"
+                formControlName="password" required class="form_wrp-field" autocomplete="off" required (keydown)="handleInputChange($event)"/>
+  
+              <button mat-icon-button matSuffix type="button" (click)="handlevisibl($event)" 
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+              </button>
+            </mat-form-field>
+        
+          </div>
+          <mat-error *ngIf="errors?.password">Password is required</mat-error>
+            
+  
+          <h1>
+            <a [routerLink]="['/forgot-password']">Forgot Password?</a>
+          </h1>
+        </form>
+        <button [ngClass]="loginButtonStatus === true? 'submitdisable': 'submit'"    type="submit"  (click)="login()" >Login</button>
+        <mat-progress-bar *ngIf="loader" mode="indeterminate" class="loader_wrp"></mat-progress-bar>
+      </div>
+      <div class="login_form_shasow">
+        <img src="https://all-frontend-assets.s3.amazonaws.com/beto_paredes_nest/login/shadow_layer.webp" alt="" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- [disabled]="loginButtonStatus?true:false"x -->
+  <!-- *ngClass="loginButtonStatus? 'submitdisable': 'submit'" -->

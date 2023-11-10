@@ -51,7 +51,27 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "local": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.main.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -64,6 +84,9 @@
             },
             "development": {
               "browserTarget": "unrealityofdeath-angular:build:development"
+            },
+            "local": {
+              "browserTarget": "unrealityofdeath-angular:build:local"
             }
           },
           "defaultConfiguration": "development"
