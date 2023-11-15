@@ -64,7 +64,7 @@ font-size: 20px;
 }
 
 .login_user h4 strong,.login_time h4 strong,.rep_details h4 strong{
-  background-color: #4dd4ff;
+    background-color: #e32d46;
   padding: 5px 10px;
   border-radius: 5px 10px 5px 10px;
   margin-right: 7px;
