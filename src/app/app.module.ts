@@ -9,12 +9,14 @@ import { SharedModule } from './shared/shared.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LastLoginInfoComponent } from './Common-components/last-login-info/last-login-info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    LastLoginInfoComponent
   ],
   imports: [
     BrowserModule,

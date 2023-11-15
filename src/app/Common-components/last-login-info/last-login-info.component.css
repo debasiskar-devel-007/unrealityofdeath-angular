@@ -1,0 +1,93 @@
+/* .subwrapper{background:#dae4e0;padding:2.5rem;border-radius:8px;border:1px solid #fbfffd} */
+.last_login_wrapper{
+    background:#edf3e5;
+ 
+    box-shadow:1px 1px 5px #3e413a59;
+   
+    border-radius: 10px;
+    margin-bottom: 1.6rem;
+    padding: 10px 0;
+   
+}
+
+.last_login_sub-title{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+   
+}
+
+ .login_user{
+    display: flex;
+    align-items: center;
+    padding: 0px 15px 0px 15px;
+    
+   
+  
+}
+.login_time{
+    padding: 0px 15px 0px 15px;
+
+}
+.rep_details {
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* .login_time i{
+    margin-top: 5px;
+} */
+
+/* .login_user i{
+    margin-bottom: 1px;
+} */
+.login_user i,.login_time i {
+   background: var(--blue-gradient);
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+}
+.login_user h4,.login_time h4,.rep_details h4{
+margin-left: 6px;
+
+display: flex;
+align-items: center;
+margin: 10px;
+font-size: 20px;
+}
+.login_user h4,.login_time h4 span,.rep_details h4 span{
+    font-weight:bold ;
+}
+
+.login_user h4 strong,.login_time h4 strong,.rep_details h4 strong{
+  background-color: #4dd4ff;
+  padding: 5px 10px;
+  border-radius: 5px 10px 5px 10px;
+  margin-right: 7px;
+  color: white;
+  font-weight: bold;
+}
+
+.last_login_sub-title .login_time{
+    display: flex;
+    align-items: center;
+    
+  
+}
+
+.rep_details h4 span{
+    font-size: 30px;
+}
+
+
+@media only screen and (max-width: 599px) {
+    .login_user h4,.login_time h4 {font-size: 18px;}
+    .login_user i,.login_time i {font-size: 16px;}
+}
+@media only screen and (max-width: 468px) {
+    .login_user h4,.login_time h4 {font-size: 16px;margin: 5px;}
+}
