@@ -1,1 +1,48 @@
-<p>header works!</p>
+<div class="top_header">
+    <div class="container">
+        <div class="top_header_subwrapper">
+            <div class="top_header_logowrapper">
+            <img  src="https://d37pbainmkhx6o.cloudfront.net/Timothy-Desmond-Nest/Home/timothy_header_block/Timothy_desmond_header_main_logo.webp">
+            </div>
+            <div class="top_header_textwrapper">
+            <div class="top_header_lefticon backtohome"><i class="fa fa-home" aria-hidden="true"></i>
+            <span><section></section> Back to Home page</span>
+            </div>
+
+            <div class="top_header_lefticon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+            <p id="header_user_name_section"><span class="skeleton-box" style="width:100px;"></span></p>
+            <div class="top_header_righticon">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <ul class="menu_list">
+                    <li>
+                    <a href="/myaccount"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Account</a>                            
+                    </li>
+                    <li>
+                    <a href="/change-password"><i class="fa fa-unlock-alt" aria-hidden="true"></i>  Change Password </a>                            
+                    </li>
+                    <li onclick="deleteCookie()">
+                    <a><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </a>                            
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="BackendHeaderLink" id="affiliateNa">
+    <label for="show-menu" class="show-menu"><span><i class="fa fa-bars" aria-hidden="true"></i></span> Menu</label>
+    <input type="checkbox" id="show-menu" role="button">
+    <ul id="menu">
+     <li><a   
+        (click)="navigateToPath('/affiliate-dashboard')"
+        [ngClass]="
+        currentPath() == '/affiliate-dashboard'
+          ? 'active'
+          : '' " 
+        >Dashboard</a></li> 
+      
+      <!-- <li><a href="">Commission</a></li>  -->
+  
+      </ul>
+  </div>
