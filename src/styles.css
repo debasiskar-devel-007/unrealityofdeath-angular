@@ -15,7 +15,7 @@ body {
     margin: 0 auto
 }
 
-.login_body {
+/* .login_body {
     width: 100%;
     background-image: url(https://d37pbainmkhx6o.cloudfront.net/beto_paredes_nest/login/login_bg.webp);
     background-repeat: no-repeat;
@@ -39,8 +39,8 @@ body {
 .login_logo img {
     width: 100%;
     height: 100%;
-    /* margin: -16px auto;
-    display: block */
+    margin: -16px auto;
+    display: block
 }
 
 .login_form {
@@ -50,7 +50,7 @@ body {
     margin: 0 auto;
     margin-top: 96px;
     width: auto;
-    /* height: 50rem; */
+    height: 50rem;
     box-shadow: -1px 0 4px 0 #01e7fd, 3px 4px 8px 0 #033251 inset;
     background-image: url(https://d37pbainmkhx6o.cloudfront.net/beto_paredes_nest/login/form_background.webp);
     background-repeat: no-repeat;
@@ -59,8 +59,8 @@ body {
 }
 
 .login_form .form_wrp {
-    /* padding: 0 13%;
-    padding-top: 40px */
+    padding: 0 13%;
+    padding-top: 40px
     padding: 50px 80px 40px 80px;
 }
 
@@ -109,7 +109,7 @@ body {
     background: linear-gradient(180deg, rgba(255, 126, 30, 1) 20%, rgba(250, 93, 63, 1) 74%, rgba(246, 67, 88, 1) 100%);
     border: 6px solid #6d92a8;
     color: #fff;
-    /* margin-top: 30px; */
+    margin-top: 30px;
     cursor: pointer;
     padding: 7px;
     margin-bottom: 40px;
@@ -139,6 +139,10 @@ body {
     z-index: 99;
     right: 12px;
     top: 17px
+} */
+
+.mat-mdc-form-field-subscript-wrapper {
+    display: none;
 }
 
 .adminlisttable_v1 .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,

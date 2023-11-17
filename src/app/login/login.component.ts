@@ -14,7 +14,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css', '../../assets/login.css'],
 })
 export class LoginComponent {
   public loginForm: FormGroup;
