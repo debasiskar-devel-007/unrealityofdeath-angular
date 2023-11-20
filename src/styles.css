@@ -210,7 +210,7 @@ body {
     border-radius: 5px;
     border: 8px solid #ad4c1e;
 }
-.custom-modalbox .subwrapper .sub-title h2 {
+.custom-modalbox .uniqueurl_modal .sub-title h2 {
     margin: 0;
     text-align: center;
     background: #ad4c1e;
@@ -221,36 +221,36 @@ body {
 }
 
 
-.sub_header {
+.uniqueurl_modal .sub_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.sub_header p {
+.uniqueurl_modal .sub_header p {
     font-size: 18px;
-    margin-bottom: 0;
-    /* margin-left: -45px; */
+    margin: 10px 0;
     text-transform: lowercase;
+    word-break: break-word;
 }
 
-.sub_wrpper h1 {
+.uniqueurl_modal .sub_wrpper h1 {
     font-size: 20px;
     line-height: 29px;
     font-weight: 500;
-    /* margin-top: 15px; */
     padding: 10px 0;
     color: red;
 }
 
-.sub_wrpper h2 {
+.uniqueurl_modal .sub_wrpper h2 {
     font-size: 15px;
     line-height: 20px;
     margin-top: 16px;
     margin-bottom: 0px;
 }
 
-.sub_wrpper h3 {
+.uniqueurl_modal .sub_wrpper h3 {
     font-size: 20px;
     line-height: 25px;
     font-weight: 600;
@@ -258,27 +258,42 @@ body {
     margin-top: 11px;
 }
 
-.context {
+.uniqueurl_modal .context {
     margin-left: 20px;
+    padding: 0;
 }
 
-.context li {
+.uniqueurl_modal .context li {
     font-size: 18px;
     line-height: 24px;
     text-transform: lowercase;
+    word-break: break-word;
+}
+
+.uniqueurl_modal .submited_wrp {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
 }
 
 /* .main_wrp .mat-mdc-dialog-container .mdc-dialog__surface{padding:0px !important;} */
-.submited {
+.uniqueurl_modal .submited {
     font-size: 22px !important;
-    width: 24%;
     border-radius: 13px;
     font-weight: 500;
     background: linear-gradient(180deg, rgba(255, 126, 30, 1) 20%, rgba(250, 93, 63, 1) 74%, rgba(246, 67, 88, 1) 100%);
     color: #fff;
     cursor: pointer;
-    padding: 7px;
-    margin-bottom: 7px;
+    padding: 8px 16px;
+}
+
+.error {
+    color: #FF7E1E;;
+    display: block;
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 6px;
 }
 
 .body_wrp {
