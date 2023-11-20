@@ -9,7 +9,6 @@ import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
-import * as moment from 'moment';
 // import { MatFormFieldModule } from "@angular/material/form-field";
 @Component({
   selector: 'app-login',
@@ -79,7 +78,7 @@ export class LoginComponent {
 
           this.apiService.getHttpDataPost("login/loginsubmission", {
             ...this.loginForm.value,
-            login_time: moment().valueOf(),
+            login_time: new Date().getTime(),
             ipinfo: ipresponse
           }).subscribe({
             next: (response: any) => {
