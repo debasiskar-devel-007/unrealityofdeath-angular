@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:dev": "ng serve --configuration development",
-    "start:prod": "ng serve --configuration production"
+    "start:prod": "ng serve --configuration production",
+    "deploy:development": "npm i && ng build --configuration development && aws --profile lambda_all s3 sync ./dist/unrealityofdeath-angular s3://backoffice-unrealityofdeath-dev",
+    "deploy:production": "npm i && ng build --configuration production && aws --profile lambda_all s3 sync ./dist/unrealityofdeath-angular s3://backoffice-unrealityofdeath-prod"
   },
   "private": true,
   "dependencies": {
