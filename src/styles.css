@@ -476,12 +476,15 @@ body {
     box-shadow: 2px 2px 5px #453e3be3;
 }
 
-.error {
-    color: #FF7E1E;;
+.uniqueurl_modal .error {
+    color: red;;
     display: block;
     text-align: left;
     padding-left: 5px;
     margin-top: 6px;
+}
+.uniqueurl_modal .error.valid {
+    color: #692d00;
 }
 
 .body_wrp {
