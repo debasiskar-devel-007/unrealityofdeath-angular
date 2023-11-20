@@ -157,7 +157,7 @@ body {
 .mat-mdc-form-field-flex {
     color: #020202;
 }
-.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+.login_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
     padding-top: 10px;
     padding-bottom: 12px;
 }
@@ -218,6 +218,87 @@ body {
     padding: 10px 5px;
     border-radius: 5px;
     margin-bottom: 5px;
+}
+
+
+.sub_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub_header p {
+    font-size: 18px;
+    margin-bottom: 0;
+    /* margin-left: -45px; */
+    text-transform: lowercase;
+}
+
+.sub_wrpper h1 {
+    font-size: 20px;
+    line-height: 29px;
+    font-weight: 500;
+    /* margin-top: 15px; */
+    padding: 10px 0;
+    color: red;
+}
+
+.sub_wrpper h2 {
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+.sub_wrpper h3 {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 600;
+    color: red;
+    margin-top: 11px;
+}
+
+.context {
+    margin-left: 20px;
+}
+
+.context li {
+    font-size: 18px;
+    line-height: 24px;
+    text-transform: lowercase;
+}
+
+/* .main_wrp .mat-mdc-dialog-container .mdc-dialog__surface{padding:0px !important;} */
+.submited {
+    font-size: 22px !important;
+    width: 24%;
+    border-radius: 13px;
+    font-weight: 500;
+    background: linear-gradient(180deg, rgba(255, 126, 30, 1) 20%, rgba(250, 93, 63, 1) 74%, rgba(246, 67, 88, 1) 100%);
+    color: #fff;
+    cursor: pointer;
+    padding: 7px;
+    margin-bottom: 7px;
+}
+
+.body_wrp {
+    padding: 13px;
+}
+
+.button_wrp {
+    background: var(--orange-gradient);
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 0 auto;
+    min-width: 150px;
+    padding: 14px 10px;
+    text-transform: inherit !important;
+    border-radius: 9px;
+    line-height: 22px;
+    letter-spacing: 0.7px;
+    cursor: pointer;
 }
 
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */

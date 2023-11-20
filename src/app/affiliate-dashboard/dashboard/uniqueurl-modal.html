@@ -1,4 +1,4 @@
-<div class="subwrapper">
+<div class="subwrapper uniqueurl_modal">
     <div class="formStyle user-form">
       <mat-card-content
         class="addEditPageWrapper practice_form_style form_title_style"
@@ -7,7 +7,61 @@
         <h2>Create Your Unique URL</h2>
     </div>
     <div class="content_wrapper">
-        
+        <form class="form_wrp" name="unicUser_form" id='unicUser_form' [formGroup]="unicUser_form">
+            <div class="body_wrp">
+                <div class="sub_header">
+                    <p>https://www.salesbackoffice.betoparedes.com</p>
+
+
+                    <div class="email_cls">
+
+                        <div class="input_lodaer" style="display: flex;flex-direction: row;">
+
+                            <mat-form-field class="login-full-width">
+                                <input matInput placeholder="Type Here" name="unique_identifier" [ngModel]="unic_value" (ngModelChange)="runing($event)"   formControlName="unique_identifier" required class="form_wrp-field" />
+                            </mat-form-field>
+
+                            <div style="height:50px ;width: 50px;">
+                                <mat-spinner *ngIf="unicLoader" style="height:50px ;width: 50px; margin-left: 10px;" ></mat-spinner>
+                            </div>
+                        </div>
+                        
+                        <div *ngIf="validflag == 2">
+                            <span class="error">Invalid Field</span>
+                        </div>
+                        <div *ngIf="hasunic == 2">
+                            <span class="error">This username already taken</span>
+                        </div>
+                        <div *ngIf="hasunic == 1">
+                            <span class="error valid">This unique Name is available</span>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+                <h2>Note: A unique username must have a length of 6-16 characters.
+                    Characters in lowercase, numbers, and '-' or '_' are allowed, and characters in uppercase, and space
+                    are not allowed.</h2>
+                <h1>Example: If yourunique url is "smith" then your campaign for a social media platform or email
+                    campaign
+                    could be:</h1>
+                <ul class="context">
+                    <li>https://www.salesbackoffice.betoparedes.com/Smith1</li>
+                    <li>https://www.salesbackoffice.betoparedes.com/Smith2</li>
+                    <li>https://www.salesbackoffice.betoparedes.com/Smith3</li>
+                </ul>
+                <h3>Notes:Please Choose your unique url carefully. This can not be changed in future</h3>
+
+                <div class="submited_wrp">
+                    <button class="submited" (click)="submit()">Submit</button>
+                </div>
+
+                <mat-progress-bar *ngIf="loader" mode="indeterminate" class="loader_wrp"></mat-progress-bar>
+            </div>
+        </form>
     </div>
             
             <mat-progress-bar
