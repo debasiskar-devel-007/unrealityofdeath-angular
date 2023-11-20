@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogData } from 'listing-angular15';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,21 +24,55 @@ export class DashboardComponent {
     public cookieService: CookieService,
     private apiService: ApiservicesService,
     public dialog: MatDialog,
-    public matSnackBar: MatSnackBar
+    public matSnackBar: MatSnackBar,
+    public activatedRoute: ActivatedRoute,
   ) {
-
+    
   }
 
+  public cookieData: any = {}
+
+  public campaignData: any;
+
   ngOnInit() {
-    const dialogRef = this.dialog.open(UniqueUrlModal, {
-      panelClass: 'custom-modalbox',
-      data: {
-        heading: 'Create Your Unique URL!!',
-        setDefaultObj: {
-          
+
+    this.cookieData = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : ''
+
+    console.log(this.cookieData);
+
+    if(!this.cookieData.unique_name_val) {
+      const dialogRef = this.dialog.open(UniqueUrlModal, {
+        panelClass: 'custom-modalbox',
+        disableClose: true,
+        data: {
+          heading: 'Create Your Unique URL!!',
+          setDefaultObj: {
+            
+          },
         },
+      });
+    }
+
+    this.activatedRoute.data.subscribe({
+      next: (response: any) => {
+        console.log(response);
+        
+        if (response.data && response.data.response.length > 0) {
+
+        this.campaignData = response.data.response
+          
+        } else {
+          
+        }
+
       },
-    });
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+
+
+   
   }
 
 }
@@ -49,6 +84,8 @@ export class DashboardComponent {
   imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
 })
 export class UniqueUrlModal {
+
+  public prodUrl: any = environment.stage == 'prod' ? true : false;
 
   constructor(
     public apiService: ApiservicesService,
@@ -133,11 +170,14 @@ export class UniqueUrlModal {
   submit() {
     const login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
 
+    console.log(login_user_details);
+    
+
     if (this.validflag == 1 && this.hasunic === 1) {
       this.loader = true
-      this.apiService.getHttpDataPost("reps/create-unique_identifier", {
-        user_id: login_user_details.userinfo._id,
-        unique_identifier: this.unic_value,
+      this.apiService.getHttpDataPost("marketing/create-unique_identifier", {
+        uid: login_user_details.uidval,
+        unique_name: this.unic_value,
         skip_identifier: 0
       }).subscribe({
         next: (response: any) => {
@@ -145,13 +185,7 @@ export class UniqueUrlModal {
             this.loader = false
             console.log("success", response);
             let oldcookie = JSON.parse(this.cookieService.get('login_user_details'))
-            let newcookie = {
-              lastLoginTime: oldcookie.lastLoginTime,
-              token: oldcookie.token,
-              token_expiry: oldcookie.token_expiry,
-              userinfo: { ...oldcookie.userinfo, unique_identifier: this.unic_value },
-
-            }
+            let newcookie = { ...oldcookie, unique_name_val: this.unic_value }
             console.log("oldcookie", oldcookie);
 
             this.cookieService.set('login_user_details', JSON.stringify(newcookie));
@@ -162,7 +196,7 @@ export class UniqueUrlModal {
             })
             setTimeout(() => {
               this.dialogRef.close()
-            }, 5000)
+            }, 2000)
 
 
           }
