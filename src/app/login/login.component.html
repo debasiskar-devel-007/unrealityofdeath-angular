@@ -32,8 +32,9 @@
                 (keydown)="handleInputChange($event)"
               />
             </mat-form-field>
+            <mat-error *ngIf="errors?.email">Email is required</mat-error>
           </div>
-          <mat-error *ngIf="errors?.email">Email is required</mat-error>
+          
 
           <div class="pass_cls">
             <mat-form-field class="login-full-width">
@@ -65,8 +66,9 @@
                 }}</mat-icon>
               </button>
             </mat-form-field>
+            <mat-error *ngIf="errors?.password">Password is required</mat-error>
           </div>
-          <mat-error *ngIf="errors?.password">Password is required</mat-error>
+          
 
             <a [routerLink]="['/forgot-password']">Forgot Password?</a>
         </form>

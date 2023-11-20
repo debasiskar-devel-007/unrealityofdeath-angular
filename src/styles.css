@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 body,
 html {
     height: 100%
@@ -141,7 +142,7 @@ body {
     top: 17px
 } */
 
-/* << ------------------ Log In Form Field CSS ---------------------- >> */
+/* << ------------------ Log In Form Field CSS by Sanket ---------------------- >> */
 
 .email_cls .mdc-text-field, .pass_cls .mdc-text-field {
     border-radius: 8px;
@@ -167,13 +168,18 @@ body {
     display: none;
 }
 .login_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple {display: none;}
-.login_formwrapper input {
-    color: #968e97  !important;
+.login_formwrapper input, .login_formwrapper input::placeholder {
+    color: #968e97 !important;
+    caret-color: #fff !important;
 }
 .login_formwrapper input:-webkit-autofill,
 .login_formwrapper input:-webkit-autofill:focus {
     transition: background-color 0s 600000s, color 0s 600000s !important;
 }
+.login_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix {
+    min-height: unset;
+}   
+
 .login_formwrapper .email_cls .iconwrapper i::before, .login_formwrapper .pass_cls .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mdc-icon-button mat-icon {
     color: #968e97;
 } 
@@ -182,11 +188,40 @@ body {
     width: 100%;
     margin-top: 20px !important;
     margin: 0 auto;
-    background-color: #7f2e0a;
-    color: #ddd;
+    background-color: #ddd;
+    color: #7f2e0a;
   }
+.loader_wrp .mdc-linear-progress__bar-inner {
+    border-color: inherit !important;
+}
 
-/* << ------------------ Log In Form Field CSS ---------------------- >> */
+/* << ------------------ Log In Form Field CSS by Sanket ---------------------- >> */
+
+
+/* << ------------------ Modal CSS by Sanket ---------------------- >> */
+
+.custom-modalbox {
+    width: min(90%, 800px) !important;
+    max-width: inherit !important;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: 8px solid #ad4c1e;
+}
+.custom-modalbox .subwrapper .sub-title h2 {
+    margin: 0;
+    text-align: center;
+    background: #ad4c1e;
+    color: #fff;
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* << ------------------ Modal CSS by Sanket ---------------------- >> */
+
 
 .adminlisttable_v1 .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,
 .ng-trigger-transformPanel .mat-mdc-option .mdc-list-item__primary-text {
