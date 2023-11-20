@@ -66,100 +66,113 @@ p {
 }
 
 @keyframes animate {
-  
-    0%{
-
-        transform: rotate(0deg);
-    }
-    100%{
-
-        transform: rotate(360deg);
-    }
-    
- } 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .login-logowrapper {
-    display: block;
-    background: #cf784f9e;
-    height: 110px;
-    width: 110px;
-    padding: 15px;
-    margin: 0 auto;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 8px #6c361e82;
-    border: 8px solid #ffd9c929;
-        margin-bottom: 20px;
+  display: block;
+  background: #cf784f9e;
+  height: 110px;
+  width: 110px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px #6c361e82;
+  border: 8px solid #ffd9c929;
+  margin-bottom: 20px;
 }
 
 .login_form .login-full-width {
-    display: block;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px 0 #0a3f5a;
-    font-size: 22px
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-size: 22px;
 }
 
 .email_cls {
-    position: relative
-}
-
-.email_cls .mdc-text-field {
-    border-radius: 8px;
+  position: relative;
 }
 
 .email_cls .form_wrp-field {
-    font-size: 17px !important
+  font-size: 17px !important;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 500
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .email_cls .iconwrapper {
-    position: absolute;
-    z-index: 99;
-    right: 12px;
-    top: 17px
+  position: absolute;
+  z-index: 99;
+  right: 12px;
+  top: 14px;
 }
 
 .email_cls .iconwrapper i {
-    font-size: 25px
+  font-size: 22px;
 }
 
 .pass_cls .form_wrp-field {
-    font-size: 17px !important
+  font-size: 17px !important;
 }
 
-.pass_cls .mdc-text-field {
-    border-radius: 8px;
+.login_formwrapper > button {
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  font-size: 24px;
+  font-weight: 900;
+  color: #000;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 240, 1, 1) 0%,
+    rgba(231, 190, 0, 1) 100%
+  );
+  border-radius: 10px;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 1px 1px 0px #f7e057;
+  width: 100%;
+}
+.login_formwrapper form a {
+  color: #787878;
+  margin-bottom: 20px;
+  display: block;
+  text-decoration: none;
+}
+.login_formwrapper form a:hover {
+  color: #f7e057;
+  cursor: pointer;
 }
 
-.login_button {
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    border: none;
-    font-size: 24px;
-    font-weight: 900;
-    color: #000;
-    background: linear-gradient(180deg, rgba(255, 240, 1, 1) 0%, rgba(231, 190, 0, 1) 100%);
-    border-radius: 10px;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    text-shadow: 1px 1px 0px #f7e057;
-    width: 100%;
+@media only screen and (max-width: 640px) {
+  .login_subwrapper {
+    min-width: 90%;
+    width: 90%;
+  }
+  .login_formwrapper > button {
+    font-size: 18px;
+  }
 }
-.login_link {
-    color: #787878;
-    margin-bottom: 20px;
-    display: block;
-    text-decoration: none;
-    font-size: 21px;
+@media only screen and (max-width: 480px) {
+  .login_subwrapper {
+    min-width: inherit;
+    width: 80%;
+  }
+  .login_formwrapper {
+    padding: 15px;
+  }
 }

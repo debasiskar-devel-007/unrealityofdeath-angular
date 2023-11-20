@@ -68,11 +68,9 @@
           </div>
           <mat-error *ngIf="errors?.password">Password is required</mat-error>
 
-          <h1>
-            <a class="login_link" [routerLink]="['/forgot-password']">Forgot Password?</a>
-          </h1>
+            <a [routerLink]="['/forgot-password']">Forgot Password?</a>
         </form>
-        <button class="login_button"
+        <button
           [ngClass]="loginButtonStatus === true ? 'submitdisable' : 'submit'"
           type="submit"
           (click)="login()"
