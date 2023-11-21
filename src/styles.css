@@ -507,6 +507,64 @@ body {
     cursor: pointer;
 }
 
+
+
+
+
+
+
+.custom-modalbox mat-dialog-container .close-btn-modal {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 54px;
+    min-width: unset;
+    height: 40px;
+    background: #7f2e0a;
+    border-radius: 0 0 0 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border: 1px solid #904802;
+    border-top: 0;
+    border-right: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.custom-modalbox mat-dialog-container .close-btn-modal mat-icon {
+    font-size: 24px;
+    margin: 0;
+    height: auto;
+    width: auto;
+}
+
+.custom-modalbox .modal_subwrapper .modal_maintitle {
+    text-align: center;
+    font-size: 26px !important;
+    font-weight: 500 !important;
+    background: #b5c1bb;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f2fff8;
+}
+.custom-modalbox .button_wrp {
+    background: #7f2e0a;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0 10px auto;
+    min-width: 150px;
+    padding: 14px 10px;
+    text-transform: inherit !important;
+    border-radius: 9px;
+    line-height: 22px;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+}
+
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */
 
 
