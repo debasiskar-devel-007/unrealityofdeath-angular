@@ -820,12 +820,13 @@ body {
 .landing-page-wrapper:last-child{margin-bottom:0}
 .copy-url-block{background-color:#fff;width:50%;display:flex;border-radius:5px;box-shadow:-4px -4px 9px #c2cab7,4px 4px 7px #757c6b85;border:1px solid #dfe9d1;min-height:54px}
 .copy-url-block a{font-size:18px;color:#0092cb;width:calc(100% - 70px);display:flex;align-items:center;margin-left:10px}
-.copy-url-block span{width:60px;display:flex;justify-content:center;align-items:center;background:var(--color-orange-gradient);font-size:24px;color:#fff;border-radius:5px 0 66px;box-shadow:2px 2px 8px #50150342;cursor:pointer}
+.copy-url-block span{width:60px;display:flex;justify-content:center;align-items:center;    background: #7f2e0a;
+    font-size:24px;color:#fff;border-radius:5px 0 66px;box-shadow:2px 2px 8px #50150342;cursor:pointer}
 .copy-url-block span i:active{box-shadow:none;transform:translateY(5px)}
 .copy-url-block a strong{font-weight:400;white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;padding-right:10px}
 .copy-url-block i{position:relative;left:-7px;top:-3px;text-shadow:-3px -3px 5px #ffdcd38c,3px 3px 5px #2f0f06bf;transition:all .2s}
 .action-block{width:250px;display:flex;justify-content:space-between}
-.action-block a{height:50px;width:50px;display:flex;justify-content:center;align-items:center;background:var(--orange-gradient);border-radius:50%;font-size:20px;color:#fff;box-shadow:-4px -4px 9px #c2cab7,4px 4px 7px #757c6b;border:1px solid #fc8f4e;margin:5px;transition:all .2s;cursor:pointer}
+.action-block a{height:50px;width:50px;display:flex;justify-content:center;align-items:center;background: #7f2e0a;border-radius:50%;font-size:20px;color:#fff;box-shadow:-4px -4px 9px #c2cab7,4px 4px 7px #757c6b;border:1px solid #fc8f4e;margin:5px;transition:all .2s;cursor:pointer}
 .action-block a:active{box-shadow:none;transform:translateY(5px)}
 .select-block{width:calc(50% - 277px);margin:0 10px 0 15px}
 .select-block mat-form-field{width:100%}
@@ -1154,7 +1155,13 @@ body {
     width: auto;
 }
 
+/* << ------------ CSS by Sanket ------------- >> */
 
+.mat-badge-medium.mat-badge-after .mat-badge-content {
+    background: #4d1b05;
+}
+
+/* << ------------ CSS by Sanket ------------- >> */
 
 
 

@@ -74,7 +74,7 @@
                   <a matTooltip="Copy Url"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
                   <a matTooltip="QR Scanner"><i
                       class="fa fa-qrcode" aria-hidden="true"></i></a>
-                  <a matTooltip="Create Campaign" ><i
+                  <a matTooltip="Create Campaign" [matBadge]="data.campaign_data ? data.campaign_data.length : 1"><i
                       class="fa fa-plus-circle" aria-hidden="true"></i></a>
                   <a matTooltip="Click Count / Conversion Count"><i
                       class="fa fa-bar-chart" aria-hidden="true"></i></a>
