@@ -11,6 +11,7 @@ import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
+import {Clipboard} from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,6 +27,7 @@ export class DashboardComponent {
     public dialog: MatDialog,
     public matSnackBar: MatSnackBar,
     public activatedRoute: ActivatedRoute,
+    private clipBoard: Clipboard
   ) {
     
   }
@@ -33,6 +35,10 @@ export class DashboardComponent {
   public cookieData: any = {}
 
   public campaignData: any;
+
+  public eventValue: any = "";
+
+  public copiedVal: any = ""
 
   ngOnInit() {
 
@@ -59,7 +65,7 @@ export class DashboardComponent {
       }).subscribe({
         next: (response: any) => {
           if (response.status === "success") {
-            if (response.results.length > 0) {
+            if (response.results?.length > 0) {
               this.dashboardCampaignListApi()
             }
 
@@ -78,8 +84,6 @@ export class DashboardComponent {
         if (response.data && response.data.response.length > 0) {
 
         this.campaignData = response.data.response
-          
-        } else {
           
         }
 
@@ -107,6 +111,23 @@ export class DashboardComponent {
         console.log("error", error);
       }
     })
+  }
+
+  onCampaignChange(event: any) {
+    console.log(event.value);
+  this.eventValue = event.value
+  }
+
+  copyToClipboard(dval: any) {
+    console.log(dval);
+
+     if(dval.landing_page_domain_url && this.eventValue) {
+      this.copiedVal = dval.landing_page_domain_url + '/' + this.eventValue
+      console.log(this.copiedVal);
+      
+    }
+    
+    return this.clipBoard.copy(this.copiedVal)
   }
 
 }

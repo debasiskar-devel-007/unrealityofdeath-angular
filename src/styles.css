@@ -801,7 +801,7 @@ body {
 .landing-page-left{width:400px;display: flex;    align-items: center;
 }
 .img-wrapper{padding:10px;background:#e4e7dd;border:1px solid #95998f;width: 100%;
-    height: 200px;    overflow: hidden;
+    height: 250px;    overflow: hidden;
 }
 .img-wrapper img{
     display: block;
@@ -944,7 +944,9 @@ body {
 
 .title-wrapper1{
     border-left: 5px solid #aeb6a2;
+    padding: 5px 0;
     padding-left: 5px;
+    margin-bottom: 10px;
     
 }
 
@@ -1184,10 +1186,12 @@ body {
 }
 .wrapper .heading_sub_wrp{
     border-left: 5px solid #aeb6a2;
+    padding: 5px 0;
     padding-left: 5px;
     font-size: 19px;
     text-transform: uppercase;
     font-weight: 500;
+    margin-bottom: 10px;
 }
 
 /* ////////////////////////// Dashboard CSS END /////////////////////// */

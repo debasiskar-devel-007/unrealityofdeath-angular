@@ -20,7 +20,7 @@
                 </div>
                 <div class="title-wrapper2"></div>
                 <h1 class="heading_sub_wrp">
-                    Beto Paredes Family Opportunities</h1>
+                    Unreality of Death Opportunities</h1>
                 <ng-container></ng-container>
                 <div class="landing-page-wrapper" *ngFor="let data of campaignData">
                     <!-- <h1 *ngIf="landingarraylist.betoparedes_access==0">
@@ -45,9 +45,12 @@
 
                             <div class="landing-right-footer">
                                 <div class="copy-url-block">
-                                    <span><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
-                                    <a><strong>{{data.campaign_url}}
-                                        </strong></a>
+                                    <span (click)="copyToClipboard(data)"><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
+                                    <a><strong *ngIf="eventValue"> {{ data.landing_page_domain_url}}/{{eventValue}}
+                                        </strong>
+                                        <strong *ngIf="!(eventValue)"> {{ data.landing_page_domain_url}}/{{data.campaign_data[0].split('##~~')[1]}}
+                                        </strong>
+                                    </a>
                                 </div>
                                 <div class="select-block">
                                     <!-- <span>{{(landingarraylist.campaign_name_arr | json)}} campaign_id ,rep_url_arr</span> -->
@@ -56,10 +59,10 @@
 
                                     <mat-form-field>
                                         <mat-label class="label_wrp_main">Select Campaign</mat-label>
-                                        <mat-select>
+                                        <mat-select [value]="data.campaign_data[0].split('##~~')[1]" (selectionChange)="onCampaignChange($event)">
                                             <ng-container>
-                                                <mat-option>
-
+                                                <mat-option *ngFor="let campaignData of data.campaign_data" [value]="campaignData.split('##~~')[1]">
+                                                    {{campaignData.split('##~~')[0]}}
                                                 </mat-option>
                                             </ng-container>
                                         </mat-select>
