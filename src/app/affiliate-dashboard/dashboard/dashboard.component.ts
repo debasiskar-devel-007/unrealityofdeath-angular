@@ -51,6 +51,24 @@ export class DashboardComponent {
           },
         },
       });
+    } else {
+      this.apiService.getHttpDataPost("marketing/create-unique_identifier", {
+        uid: this.cookieData.uidval,
+        unique_name:this.cookieData.unique_name_val,
+        skip_identifier: 1
+      }).subscribe({
+        next: (response: any) => {
+          if (response.status === "success") {
+            if (response.results.length > 0) {
+              this.dashboardCampaignListApi()
+            }
+
+          }
+        },
+        error: (error: any) => {
+          console.log("error", error);
+        }
+      })
     }
 
     this.activatedRoute.data.subscribe({
@@ -73,6 +91,22 @@ export class DashboardComponent {
 
 
    
+  }
+
+  dashboardCampaignListApi() {
+    this.apiService.getHttpDataPost("marketing/dashboard-campaign-list", {
+      user_id: this.cookieData.uidval
+    }).subscribe({
+      next: (response: any) => {
+        console.log("response", response);
+        if (response.results.length > 0) { 
+          this.campaignData = response.results
+        }
+      },
+      error: (error: any) => {
+        console.log("error", error);
+      }
+    })
   }
 
 }
