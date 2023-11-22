@@ -41,17 +41,17 @@ export class CampaignmodalComponent {
   tabledata_detail_skip: any = ['_id', 'usertype'];
  
   updatetable: boolean = false;
-  tablename = "package";
+  tablename = "campaign";
   editroute = "";
-  updateendpoint = "reps/campaign-status-change";
-  deleteendpoint = "reps/campaign-delete";
-  datacollection: any = "reps/campaign-list";
+  updateendpoint = "marketing/campaign-update";
+  deleteendpoint = "marketing/campaign-delete";
+  datacollection: any = "marketing/campaign-list";
   public listprogressBar: any = false;
   public api_url_for_managebanner = environment.api_url
   public cookieData = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
-  searchendpoint = "reps/campaign-list";
-  date_search_endpoint: any = "reps/campaign-list";
-  date_search_source: any = "package";
+  searchendpoint = "marketing/campaign-list";
+  date_search_endpoint: any = "marketing/campaign-list";
+  date_search_source: any = "campaign";
   date_search_source_count: any = 0;
   Tabledata_header_skip: any = ["_id"];
   limitcond: any = {
@@ -66,7 +66,6 @@ export class CampaignmodalComponent {
   rolearray: any = []
   modify_header_array: any = {
     campaign_name: "Campaign Name",
-    // lastname: "Last Name",
     landing_page_name: "Landing Page",
     status: "Status",
     created_on: "Created on",
@@ -79,10 +78,6 @@ export class CampaignmodalComponent {
     field: "created_on",
     options: ["campaign_name", "landing_page_name", "status", "created_on",],
   };
-  public userName: any = {};
-  public lastLogin: any = {};
-  public isAdminUser: boolean = false;
-  public isDoctorUser: boolean = false;
 
   public customlistenbutton: any = {
     flag: true,
@@ -111,17 +106,16 @@ export class CampaignmodalComponent {
 
 
     ],
-    updateendpoint: "marketing/campaign-status-change",
-
     hidedeletebutton: true,
     hideviewbutton: true,
     hideeditbutton: true,
     hidestatustogglebutton: false,
     hidemultipleselectbutton: true,
     hideaction: false,
+    updateendpoint: "marketing/campaign-status-change",
     updateendpointmany: "marketing/campaign-status-change",
-
     deleteendpointmany: "marketing/campaign-delete",
+
     tableheaders: ["campaign_name", "landing_page_name", "created_on", "status"],
 
     colpipes: [
@@ -155,7 +149,7 @@ export class CampaignmodalComponent {
         type: 'listner',
         id: 'delete_btn',
         tooltip: 'Delete',
-        cond: 'default',
+        cond: 'default_val',
         condval: '0',
         name: 'delete',
         classname: 'delete_btn'
