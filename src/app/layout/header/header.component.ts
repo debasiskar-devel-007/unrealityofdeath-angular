@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,10 @@ export class HeaderComponent {
     window.scroll(0, 0);
   }
 
+  public user_profile_details:any = this.cookieService.get('login_user_details')? JSON.parse(this.cookieService.get('login_user_details')) : {}
   public classToggled:boolean = false
+
+  public frontendurl:string = environment.stage == 'prod'? 'https://psycheandsingularity.com/': 'https://dev.timothydesmond.influxiq.com/'
 
 
   public toggleNav() {
@@ -30,5 +35,45 @@ export class HeaderComponent {
     return this.router.url
     
   }
+
+  myAccount(){
+
+  }
+
+  changePass(){}
+
+  logout(){
+    this.cookieService.deleteAll('login_user_details')
+    this.cookieService.deleteAll('loggedin_user')
+
+    let cookieVal = this.getCookieByName('login_user_details')
+    if(cookieVal){
+      if(cookieVal.includes('userinfo')){
+        document.cookie = `login_user_details=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+        document.cookie = `loggedin_user=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+      }
+    }
+    
+    this.matSnackBar.open("Logout Successfully", "Ok", {
+      duration: 3000
+    });
+    this.router.navigateByUrl('/')
+  }
+
+  getCookieByName(name:string) {
+    const value = document.cookie;
+    if (value.includes(name)) {
+        console.log("value====>", value)
+        let userVal = value.split(`${name}=`)[1]?.split(';')[0]
+        console.log("userVal=====>", userVal)
+        if (userVal) {
+            return userVal
+        } else {
+            return null
+        }
+    } else {
+        return null
+    }
+}
 
 }
