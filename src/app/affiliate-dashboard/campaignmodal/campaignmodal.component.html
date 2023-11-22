@@ -1,12 +1,13 @@
 <button mat-dialog-close class="close-btn-modal" mat-raised-button matTooltip="Close"
   matTooltipPosition="below"><mat-icon>close</mat-icon></button>
 
-  <div class="modal_subwrapper campaign_modalwrp">
-    <h1 class="modal_maintitle">
-      Create/Edit Your Campaigns For: 
+  <div class="dialoghead campaign_modalwrp">
+    <h1 class="mat-mdc-dialog-title">
+       Campaigns List
     </h1>
+  <mat-dialog-content>
   
-    <button class="button_wrp">Add Campaign</button>
+    <button class="button_wrp" (click)="campainAdd()">Add Campaign</button>
   
     <h3 class="modal_subtitle">Glossary</h3>
   
@@ -51,4 +52,5 @@
           </div>
         </div>
       </div>
+    </mat-dialog-content>
     </div>

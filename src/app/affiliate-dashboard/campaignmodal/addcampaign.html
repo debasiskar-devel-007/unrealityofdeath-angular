@@ -1,0 +1,40 @@
+<button mat-dialog-close class="close-btn-modal" mat-raised-button matTooltip="Close"
+  matTooltipPosition="below"><mat-icon>close</mat-icon></button>
+<div class="dialoghead addcampain_modalwrp">
+    <h1 class="mat-mdc-dialog-title">Create/Edit Your Campaigns For:</h1>
+    <mat-dialog-content>
+      <ng-container>
+        <!-- <mat-card class="main-title" >
+              <h2>{{userformdata.submittext}} Contact Info</h2>
+          </mat-card> -->
+        <div class="subwrapper">
+          <div class="formStyle user-form">
+            <mat-card-content
+              class="addEditPageWrapper modify_extra practice_form_style form_title_style user_add_formwrp"
+            >
+              
+              <div class="AddEditBlog taxonomies_formstyle">
+                <div class="addEditForm">
+                  <lib-showform
+                    [formdata]="configFormData"
+                    [formfieldrefresh]="formfieldrefresh"
+                    [formfieldrefreshdata]="formfieldrefreshdata"
+                    (onFormFieldChange)="listenFormFieldChange($event)"
+                  >
+                  </lib-showform>
+  
+                  <!-- <ng-container *ngIf="addFormLoader">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                  </ng-container> -->
+                  <mat-progress-bar
+                    *ngIf="loader"
+                    mode="indeterminate"
+                  ></mat-progress-bar>
+                </div>
+              </div>
+            </mat-card-content>
+          </div>
+        </div>
+      </ng-container>
+      </mat-dialog-content>
+    </div>

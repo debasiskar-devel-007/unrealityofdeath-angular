@@ -61,8 +61,8 @@ width: 239px;
     align-items: center;
 }
 .top-btn {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
     background: linear-gradient(180deg, rgba(232,232,232,1) 0%, rgba(116,116,116,1) 100%);;
     display: flex;
