@@ -527,7 +527,7 @@ body {
 }
 
 .adminlisttable_v1 tbody .delete_btn button {
-    background: url(https://all-frontend-assets.s3.amazonaws.com/practice2lab/deletIcon.png) no-repeat center center !important;
+    /* background: url(https://all-frontend-assets.s3.amazonaws.com/practice2lab/deletIcon.png) no-repeat center center !important; */
     background-size: 100% !important;
     width: 18px !important;
     height: 25px !important;
@@ -1184,9 +1184,9 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .addEditPageWrapper .mdc-button,
-.addEditPageWrapper .mdc-button:hover {
+.addEditPageWrapper .mdc-button:hover, .custom-modalbox .button_wrp {
     margin: 5px;
-    background: var(--orange-gradient);
+    background: #7f2e0a !important;
     height: auto !important;
     font-size: 2.4rem;
     border-radius: 5px;
@@ -3531,20 +3531,8 @@ tbody tr td .actionbuttonwrapper button {
     color: #000;
 
 }
-.custom-modalbox .button_wrp {
-    background: #7f2e0a;
-    color: #fff;
-    display: block;
-    font-size: 16px;
-    font-weight: 600;
+.custom-modalbox .campaign_modalwrp .button_wrp {
     margin-left: auto;
-    min-width: 150px;
-    padding: 14px 10px;
-    text-transform: inherit !important;
-    border-radius: 9px;
-    line-height: 22px;
-    letter-spacing: 0.7px;
-    cursor: pointer;
 }
 .custom-modalbox .dialoghead .instructions-wrapper p {
     font-size: 16px;
@@ -3685,6 +3673,9 @@ tbody tr td .actionbuttonwrapper button {
 
 .custom-modalbox .dialoghead.campaign_modalwrp .list-style1 .togglesearchcls {
     display: none;
+}
+.custom-modalbox.campainlist_modalbox {
+    width: min(90%, 1000px) !important;
 }
 
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */
@@ -4403,3 +4394,5 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 /* ////////////////////////// Dashboard CSS END /////////////////////// */
+
+

@@ -154,7 +154,7 @@ export class DashboardComponent {
         console.log(response);
         if (response.status == 'success') {
           const dialogRef = this.dialog.open(CampaignmodalComponent, {
-            panelClass: 'custom-modalbox',
+            panelClass: ['custom-modalbox', 'campainlist_modalbox'],
             data: response.response
           })
 
