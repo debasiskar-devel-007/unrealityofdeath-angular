@@ -47,7 +47,8 @@
                             <div class="landing-right-footer">
                                 <div class="copy-url-block">
                                     <span 
-                                    [matTooltip]="data.landing_page_domain_url+'/'+data.campaign_data[0].split('##~~')[1]" 
+                                    matTooltip="Copy Url" 
+
                                     (click)="copyToClipboard(selected_campaign_index[mainIndex]!= null?
                                     data.campaign_url[selected_campaign_index[mainIndex]] :
                                     data.campaign_url[0])"
