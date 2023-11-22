@@ -63,30 +63,22 @@
                                     </a>
                                 </div>
                                 <div class="select-block">
-                                    <!-- <span>{{(landingarraylist.campaign_name_arr | json)}} campaign_id ,rep_url_arr</span> -->
-                                    <!-- <span>ddd {{landingarraylist.campaign_id}}<br /> ffff-{{landingarraylist|json}}</span> -->
-                                    <!-- (selectionChange)="onCampaignChange($event)" -->
 
                                     <mat-form-field>
                                         <mat-label class="label_wrp_main">Select Campaign</mat-label>
                                         <mat-select 
                                         [value]="data.campaign_data[0].split('##~~')[1]" 
-                                        
                                         (selectionChange)="valuechange(mainIndex)"
 
                                         [(ngModel)]="data.campaign_data[0].split('##~~')[1]"
-                                        
                                         >
                                             <ng-container
                                             *ngFor="let campaignData of data.campaign_data
                                             let camapign_index = index
                                             "
-
                                             >
                                                 <mat-option 
-                                                
                                                 (click)="selectedindex(camapign_index,mainIndex)"
-                                                
                                                 [value]="campaignData.split('##~~')[1]">
                                                     {{campaignData.split('##~~')[0]}}
                                                 </mat-option>

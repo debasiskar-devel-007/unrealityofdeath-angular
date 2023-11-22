@@ -115,11 +115,6 @@ export class DashboardComponent {
       });
   }
 
-  onCampaignChange(event: any) {
-    console.log(event.value);
-    this.eventValue = event.value;
-  }
-
   copyToClipboard(url: string): void {
     this.clipBoard.copy(url);
     this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
