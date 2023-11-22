@@ -19,6 +19,8 @@ export class CampaignmodalComponent {
 
   public tabledatatalist: any = [];
 
+  public campainAllData: any = [];
+
   constructor(
     public apiService: ApiservicesService,
     public dialogRef: MatDialogRef<CampaignmodalComponent>,
@@ -29,7 +31,7 @@ export class CampaignmodalComponent {
     public dialog: MatDialog
   ) {
     console.log(data);
-    this.tabledatatalist = data
+    this.campainAllData = data
     
   }
 
@@ -172,8 +174,35 @@ export class CampaignmodalComponent {
 
 
   ngOnInit() {
-    this.formLoader = true
-    const login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
+
+    console.log(this.cookieData);
+    
+
+    this.tabledatatalist = this.campainAllData?.setDefaultObj ? this.campainAllData?.setDefaultObj : []
+
+    this.apiService.getHttpDataPost(
+      'marketing/campaign-list-count', {
+      "condition": {
+        "limit": 5,
+        "skip": 0
+      },
+      "searchcondition": {
+        user_id: this.cookieData?.uidval,
+        opportunity_id: this.campainAllData?.campaignVal
+      },
+      "sort": {
+        "type": "desc",
+        "field": "created_on"
+      },
+      "project": {},
+      "token": ""
+    }
+    ).subscribe((response: any) => {
+
+      if (response && response.count) {
+        this.date_search_source_count = response.count;  
+      }
+    })
 
     //  this.userListFetching()
     // Subscribe to list data fetching
@@ -192,6 +221,43 @@ export class CampaignmodalComponent {
   listenLiblistingChange(data: any = null) {
     console.log("test", data);
   
+    // if (data?.custombuttonclick?.btninfo.id == 'edit_btn') {
+    //   this.add_camp(data.custombuttonclick.data, 'edit')
+    //   console.log("aaaaaaaaaaa", data.custombuttonclick.data)
+
+    // }
+    // if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
+    //   this.dialog.open(PreviewComponent, {
+    //     data: {
+    //       key: data.custombuttonclick.btninfo.previewlist
+    //       , value: data.custombuttonclick.data
+    //     }
+
+    //   });
+
+    // }
+    // if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "delete_btn" && data.custombuttonclick.data) {
+    //   this.dialog.open(DeleteComponentComponent, {
+    //     data: {
+    //       key: data.custombuttonclick.btninfo.delete_btn
+    //       , value: data.custombuttonclick.data,
+    //     }
+    //   });
+    //   setTimeout(() => {
+    //     this.updatetable = !this.updatetable;
+    //   }, 7000);
+    // }
+
+    // if (data?.custombuttonclick?.btninfo.id == 'copy_btn') {
+    //   console.log("data_url", this.data.rep_url_arr)
+    //   let data_url = data.custombuttonclick.data.product_data[0].domain_url + '/' + data.custombuttonclick.data.unique_identifier
+    //   this.clipboard.copy(data_url)
+    //   console.log("data_url+++", data_url)
+    //   this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 1000, });
+
+
+
+    // }
     
 
   }
