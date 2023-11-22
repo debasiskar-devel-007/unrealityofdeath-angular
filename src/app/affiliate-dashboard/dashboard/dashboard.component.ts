@@ -105,8 +105,8 @@ export class DashboardComponent {
       .subscribe({
         next: (response: any) => {
           console.log('response', response);
-          if (response.results.length > 0) {
-            this.campaignData = response.results;
+          if (response.response.length > 0) {
+            this.campaignData = response.response;
           }
         },
         error: (error: any) => {
@@ -159,7 +159,7 @@ export class DashboardComponent {
           })
 
           dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
+            this.dashboardCampaignListApi()
           })
         } else {
 
