@@ -57,7 +57,9 @@ export class HeaderComponent {
     this.matSnackBar.open("Logout Successfully", "Ok", {
       duration: 3000
     });
-    this.router.navigateByUrl('/')
+    setTimeout(()=>{
+      this.router.navigateByUrl('/')
+    }, 3000)
   }
 
   getCookieByName(name:string) {
