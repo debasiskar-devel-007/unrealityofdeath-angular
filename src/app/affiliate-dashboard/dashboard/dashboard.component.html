@@ -45,7 +45,9 @@
 
                             <div class="landing-right-footer">
                                 <div class="copy-url-block">
-                                    <span (click)="copyToClipboard(data)"><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
+                                    <span 
+                                    [matTooltip]="data.landing_page_domain_url+'/'+data.campaign_data[0].split('##~~')[1]" 
+                                    (click)="copyToClipboard(data)"><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
                                     <a><strong *ngIf="eventValue"> {{ data.landing_page_domain_url}}/{{eventValue}}
                                         </strong>
                                         <strong *ngIf="!(eventValue)"> {{ data.landing_page_domain_url}}/{{data.campaign_data[0].split('##~~')[1]}}
