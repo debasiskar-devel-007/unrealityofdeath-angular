@@ -1,0 +1,54 @@
+<button mat-dialog-close class="close-btn-modal" mat-raised-button matTooltip="Close"
+  matTooltipPosition="below"><mat-icon>close</mat-icon></button>
+
+  <div class="modal_subwrapper campaign_modalwrp">
+    <h1 class="modal_maintitle">
+      Create/Edit Your Campaigns For: 
+    </h1>
+  
+    <button class="button_wrp">Add Campaign</button>
+  
+    <h3 class="modal_subtitle">Glossary</h3>
+  
+  
+    <div class="instructions-wrapper">
+      <p><i class="fa fa-check-square-o" aria-hidden="true"></i><strong>Checkbox: </strong><span>Select multiple/single
+          number of data by selecting the checkbox.</span></p>
+      <p><i class="fa fa-search" aria-hidden="true"></i><strong>Search:</strong><span>Search any campaign by clicking on
+          the search icon.</span></p>
+      <p><i class="fa fa-refresh" aria-hidden="true"></i><strong>Reload:</strong><span>Reload the campaign’s listing by
+          clicking on the icon.</span></p>
+      <p><i class="fa fa-pencil" aria-hidden="true"></i><strong>Edit:</strong><span>Edit the campaign information by
+          clicking on the icon.</span></p>
+      <p><i class="fa fa-toggle-on" aria-hidden="true"></i><strong>Status Change:</strong><span>Change the status of any
+          Campaign from Active to Inactive or from Inactive to Active by clicking on the icon.</span></p>
+      <p><i class="fa fa-clone" aria-hidden="true"></i><strong>Copy Icon:</strong><span>Copy a campaign URL by clicking on
+          the icon.</span></p>
+      <p><i class="fa fa-trash" aria-hidden="true"></i><strong>Delete:</strong><span>Delete any campaign by clicking on
+          the icon.</span></p>
+      <p><i class="fa fa-qrcode" aria-hidden="true"></i><strong>QR Scanner:</strong><span>Get QR Code of the campaign by
+          clicking on the icon.</span></p>
+    </div>
+  
+  
+      <div class="list-style1">
+        <div #myElem class="taxonomies_liststyle" [ngClass]="listprogressBar == true ? 'hide' : 'show'">
+          <lib-listing class="adminlisttable_v1" *ngIf="tabledatatalist != null && tabledatatalist.length > 0"
+            [datasource]="tabledatatalist" [skip]="tabledata_header_skip" [modify_header_array]="modify_header_array"
+            [deleteendpoint]="deleteendpoint" [updateendpoint]="updateendpoint" [date_search_source]="date_search_source"
+            [date_search_endpoint]="date_search_endpoint" [sourcedata]="tablename" [editroute]="editroute"
+            [statusarr]="statusarray" [detail_skip_array]="tabledata_detail_skip" [jwttoken]="jwttokenformanagebanner"
+            [search_settings]="search_settings" [searchendpoint]="searchendpoint" [sortdata]="sortdata"
+            [datacollection]="datacollection" [date_search_source_count]="date_search_source_count" [libdata]="libdata"
+            [limitcond]="limitcond" [updatetable]="updatetable" [customlistenbutton]="customlistenbutton"
+            [updatetable]="taxonomy_updatetable" [apiurl]="api_url_for_managebanner"
+            (onLiblistingButtonChange)="onLiblistingButtonChange($event)"
+            (onLiblistingChange)="listenLiblistingChange($event)">
+          </lib-listing>
+          <div *ngIf="!(tabledatatalist.length > 0)" class="noFoundTextinner">
+            <span>Oops !</span>
+             <p> NO Record Found</p>
+          </div>
+        </div>
+      </div>
+    </div>

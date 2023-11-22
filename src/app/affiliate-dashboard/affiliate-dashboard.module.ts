@@ -4,12 +4,14 @@ import { AffiliateDasboardRoutingModule } from './affiliate-dashboard-routing.mo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { CampaignmodalComponent } from './campaignmodal/campaignmodal.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    CampaignmodalComponent
   ],
   imports: [
     CommonModule,
