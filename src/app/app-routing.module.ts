@@ -11,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'affiliate-dashboard',
-    loadChildren:() => import('./affiliate-dashboard/affiliate-dashboard.module').then((m)=> m.AffiliateDashboardModule)
+    loadChildren:() => import('./affiliate-dashboard/affiliate-dashboard.module').then((m)=> m.AffiliateDashboardModule),
+    canActivate:[AuthGuardService]
   }
 ];
 

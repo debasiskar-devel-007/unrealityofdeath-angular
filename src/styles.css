@@ -680,6 +680,7 @@ body {
 .top_header_textwrapper {
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 
 .top_header_subwrapper {
