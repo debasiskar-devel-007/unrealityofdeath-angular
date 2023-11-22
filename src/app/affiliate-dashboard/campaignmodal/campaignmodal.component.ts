@@ -1,9 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogData } from 'listing-angular15';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,7 +25,8 @@ export class CampaignmodalComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public matSnackBar: MatSnackBar,
     private cookieService: CookieService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    public dialog: MatDialog
   ) {
     console.log(data);
     this.tabledatatalist = data
@@ -205,6 +210,193 @@ export class CampaignmodalComponent {
     }
   }
 
+  campainAdd() {
+
+    const dialogRef = this.dialog.open(addCampainModal, {
+      panelClass: 'custom-modalbox',
+      data: {
+        heading: 'Alert!!',
+        setDefaultObj: {
+          
+        },
+      },
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      setTimeout(() => {
+        this.updatetable = !this.updatetable;
+      }, 1000);
+    });
+
+  }
+
 
 
 }
+
+// << -------------- Campain Add Modal ---------------- >>
+
+@Component({
+  selector: 'addCampainModal',
+  templateUrl: './addcampaign.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
+})
+export class addCampainModal {
+
+  constructor(private cookieService: CookieService, private apiservice: ApiservicesService, public matSnackBar: MatSnackBar, public activateRoute: ActivatedRoute, public router: Router, private dialogRef: MatDialogRef<addCampainModal>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log("data========>+", data)
+  }
+
+  public configFormData = {}
+  // public landingarrayvalue: any = []
+  public formfieldrefresh: any = null;
+  public formfieldrefreshdata: any = null;
+  public dropdownvalue: any = [];
+  public loader: boolean = false;
+  public paramsId: any = "";
+  formValue: any = {}
+  lodedValue: any = {}
+  public forUpdate: boolean = false
+  update_id: any = ""
+  public endpoint_resvalue: any = []
+
+  ngOnInit() {
+    if (this.data._id) {
+      this.formValue = this.data
+      this.forUpdate = true
+    }
+    this.addCampainForm()
+
+  }
+
+
+  addCampainForm() {
+    this.configFormData = {
+      successmessage: 'Added Successfully !!',
+      // submittext: 'Submit',
+      submittext: this.forUpdate ? 'Update' : 'Submit',
+      apiUrl: this.apiservice.baseUrl,
+      canceltext: 'Back To List',
+      hidereset: true,
+      jwttoken: '',
+      fields: [
+        {
+          label: 'Campaign Name',
+          name: 'campaign_name',
+          value: this.formValue && this.formValue.campaign_name ? this.formValue.campaign_name : '',
+          type: 'text',
+          classname: 'aaa',
+          validations: [
+            { rule: 'required', message: 'Category Name is Required' },
+          ],
+        },
+        {
+          label: 'Description',
+          class: 'des_wrp',
+          name: 'description',
+          value: this.formValue && this.formValue.description ? this.formValue.description : '',
+          type: 'text',
+          validations: [
+            { rule: 'required', message: 'Description is Required' },
+          ],
+        },
+
+        {
+          label: 'Active',
+          name: 'status',
+          value: this.formValue.status ? this.formValue.status : 1,
+          type: 'checkbox',
+        },
+
+      ]
+    }
+
+  }
+  closePreview() {
+    this.dialogRef.close()
+    this.formValue = {}
+  }
+  listenFormFieldChange(val: any) {
+    console.log("buttion clicked", val);
+    this.formValue = val.source?.data
+    if (this.forUpdate) {
+      console.log("beforeloader", this.loader);
+
+      let value = { "_id": this.data._id, ...this.formValue }
+      console.log("aaa", value);
+      if (val.field === "fromsubmit" && val.fieldval === "success") {
+        this.loader = true
+        const login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
+        this.apiservice.getHttpDataPost("reps/campaign-update", {
+          user_id: login_user_details.userinfo._id,
+          opportunity_id: this.data.opportunity_id,
+          ...value
+        }).subscribe({
+          next: (response: any) => {
+            console.log("edit response", response);
+            console.log("response", response);
+            console.log("afterloader", this.loader);
+            this.loader = false;
+            this.matSnackBar.open(response.message, "ok", {
+              duration: 3000
+            })
+            setTimeout(() => {
+              this.dialogRef.close()
+            }, 4000)
+          },
+          error: (error: any) => {
+            console.log('error --------->', error);
+            this.loader = false
+            this.matSnackBar.open("Something Went wrong!", '', { duration: 1000 });
+          }
+
+        })
+      }
+
+
+
+
+    } else if (!this.forUpdate) {
+      console.log("beforeloader", this.loader);
+
+      console.log("formValue", this.formValue);
+      const login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
+      if (val.field === "fromsubmit" && val.fieldval === "success") {
+        this.loader = true
+        console.log("afterloader", this.loader);
+        this.apiservice.getHttpDataPost("reps/campaign-add", {
+          user_id: login_user_details.userinfo._id,
+          opportunity_id: this.data.opportunity_id,
+          ...this.formValue
+        }).subscribe({
+          next: (res: any) => {
+            console.log("response", res);
+            this.loader = false
+            console.log("afterloader", this.loader);
+            this.data = res
+            this.matSnackBar.open('Campaign Created Successful', "Ok", {
+              duration: 3000
+            })
+            setTimeout(() => {
+              this.dialogRef.close()
+            }, 4000)
+
+          },
+          error: (error: any) => {
+            this.loader = false
+            console.log('error --------->', error);
+          }
+        })
+
+      }
+    }
+
+
+    if (val.field && val.field === "formcancel") {
+      this.dialogRef.close()
+    }
+  }
+}
+
+// << -------------- Campain Add Modal ---------------- >>

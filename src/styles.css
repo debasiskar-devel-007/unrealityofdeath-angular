@@ -3528,6 +3528,8 @@ tbody tr td .actionbuttonwrapper button {
     font-size: 26px;
     font-weight: 500;
     margin: 15px 0;
+    color: #000;
+
 }
 .custom-modalbox .button_wrp {
     background: #7f2e0a;
