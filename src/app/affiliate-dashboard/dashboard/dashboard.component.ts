@@ -33,7 +33,7 @@ export class DashboardComponent {
     public matSnackBar: MatSnackBar,
     public activatedRoute: ActivatedRoute,
     private clipBoard: Clipboard
-  ) {}
+  ) { }
 
   public cookieData: any = {};
 
@@ -42,6 +42,9 @@ export class DashboardComponent {
   public eventValue: any = '';
 
   public copiedVal: any = '';
+  // public mainIndex: number = 0;
+  public selected_campaign_index: any = []
+
 
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
@@ -112,20 +115,20 @@ export class DashboardComponent {
       });
   }
 
-  onCampaignChange(event: any) {
-    console.log(event.value);
-    this.eventValue = event.value;
+  copyToClipboard(url: string): void {
+    this.clipBoard.copy(url);
+    this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
   }
 
-  copyToClipboard(dval: any) {
-    console.log(dval);
+  selectedindex(index: any, camp_index: any) {
+    console.log("selectedindex hit", index, camp_index);
+    // if(this.selected_campaign_index[camp_index]==null)
+    this.selected_campaign_index[camp_index] = index;
+    console.log(this.selected_campaign_index, 'this.selected_campaign_index')
+  }
 
-    if (dval.landing_page_domain_url && this.eventValue) {
-      this.copiedVal = dval.landing_page_domain_url + '/' + this.eventValue;
-      console.log(this.copiedVal);
-    }
-
-    return this.clipBoard.copy(this.copiedVal);
+  valuechange(camp_index: any) {
+    console.log("func hit", camp_index);
   }
 
   // << -------- Campaign Modal ----------- >>
@@ -154,14 +157,14 @@ export class DashboardComponent {
             panelClass: 'custom-modalbox',
             data: response.response
           })
-          
+
           dialogRef.afterClosed().subscribe(result => {
             console.log(result);
           })
         } else {
-          
+
         }
-        
+
 
       },
       error: (error: any) => {
@@ -188,7 +191,7 @@ export class UniqueUrlModal {
     private fb: FormBuilder,
     private cookieService: CookieService,
     private elementRef: ElementRef
-  ) {}
+  ) { }
 
   public unicUser_form: any;
   public validflag: number = 0;
