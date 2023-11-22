@@ -3677,6 +3677,9 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox.campainlist_modalbox {
     width: min(90%, 1000px) !important;
 }
+.custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
+    display: flex;justify-content: center;flex-wrap: wrap;
+}
 
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */
 

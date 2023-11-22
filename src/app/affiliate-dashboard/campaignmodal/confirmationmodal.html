@@ -1,0 +1,12 @@
+<button mat-dialog-close class="close-btn-modal" mat-raised-button matTooltip="Close"
+  matTooltipPosition="below"><mat-icon>close</mat-icon></button>
+<div class="dialoghead deletecamp_modalwrp">
+    <h1 class="mat-mdc-dialog-title">Alert!!</h1>
+    <mat-dialog-content>
+    <p class="modal_subtitle">Are You Sure You Want To Delete This Record? This Process Can Not Be Undone.</p>
+    <div class="delete_sub_wrp">
+        <button class="button_wrp" (click)="cancel()">Cancel</button>
+        <button  class="button_wrp" (click)="confirm()">Confirm</button>
+    </div>
+   </mat-dialog-content>
+</div>
