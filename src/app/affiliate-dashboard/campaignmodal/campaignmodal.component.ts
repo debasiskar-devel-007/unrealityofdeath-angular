@@ -111,7 +111,7 @@ export class CampaignmodalComponent {
 
 
     ],
-    updateendpoint: "reps/campaign-status-change",
+    updateendpoint: "marketing/campaign-status-change",
 
     hidedeletebutton: true,
     hideviewbutton: true,
@@ -119,9 +119,9 @@ export class CampaignmodalComponent {
     hidestatustogglebutton: false,
     hidemultipleselectbutton: true,
     hideaction: false,
-    updateendpointmany: "reps/campaign-status-change",
+    updateendpointmany: "marketing/campaign-status-change",
 
-    deleteendpointmany: "reps/campaign-delete",
+    deleteendpointmany: "marketing/campaign-delete",
     tableheaders: ["campaign_name", "landing_page_name", "created_on", "status"],
 
     colpipes: [
