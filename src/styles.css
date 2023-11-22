@@ -4,6 +4,9 @@ body,
 html {
     height: 100%
 }
+html {
+    font-size: 62.5%
+}
 
 body {
     margin: 0;
@@ -267,7 +270,7 @@ body {
 
 .list-style1 .lib-pager-class .mat-mdc-text-field-wrapper {
     background: #7f2e0a;
-    border: 1px solid #6e6f6f;
+    border: 1px solid #c9764d;
     border-radius: 0;
     padding: 7px;
     margin: 0
@@ -297,9 +300,9 @@ body {
 .list-style1 .lib-pager-class .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix input {
     width: 60px;
     margin-left: 2px;
-    background: #d9f2f9;
+    background: #ffffff;
     text-align: center;
-    border: 1px solid #046595
+    border: 1px solid #000000
 }
 
 .list-style1 .lib-pager-class {
@@ -317,6 +320,9 @@ body {
     min-width: 170px;
     color: #181818
 }
+.list-style1 .lib-pager-class .pageformfield mat-label {
+    color: #fff;
+}
 
 /* 
 .list-style1 .lib-pager-class label,
@@ -327,14 +333,13 @@ body {
 .list-style1 .lib-pager-class span .material-icons {
     height: 40px;
     width: 40px;
-    background: #a7b7b7;
     text-align: center;
     color: #fff;
     line-height: 39px;
     margin: 0 2px;
-    border: 1px solid #6e6f6f;
     text-shadow: 1px 1px 1px #414c4c;
-    background: var(--blue-gradient)
+    background: #7f2e0a;
+    border: 1px solid #c9764d;
 }
 
 .list-style1 .tablewrapper {
@@ -1325,13 +1330,6 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     transform: none !important
 }
 
-.mat-mdc-dialog-container .mdc-dialog__surface {
-    background-color: #dbf0e6 !important;
-    border: 7px solid #25819D;
-    ;
-    padding: 10px
-}
-
 .addEditPageWrapper .form_field_wrapper.form_field_wrapperlogo {
     flex: 1 0 99.4% !important
 }
@@ -1599,7 +1597,8 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     color: #fff;
     text-shadow: 1px 1px 1px #053650;
     border: 1px solid #4a5870;
-    border-radius: 5px
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 .custom-modalbox mat-dialog-container .close-btn-modal,
@@ -1609,7 +1608,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     top: 0;
     width: 50px;
     height: 40px;
-    background: var(--orange-gradient);
+    background: #7f2e0a;
     border-radius: 0 0 0 36px;
     display: flex;
     justify-content: center;
@@ -1661,19 +1660,19 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar {
-    width: 5px
+    width: 5px;
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-track {
-    background: #7d8883
+    background: #f35a08
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-thumb {
-    background: #bcccc4
+    background: #ad4c1e
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-thumb:hover {
-    background: #bcccc4
+    background: #ad4c1e
 }
 
 .custom-modalbox .example-card:nth-of-type(odd) {
@@ -1734,14 +1733,13 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content {
     padding: 0 20px 15px 20px !important;
-    text-align: center;
     padding-bottom: 15px !important
 }
 
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p,
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p {
     text-transform: capitalize;
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #000;
 }
 
@@ -3133,21 +3131,21 @@ tbody tr td .actionbuttonwrapper button {
     padding-right: 10px
 }
 
-.login-info-mainwrapper::-webkit-scrollbar {
+/* .login-info-mainwrapper::-webkit-scrollbar {
     width: 5px
 }
 
 .login-info-mainwrapper::-webkit-scrollbar-track {
-    background: #f1f1f1
+    background: #ffffff
 }
 
 .login-info-mainwrapper::-webkit-scrollbar-thumb {
-    background: #384355
+    background: #ad4c1e
 }
 
 .login-info-mainwrapper::-webkit-scrollbar-thumb:hover {
-    background: #384355
-}
+    background: #ad4c1e
+} */
 
 .notfounddiv p {
     color: var(--red);
@@ -3525,20 +3523,11 @@ tbody tr td .actionbuttonwrapper button {
     }
 }
 
-.custom-modalbox .modal_subwrapper .modal_maintitle {
-    text-align: center;
-    font-size: 26px !important;
-    font-weight: 500 !important;
-    background: #b5c1bb;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #f2fff8;
-}
-.custom-modalbox .modal_subwrapper .modal_subtitle {
+.custom-modalbox .dialoghead .modal_subtitle {
     text-align: center;
     font-size: 26px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin: 15px 0;
 }
 .custom-modalbox .button_wrp {
     background: #7f2e0a;
@@ -3546,7 +3535,7 @@ tbody tr td .actionbuttonwrapper button {
     display: block;
     font-size: 16px;
     font-weight: 600;
-    margin: 10px 0 10px auto;
+    margin-left: auto;
     min-width: 150px;
     padding: 14px 10px;
     text-transform: inherit !important;
@@ -3555,7 +3544,7 @@ tbody tr td .actionbuttonwrapper button {
     letter-spacing: 0.7px;
     cursor: pointer;
 }
-.custom-modalbox .modal_subwrapper .instructions-wrapper p {
+.custom-modalbox .dialoghead .instructions-wrapper p {
     font-size: 16px;
     display: flex;
     align-items: center;
@@ -3565,7 +3554,7 @@ tbody tr td .actionbuttonwrapper button {
     margin-bottom: 2px !important;
 }
 
-.custom-modalbox .modal_subwrapper .instructions-wrapper p i {
+.custom-modalbox .dialoghead .instructions-wrapper p i {
     height: 30px;
     width: 30px;
     display: flex;
@@ -3579,23 +3568,22 @@ tbody tr td .actionbuttonwrapper button {
     box-shadow: -4px -4px 9px #c2cab7, 4px 4px 7px #757c6b;
     border: 1px solid #fc8f4e;
 }
-.custom-modalbox .modal_subwrapper .instructions-wrapper p strong {
+.custom-modalbox .dialoghead .instructions-wrapper p strong {
     font-weight: 500;
     color: #e6550c;
     width: 140px;
     display: block;
 }
-.custom-modalbox .modal_subwrapper .instructions-wrapper p span {
+.custom-modalbox .dialoghead .instructions-wrapper p span {
     width: calc(100% - 178px);
 }
 
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
-    background: #fff;
-    padding: 20px;
+    background-color: #ffffff !important;
+    padding: 12px;
     border-radius: 5px;
     border: 8px solid #ad4c1e;
-    max-height: 65vh !important;
 }
 
 /* Modal Common CSS */
@@ -3693,7 +3681,7 @@ tbody tr td .actionbuttonwrapper button {
 
 /* Campaign Modal CSS */
 
-.custom-modalbox .modal_subwrapper.campaign_modalwrp .list-style1 .togglesearchcls {
+.custom-modalbox .dialoghead.campaign_modalwrp .list-style1 .togglesearchcls {
     display: none;
 }
 
