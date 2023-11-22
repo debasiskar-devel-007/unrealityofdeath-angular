@@ -3943,6 +3943,7 @@ tbody tr td .actionbuttonwrapper button {
     display: block;
     padding: var(--pxvalu10);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .BackendHeaderLink ul li a:hover {
