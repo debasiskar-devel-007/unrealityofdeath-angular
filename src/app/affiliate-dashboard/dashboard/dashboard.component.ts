@@ -191,7 +191,54 @@ export class DashboardComponent {
   }
 
   // << -------------- Landing Page Choose Modal ---------------- >>
+
+
+  // << -------------- All Campaign Fetch Modal ---------------- >>
+
+  allCampaignShow() {
+    
+    this.apiService.getHttpDataPost('marketing/campaign-list', {
+      condition: {
+        limit: 5,
+        skip: 0,
+      },
+      searchcondition: {
+        user_id: this.cookieData.uidval,
+      },
+      sort: {
+        type: 'desc',
+        field: 'created_on',
+      },
+      project: {},
+      token: '',
+    }).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        if (response.status == 'success') {
+          const dialogRef = this.dialog.open(allCampaignModal, {
+            panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+            data: {
+              setDefaultObj: response.results.res,
+            }
+          })
+        } else {
+
+        }
+
+
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+  
+  }
+
+  // << -------------- All Campaign Fetch Modal ---------------- >>
+
 }
+
+// << ------------------ Unique Url Modal Component ----------------- >>
 
 @Component({
   selector: 'UniqueUrlModal',
@@ -324,6 +371,8 @@ export class UniqueUrlModal {
   }
 }
 
+// << ------------------ Unique Url Modal Component ----------------- >>
+
 
 // << ------------------ Landing Page Choose Modal Component ----------------- >>
 
@@ -358,3 +407,215 @@ export class chooseLandingpageModal {
 
 
 // << ------------------ Landing Page Choose Modal Component ----------------- >>
+
+
+// << ------------------ All Campaign Modal Component ----------------- >>
+
+@Component({
+  selector: 'allCampaignModal',
+  templateUrl: './allcampaign-modal.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
+})
+
+export class allCampaignModal {
+
+  public campainAllData: any = [];
+
+
+  constructor(
+    public apiService: ApiservicesService,
+    public dialogRef: MatDialogRef<allCampaignModal>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public matSnackBar: MatSnackBar,
+    private cookieService: CookieService,
+    private elementRef: ElementRef,
+    private clipBoard: Clipboard
+  ) { 
+    console.log(data);
+    this.campainAllData = data;
+    
+   }
+
+   public tabledatatalist: any = []
+
+   public formLoader: boolean = false;
+   public progressLoader: boolean = false;
+   public datasource: any;
+   tabledata_header_skip: any = ['_id'];
+   tabledata_detail_skip: any = ['_id', 'usertype'];
+ 
+   updatetable: boolean = false;
+   tablename = 'campaign';
+   editroute = '';
+   updateendpoint = 'marketing/campaign-update';
+   deleteendpoint = 'marketing/campaign-delete';
+   datacollection: any = 'marketing/campaign-list';
+   public listprogressBar: any = false;
+   public api_url_for_managebanner = environment.api_url;
+   public cookieData = this.cookieService.get('login_user_details')
+     ? JSON.parse(this.cookieService.get('login_user_details'))
+     : {};
+   searchendpoint = 'marketing/campaign-list';
+   date_search_endpoint: any = 'marketing/campaign-list';
+   date_search_source: any = 'campaign';
+   date_search_source_count: any = 0;
+   Tabledata_header_skip: any = ['_id'];
+   limitcond: any = {
+     limit: 5,
+     skip: 0,
+     pagecount: 1,
+   };
+   statusarray: any = [
+     { val: 1, name: 'Active' },
+     { val: 0, name: 'Inactive' },
+   ];
+   rolearray: any = [];
+   modify_header_array: any = {
+     campaign_name: 'Campaign Name',
+     landing_page_name: 'Landing Page',
+     status: 'Status',
+     created_on: 'Created on',
+   };
+ 
+   search_settings: any = {};
+   sortdata: any = {
+     type: 'desc',
+     field: 'created_on',
+     options: ['campaign_name', 'landing_page_name', 'status', 'created_on'],
+   };
+ 
+   public customlistenbutton: any = {
+     flag: true,
+     tooltipflag: true,
+     buttons: [
+     ],
+   };
+   libdata: any = {
+     basecondition: {},
+ 
+     detailview_override: [
+       
+     ],
+     hidedeletebutton: true,
+     hideviewbutton: true,
+     hideeditbutton: true,
+     hidestatustogglebutton: false,
+     hidemultipleselectbutton: true,
+     hideaction: false,
+     updateendpoint: 'marketing/campaign-status-change',
+     updateendpointmany: 'marketing/campaign-status-change',
+     deleteendpointmany: 'marketing/campaign-delete',
+ 
+     tableheaders: [
+       'campaign_name',
+       'landing_page_name',
+       'created_on',
+       'status',
+     ],
+ 
+     colpipes: [
+       { type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' },
+     ],
+ 
+     custombuttons: [
+      //  {
+      //    label: 'Edit',
+      //    type: 'listner',
+      //    id: 'edit_btn',
+      //    tooltip: 'Edit',
+      //    name: 'edit',
+      //    cond: 'default_val',
+      //    condval: 1,
+      //    classname: 'edit_btn',
+      //  },
+      //  {
+      //    label: 'Preview',
+      //    type: 'listner',
+      //    id: 'preview_btn',
+      //    tooltip: 'Preview',
+      //    name: 'preview_btn',
+      //    classname: 'previewButton',
+      //    previewlist: [
+      //      'campaign_name',
+      //      'campaign_url',
+      //      'description',
+      //      'landing_page_name',
+      //      'unique_name',
+      //      'created_on',
+      //      'status',
+      //    ],
+      //  },
+      //  {
+      //    label: 'Delete',
+      //    type: 'listner',
+      //    id: 'delete_btn',
+      //    tooltip: 'Delete',
+      //    cond: 'default_val',
+      //    condval: 1,
+      //    name: 'delete',
+      //    classname: 'delete_btn',
+      //  },
+       {
+         label: 'Copy',
+         type: 'listner',
+         id: 'copy_btn',
+         tooltip: 'Copy',
+         name: 'copy',
+         classname: 'copy_btn',
+       },
+     ],
+   };
+   public taxonomy_updatetable: boolean = false;
+   public jwttokenformanagebanner = '';
+
+   ngOnInit() {
+    this.libdata.basecondition = {
+      user_id: this.cookieData?.uidval
+    };
+
+    this.tabledatatalist = this.campainAllData?.setDefaultObj
+    ? this.campainAllData?.setDefaultObj
+    : [];
+
+    this.apiService
+      .getHttpDataPost('marketing/campaign-list-count', {
+        condition: {
+          limit: 5,
+          skip: 0,
+        },
+        searchcondition: {
+          user_id: this.cookieData?.uidval,
+          opportunity_id: this.campainAllData?.campaignVal,
+        },
+        sort: {
+          type: 'desc',
+          field: 'created_on',
+        },
+        project: {},
+        token: '',
+      })
+      .subscribe((response: any) => {
+        if (response && response.count) {
+          this.date_search_source_count = response.count;
+        }
+      });
+
+   }
+
+   onLiblistingButtonChange(val: any) {}
+  listenLiblistingChange(data: any = null) {
+    console.log('test', data);
+
+
+    if (data?.custombuttonclick?.btninfo.id == 'copy_btn') {
+
+      this.clipBoard.copy(data?.custombuttonclick?.data?.campaign_url)
+      this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
+
+    }
+  }
+
+}
+
+// << ------------------ All Campaign Modal Component ----------------- >>
