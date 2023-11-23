@@ -175,6 +175,22 @@ export class DashboardComponent {
       }
     })
   }
+
+// << -------- Campaign Modal ----------- >>
+
+
+  // << -------------- Landing Page Choose Modal ---------------- >>
+
+  chooseLandingpage() {
+
+    const dialogRef = this.dialog.open(chooseLandingpageModal, {
+      panelClass: ['custom-modalbox', 'landingchoose-modalbox'],
+      data: this.campaignData
+    })
+
+  }
+
+  // << -------------- Landing Page Choose Modal ---------------- >>
 }
 
 @Component({
@@ -307,3 +323,38 @@ export class UniqueUrlModal {
     }
   }
 }
+
+
+// << ------------------ Landing Page Choose Modal Component ----------------- >>
+
+
+@Component({
+  selector: 'chooseLandingpageModal',
+  templateUrl: './choose-landingpage.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
+})
+
+export class chooseLandingpageModal {
+
+  public chooseLandingData: any = [];
+
+  constructor(
+    public apiService: ApiservicesService,
+    public dialogRef: MatDialogRef<chooseLandingpageModal>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public matSnackBar: MatSnackBar,
+    private cookieService: CookieService,
+    private elementRef: ElementRef
+  ) { 
+    console.log(data);
+    this.chooseLandingData = data;
+    
+   }
+
+  ngOnInit() {}
+
+}
+
+
+// << ------------------ Landing Page Choose Modal Component ----------------- >>
