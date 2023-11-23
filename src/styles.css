@@ -1576,13 +1576,13 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 .custom-modalbox mat-dialog-container .dialoghead h1,
 .delete-single mat-dialog-container .dialoghead h1,
 .custom-modalbox.delete-notes-modal h3 {
-    background: #384355;
+    background: #ad4c1e;
     padding: 1.5rem 48px;
     text-align: center;
     font-size: 2.4rem;
     color: #fff;
-    text-shadow: 1px 1px 1px #053650;
-    border: 1px solid #4a5870;
+    /* text-shadow: 1px 1px 1px #053650;
+    border: 1px solid #4a5870; */
     border-radius: 5px;
     margin-bottom: 15px;
 }
@@ -3665,6 +3665,10 @@ tbody tr td .actionbuttonwrapper button {
 }
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
+}
+.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p {
+    text-align: center;
+    font-size: 2rem;
 }
 
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */

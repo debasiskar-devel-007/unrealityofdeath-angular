@@ -1,0 +1,21 @@
+
+.preview_data{
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.preview_data:nth-of-type(odd) {
+    background: #f1f1f1;
+
+}
+
+.preview_data span{
+    width: 50%;
+
+
+}
+.preview_value{
+    word-wrap: break-word;
+    text-transform: initial;
+}
