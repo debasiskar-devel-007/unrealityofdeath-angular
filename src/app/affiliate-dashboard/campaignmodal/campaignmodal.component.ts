@@ -242,6 +242,30 @@ export class CampaignmodalComponent {
       }
     });
   }
+  fetchlistCount() {
+    this.apiService
+    .getHttpDataPost('marketing/campaign-list-count', {
+      condition: {
+        limit: 5,
+        skip: 0,
+      },
+      searchcondition: {
+        user_id: this.cookieData?.uidval,
+        opportunity_id: this.campainAllData?.campaignVal,
+      },
+      sort: {
+        type: 'desc',
+        field: 'created_on',
+      },
+      project: {},
+      token: '',
+    })
+    .subscribe((response: any) => {
+      if (response && response.count) {
+        this.date_search_source_count = response.count;
+      }
+    });
+  }
 
   onLiblistingButtonChange(val: any) {}
   listenLiblistingChange(data: any = null) {
@@ -276,6 +300,7 @@ export class CampaignmodalComponent {
         console.log(result);
         
         this.fetchlist()
+        this.fetchlistCount()
       });
     }
 
@@ -316,6 +341,7 @@ export class CampaignmodalComponent {
       console.log(result);
       
       this.fetchlist()
+      this.fetchlistCount()
     });
   }
 }
