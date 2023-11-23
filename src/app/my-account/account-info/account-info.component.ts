@@ -291,10 +291,7 @@ export class AccountInfoComponent {
     }
 
     if (val.field && val.field === "formcancel") {
-      const login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
-      if (login_user_details.userinfo.user_type == 'is_admin') {
-        this.router.navigateByUrl("/admin-dashboard")
-      } else this.router.navigateByUrl("/rep-dashboard")
+      this.router.navigateByUrl(`/affiliate-dashboard`);
     }
 
     if (val.field && val.field === "formreset") {
