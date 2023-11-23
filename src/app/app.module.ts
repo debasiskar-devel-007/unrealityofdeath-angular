@@ -10,13 +10,15 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LastLoginInfoComponent } from './Common-components/last-login-info/last-login-info.component';
+import { PreviewComponent } from './Common-components/preview/preview.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LastLoginInfoComponent
+    LastLoginInfoComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

@@ -1522,25 +1522,8 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .custom-bottomsheet .mat-bottom-sheet-container {
-    background: #dbf0e6;
-    border: 7px solid #2c3847
-}
-
-.custom-bottomsheet .mat-bottom-sheet-container .clrcls {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 40px;
-    background: var(--orange-gradient);
-    border-radius: 0 0 0 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    border: 1px solid #904802;
-    border-top: 0;
-    border-right: 0
+    background: #fff;
+    border: 7px solid #ad4c1e;
 }
 
 .custom-bottomsheet .mat-bottom-sheet-container .clrcls .material-icons {
@@ -1570,10 +1553,13 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .custom-bottomsheet .mat-bottom-sheet-container .navlist a {
-    background: var(--orange-gradient);
+    background: #7f2e0a;
     text-align: center;
     border-radius: 8px;
-    margin-right: 10px
+    margin-right: 10px;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
 }
 
 .custom-bottomsheet .mat-bottom-sheet-container .navlist a:last-child {
@@ -1590,19 +1576,19 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 .custom-modalbox mat-dialog-container .dialoghead h1,
 .delete-single mat-dialog-container .dialoghead h1,
 .custom-modalbox.delete-notes-modal h3 {
-    background: #384355;
+    background: #ad4c1e;
     padding: 1.5rem 48px;
     text-align: center;
     font-size: 2.4rem;
     color: #fff;
-    text-shadow: 1px 1px 1px #053650;
-    border: 1px solid #4a5870;
+    /* text-shadow: 1px 1px 1px #053650;
+    border: 1px solid #4a5870; */
     border-radius: 5px;
     margin-bottom: 15px;
 }
 
 .custom-modalbox mat-dialog-container .close-btn-modal,
-.delete-single mat-dialog-container .close-btn-modal {
+.delete-single mat-dialog-container .close-btn-modal, .custom-bottomsheet .mat-bottom-sheet-container .clrcls {
     position: absolute;
     right: 0;
     top: 0;
@@ -3571,9 +3557,9 @@ tbody tr td .actionbuttonwrapper button {
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
     background-color: #ffffff !important;
-    padding: 12px;
+    padding: 10px;
     border-radius: 5px;
-    border: 8px solid #ad4c1e;
+    border: 7px solid #ad4c1e;
 }
 
 /* Modal Common CSS */
@@ -3679,6 +3665,10 @@ tbody tr td .actionbuttonwrapper button {
 }
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
+}
+.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p {
+    text-align: center;
+    font-size: 2rem;
 }
 
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */

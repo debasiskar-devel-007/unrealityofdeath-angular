@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogData } from 'listing-angular15';
 import { CookieService } from 'ngx-cookie-service';
+import { PreviewComponent } from 'src/app/Common-components/preview/preview.component';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
@@ -147,8 +148,10 @@ export class CampaignmodalComponent {
         classname: 'previewButton',
         previewlist: [
           'campaign_name',
-          'product_name',
+          'campaign_url',
           'description',
+          'landing_page_name',
+          'unique_name',
           'created_on',
           'status',
         ],
@@ -276,16 +279,17 @@ export class CampaignmodalComponent {
       console.log("aaaaaaaaaaa", data.custombuttonclick.data)
 
     }
-    // if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
-    //   this.dialog.open(PreviewComponent, {
-    //     data: {
-    //       key: data.custombuttonclick.btninfo.previewlist
-    //       , value: data.custombuttonclick.data
-    //     }
+    if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
+      this.dialog.open(PreviewComponent, {
+        panelClass: 'custom-modalbox',
+        data: {
+          key: data.custombuttonclick.btninfo.previewlist, 
+          value: data.custombuttonclick.data
+        }
 
-    //   });
+      });
 
-    // }
+    }
     if (
       data.action === 'custombuttonclick' &&
       data.custombuttonclick.btninfo.id === 'delete_btn' &&
