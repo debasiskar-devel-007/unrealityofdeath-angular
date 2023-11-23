@@ -4027,7 +4027,7 @@ tbody tr td .actionbuttonwrapper button {
 .steps:last-child::after{display:none}
 .steps:last-child{border-radius:20px 8px 8px 20px}
 .steps:first-child::before{display:none}
-.steps p{margin:0;font-size:24px;color:#fff;line-height:28px;text-shadow:1px 1px 0 #355d9c;padding:0 30px}
+.steps p{margin:0;font-size:24px;color:#fff;line-height:28px;padding:0 30px}
 .steps .fa{margin: 5px; display: inline;}
 .marketing-mediawrapper{display:flex;justify-content:space-between}
 .marketing-sowrapper{display:flex;align-items:center;width:150px}
