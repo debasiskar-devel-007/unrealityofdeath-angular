@@ -38,6 +38,10 @@ export class HeaderComponent {
 
   myAccount(){
 
+    console.log(this.user_profile_details);
+    this.router.navigateByUrl(`my-account/account-info`)
+    
+
   }
 
   changePass(){}

@@ -28,6 +28,9 @@ export class ResolveService {
     if (state.url.includes('/affiliate-dashboard')) {
       route.data['requestcondition']['user_id'] = cookieData.uidval
     }
+    if (state.url.includes('my-account/account-info')) {
+      route.data['requestcondition']['uid'] = cookieData.uidval
+    }
 
 
     return new Promise((resolve, reject) => {

@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LastLoginInfoComponent } from './Common-components/last-login-info/last-login-info.component';
 import { PreviewComponent } from './Common-components/preview/preview.component';
 import { ComingsoonComponent } from './Common-components/comingsoon/comingsoon.component';
+import { AccountInfoComponent } from './my-account/account-info/account-info.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ComingsoonComponent } from './Common-components/comingsoon/comingsoon.c
     LoginComponent,
     LastLoginInfoComponent,
     PreviewComponent,
-    ComingsoonComponent
+    ComingsoonComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,
