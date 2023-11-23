@@ -155,7 +155,10 @@ export class DashboardComponent {
         if (response.status == 'success') {
           const dialogRef = this.dialog.open(CampaignmodalComponent, {
             panelClass: ['custom-modalbox', 'campainlist_modalbox'],
-            data: response.response
+            data: {
+              setDefaultObj: response.response,
+              campaignVal: campaignVal
+            }
           })
 
           dialogRef.afterClosed().subscribe(result => {
