@@ -15,6 +15,7 @@ import { PreviewComponent } from 'src/app/Common-components/preview/preview.comp
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-campaignmodal',
@@ -33,7 +34,8 @@ export class CampaignmodalComponent {
     public matSnackBar: MatSnackBar,
     private cookieService: CookieService,
     private elementRef: ElementRef,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private clipBoard: Clipboard
   ) {
     console.log(data);
     this.campainAllData = data;
@@ -308,20 +310,11 @@ export class CampaignmodalComponent {
       });
     }
 
-    // if (data?.custombuttonclick?.btninfo.id == 'copy_btn') {
-    //   console.log("data_url", this.data.rep_url_arr)
-    //   let data_url = data.custombuttonclick.data.product_data[0].domain_url + '/' + data.custombuttonclick.data.unique_identifier
-    //   this.clipboard.copy(data_url)
-    //   console.log("data_url+++", data_url)
-    //   this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 1000, });
+    if (data?.custombuttonclick?.btninfo.id == 'copy_btn') {
 
-    // }
-  }
+      this.clipBoard.copy(data?.custombuttonclick?.data?.campaign_url)
+      this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
 
-  editListItem(item: any) {
-    if (item) {
-      console.log('Op=====>1', item);
-      //this.router.navigateByUrl(`/rep-dashboard/${item._id}`);
     }
   }
 

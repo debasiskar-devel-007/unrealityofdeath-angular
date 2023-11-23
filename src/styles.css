@@ -1650,15 +1650,15 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-track {
-    background: #f35a08
+    background: #ad4c1e
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-thumb {
-    background: #ad4c1e
+    background: #f35a08
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-thumb:hover {
-    background: #ad4c1e
+    background: #f35a08
 }
 
 .custom-modalbox .example-card:nth-of-type(odd) {
