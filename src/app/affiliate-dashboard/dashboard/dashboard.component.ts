@@ -18,6 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component';
+import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -235,6 +236,20 @@ export class DashboardComponent {
   }
 
   // << -------------- All Campaign Fetch Modal ---------------- >>
+
+
+    // << -------------- Coming Soon Modal ---------------- >>
+
+  comingSoon() {
+
+    const dialogRef = this.dialog.open(ComingsoonComponent, {
+      panelClass: ['custom-modalbox', 'comingsoon-modalbox'],
+      data: ''
+    })
+
+  }
+
+    // << -------------- Coming Soon Modal ---------------- >>
 
 }
 
@@ -500,7 +515,7 @@ export class allCampaignModal {
      hidedeletebutton: true,
      hideviewbutton: true,
      hideeditbutton: true,
-     hidestatustogglebutton: false,
+     hidestatustogglebutton: true,
      hidemultipleselectbutton: true,
      hideaction: false,
      updateendpoint: 'marketing/campaign-status-change',

@@ -3695,6 +3695,21 @@ tbody tr td .actionbuttonwrapper button {
     height: 100%;
     background: #632d05;
 }
+.custom-modalbox.comingsoon-modalbox .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #653400 !important;
+}
+.custom-modalbox.comingsoon-modalbox .dialoghead .mat-mdc-dialog-content {
+    height: 15vh;
+}
+.custom-modalbox.comingsoon-modalbox .dialoghead .comingsoon_text {
+    font-size: 3rem !important;
+    color: #fff !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+}
 
 @media only screen and (max-width: 699px) {
 
