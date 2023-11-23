@@ -156,7 +156,7 @@ export class DashboardComponent {
           const dialogRef = this.dialog.open(CampaignmodalComponent, {
             panelClass: ['custom-modalbox', 'campainlist_modalbox'],
             data: {
-              setDefaultObj: response.response,
+              setDefaultObj: response.results.res,
               campaignVal: campaignVal
             }
           })

@@ -61,7 +61,7 @@ export class CampaignmodalComponent {
   date_search_source_count: any = 0;
   Tabledata_header_skip: any = ['_id'];
   limitcond: any = {
-    limit: 10,
+    limit: 5,
     skip: 0,
     pagecount: 1,
   };
@@ -234,12 +234,35 @@ export class CampaignmodalComponent {
       token: '',
     })
     .subscribe((response: any) => {
-      if (response.response.length > 0) {
+      if (response.results.res.length > 0) {
         this.tabledatatalist = []
         setTimeout(() => {
-          this.tabledatatalist = response.response;
-          
+          this.tabledatatalist = response.results.res;
         })
+      }
+    });
+  }
+  fetchlistCount() {
+    this.apiService
+    .getHttpDataPost('marketing/campaign-list-count', {
+      condition: {
+        limit: 5,
+        skip: 0,
+      },
+      searchcondition: {
+        user_id: this.cookieData?.uidval,
+        opportunity_id: this.campainAllData?.campaignVal,
+      },
+      sort: {
+        type: 'desc',
+        field: 'created_on',
+      },
+      project: {},
+      token: '',
+    })
+    .subscribe((response: any) => {
+      if (response && response.count) {
+        this.date_search_source_count = response.count;
       }
     });
   }
@@ -277,6 +300,7 @@ export class CampaignmodalComponent {
         console.log(result);
         
         this.fetchlist()
+        this.fetchlistCount()
       });
     }
 
@@ -317,6 +341,7 @@ export class CampaignmodalComponent {
       console.log(result);
       
       this.fetchlist()
+      this.fetchlistCount()
     });
   }
 }
@@ -440,13 +465,13 @@ export class addCampainModal {
               });
               setTimeout(() => {
                 this.dialogRef.close();
-              }, 4000);
+              }, 3000);
             },
             error: (error: any) => {
               console.log('error --------->', error);
               this.loader = false;
               this.matSnackBar.open('Something Went wrong!', '', {
-                duration: 1000,
+                duration: 5000,
               });
             },
           });
