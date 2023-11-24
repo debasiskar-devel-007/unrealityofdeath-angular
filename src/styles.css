@@ -395,7 +395,8 @@ body {
     z-index: 1;
     margin-right: 10px;
     min-width: 170px;
-    color: #181818
+    color: #181818;
+    font-size: 1.4rem;
 }
 .list-style1 .lib-pager-class .pageformfield mat-label {
     color: #fff;
@@ -2680,7 +2681,7 @@ tbody tr td .actionbuttonwrapper button {
     text-shadow: 1px 1px 1px #642428;
     width: 45px;
     border-radius: 50%;
-    background: var(--orange-gradient);
+    background: #7f2e0a;
     border: 1px solid #da8207 !important;
     height: 45px;
     margin: 0px 10px;
@@ -2711,7 +2712,7 @@ tbody tr td .actionbuttonwrapper button {
     margin: 0px 25px;
     position: relative;
     top: 0;
-    background: var(--orange-gradient);
+    background: #7f2e0a;
     cursor: pointer;
     box-shadow: none;
     border: 1px solid #da8207 !important;

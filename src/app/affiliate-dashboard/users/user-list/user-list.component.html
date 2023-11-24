@@ -8,7 +8,7 @@
         <div class="subwrapper">            
             <div class="sub-title wrapper">
                 <h2>User Listing</h2>
-                <button mat-button class="add_btn"  (click)="addPackage()" >Add User</button>
+                <!-- <button mat-button class="add_btn"  (click)="addPackage()" >Add User</button> -->
             </div>
             <div class="package">
                 <div class="list-style1">
@@ -18,7 +18,7 @@
                   >
                     <lib-listing *ngIf="tabledatatalist.length > 0"
                     class="adminlisttable_v1" 
-                    [datasource]="tabledatatalist"  [modify_header_array]="modify_header_array"
+                    [datasource]="tabledatatalist" [modify_header_array]="modify_header_array"
                     [apiurl]="api_url_for_managebanner" [deleteendpoint]="deleteendpoint" [updateendpoint]="updateendpoint"
                     [date_search_source]="date_search_source" [date_search_endpoint]="date_search_endpoint" [sourcedata]="tablename"
                         [editroute]="editroute" [statusarr]="statusarray" [detail_skip_array]="tabledata_detail_skip"

@@ -23,7 +23,7 @@ const routes: Routes = [
         token: '',
       },
 
-      endpoint: 'user-api/user-list',
+      endpoint: 'user-api/user-list-new',
     },
   },
 ];
