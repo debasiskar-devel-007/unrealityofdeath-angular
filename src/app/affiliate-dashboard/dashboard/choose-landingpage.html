@@ -16,7 +16,11 @@
           class="landingchoose_img"
           *ngFor="let landingimg of chooseLandingData" (click)="chosenLandingCampaign(landingimg.opportunity_id)"
         >
-          <img [src]="landingimg.landing_page_thumbnail[0]?.imageUrl" alt="" />
+        
+          <div class="thumbnailimg_wrp">
+            <img [src]="landingimg.landing_page_thumbnail[0]?.imageUrl" alt="" />
+          </div>
+          <p>{{landingimg.landing_page_name}}</p>
         </div>
       </div>
     </div>

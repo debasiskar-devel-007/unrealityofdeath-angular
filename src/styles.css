@@ -3692,11 +3692,24 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img {
     width: 44%;
     margin: 1.4%;
+    background: #632d05;
+
+    
+}
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img .thumbnailimg_wrp {
     border: 8px solid #632d05;
     cursor: pointer;
+    height: 150px;
 }
-.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img:hover {
-    border: 8px solid #b1520a;
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img p {
+    padding: 8px;
+    color: #fff;
+    line-height: 2rem;
+    border-top: 1px solid #f1f1f1;
+    text-align: center;
+}
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img .thumbnailimg_wrp:hover {
+    border: 8px solid #e1721c;
 
 }
 .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img img {
@@ -3726,6 +3739,9 @@ tbody tr td .actionbuttonwrapper button {
 
     .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img {
         width: auto;
+    }
+    .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img .thumbnailimg_wrp {
+        height: auto;
     }
 
 }
