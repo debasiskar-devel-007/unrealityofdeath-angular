@@ -46,6 +46,8 @@ export class DashboardComponent {
   // public mainIndex: number = 0;
   public selected_campaign_index: any = []
 
+  public loader: boolean = false;
+
 
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
@@ -135,6 +137,7 @@ export class DashboardComponent {
   // << -------- Campaign Modal ----------- >>
 
   campaignModal(campaignVal: any) {
+    this.loader = true;
     this.apiService.getHttpDataPost('marketing/campaign-list', {
       condition: {
         limit: 5,
@@ -154,6 +157,7 @@ export class DashboardComponent {
       next: (response: any) => {
         console.log(response);
         if (response.status == 'success') {
+          this.loader = false;
           const dialogRef = this.dialog.open(CampaignmodalComponent, {
             panelClass: ['custom-modalbox', 'campainlist_modalbox'],
             data: {
@@ -166,6 +170,7 @@ export class DashboardComponent {
             this.dashboardCampaignListApi()
           })
         } else {
+          this.loader = false;
 
         }
 
@@ -173,6 +178,7 @@ export class DashboardComponent {
       },
       error: (error: any) => {
         console.log(error);
+        this.loader = false;
       }
     })
   }
@@ -197,6 +203,8 @@ export class DashboardComponent {
   // << -------------- All Campaign Fetch Modal ---------------- >>
 
   allCampaignShow() {
+
+    this.loader = true;
     
     this.apiService.getHttpDataPost('marketing/campaign-list', {
       condition: {
@@ -216,6 +224,7 @@ export class DashboardComponent {
       next: (response: any) => {
         console.log(response);
         if (response.status == 'success') {
+          this.loader = false;
           const dialogRef = this.dialog.open(allCampaignModal, {
             panelClass: ['custom-modalbox', 'campainlist_modalbox'],
             data: {
@@ -223,13 +232,14 @@ export class DashboardComponent {
             }
           })
         } else {
-
+          this.loader = false;
         }
 
 
       },
       error: (error: any) => {
         console.log(error);
+        this.loader = false;
       }
     })
   

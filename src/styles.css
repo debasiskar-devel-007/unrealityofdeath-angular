@@ -19,6 +19,17 @@ body {
     margin: 0 auto
 }
 
+.page-wrap {
+    position: relative;
+}
+#sticky_loader {
+    padding: 0.5px 0;
+    background: #000;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
 
 
 /* << ------------------ Log In Form Field CSS by Sanket ---------------------- >> */
