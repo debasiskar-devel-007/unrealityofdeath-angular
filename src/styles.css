@@ -3692,9 +3692,7 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img {
     width: 44%;
     margin: 1.4%;
-    background: #632d05;
-
-    
+    background: #632d05;    
 }
 .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img .thumbnailimg_wrp {
     border: 8px solid #632d05;
