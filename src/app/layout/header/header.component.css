@@ -77,8 +77,8 @@ width: 239px;
 }
 
 .user {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
     background: linear-gradient(180deg, rgba(232,232,232,1) 0%, rgba(116,116,116,1) 100%);;
     display: flex;
@@ -97,7 +97,7 @@ width: 239px;
 }
 .right-menu h3{
     margin: 0px 8px;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: #a7a7a7;
     /* text-shadow: 2px 2px 2px #cfd2d1; */

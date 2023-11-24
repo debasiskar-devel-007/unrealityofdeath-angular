@@ -25,11 +25,14 @@ export class ResolveService {
     console.log(cookieData);
     
 
-    if (state.url.includes('/affiliate-dashboard')) {
+    if (state.url == ('/affiliate-dashboard')) {
       route.data['requestcondition']['user_id'] = cookieData.uidval
     }
     if (state.url.includes('my-account/account-info')) {
       route.data['requestcondition']['uid'] = cookieData.uidval
+    }
+    if (state.url.includes('user')) {
+      route.data['requestcondition']['searchcondition']['affiliate_id'] = cookieData.uidval
     }
 
 

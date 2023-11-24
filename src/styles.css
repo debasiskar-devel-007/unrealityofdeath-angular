@@ -275,6 +275,72 @@ body {
 
 /* << ---------------- List CSS by Sanket ------------- >> */
 
+.mainwrapper{
+    min-height: 80vh;
+    background: #edf2f0;
+    padding: 1rem 0.2rem;
+}
+.new-container{
+    padding: 0 4rem;
+    display: block;
+    margin: 0 auto;
+}
+.subwrapper{
+    background: #dae4e0;
+    padding: 1.6rem;
+    border-radius: 8px;
+    border: 1px solid #fbfffd;
+    margin: 20px 0px;
+}
+.wrapper{
+    background: #edf3e5;
+    padding: 1.5rem 2rem;
+    box-shadow: 1px 1px 5px #3e413a59;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #fff;
+}
+.wrapper:last-child {
+    margin-bottom: 30px
+}
+
+.sub-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.sub-title h2 {
+    margin: 0 !important;
+    font-size: 2.4rem !important;
+    font-weight: 600 !important;
+    color: #0f100e;
+    margin-right: 10px !important;
+}
+
+.new-container {
+    padding: 0 4rem;
+    display: block;
+    margin: 0 auto
+}
+.mdc-button.add_btn {
+    background: #7f2e0a !important;
+    font-size: 2rem !important;
+    text-transform: uppercase !important;
+    line-height: 2.5rem !important;
+    color: #fff !important;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
+    height: unset !important;
+    padding: 1.2rem 2.5rem !important;
+}
+
+.add_btn:active {
+    box-shadow: none;
+    transform: translateY(5px)
+}
+
 .list-style1 .lib-pager-class .mat-mdc-form-field-subscript-wrapper {
     display: none
 }
@@ -1027,9 +1093,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 
 /* << ----------- List CSS by Sanket ------------- >> */
 
-/* << ------------------ Modal CSS by Sanket ---------------------- >> */
-
-/* Modal CSS Common */
+/* << ------------------ Add Form CSS by Sanket ---------------------- >> */
 
 .addEditPageBody {
     margin: 0 !important;
@@ -1195,8 +1259,23 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .addEditPageWrapper .mdc-button,
-.addEditPageWrapper .mdc-button:hover, .custom-modalbox .button_wrp {
+.addEditPageWrapper .mdc-button:hover {
     margin: 5px;
+    background: #7f2e0a !important;
+    height: auto !important;
+    font-size: 2.4rem;
+    border-radius: 5px;
+    color: #fff !important;
+    cursor: pointer;
+    box-shadow: none;
+    padding: 1.2rem 2.5rem !important;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    min-height: inherit !important;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
+    transition: all .1s
+}
+.custom-modalbox .button_wrp {
     background: #7f2e0a !important;
     height: auto !important;
     font-size: 2.4rem;
@@ -4124,31 +4203,6 @@ tbody tr td .actionbuttonwrapper button {
     justify-content: center;
     align-items: center;
     /* padding-bottom:53.25% */
-}
-.mainwrapper{
-    min-height: 80vh;
-    background: #edf2f0;
-    padding: 1rem 0.2rem;
-}
-.new-container{
-    padding: 0 4rem;
-    display: block;
-    margin: 0 auto;
-}
-.subwrapper{
-    background: #dae4e0;
-    padding: 1.6rem;
-    border-radius: 8px;
-    border: 1px solid #fbfffd;
-    margin: 20px 0px;
-}
-.wrapper{
-    background: #edf3e5;
-    padding: 1.5rem 2rem;
-    box-shadow: 1px 1px 5px #3e413a59;
-    border-radius: 6px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #fff;
 }
 .mainwrapper.dashbordwrapper .landing-page-right .action-block a:nth-of-type(1) i::before{
     content:"\f24d";

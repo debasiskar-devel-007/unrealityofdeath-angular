@@ -1,1 +1,42 @@
-<p>user-list works!</p>
+<app-header></app-header>
+
+<div class="mainwrapper">
+    <div class="new-container">
+        
+        <!-- <app-last-login-info></app-last-login-info> -->
+ 
+        <div class="subwrapper">            
+            <div class="sub-title wrapper">
+                <h2>User Listing</h2>
+                <button mat-button class="add_btn"  (click)="addPackage()" >Add User</button>
+            </div>
+            <div class="package">
+                <div class="list-style1">
+                    <div
+                    class="taxonomies_liststyle"
+                    [ngClass]="listprogressBar == true ? 'hide' : 'show'"
+                  >
+                    <lib-listing *ngIf="tabledatatalist.length > 0"
+                    class="adminlisttable_v1" 
+                    [datasource]="tabledatatalist"  [modify_header_array]="modify_header_array"
+                    [apiurl]="api_url_for_managebanner" [deleteendpoint]="deleteendpoint" [updateendpoint]="updateendpoint"
+                    [date_search_source]="date_search_source" [date_search_endpoint]="date_search_endpoint" [sourcedata]="tablename"
+                        [editroute]="editroute" [statusarr]="statusarray" [detail_skip_array]="tabledata_detail_skip"
+                        [jwttoken]="jwttokenformanagebanner" [search_settings]="search_settings" [searchendpoint]="searchendpoint"
+                        [sortdata]="sortdata" [datacollection]="datacollection" [date_search_source_count]="date_search_source_count"
+                        [libdata]="libdata" [limitcond]="limitcond"
+                        [updatetable]="taxonomy_updatetable" (onLiblistingChange)="listenLiblistingChange($event)" (onLiblistingButtonChange)="onLiblistingButtonChange($event)">
+                    >
+                   
+                    </lib-listing>
+                    <div *ngIf="!(tabledatatalist.length > 0)" class="noFoundTextinner">
+                        <span>Oops !</span>
+                         <p> NO Record Found</p>
+                      </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
