@@ -1650,15 +1650,15 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-track {
-    background: #f35a08
+    background: #ad4c1e
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-thumb {
-    background: #ad4c1e
+    background: #f35a08
 }
 
 .mat-mdc-dialog-content::-webkit-scrollbar-thumb:hover {
-    background: #ad4c1e
+    background: #f35a08
 }
 
 .custom-modalbox .example-card:nth-of-type(odd) {
@@ -3671,6 +3671,55 @@ tbody tr td .actionbuttonwrapper button {
     font-size: 2rem;
 }
 
+/* Dashboard Choose Modal CSS */
+
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_imgwrp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img {
+    width: 44%;
+    margin: 1.4%;
+    border: 8px solid #632d05;
+    cursor: pointer;
+}
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img:hover {
+    border: 8px solid #b1520a;
+
+}
+.custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+    background: #632d05;
+}
+.custom-modalbox.comingsoon-modalbox .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: #653400 !important;
+}
+.custom-modalbox.comingsoon-modalbox .dialoghead .mat-mdc-dialog-content {
+    height: 15vh;
+}
+.custom-modalbox.comingsoon-modalbox .dialoghead .comingsoon_text {
+    font-size: 3rem !important;
+    color: #fff !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+}
+
+@media only screen and (max-width: 699px) {
+
+    .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img {
+        width: auto;
+    }
+
+}
+
+
 /* << ------------------ Modal CSS by Sanket ---------------------- >> */
 
 .body_wrp {
@@ -4027,7 +4076,7 @@ tbody tr td .actionbuttonwrapper button {
 .steps:last-child::after{display:none}
 .steps:last-child{border-radius:20px 8px 8px 20px}
 .steps:first-child::before{display:none}
-.steps p{margin:0;font-size:24px;color:#fff;line-height:28px;text-shadow:1px 1px 0 #355d9c;padding:0 30px}
+.steps p{margin:0;font-size:24px;color:#fff;line-height:28px;padding:0 30px}
 .steps .fa{margin: 5px; display: inline;}
 .marketing-mediawrapper{display:flex;justify-content:space-between}
 .marketing-sowrapper{display:flex;align-items:center;width:150px}

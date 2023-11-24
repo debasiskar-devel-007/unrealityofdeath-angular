@@ -6,9 +6,7 @@
        Campaign List
     </h1>
   <mat-dialog-content>
-  
-    <button class="button_wrp" (click)="campainAdd()">Add Campaign</button>
-  
+    
     <h3 class="modal_subtitle">Glossary</h3>
   
   
@@ -19,23 +17,23 @@
           the search icon.</span></p> -->
       <!-- <p><i class="fa fa-refresh" aria-hidden="true"></i><strong>Reload:</strong><span>Reload the campaign’s listing by
           clicking on the icon.</span></p> -->
-      <p><i class="fa fa-pencil" aria-hidden="true"></i><strong>Edit:</strong><span>Edit the campaign information by
+      <!-- <p><i class="fa fa-pencil" aria-hidden="true"></i><strong>Edit:</strong><span>Edit the campaign information by
           clicking on the icon.</span></p>
       <p><i class="fa fa-eye" aria-hidden="true"></i>
         <strong>Preview:</strong><span>Preview the campaign information by clicking on the icon.</span></p>
       <p><i class="fa fa-toggle-on" aria-hidden="true"></i><strong>Status Change:</strong><span>Change the status of any
-          Campaign from Active to Inactive or from Inactive to Active by clicking on the icon.</span></p>
+          Campaign from Active to Inactive or from Inactive to Active by clicking on the icon.</span></p> -->
       <p><i class="fa fa-clone" aria-hidden="true"></i><strong>Copy Icon:</strong><span>Copy a campaign URL by clicking on
           the icon.</span></p>
-      <p><i class="fa fa-trash" aria-hidden="true"></i><strong>Delete:</strong><span>Delete any campaign by clicking on
-          the icon.</span></p>
+      <!-- <p><i class="fa fa-trash" aria-hidden="true"></i><strong>Delete:</strong><span>Delete any campaign by clicking on
+          the icon.</span></p> -->
       <!-- <p><i class="fa fa-qrcode" aria-hidden="true"></i><strong>QR Scanner:</strong><span>Get QR Code of the campaign by
           clicking on the icon.</span></p> -->
     </div>
   
   
       <div class="list-style1">
-        <div #myElem class="taxonomies_liststyle" [ngClass]="listprogressBar == true ? 'hide' : 'show'">
+        <div class="taxonomies_liststyle" [ngClass]="listprogressBar == true ? 'hide' : 'show'">
           <lib-listing class="adminlisttable_v1" *ngIf="tabledatatalist != null && tabledatatalist.length > 0"
             [datasource]="tabledatatalist" 
             [skip]="tabledata_header_skip" [modify_header_array]="modify_header_array"

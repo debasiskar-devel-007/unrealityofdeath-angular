@@ -11,6 +11,8 @@ import { AuthService } from './services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LastLoginInfoComponent } from './Common-components/last-login-info/last-login-info.component';
 import { PreviewComponent } from './Common-components/preview/preview.component';
+import { ComingsoonComponent } from './Common-components/comingsoon/comingsoon.component';
+import { AccountInfoComponent } from './my-account/account-info/account-info.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { PreviewComponent } from './Common-components/preview/preview.component'
     AppComponent,
     LoginComponent,
     LastLoginInfoComponent,
-    PreviewComponent
+    PreviewComponent,
+    ComingsoonComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,
