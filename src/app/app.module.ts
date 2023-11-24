@@ -13,6 +13,7 @@ import { LastLoginInfoComponent } from './Common-components/last-login-info/last
 import { PreviewComponent } from './Common-components/preview/preview.component';
 import { ComingsoonComponent } from './Common-components/comingsoon/comingsoon.component';
 import { AccountInfoComponent } from './my-account/account-info/account-info.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AccountInfoComponent } from './my-account/account-info/account-info.com
     LastLoginInfoComponent,
     PreviewComponent,
     ComingsoonComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
