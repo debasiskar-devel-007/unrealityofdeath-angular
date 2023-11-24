@@ -409,14 +409,64 @@ export class chooseLandingpageModal {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public matSnackBar: MatSnackBar,
     private cookieService: CookieService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    public dialog: MatDialog
   ) { 
     console.log(data);
     this.chooseLandingData = data;
     
    }
 
+   public cookieData: any = this.cookieService.get('login_user_details')
+   ? JSON.parse(this.cookieService.get('login_user_details'))
+   : {}
+
   ngOnInit() {}
+
+  chosenLandingCampaign(idVal: any) {
+    console.log(idVal);
+
+    this.apiService.getHttpDataPost('marketing/campaign-list', {
+      condition: {
+        limit: 5,
+        skip: 0,
+      },
+      searchcondition: {
+        user_id: this.cookieData.uidval,
+        opportunity_id: idVal,
+      },
+      sort: {
+        type: 'desc',
+        field: 'created_on',
+      },
+      project: {},
+      token: '',
+    }).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        if (response.status == 'success') {
+          const dialogRef = this.dialog.open(CampaignmodalComponent, {
+            panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+            data: {
+              setDefaultObj: response.results.res,
+              campaignVal: idVal
+            }
+          })
+
+          
+        } else {
+
+        }
+
+
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+    
+
+  }
 
 }
 
