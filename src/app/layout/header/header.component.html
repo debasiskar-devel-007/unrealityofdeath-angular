@@ -62,6 +62,13 @@
           ? 'active'
           : '' " 
         >Dashboard</a></li> 
+        <li><a   
+          (click)="navigateToPath('/')"
+          [ngClass]="
+          currentPath() == '/'
+            ? 'active'
+            : '' " 
+          >Users</a></li> 
       
       <!-- <li><a href="">Commission</a></li>  -->
   
