@@ -277,7 +277,7 @@ export class CampaignmodalComponent {
     console.log('test', data);
 
     if (data?.custombuttonclick?.btninfo.id == 'edit_btn') {
-      this.campainAdd(data.custombuttonclick.data, 'edit')
+      this.campainAdd( data.custombuttonclick.data.landing_page_name, data.custombuttonclick.data, 'edit')
       console.log("aaaaaaaaaaa", data.custombuttonclick.data)
 
     }
@@ -318,8 +318,8 @@ export class CampaignmodalComponent {
     }
   }
 
-  campainAdd(data: any = null, flag: any = "add") {
-    console.log(data);
+  campainAdd(landingName: any, data: any = null, flag: any = "add") {
+    console.log(landingName);
     
     const dialogRef = this.dialog.open(addCampainModal, {
       panelClass: 'custom-modalbox',
@@ -329,6 +329,7 @@ export class CampaignmodalComponent {
           user_id: this.cookieData?.uidval,
           opportunity_id: this.campainAllData?.campaignVal,
           edit_data: data,
+          landingName: landingName,
           flag: flag,
         },
       },
@@ -352,6 +353,9 @@ export class CampaignmodalComponent {
   imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
 })
 export class addCampainModal {
+
+  public landingPageName: any = ""
+
   constructor(
     private cookieService: CookieService,
     private apiservice: ApiservicesService,
@@ -362,6 +366,7 @@ export class addCampainModal {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     console.log('data========>+', data);
+    this.landingPageName = data?.setDefaultObj?.landingName
   }
 
   public configFormData = {};
