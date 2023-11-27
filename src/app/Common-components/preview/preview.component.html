@@ -1,0 +1,28 @@
+<button mat-dialog-close class="close-btn-modal" mat-raised-button matTooltip="Close"
+  matTooltipPosition="below"><mat-icon>close</mat-icon></button>
+<div class="dialoghead">
+    <h1 class="mat-mdc-dialog-title">preview</h1>
+        <mat-dialog-content>
+          <ng-container *ngFor="let data of datakey">
+              
+                <p class="preview_data">
+                
+                  
+                    <span><strong>{{data === "created_at" ? "Create On"  : data === "landing_page_name" ? "Landing Page Name" : data.replace("_"," ")}} :</strong></span> 
+                    <span class="preview_value" >
+                        {{data=="status"? 
+                        datavalue[data]===1? "Active":"Inactive":
+                        data === "created_on"?created_on:
+                        data === "updated_on"?updated_on:
+                        data==="created_at"?created_at:
+                        data==="email"?datavalue[data] : 
+                  
+                        datavalue[data]?datavalue[data]:"N/A"}}
+                    </span>
+                   
+        
+                  </p>
+            </ng-container>
+        
+        </mat-dialog-content>
+</div>

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,13 +10,19 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LastLoginInfoComponent } from './Common-components/last-login-info/last-login-info.component';
+import { PreviewComponent } from './Common-components/preview/preview.component';
+import { ComingsoonComponent } from './Common-components/comingsoon/comingsoon.component';
+import { AccountInfoComponent } from './my-account/account-info/account-info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LastLoginInfoComponent
+    LastLoginInfoComponent,
+    PreviewComponent,
+    ComingsoonComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,6 @@ import { LastLoginInfoComponent } from './Common-components/last-login-info/last
   ],
   providers: [AuthGuardService,AuthService],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas:[CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

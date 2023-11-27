@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:dev": "ng serve --configuration development",
-    "start:prod": "ng serve --configuration production"
+    "start:prod": "ng serve --configuration production",
+    "deploy:development": "npm i && ng build --configuration development && aws --profile lambda_all s3 sync ./dist/unrealityofdeath-angular s3://backoffice-unrealityofdeath-dev",
+    "deploy:production": "npm i && ng build --configuration production && aws --profile lambda_all s3 sync ./dist/unrealityofdeath-angular s3://backoffice-unrealityofdeath-prod"
   },
   "private": true,
   "dependencies": {
@@ -27,8 +29,9 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@types/ckeditor": "^4.9.10",
+    "angular-moment": "^1.3.0",
     "font-awesome-icons": "^1.6.0",
-    "listing-angular15": "^0.0.40",
+    "listing-angular15": "^0.0.42",
     "moment": "^2.29.4",
     "ng2-ckeditor": "^1.3.7",
     "ng2-pdf-viewer": "^10.0.0",

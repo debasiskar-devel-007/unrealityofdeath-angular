@@ -1,3 +1,4 @@
+    <mat-progress-bar id="sticky_loader" mode="indeterminate" *ngIf="loader" class="loader"></mat-progress-bar>
 <app-header></app-header>
 
 <div class="mainwrapper dashbordwrapper">
@@ -6,22 +7,24 @@
         <!-- <app-last-login-info></app-last-login-info> -->
             <div class="wrapper">
                 <div class="title-wrapper1">
-                    <h2>MANAGE CAMPAIGN</h2>
+                    <h1>MANAGE CAMPAIGN</h1>
                 </div>
                 <div class="step-wrapper">
-                    <div class="steps step1">
+                    <div class="steps step1" (click)="chooseLandingpage()">
                         <p>Step One: Create Your Campaign<i class="fa fa-plus-circle" aria-hidden="true"></i>
                         </p>
                     </div>
-                    <div class="steps step2">
+                    <div class="steps step2" (click)="allCampaignShow()">
                         <p>Step Two: Copy URL <i class="fa fa-clone" aria-hidden="true"></i>
                         </p>
                     </div>
                 </div>
                 <div class="title-wrapper2"></div>
                 <h1 class="heading_sub_wrp">
-                    Beto Paredes Family Opportunities</h1>
-                <div class="landing-page-wrapper">
+                    Unreality of Death Opportunities</h1>
+                <ng-container></ng-container>
+                <div class="landing-page-wrapper" *ngFor="let data of campaignData; let mainIndex = index; ">
+                    
                     <!-- <h1 *ngIf="landingarraylist.betoparedes_access==0">
             Beto Predes Family Opportunities</h1> -->
                     
@@ -29,32 +32,57 @@
                     <div class="landing-page-container">
                         <div class="landing-page-left">
                             <div class="img-wrapper">
-                                <img src="https://all-frontend-assets.s3.amazonaws.com/divine-infinity-being/social-advo-audio/1694496008184DecisionDocAI.jpg"/>
+                                <img [src]="
+                                    (data.landing_page_thumbnail?.length > 0) 
+                                      ? data.landing_page_thumbnail[0]?.imageUrl 
+                                      : 'https://d37pbainmkhx6o.cloudfront.net/timothydesmond-assets/Placeholder_view_vector.svg'
+                                  "/>
                             </div>
                         </div>
                         <div class="landing-page-right">
                             <div class="landing-page-right-text">
-                                <h2>Decision Doc AI </h2>
-                                <p>Boost Patient Outcomes, Get Invaluable Support, Improve Patient Outcomes, And Enhance Medical Practice’s Overall Efficiency And Quality.</p>
+                                <h2>{{data.landing_page_name}} </h2>
+                                <p [innerHTML]="data.landing_page_description"></p>
                             </div>
 
                             <div class="landing-right-footer">
                                 <div class="copy-url-block">
-                                    <span><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
-                                    <a><strong>
-                                        </strong></a>
+                                    <span 
+                                    matTooltip="Copy Url" 
+
+                                    (click)="copyToClipboard(selected_campaign_index[mainIndex]!= null?
+                                    data.campaign_url[selected_campaign_index[mainIndex]] :
+                                    data.campaign_url[0])"
+                                    
+                                    ><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
+                                    <a><strong *ngIf="eventValue"> {{ data.landing_page_domain_url}}/{{eventValue}}
+                                        </strong>
+                                        <strong *ngIf="!(eventValue)"> 
+                                            {{selected_campaign_index[mainIndex]!= null?
+                                                data.campaign_url[selected_campaign_index[mainIndex]] :
+                                                data.campaign_url[0]}}
+                                        </strong>
+                                    </a>
                                 </div>
                                 <div class="select-block">
-                                    <!-- <span>{{(landingarraylist.campaign_name_arr | json)}} campaign_id ,rep_url_arr</span> -->
-                                    <!-- <span>ddd {{landingarraylist.campaign_id}}<br /> ffff-{{landingarraylist|json}}</span> -->
-
 
                                     <mat-form-field>
                                         <mat-label class="label_wrp_main">Select Campaign</mat-label>
-                                        <mat-select>
-                                            <ng-container>
-                                                <mat-option>
+                                        <mat-select 
+                                        [value]="data.campaign_data[0].split('##~~')[1]" 
+                                        (selectionChange)="valuechange(mainIndex)"
 
+                                        [(ngModel)]="data.campaign_data[0].split('##~~')[1]"
+                                        >
+                                            <ng-container
+                                            *ngFor="let campaignData of data.campaign_data
+                                            let camapign_index = index
+                                            "
+                                            >
+                                                <mat-option 
+                                                (click)="selectedindex(camapign_index,mainIndex)"
+                                                [value]="campaignData.split('##~~')[1]">
+                                                    {{campaignData.split('##~~')[0]}}
                                                 </mat-option>
                                             </ng-container>
                                         </mat-select>
@@ -63,120 +91,16 @@
 
                                 </div>
                                 <div class="action-block">
-                  <a matTooltip="Copy Url"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
+                  <a 
+                  (click)="copyToClipboard(selected_campaign_index[mainIndex]!= null?
+                  data.campaign_url[selected_campaign_index[mainIndex]] :
+                  data.campaign_url[0])" 
+                  matTooltip="Copy Url"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
                   <a matTooltip="QR Scanner"><i
                       class="fa fa-qrcode" aria-hidden="true"></i></a>
-                  <a matTooltip="Create Campaign" ><i
+                  <a matTooltip="Create Campaign" (click)="campaignModal(data.opportunity_id)" [matBadge]="data.campaign_data ? data.campaign_data.length : 1"><i
                       class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                  <a matTooltip="Click Count / Conversion Count"><i
-                      class="fa fa-bar-chart" aria-hidden="true"></i></a>
-                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="landing-page-wrapper">
-                    <!-- <h1 *ngIf="landingarraylist.betoparedes_access==0">
-            Beto Predes Family Opportunities</h1> -->
-                    
-
-                    <div class="landing-page-container">
-                        <div class="landing-page-left">
-                            <div class="img-wrapper">
-                                <img src="https://all-frontend-assets.s3.amazonaws.com/divine-infinity-being/social-advo-audio/1694496008184DecisionDocAI.jpg"/>
-                            </div>
-                        </div>
-                        <div class="landing-page-right">
-                            <div class="landing-page-right-text">
-                                <h2>Decision Doc AI </h2>
-                                <p>Boost Patient Outcomes, Get Invaluable Support, Improve Patient Outcomes, And Enhance Medical Practice’s Overall Efficiency And Quality.</p>
-                            </div>
-
-                            <div class="landing-right-footer">
-                                <div class="copy-url-block">
-                                    <span><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
-                                    <a><strong>
-                                        </strong></a>
-                                </div>
-                                <div class="select-block">
-                                    <!-- <span>{{(landingarraylist.campaign_name_arr | json)}} campaign_id ,rep_url_arr</span> -->
-                                    <!-- <span>ddd {{landingarraylist.campaign_id}}<br /> ffff-{{landingarraylist|json}}</span> -->
-
-
-                                    <mat-form-field>
-                                        <mat-label class="label_wrp_main">Select Campaign</mat-label>
-                                        <mat-select>
-                                            <ng-container>
-                                                <mat-option>
-
-                                                </mat-option>
-                                            </ng-container>
-                                        </mat-select>
-                                    </mat-form-field>
-
-
-                                </div>
-                                <div class="action-block">
-                  <a matTooltip="Copy Url"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
-                  <a matTooltip="QR Scanner"><i
-                      class="fa fa-qrcode" aria-hidden="true"></i></a>
-                  <a matTooltip="Create Campaign" ><i
-                      class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                  <a matTooltip="Click Count / Conversion Count"><i
-                      class="fa fa-bar-chart" aria-hidden="true"></i></a>
-                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="landing-page-wrapper">
-                    <!-- <h1 *ngIf="landingarraylist.betoparedes_access==0">
-            Beto Predes Family Opportunities</h1> -->
-                    
-
-                    <div class="landing-page-container">
-                        <div class="landing-page-left">
-                            <div class="img-wrapper">
-                                <img src="https://all-frontend-assets.s3.amazonaws.com/divine-infinity-being/social-advo-audio/1694496008184DecisionDocAI.jpg"/>
-                            </div>
-                        </div>
-                        <div class="landing-page-right">
-                            <div class="landing-page-right-text">
-                                <h2>Decision Doc AI </h2>
-                                <p>Boost Patient Outcomes, Get Invaluable Support, Improve Patient Outcomes, And Enhance Medical Practice’s Overall Efficiency And Quality.</p>
-                            </div>
-
-                            <div class="landing-right-footer">
-                                <div class="copy-url-block">
-                                    <span><i class="fa fa-chain-broken" aria-hidden="true"></i></span>
-                                    <a><strong>
-                                        </strong></a>
-                                </div>
-                                <div class="select-block">
-                                    <!-- <span>{{(landingarraylist.campaign_name_arr | json)}} campaign_id ,rep_url_arr</span> -->
-                                    <!-- <span>ddd {{landingarraylist.campaign_id}}<br /> ffff-{{landingarraylist|json}}</span> -->
-
-
-                                    <mat-form-field>
-                                        <mat-label class="label_wrp_main">Select Campaign</mat-label>
-                                        <mat-select>
-                                            <ng-container>
-                                                <mat-option>
-
-                                                </mat-option>
-                                            </ng-container>
-                                        </mat-select>
-                                    </mat-form-field>
-
-
-                                </div>
-                                <div class="action-block">
-                  <a matTooltip="Copy Url"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
-                  <a matTooltip="QR Scanner"><i
-                      class="fa fa-qrcode" aria-hidden="true"></i></a>
-                  <a matTooltip="Create Campaign" ><i
-                      class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                  <a matTooltip="Click Count / Conversion Count"><i
+                  <a matTooltip="Click Count / Conversion Count" (click)="comingSoon()"><i
                       class="fa fa-bar-chart" aria-hidden="true"></i></a>
                 </div>
                             </div>

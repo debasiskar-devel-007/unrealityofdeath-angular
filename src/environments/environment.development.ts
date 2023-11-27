@@ -1,6 +1,6 @@
 export const environment = {
   stage: 'dev',
-  production: true,
+  production: false,
   api_url: "https://dev.timothydesmond.influxiq.com/",
   astrology_api_url: "https://json.astrologyapi.com/v1/",
   username: '625019',

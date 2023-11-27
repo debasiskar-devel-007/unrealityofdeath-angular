@@ -1,0 +1,28 @@
+<button
+  mat-dialog-close
+  class="close-btn-modal"
+  mat-raised-button
+  matTooltip="Close"
+  matTooltipPosition="below"
+>
+  <mat-icon>close</mat-icon>
+</button>
+<div class="dialoghead">
+  <h1 class="mat-mdc-dialog-title">Choose A Landing Page</h1>
+  <mat-dialog-content>
+    <div class="subwrapper">
+      <div class="landingchoose_imgwrp">
+        <div
+          class="landingchoose_img"
+          *ngFor="let landingimg of chooseLandingData" (click)="chosenLandingCampaign(landingimg.opportunity_id)"
+        >
+        
+          <div class="thumbnailimg_wrp">
+            <img [src]="landingimg.landing_page_thumbnail[0]?.imageUrl" alt="" />
+          </div>
+          <p>{{landingimg.landing_page_name}}</p>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

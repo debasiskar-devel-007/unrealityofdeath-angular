@@ -9,12 +9,11 @@ import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
-import * as moment from 'moment';
 // import { MatFormFieldModule } from "@angular/material/form-field";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css', '../../assets/login.css'],
 })
 export class LoginComponent {
   public loginForm: FormGroup;
@@ -34,6 +33,8 @@ export class LoginComponent {
   }
   ngOnInit() {
     console.log("NODE_ENV===============+>", environment.stage);
+
+    this.buildDatabaseConn()
 
     console.log("this is login form value", this.loginForm);
     history.pushState(null, '');
@@ -61,6 +62,15 @@ export class LoginComponent {
     }
   }
 
+  buildDatabaseConn(){
+    this.apiService.getHttpData('user-api/fetch-states').subscribe({
+      next:(response)=>{
+        console.log("response========>",response);
+        
+      }
+    })
+  }
+
 
   login() {
 
@@ -79,7 +89,7 @@ export class LoginComponent {
 
           this.apiService.getHttpDataPost("login/loginsubmission", {
             ...this.loginForm.value,
-            login_time: moment().valueOf(),
+            login_time: new Date().getTime(),
             ipinfo: ipresponse
           }).subscribe({
             next: (response: any) => {
