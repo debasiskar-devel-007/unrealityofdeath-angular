@@ -15,6 +15,13 @@ const routes: Routes = [
       endpoint: 'marketing/dashboard-campaign-list',
     },
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./users/users.module').then(
+        (m) => m.UsersModule
+      )
+  },
 ];
 
 @NgModule({
