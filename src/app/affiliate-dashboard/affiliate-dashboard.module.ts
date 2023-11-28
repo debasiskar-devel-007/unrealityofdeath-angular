@@ -5,13 +5,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CampaignmodalComponent } from './campaignmodal/campaignmodal.component';
+import { DashboardReportModalComponent } from './dashboard-report-modal/dashboard-report-modal.component';
+import { ReportListComponent } from './dashboard-report-modal/report-list/report-list.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CampaignmodalComponent
+    CampaignmodalComponent,
+    DashboardReportModalComponent,
+    ReportListComponent
   ],
   imports: [
     CommonModule,

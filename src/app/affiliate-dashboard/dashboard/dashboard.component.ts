@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component';
 import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
+import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboard-report-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -261,9 +262,24 @@ export class DashboardComponent {
 
     // << -------------- Coming Soon Modal ---------------- >>
 
+<<<<<<< HEAD
 
 
     
+=======
+    // << -------------- click Conversion Modal ---------------- >>
+
+  clickConversionModal() {
+
+    const dialogRef = this.dialog.open(DashboardReportModalComponent, {
+      panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+      data: ''
+    })
+
+  }
+
+    // << -------------- Coming Soon Modal ---------------- >>
+>>>>>>> 821313801f78356d9dd6e63ac29b67cb42a9678d
 
 }
 
