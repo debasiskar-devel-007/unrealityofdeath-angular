@@ -4478,6 +4478,61 @@ tbody tr td .actionbuttonwrapper button {
 /* << ------------ CSS by Sanket ------------- >> */
 
 
+/* ?////////////// Dashboard Report list ///////////// */
+
+.campaign_modalwrp .inner_sub_wrp .count_button_wrp {
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    background: #7f2e0a;
+    color: #fff;
+    font-size: 13px;
+    line-height: 26px;
+    font-weight: 500;
+    display: block;
+    margin: 11px;
+    cursor: pointer;
+}
+
+.campaign_modalwrp .inner_sub_wrp .colorcode {
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    background: #3b1505;
+    color: #fff;
+    font-size: 13px;
+    line-height: 26px;
+    font-weight: 500;
+    display: block;
+    margin: 11px;
+    cursor: pointer;
+}
+
+.campaign_modalwrp .inner_sub_wrp {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 10px;
+}
+
+.campaign_modalwrp .count_value_wrp {
+    display: flex;
+    justify-content: center;
+    margin: 12px 19px;
+}
+
+.campaign_modalwrp .count_value_wrp h4 {
+    font-weight: 600;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 20px;
+
+
+}
+
+
+/* ?////////////// Dashboard Report list ///////////// */
+
+
 
 @media only screen and (max-width:1666px){
 .action-block a{margin:2px}
