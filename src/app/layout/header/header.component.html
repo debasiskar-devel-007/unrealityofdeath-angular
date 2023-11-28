@@ -69,6 +69,28 @@
             ? 'active'
             : '' " 
           >Users</a></li> 
+          <li><a  
+            [matMenuTriggerFor]="Report" 
+            
+            [ngClass]="
+            currentPath() == '/affiliate-dashboard/user'
+              ? 'active'
+              : '' " 
+            >Report</a></li> 
+            <mat-menu #Report="matMenu">
+              <button
+                mat-menu-item
+                (click)="conversionReportClick()"
+              >
+                Conversion Report
+              </button>
+              <button
+                mat-menu-item
+                (click)="clickReportClick()"
+              >
+                Click Report
+              </button>
+            </mat-menu>
       
       <!-- <li><a href="">Commission</a></li>  -->
   

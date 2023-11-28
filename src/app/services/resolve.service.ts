@@ -3,6 +3,7 @@ import { ApiservicesService } from './apiservices.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,12 @@ export class ResolveService {
     }
     if (state.url.includes('user')) {
       route.data['requestcondition']['searchcondition']['affiliate_id'] = cookieData.uidval
+    }
+    if (state.url.includes('report/click-report') || state.url.includes('report/conversion-report') ) {
+      let startval = moment().startOf('month').valueOf()
+      let endval = moment().endOf('month').valueOf()
+      route.data['requestcondition']['searchcondition']['affiliate_id'] = cookieData.uidval
+      route.data['requestcondition']['searchcondition']['created_on'] = { "$gte": startval, "$lte": endval }
     }
 
 

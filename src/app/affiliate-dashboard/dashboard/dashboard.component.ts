@@ -262,18 +262,9 @@ export class DashboardComponent {
 
     // << -------------- Coming Soon Modal ---------------- >>
 
-    // << -------------- click Conversion Modal ---------------- >>
 
-  clickConversionModal() {
 
-    const dialogRef = this.dialog.open(DashboardReportModalComponent, {
-      panelClass: ['custom-modalbox', 'campainlist_modalbox'],
-      data: ''
-    })
-
-  }
-
-    // << -------------- Coming Soon Modal ---------------- >>
+    
 
 }
 
@@ -708,3 +699,9 @@ export class allCampaignModal {
 }
 
 // << ------------------ All Campaign Modal Component ----------------- >>
+
+
+
+
+
+
