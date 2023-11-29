@@ -11,15 +11,15 @@
 
 
             <div class="button_container">
-                <button mat-raised-button color="primary" name="all" style="font-size: 20px; margin: 10px">ALL</button>
-                <button mat-raised-button color="primary" name="month" style="font-size: 20px; margin: 10px">THIS
+                <button mat-raised-button color="primary" name="all"  (click)="buttonClick($event,'all')"  [ngClass]="thisbutonclick === 'all'? 'active' : ''" style="font-size: 20px; margin: 10px">ALL</button>
+                <button mat-raised-button color="primary" name="month" (click)="buttonClick($event,'month')"   [ngClass]="thisbutonclick === 'month'? 'active' : ''" style="font-size: 20px; margin: 10px">THIS
                     MONTH</button>
-                <button mat-raised-button color="primary" name="week" style="font-size: 20px; margin: 10px">THIS
+                <button mat-raised-button color="primary" name="week" (click)="buttonClick($event,'week')"  [ngClass]="thisbutonclick === 'week'? 'active' : ''" style="font-size: 20px; margin: 10px">THIS
                     WEEK</button>
-                <button mat-raised-button color="primary" name="today"
+                <button mat-raised-button color="primary" name="today" (click)="buttonClick($event,'today')"  [ngClass]="thisbutonclick === 'today'? 'active' : ''"
                     style="font-size: 20px; margin: 10px">TODAY</button>
                 <!-- <button mat-raised-button color="primary" name ="conversion"  (click)="buttonClick($event,'conversion')" [ngClass]="thisbutonclick === 'conversion'? 'active' : ''"  style="font-size: 20px; margin: 10px">QUERY CONVERSION</button> -->
-                <button mat-raised-button color="primary" style="font-size: 20px; margin: 10px"><i
+                <button mat-raised-button color="primary" (click)="buttonClick($event,'all')"  style="font-size: 20px; margin: 10px"><i
                         class="fa-solid fa-rotate-right"></i></button>
             </div>
             <!-- <ng-container *ngIf="formLoader">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { environment } from 'src/environments/environment';
@@ -12,11 +13,9 @@ import { environment } from 'src/environments/environment';
 })
 export class ConversionReportComponent {
   public tabledatatalist: any = [];
-
-
-
-
-
+  public thisbutonclick: string = 'month';
+  public startval: any = moment().startOf('month').valueOf();
+  public endval: any = moment().endOf('month').valueOf();
 
   public login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')): {};
   public jwttokenformanagebanner = '';
@@ -39,13 +38,17 @@ export class ConversionReportComponent {
     pagecount: 1,
   };
 
-  public modify_header_array: any = {}
+  public modify_header_array: any =  {
+    campaign_name: 'Campaign Name',
+    landing_page_name: 'Landing Page Name',
+    // conversion_count: ' Conversion Count',
+  }
   tablename = 'report_convertion';
 
   sortdata: any = {
     type: 'desc',
     field: '_id',
-    options: this.login_user_details.roleval === 3 ? ['campaign_name', 'product_name'] : ['name', 'email', 'conversionCount'],
+    options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
   };
 
   constructor(
@@ -101,7 +104,7 @@ export class ConversionReportComponent {
     basecondition:
       this.login_user_details.roleval === 3
         ? {
-          user_id: this.login_user_details.userinfo._id,
+          user_id: this.login_user_details.uidval,
           // created_on: { $gte: this.startval, $lte: this.endval },
         }
         : {
@@ -120,7 +123,7 @@ export class ConversionReportComponent {
     hidemultipleselectbutton: true,
     tableheaders:
     this.login_user_details.roleval === 3
-        ? ['campaign_name', 'product_name', 'conversion_count']
+        ? ['campaign_name', 'landing_page_name', 'conversion_count']
         : ['name', 'email', 'conversionCount'],
     deleteendpointmany: '',
     updateendpoint: '',
@@ -133,9 +136,9 @@ export class ConversionReportComponent {
         name: 'preview_btn',
         classname: 'previewButton',
         previewlist:
-          this.login_user_details.userinfo.user_type === 'is_rep'
-            ? ['campaign_name', 'product_name', 'click_count']
-            : ['name', 'email', 'clickCount'],
+          this.login_user_details.roleval === 3
+            ? ['campaign_name', 'landing_page_name', 'click_count']
+            : [],
       },
       // {
       //   label: 'Chart',
@@ -146,18 +149,18 @@ export class ConversionReportComponent {
       //   classname: 'chartbutton',
       // },
     ] : [
-      {
-        label: 'Preview',
-        type: 'listner',
-        id: 'preview_btn',
-        tooltip: 'Preview',
-        name: 'preview_btn',
-        classname: 'previewButton',
-        previewlist:
-          this.login_user_details.userinfo.user_type === 'is_rep'
-            ? ['campaign_name', 'product_name', 'click_count']
-            : ['name', 'email', 'clickCount'],
-      },
+      // {
+      //   label: 'Preview',
+      //   type: 'listner',
+      //   id: 'preview_btn',
+      //   tooltip: 'Preview',
+      //   name: 'preview_btn',
+      //   classname: 'previewButton',
+      //   previewlist:
+      //      this.login_user_details.roleval === 3
+      //       ? ['campaign_name', 'product_name', 'click_count']
+      //       : ['name', 'email', 'clickCount'],
+      // },
       // {
       //   label: 'Chart',
       //   type: 'listner',
@@ -166,40 +169,41 @@ export class ConversionReportComponent {
       //   name: 'chart_btn',
       //   classname: 'chartbutton',
       // },
-      {
-        label: 'details conversion report',
-        type: 'listner',
-        id: 'details_conversion_report_btn',
-        tooltip: 'details conversion report',
-        name: 'details_conversion_report_btn',
-        classname: 'detailsbutton',
-      },
+      // {
+      //   label: 'details conversion report',
+      //   type: 'listner',
+      //   id: 'details_conversion_report_btn',
+      //   tooltip: 'details conversion report',
+      //   name: 'details_conversion_report_btn',
+      //   classname: 'detailsbutton',
+      // },
     ],
   };
   ngOnInit() {
     this.activatedRoute.data.subscribe((response: any) => {
       console.log('activatedRoute========>', response);
       if (response?.data?.status === 'success') {
-        this.tabledatatalist = response?.results?.res ? response.results.res : [];
+        this.tabledatatalist = response?.data?.results?.res ? response.data.results.res : [];
         console.log('tabledatatalist=====>', this.tabledatatalist);
       }
     });
     if (this.login_user_details.roleval === 3) {
       this.apiservice
         .getHttpDataPost('click-conversion/click-list-count', {
-          condition: {
-            limit: 10,
-            skip: 0,
-          },
-          searchcondition: {
-            user_id: this.login_user_details.userinfo._id,
-          },
-          sort: {
-            type: 'desc',
-            field: 'created_on',
-          },
-          project: {},
-          token: '',
+          "condition": {
+            "limit": 5,
+            "skip": 0
+        },
+        "searchcondition": {
+            "affiliate_id": this.login_user_details.uidval,
+            
+        },
+        "sort": {
+            "type": "desc",
+            "field": "created_on"
+        },
+        "project": {},
+        "token": ""
         })
         .subscribe((response: any) => {
           if (response && response.count) {
@@ -210,4 +214,70 @@ export class ConversionReportComponent {
   }
   listenLiblistingChange(data: any) {}
   onLiblistingButtonChange(val: any) { }
+
+  buttonClick(val: any, butonval: any) {
+    this.thisbutonclick = butonval
+
+
+
+
+
+    if (this.login_user_details.roleval === 3) {
+      console.log("abcd", Object.keys(this.startval).length, Object.keys(this.endval).length, this.startval, this.endval);
+
+      let dataobj = {
+        "condition": {
+          "limit": 5,
+          "skip": 0
+      },
+        "searchcondition": {
+         "affiliate_id": this.login_user_details.uidval,
+          "created_on": (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},
+        },
+        "sort": {
+          "type": "desc",
+          "field": "created_on"
+        },
+        "token": "",
+        "project": {}
+      }
+      this.apiservice.getHttpDataPost('click-conversion/click-list', dataobj).subscribe((response) => {
+        console.log("response login info", response);
+        if (response.status === "success") {
+          // this.formLoader = false
+          // this.listprogressBar = true
+          this.tabledatatalist = []
+          setTimeout(() => {
+            this.tabledatatalist = response.results.res
+            console.log("abcdef========>", this.tabledatatalist);
+          }, 50);
+        }
+
+      })
+      this.apiservice.getHttpDataPost(
+        'click-conversion/click-list-count', {
+        "condition": {
+          "limit": 10,
+          "skip": 0
+        },
+        "searchcondition": {
+          "affiliate_id": this.login_user_details.uidval,
+          "created_on": (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { created_on: { "$gte": this.startval, "$lte": this.endval } } : {},
+        },
+        "sort": {
+          "type": "desc",
+          "field": "created_on"
+        },
+        "project": {},
+        "token": ""
+      },
+      ).subscribe((response: any) => {
+
+        if (response && response.count) {
+          this.date_search_source_count = response.count;  // role data count  save 
+        }
+
+      })
+    }
+  }
 }
