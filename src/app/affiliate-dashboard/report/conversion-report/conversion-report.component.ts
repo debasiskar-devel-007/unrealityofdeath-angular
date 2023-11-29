@@ -104,7 +104,7 @@ export class ConversionReportComponent {
     basecondition:
       this.login_user_details.roleval === 3
         ? {
-          user_id: this.login_user_details.uidval,
+          affiliate_id: this.login_user_details.uidval,
           created_on: { $gte: this.startval, $lte: this.endval },
         }
         : {
