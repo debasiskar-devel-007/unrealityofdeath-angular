@@ -161,7 +161,7 @@ export class DashboardComponent {
 
     this.share_url[index] = data
 
-    console.log("data", this.share_url[index]);
+    console.log("data", this.share_url);
   }
 
   bannerCampSelect(event: MatSelectChange) {
