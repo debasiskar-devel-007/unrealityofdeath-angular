@@ -155,6 +155,15 @@ export class DashboardComponent {
     })
   }
 
+  bannerCampaignIndex(data: any, index: any) {
+    console.log("data", data);
+    console.log("data", index);
+
+    this.share_url[index] = data
+
+    console.log("data", this.share_url[index]);
+  }
+
   bannerCampSelect(event: MatSelectChange) {
 
     console.log(event);
@@ -179,12 +188,6 @@ export class DashboardComponent {
 
 
 
-  }
-
-  bannerCampaignIndex(data: any, index: any) {
-    console.log("data", data);
-
-    this.share_url[index] = data.share_url
   }
 
  
