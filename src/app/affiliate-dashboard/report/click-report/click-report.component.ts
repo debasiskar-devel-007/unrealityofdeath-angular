@@ -40,7 +40,7 @@ export class ClickReportComponent {
   public modify_header_array: any =  {
     campaign_name: 'Campaign Name',
     landing_page_name: 'Landing Page Name',
-    conversion_count: ' Conversion Count',
+    conversion_count: 'Click Count',
   }
   tablename = 'report_convertion';
 
