@@ -129,38 +129,39 @@
 
         <div class="banner-main-wrapper">
 
-                <div class="banner-marketing-mainwrapper" *ngFor="let banner of banner_data; let shareIndex = index">
+                <div class="banner-marketing-mainwrapper" *ngFor="let banner of banner_data; let bannerIndex = index">
                   <div class="banner-marketing-container">
                     <div class="banner-marketing-col">
                       <div class="marketing-bannerwrapper">
 
-                        <img [src]="banner.thumbnail[0].imageUrl" alt="" />
+                        <img [src]="(banner.thumbnail.length > 0) ? banner.thumbnail[0].imageUrl : 'https://d37pbainmkhx6o.cloudfront.net/timothydesmond-assets/Placeholder_view_vector.svg'" alt="" />
 
 
                       </div>
-                      <!-- <div class="marketing-mediawrapper new_Wraper_share">
+                      <div class="marketing-mediawrapper new_Wraper_share">
                         <div class="marketing-sowrapper">
 
                           <share-buttons theme="circles-dark" [include]="['facebook','twitter','linkedin']"
-                            [title]="banner.landing_page_name ? banner.landing_page_name : ''" [autoSetMeta]="false"
-                            [image]="banner.thumbnail[0].imageUrl" [url]="share_url[shareIndex] ? share_url[shareIndex] : banner?.campaign[0]?._id"
-                            [showText]="false"  id="sharebutton" [description]="banner?.description">
+                            [title]="banner.banner_name ? banner.banner_name : ''" [autoSetMeta]="false"
+                            [image]="banner.thumbnail[0].imageUrl" 
+                            [url]="share_url[bannerIndex]"
+                            [showText]="false"  id="sharebutton" [description]="">
                           </share-buttons>
 
                         </div>
-                        <div class="marketing-select" *ngIf="banner?.campaign.length>0">
+                        <div class="marketing-select" *ngIf="banner.campaign_data.length > 0">
                           
                           <mat-form-field >
                             <mat-label>Select Campaign</mat-label>
-                            <mat-select [(value)]="banner.campaign[0] && banner.campaign[0]._id" (selectionChange)="capmingselect($event)">
-                              <ng-container *ngFor="let campaign of banner.campaign;">
-                                <mat-option (click)="urlIndex(campaign,shareIndex)" [value]="campaign._id">{{campaign.campaign_name}}</mat-option>
+                            <mat-select [(value)]="banner.campaign_data[0].split('**##')[1]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_data[0].split('**##')[1]">
+                              <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let bannerCampaign_index = index">
+                                <mat-option (click)="bannerCampaignIndex(bannerCampaign_index,bannerIndex)" [value]="bannerCampaign.split('**##')[1]">{{bannerCampaign.split('**##')[0]}}</mat-option>
                               </ng-container>
                             </mat-select>
                           </mat-form-field>
 
                         </div>
-                      </div> -->
+                      </div>
                     </div>
                   </div>
               </div>

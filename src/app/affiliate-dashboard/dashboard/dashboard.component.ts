@@ -155,13 +155,13 @@ export class DashboardComponent {
     })
   }
 
-  urlIndex(data: any, index: any) {
+  bannerCampaignIndex(data: any, index: any) {
     console.log("data", data);
 
     this.share_url[index] = data.share_url
   }
 
-  capmingselect(event: MatSelectChange) {
+  bannerCampSelect(event: MatSelectChange) {
 
     const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
 
