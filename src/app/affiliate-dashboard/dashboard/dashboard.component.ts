@@ -270,8 +270,8 @@ export class DashboardComponent {
       panelClass: ['custom-modalbox', 'campainlist_modalbox'],
       data: {
         opportunity_data:{
-          unique_name: val.opportunity_id,
-          oportunity_id: val.base_name_identifier
+          base_name_identifier: val.base_name_identifier,
+          opportunities_id: val.opportunity_id
         }
       }
     })

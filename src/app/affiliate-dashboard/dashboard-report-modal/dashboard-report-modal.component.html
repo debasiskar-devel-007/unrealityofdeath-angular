@@ -17,8 +17,8 @@
       </div>
     <mat-dialog-content>
         <app-report-list
+        [opportunity_details_input]="data.opportunity_data"
         [listType]="currentButtonVal"
-        [opportunity_details]="opportunity_data"
         ></app-report-list>
     </mat-dialog-content>
 </div>
