@@ -43,6 +43,14 @@ export class HeaderComponent {
     
 
   }
+  conversionReportClick() {
+    if (this.user_profile_details.roleval === 3) this.router.navigateByUrl(`affiliate-dashboard/report/conversion-report`);
+   
+  }
+clickReportClick() {
+    if (this.user_profile_details.roleval === 3) this.router.navigateByUrl(`affiliate-dashboard/report/click-report`);
+   
+  }
 
   changePass(){}
 

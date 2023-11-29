@@ -262,7 +262,6 @@ export class DashboardComponent {
 
     // << -------------- Coming Soon Modal ---------------- >>
 
-    // << -------------- click Conversion Modal ---------------- >>
 
   clickConversionModal(val:any) {
     console.log("click conversion data==========>",val);
@@ -714,3 +713,9 @@ export class allCampaignModal {
 }
 
 // << ------------------ All Campaign Modal Component ----------------- >>
+
+
+
+
+
+
