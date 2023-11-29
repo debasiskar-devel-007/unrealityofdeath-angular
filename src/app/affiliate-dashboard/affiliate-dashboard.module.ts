@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { CampaignmodalComponent } from './campaignmodal/campaignmodal.component';
 import { DashboardReportModalComponent } from './dashboard-report-modal/dashboard-report-modal.component';
 import { ReportListComponent } from './dashboard-report-modal/report-list/report-list.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 
@@ -21,7 +23,9 @@ import { ReportListComponent } from './dashboard-report-modal/report-list/report
     CommonModule,
     SharedModule,
     AffiliateDasboardRoutingModule,
-    FormsModule
+    FormsModule,
+    ShareButtonsModule,
+    ShareIconsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

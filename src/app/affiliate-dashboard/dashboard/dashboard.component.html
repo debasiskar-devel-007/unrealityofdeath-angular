@@ -145,17 +145,20 @@
                             [title]="banner.banner_name ? banner.banner_name : ''" [autoSetMeta]="false"
                             [image]="banner.thumbnail[0].imageUrl" 
                             [url]="share_url[bannerIndex]"
-                            [showText]="false"  id="sharebutton" [description]="">
+                            [showText]="false" id="sharebutton">
                           </share-buttons>
+                          <!-- <div class="elfsight-app-2bcb9a48-eae3-4831-b513-ed489ea5816d css_hide" data-elfsight-app-lazy 
+                          [title]="banner.banner_name ? banner.banner_name : ''" [autoSetMeta]="false" [image]="banner.thumbnail[0].imageUrl" [url]="share_url[bannerIndex]"
+                          [showText]="false" id="sharebutton"></div> -->
 
                         </div>
                         <div class="marketing-select" *ngIf="banner.campaign_data.length > 0">
                           
-                          <mat-form-field >
+                          <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
                             <mat-select [(value)]="banner.campaign_data[0].split('**##')[1]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_data[0].split('**##')[1]">
-                              <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let bannerCampaign_index = index">
-                                <mat-option (click)="bannerCampaignIndex(bannerCampaign_index,bannerIndex)" [value]="bannerCampaign.split('**##')[1]">{{bannerCampaign.split('**##')[0]}}</mat-option>
+                              <ng-container *ngFor="let bannerCampaign of banner.campaign_data">
+                                <mat-option (click)="bannerCampaignIndex(bannerCampaign.split('**##')[1],bannerIndex)" [value]="bannerCampaign.split('**##')[1]">{{bannerCampaign.split('**##')[0]}}</mat-option>
                               </ng-container>
                             </mat-select>
                           </mat-form-field>
