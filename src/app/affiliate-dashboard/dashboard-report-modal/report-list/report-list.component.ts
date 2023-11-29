@@ -1,0 +1,260 @@
+import { Component, ElementRef, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ApiservicesService } from 'src/app/services/apiservices.service';
+import { CampaignmodalComponent } from '../../campaignmodal/campaignmodal.component';
+import { DialogData } from 'listing-angular15';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
+
+@Component({
+  selector: 'app-report-list',
+  templateUrl: './report-list.component.html',
+  styleUrls: ['./report-list.component.css']
+})
+export class ReportListComponent implements OnChanges {
+  public currentListType: any = 'click'
+  public loader: boolean = false
+  constructor(
+    public apiService: ApiservicesService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public matSnackBar: MatSnackBar,
+    private cookieService: CookieService,
+    public dialog: MatDialog
+  ) {
+    console.log(data);
+    this.campainAllData = data;
+  }
+
+  @Input() listType: any
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (changes["listType"].currentValue) {
+
+      console.log("this.currentListType========>",this.currentListType);
+
+      if(this.currentListType != changes["listType"].currentValue){
+        this.currentListType = changes["listType"].currentValue
+        this.updateReportList()
+      }else{
+        this.fetchReports()
+      }
+    }
+
+  }
+
+  // ngOnInit(){
+  //   this.fetchReports()
+  // }
+
+  updateReportList() {
+
+    this.libdata.basecondition = {
+      "opportunities_id": 27,
+      "unique_name": "sanket-affiliate13"
+    }
+
+    
+      const requestBody:any = {
+        "condition": {
+          "limit": 5,
+          "skip": 0
+        },
+        "searchcondition": {
+          "opportunities_id": 27,
+          "unique_name": "sanket-affiliate13"
+        },
+        "sort": {
+          "type": "desc",
+          "field": "created_on"
+        },
+        "project": {},
+        "token": ""
+      }
+      if (this.currentListType && this.currentListType == 'conversion'){
+        this.libdata.basecondition.conversion = true
+      } 
+
+      this.updatetable = !this.updatetable
+  }
+
+
+  fetchReports() {
+    this.loader = true
+    this.libdata.basecondition = {
+      "opportunities_id": 27,
+      "unique_name": "sanket-affiliate13"
+    }
+    
+      const requestBody:any = {
+        "condition": {
+          "limit": 5,
+          "skip": 0
+        },
+        "searchcondition": {
+          "opportunities_id": 27,
+          "unique_name": "sanket-affiliate13"
+        },
+        "sort": {
+          "type": "desc",
+          "field": "created_on"
+        },
+        "project": {},
+        "token": ""
+      }
+      if (this.currentListType && this.currentListType == 'conversion'){
+        this.libdata.basecondition.conversion = true
+      }
+
+      this.apiService.getHttpDataPost('click-conversion/click-list',requestBody).subscribe({
+        next:(response)=>{
+          console.log('response===========>',response);
+          this.tabledatatalist = response.results.res
+          this.loader = false
+        },
+        error:(err)=>{
+          console.log("err======>",err);
+          this.matSnackBar.open(err.message? err.message : 'Something went wrong', 'ok', {duration:5000} )
+          this.loader = false
+        }
+      })
+      this.apiService.getHttpDataPost('click-conversion/click-list-count',requestBody).subscribe({
+        next:(response)=>{
+          console.log('response===========>',response);
+          this.date_search_source_count = response.count
+        },
+        error:(err)=>{
+          console.log("err======>",err);
+          
+        }
+      })
+  }
+
+  public tabledatatalist: any = [];
+  public campainAllData: any = [];
+
+
+  public formLoader: boolean = false;
+  public progressLoader: boolean = false;
+  public datasource: any;
+  tabledata_header_skip: any = ['_id'];
+  tabledata_detail_skip: any = ['_id', 'usertype'];
+
+  public taxonomy_updatetable: boolean = false;
+  public jwttokenformanagebanner = '';
+
+  updatetable: boolean = false;
+  tablename = 'Report';
+  editroute = '';
+  updateendpoint = 'marketing/campaign-update';
+  deleteendpoint = 'marketing/campaign-delete';
+  datacollection: any = 'click-conversion/click-list';
+  public listprogressBar: any = false;
+  public api_url_for_managebanner = environment.api_url;
+  public cookieData = this.cookieService.get('login_user_details')
+    ? JSON.parse(this.cookieService.get('login_user_details'))
+    : {};
+  searchendpoint = 'click-conversion/click-list';
+  date_search_endpoint: any = 'click-conversion/click-list';
+  date_search_source: any = 'campaign';
+  date_search_source_count: any = 0;
+  Tabledata_header_skip: any = ['_id'];
+  limitcond: any = {
+    limit: 5,
+    skip: 0,
+    pagecount: 1,
+  };
+  statusarray: any = [
+    { val: 1, name: 'Active' },
+    { val: 0, name: 'Inactive' },
+  ];
+  rolearray: any = [];
+  modify_header_array: any = {
+    campaign_name: 'Campaign Name',
+    landing_page_name: 'Landing Page',
+    created_on: 'Created on',
+  };
+
+  search_settings: any = {};
+  sortdata: any = {
+    type: 'desc',
+    field: 'created_on',
+    options: ['campaign_name', 'landing_page_name','created_on'],
+  };
+
+  public customlistenbutton: any = {
+    flag: true,
+    tooltipflag: true,
+    buttons: [
+      // {
+      //   label: 'Add Assay',
+      //   type: 'button',
+      //   name: 'add_taxonomies',
+      //   tooltip: 'Add Taxonomies',
+      //   classname: 'add_adminBTN',
+      // },
+    ],
+  };
+
+  libdata: any = {
+    basecondition: {},
+
+    detailview_override: [
+      // { key: "campaign_name", val: "Campaign Name" },
+      // { key: "landing_page_name", val: "Landing Page" },
+      // { key: "description", val: "Description" },
+      // { key: "lastname", val: "lastname" },
+    ],
+    hidedeletebutton: true,
+    hideviewbutton: true,
+    hideeditbutton: true,
+    hidestatustogglebutton: false,
+    hidemultipleselectbutton: true,
+    hideaction: false,
+    updateendpoint: 'marketing/campaign-status-change',
+    updateendpointmany: 'marketing/campaign-status-change',
+    deleteendpointmany: 'marketing/campaign-delete',
+
+    tableheaders: [
+      'campaign_name',
+      'landing_page_name',
+      'created_on'
+    ],
+
+    colpipes: [
+      { type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' },
+    ],
+
+    custombuttons: [
+      {
+        label: 'Preview',
+        type: 'listner',
+        id: 'preview_btn',
+        tooltip: 'Preview',
+        name: 'preview_btn',
+        classname: 'previewButton',
+        previewlist: [
+          'campaign_name',
+          'campaign_url',
+          'description',
+          'landing_page_name',
+          'unique_name',
+          'created_on',
+          'status',
+        ],
+      },
+    ],
+  };
+
+  onLiblistingButtonChange(val: any) { }
+
+  listenLiblistingChange(data: any = null) {
+    console.log('listenLiblistingChange-------->', data);
+
+  }
+
+
+
+
+}

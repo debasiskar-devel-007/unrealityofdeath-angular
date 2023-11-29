@@ -34,6 +34,8 @@ export class LoginComponent {
   ngOnInit() {
     console.log("NODE_ENV===============+>", environment.stage);
 
+    this.buildDatabaseConn()
+
     console.log("this is login form value", this.loginForm);
     history.pushState(null, '');
 
@@ -58,6 +60,15 @@ export class LoginComponent {
     if (data.key === "Enter") {
       this.login()
     }
+  }
+
+  buildDatabaseConn(){
+    this.apiService.getHttpData('user-api/fetch-states').subscribe({
+      next:(response)=>{
+        console.log("response========>",response);
+        
+      }
+    })
   }
 
 

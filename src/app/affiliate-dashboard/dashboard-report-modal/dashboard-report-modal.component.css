@@ -1,0 +1,33 @@
+.add-file-modal .inner_sub_wrp .count_button_wrp {
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(0, 204, 255, 1) 0%, rgba(13, 129, 213, 1) 100%);
+    color: #fff;
+    font-size: 13px;
+    line-height: 26px;
+    font-weight: 500;
+    display: block;
+    margin: 11px;
+    cursor: pointer;
+}
+
+.add-file-modal .inner_sub_wrp .colorcode {
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    background: #f67d24;
+    color: #fff;
+    font-size: 13px;
+    line-height: 26px;
+    font-weight: 500;
+    display: block;
+    margin: 11px;
+    cursor: pointer;
+}
+
+.add-file-modal .inner_sub_wrp {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 10px;
+}

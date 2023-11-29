@@ -22,6 +22,13 @@ const routes: Routes = [
         (m) => m.UsersModule
       )
   },
+  {
+    path: 'report',
+    loadChildren: () =>
+      import('./report/report.module').then(
+        (m) => m.ReportModule
+      )
+  },
 ];
 
 @NgModule({

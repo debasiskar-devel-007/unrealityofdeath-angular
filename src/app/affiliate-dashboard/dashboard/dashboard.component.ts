@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component';
 import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
+import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboard-report-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -260,6 +261,10 @@ export class DashboardComponent {
   }
 
     // << -------------- Coming Soon Modal ---------------- >>
+
+
+
+    
 
 }
 
@@ -694,3 +699,9 @@ export class allCampaignModal {
 }
 
 // << ------------------ All Campaign Modal Component ----------------- >>
+
+
+
+
+
+

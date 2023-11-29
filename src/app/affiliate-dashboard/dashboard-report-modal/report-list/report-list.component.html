@@ -1,0 +1,29 @@
+<mat-progress-bar id="sticky_loader" mode="indeterminate" *ngIf="loader" class="loader"></mat-progress-bar>
+<div class="list-style1">
+    <div #myElem class="taxonomies_liststyle" [ngClass]="listprogressBar == true ? 'hide' : 'show'">
+      <lib-listing class="adminlisttable_v1" *ngIf="tabledatatalist != null && tabledatatalist.length > 0"
+        [datasource]="tabledatatalist" 
+        [skip]="tabledata_header_skip" [modify_header_array]="modify_header_array"
+        [deleteendpoint]="deleteendpoint" 
+        [updateendpoint]="updateendpoint" [date_search_source]="date_search_source"
+        [date_search_endpoint]="date_search_endpoint" [sourcedata]="tablename" 
+        [editroute]="editroute"
+        [statusarr]="statusarray" 
+        [detail_skip_array]="tabledata_detail_skip" [jwttoken]="jwttokenformanagebanner"
+        [search_settings]="search_settings" [searchendpoint]="searchendpoint" 
+        [sortdata]="sortdata"
+        [datacollection]="datacollection" [date_search_source_count]="date_search_source_count" 
+        [libdata]="libdata"
+        [limitcond]="limitcond" 
+        [updatetable]="updatetable" [customlistenbutton]="customlistenbutton"
+        [updatetable]="taxonomy_updatetable" 
+        [apiurl]="api_url_for_managebanner"
+        (onLiblistingButtonChange)="onLiblistingButtonChange($event)"
+        (onLiblistingChange)="listenLiblistingChange($event)">
+      </lib-listing>
+      <div *ngIf="!loader && (!tabledatatalist || tabledatatalist.length == 0)" class="noFoundTextinner">
+        <span>Oops !</span>
+         <p> NO Record Found</p>
+      </div>
+    </div>
+  </div>

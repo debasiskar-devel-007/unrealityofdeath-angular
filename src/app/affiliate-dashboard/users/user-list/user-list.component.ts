@@ -94,7 +94,7 @@ export class UserListComponent {
 
   sortdata: any = {
     type: "desc",
-    field: "created_at",
+    field: "created_on",
     options: ["fullname", "email", "phone","status", "created_on"],
   };
 

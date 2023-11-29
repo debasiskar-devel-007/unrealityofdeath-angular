@@ -43,6 +43,14 @@ export class HeaderComponent {
     
 
   }
+  conversionReportClick() {
+    if (this.user_profile_details.roleval === 3) this.router.navigateByUrl(`affiliate-dashboard/report/conversion-report`);
+   
+  }
+clickReportClick() {
+    if (this.user_profile_details.roleval === 3) this.router.navigateByUrl(`affiliate-dashboard/report/click-report`);
+   
+  }
 
   changePass(){}
 
@@ -52,7 +60,7 @@ export class HeaderComponent {
 
     let cookieVal = this.getCookieByName('login_user_details')
     if(cookieVal){
-      if(cookieVal.includes('userinfo')){
+      if(cookieVal.includes('login_user_details')){
         document.cookie = `login_user_details=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
         document.cookie = `loggedin_user=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
       }
