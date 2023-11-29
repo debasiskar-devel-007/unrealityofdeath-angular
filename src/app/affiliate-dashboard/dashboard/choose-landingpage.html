@@ -9,15 +9,16 @@
 </button>
 <div class="dialoghead">
   <h1 class="mat-mdc-dialog-title">Choose A Landing Page</h1>
+  <mat-progress-bar id="sticky_loader" mode="indeterminate" *ngIf="loader" class="loader"></mat-progress-bar>
   <mat-dialog-content>
     <div class="subwrapper">
       <div class="landingchoose_imgwrp">
         <div
           class="landingchoose_img"
-          *ngFor="let landingimg of chooseLandingData" (click)="chosenLandingCampaign(landingimg.opportunity_id)"
+          *ngFor="let landingimg of chooseLandingData"
         >
         
-          <div class="thumbnailimg_wrp">
+          <div class="thumbnailimg_wrp" (click)="chosenLandingCampaign(landingimg.opportunity_id)">
             <img [src]="landingimg.landing_page_thumbnail[0]?.imageUrl" alt="" />
           </div>
           <p>{{landingimg.landing_page_name}}</p>

@@ -20,6 +20,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component';
 import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
 import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboard-report-modal.component';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-dashboard',
@@ -34,7 +35,8 @@ export class DashboardComponent {
     public dialog: MatDialog,
     public matSnackBar: MatSnackBar,
     public activatedRoute: ActivatedRoute,
-    private clipBoard: Clipboard
+    private clipBoard: Clipboard,
+    private elementRef: ElementRef, { nativeElement }: ElementRef<HTMLImageElement>
   ) { }
 
   public cookieData: any = {};
@@ -48,6 +50,9 @@ export class DashboardComponent {
   public selected_campaign_index: any = []
 
   public loader: boolean = false;
+
+  public banner_data: any = []
+  public share_url: any = []
 
 
   ngOnInit() {
@@ -99,6 +104,9 @@ export class DashboardComponent {
         console.log(error);
       },
     });
+
+
+    this.getBanner()
   }
 
   dashboardCampaignListApi() {
@@ -133,6 +141,47 @@ export class DashboardComponent {
 
   valuechange(camp_index: any) {
     console.log("func hit", camp_index);
+  }
+
+  getBanner() {
+    this.apiService.getHttpData('banner-management/fetch-all-banner').subscribe({
+      next: (response: any) => {
+        console.log("this is video data", response);
+        this.banner_data = response.results
+      },
+      error: (error: any) => {
+        console.log("this is video error", error);
+      }
+    })
+  }
+
+  urlIndex(data: any, index: any) {
+    console.log("data", data);
+
+    this.share_url[index] = data.share_url
+  }
+
+  capmingselect(event: MatSelectChange) {
+
+    const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
+
+    console.log("MatSelectChange", event.source);
+    console.log("MatSelectChange==", targetElement);
+
+    this.share_url = event.source
+
+    // if(event.source._id)
+    console.log("bannner select field ", event.source._elementRef.nativeElement);
+
+    let selectid = event.source._elementRef.nativeElement.id
+
+    if (event.source._elementRef.nativeElement.id == selectid) {
+
+      targetElement.setAttribute("disabled", "false");
+    }
+
+
+
   }
 
   // << -------- Campaign Modal ----------- >>
@@ -450,10 +499,13 @@ export class chooseLandingpageModal {
    ? JSON.parse(this.cookieService.get('login_user_details'))
    : {}
 
+   public loader: boolean = false;
+
   ngOnInit() {}
 
   chosenLandingCampaign(idVal: any) {
-    console.log(idVal);
+    console.log(idVal)
+    this.loader = true
 
     this.apiService.getHttpDataPost('marketing/campaign-list', {
       condition: {
@@ -482,8 +534,10 @@ export class chooseLandingpageModal {
             }
           })
 
+          this.loader = false
           
         } else {
+          this.loader = false
 
         }
 
@@ -491,6 +545,7 @@ export class chooseLandingpageModal {
       },
       error: (error: any) => {
         console.log(error);
+        this.loader = false
       }
     })
     
