@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 export class ReportListComponent implements OnChanges {
   public currentListType: any = 'click'
   public loader: boolean = false
+  public opportunity_details: any= null
   constructor(
     public apiService: ApiservicesService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -27,75 +28,52 @@ export class ReportListComponent implements OnChanges {
   }
 
   @Input() listType: any
+  @Input() opportunity_details_input: any
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (changes["listType"].currentValue) {
+    if (changes["listType"]?.currentValue || changes["opportunity_details_input"]?.currentValue) {
 
-      console.log("this.currentListType========>",this.currentListType);
+      // console.log("this.currentListType========>",this.currentListType);
 
-      if(this.currentListType != changes["listType"].currentValue){
+      if(changes["opportunity_details_input"]?.currentValue){
+        this.opportunity_details = changes["opportunity_details_input"].currentValue
+      }
+
+      if(this.currentListType != changes["listType"]?.currentValue ){
+        // console.log("this.opportunity_details from list type==========>",this.opportunity_details);
         this.currentListType = changes["listType"].currentValue
         this.updateReportList()
-      }else{
+      }else if(this.opportunity_details){
+        // console.log("this.opportunity_details from list else type==========>",this.opportunity_details);
         this.fetchReports()
       }
+
     }
 
   }
 
-  // ngOnInit(){
-  //   this.fetchReports()
-  // }
-
   updateReportList() {
-
-    this.libdata.basecondition = {
-      "opportunities_id": 27,
-      "unique_name": "sanket-affiliate13"
-    }
-
-    
-      const requestBody:any = {
-        "condition": {
-          "limit": 5,
-          "skip": 0
-        },
-        "searchcondition": {
-          "opportunities_id": 27,
-          "unique_name": "sanket-affiliate13"
-        },
-        "sort": {
-          "type": "desc",
-          "field": "created_on"
-        },
-        "project": {},
-        "token": ""
-      }
+    this.libdata.basecondition = this.opportunity_details
       if (this.currentListType && this.currentListType == 'conversion'){
         this.libdata.basecondition.conversion = true
-      } 
-
+      }else{
+        delete this.libdata.basecondition.conversion
+      }
       this.updatetable = !this.updatetable
   }
 
 
   fetchReports() {
     this.loader = true
-    this.libdata.basecondition = {
-      "opportunities_id": 27,
-      "unique_name": "sanket-affiliate13"
-    }
+    this.libdata.basecondition = this.opportunity_details
     
       const requestBody:any = {
         "condition": {
           "limit": 5,
           "skip": 0
         },
-        "searchcondition": {
-          "opportunities_id": 27,
-          "unique_name": "sanket-affiliate13"
-        },
+        "searchcondition": this.opportunity_details,
         "sort": {
           "type": "desc",
           "field": "created_on"
@@ -109,7 +87,7 @@ export class ReportListComponent implements OnChanges {
 
       this.apiService.getHttpDataPost('click-conversion/click-list',requestBody).subscribe({
         next:(response)=>{
-          console.log('response===========>',response);
+          // console.log('response===========>',response);
           this.tabledatatalist = response.results.res
           this.loader = false
         },
@@ -126,7 +104,6 @@ export class ReportListComponent implements OnChanges {
         },
         error:(err)=>{
           console.log("err======>",err);
-          
         }
       })
   }
@@ -209,7 +186,7 @@ export class ReportListComponent implements OnChanges {
     hidedeletebutton: true,
     hideviewbutton: true,
     hideeditbutton: true,
-    hidestatustogglebutton: false,
+    hidestatustogglebutton: true,
     hidemultipleselectbutton: true,
     hideaction: false,
     updateendpoint: 'marketing/campaign-status-change',

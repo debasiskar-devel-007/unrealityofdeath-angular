@@ -13,13 +13,13 @@ import { Clipboard } from '@angular/cdk/clipboard';
   styleUrls: ['./dashboard-report-modal.component.css']
 })
 export class DashboardReportModalComponent {
-  public opportunity_data:any = {}
+  public opportunity_data:any = null
   public colorcode: boolean = true
   public currentButtonVal: any = 'click'
   constructor(
     public apiService: ApiservicesService,
     public dialogRef: MatDialogRef<DashboardReportModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public matSnackBar: MatSnackBar,
     private cookieService: CookieService,
     private elementRef: ElementRef,
@@ -27,23 +27,24 @@ export class DashboardReportModalComponent {
     private clipBoard: Clipboard
   ) {
     console.log(data);
-    this.opportunity_data = data;
-    console.log("opportunity_data==========>",this.opportunity_data);
+    this.opportunity_data = data.opportunity_data;
+
     
   }
 
   public reportCounts:any = {click:0, convert:0}
 
   ngOnInit(){
+
+    // console.log("data.opportunity_data=======>",this.data.opportunity_data);
+    this.opportunity_data = this.data.opportunity_data;
+    
     const requestBody:any = {
       "condition": {
         "limit": 5,
         "skip": 0
       },
-      "searchcondition": {
-        "opportunities_id": 27,
-        "unique_name": "sanket-affiliate13"
-      },
+      "searchcondition": this.data.opportunity_data,
       "sort": {
         "type": "desc",
         "field": "created_on"
@@ -54,7 +55,7 @@ export class DashboardReportModalComponent {
 
     this.apiService.getHttpDataPost('click-conversion/click-list-count',requestBody).subscribe({
       next:(response)=>{
-        console.log('response===========>',response);
+        // console.log('response===========>',response);
         this.reportCounts.click = response.clickcount
         this.reportCounts.convert = response.conversioncount
       },
@@ -68,11 +69,11 @@ export class DashboardReportModalComponent {
   fetchReports(val:string){
     console.log("val==========>",val);
     
-    if(this.currentButtonVal != val){
+    if(this.currentButtonVal != val && this.data.opportunity_data){
       if(val == 'click'){
         this.currentButtonVal = val
         this.colorcode = true
-      }else if(val == 'conversion'){
+      }else if(val == 'conversion' && this.data.opportunity_data){
         this.currentButtonVal = val
         this.colorcode = false
       }
