@@ -40,14 +40,14 @@ export class ClickReportComponent {
   public modify_header_array: any =  {
     campaign_name: 'Campaign Name',
     landing_page_name: 'Landing Page Name',
-    conversion_count: 'Click Count',
+    click_count: 'Click Count',
   }
   tablename = 'report_convertion';
 
   sortdata: any = {
     type: 'desc',
     field: '_id',
-    options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
+    options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name','click_count'] : [],
   };
 
   constructor(
@@ -122,8 +122,8 @@ export class ClickReportComponent {
     hidemultipleselectbutton: true,
     tableheaders:
     this.login_user_details.roleval === 3
-        ? ['campaign_name', 'landing_page_name', 'conversion_count']
-        : ['name', 'email', 'conversionCount'],
+        ? ['campaign_name', 'landing_page_name', 'click_count']
+        : [],
     deleteendpointmany: '',
     updateendpoint: '',
     custombuttons:  this.login_user_details.roleval === 3 ? [
