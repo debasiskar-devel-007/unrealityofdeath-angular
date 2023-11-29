@@ -263,8 +263,22 @@ export class DashboardComponent {
     // << -------------- Coming Soon Modal ---------------- >>
 
 
-
+  clickConversionModal(val:any) {
+    console.log("click conversion data==========>",val);
     
+    const dialogRef = this.dialog.open(DashboardReportModalComponent, {
+      panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+      data: {
+        opportunity_data:{
+          base_name_identifier: val.base_name_identifier,
+          opportunities_id: val.opportunity_id
+        }
+      }
+    })
+
+  }
+
+    // << -------------- Coming Soon Modal ---------------- >>
 
 }
 
