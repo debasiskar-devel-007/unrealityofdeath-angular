@@ -19,7 +19,7 @@ export class DashboardReportModalComponent {
   constructor(
     public apiService: ApiservicesService,
     public dialogRef: MatDialogRef<DashboardReportModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public matSnackBar: MatSnackBar,
     private cookieService: CookieService,
     private elementRef: ElementRef,
@@ -27,7 +27,7 @@ export class DashboardReportModalComponent {
     private clipBoard: Clipboard
   ) {
     console.log(data);
-    this.opportunity_data = data;
+    this.opportunity_data = data.opportunity_data;
     console.log("opportunity_data==========>",this.opportunity_data);
     
   }
@@ -40,10 +40,7 @@ export class DashboardReportModalComponent {
         "limit": 5,
         "skip": 0
       },
-      "searchcondition": {
-        "opportunities_id": 27,
-        "unique_name": "sanket-affiliate13"
-      },
+      "searchcondition": this.opportunity_data,
       "sort": {
         "type": "desc",
         "field": "created_on"

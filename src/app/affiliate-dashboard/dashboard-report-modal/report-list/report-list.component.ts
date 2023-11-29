@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 export class ReportListComponent implements OnChanges {
   public currentListType: any = 'click'
   public loader: boolean = false
+  public opportunity_details: any= null
   constructor(
     public apiService: ApiservicesService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -27,15 +28,17 @@ export class ReportListComponent implements OnChanges {
   }
 
   @Input() listType: any
+  @Input() opportunity_details_input: any
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (changes["listType"].currentValue) {
+    if (changes["listType"]?.currentValue && changes["opportunity_details_input"]?.currentValue) {
 
       console.log("this.currentListType========>",this.currentListType);
 
-      if(this.currentListType != changes["listType"].currentValue){
+      if(this.currentListType != changes["listType"].currentValue && changes["opportunity_details_input"].currentValue){
         this.currentListType = changes["listType"].currentValue
+        this.opportunity_details = changes["opportunity_details_input"].currentValue
         this.updateReportList()
       }else{
         this.fetchReports()
@@ -61,10 +64,7 @@ export class ReportListComponent implements OnChanges {
           "limit": 5,
           "skip": 0
         },
-        "searchcondition": {
-          "opportunities_id": 27,
-          "unique_name": "sanket-affiliate13"
-        },
+        "searchcondition": this.opportunity_details,
         "sort": {
           "type": "desc",
           "field": "created_on"
@@ -82,20 +82,14 @@ export class ReportListComponent implements OnChanges {
 
   fetchReports() {
     this.loader = true
-    this.libdata.basecondition = {
-      "opportunities_id": 27,
-      "unique_name": "sanket-affiliate13"
-    }
+    this.libdata.basecondition = this.opportunity_details
     
       const requestBody:any = {
         "condition": {
           "limit": 5,
           "skip": 0
         },
-        "searchcondition": {
-          "opportunities_id": 27,
-          "unique_name": "sanket-affiliate13"
-        },
+        "searchcondition": this.opportunity_details,
         "sort": {
           "type": "desc",
           "field": "created_on"
@@ -209,7 +203,7 @@ export class ReportListComponent implements OnChanges {
     hidedeletebutton: true,
     hideviewbutton: true,
     hideeditbutton: true,
-    hidestatustogglebutton: false,
+    hidestatustogglebutton: true,
     hidemultipleselectbutton: true,
     hideaction: false,
     updateendpoint: 'marketing/campaign-status-change',

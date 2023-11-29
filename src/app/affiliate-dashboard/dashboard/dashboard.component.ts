@@ -264,11 +264,17 @@ export class DashboardComponent {
 
     // << -------------- click Conversion Modal ---------------- >>
 
-  clickConversionModal() {
-
+  clickConversionModal(val:any) {
+    console.log("click conversion data==========>",val);
+    
     const dialogRef = this.dialog.open(DashboardReportModalComponent, {
       panelClass: ['custom-modalbox', 'campainlist_modalbox'],
-      data: ''
+      data: {
+        opportunity_data:{
+          unique_name: val.opportunity_id,
+          oportunity_id: val.base_name_identifier
+        }
+      }
     })
 
   }
