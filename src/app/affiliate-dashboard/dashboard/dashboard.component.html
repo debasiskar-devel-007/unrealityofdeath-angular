@@ -154,7 +154,7 @@
                         </div>
                         <div class="marketing-select" *ngIf="banner.campaign_data.length > 0">
                           
-                          <mat-form-field >
+                          <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
                             <mat-select [(value)]="banner.campaign_data[0].split('**##')[1]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_data[0].split('**##')[1]">
                               <ng-container *ngFor="let bannerCampaign of banner.campaign_data">
