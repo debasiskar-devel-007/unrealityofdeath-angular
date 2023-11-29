@@ -13,7 +13,7 @@ const routes: Routes = [
     data: {
       requestcondition: {
         "condition": {
-          "limit": 5,
+          "limit": 10,
           "skip": 0
       },
       "searchcondition": {
@@ -38,7 +38,7 @@ const routes: Routes = [
     data: {
       requestcondition: {
         "condition": {
-          "limit": 5,
+          "limit": 10,
           "skip": 0
       },
       "searchcondition": {

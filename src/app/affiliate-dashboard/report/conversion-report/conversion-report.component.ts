@@ -26,7 +26,7 @@ export class ConversionReportComponent {
   date_search_source_count: any = 10;
   date_search_endpoint: any = 'intake/assaylist';
   date_search_source: any = 'users';
-  datacollection: any = this.login_user_details.roleval === 3 ? 'reports/conversion-list-rep' : 'reports/conversion-list-admin';
+  datacollection: any = this.login_user_details.roleval === 3 ? 'click-conversion/click-list' : '';
     
   statusarray: any = [
     { val: 1, name: 'Active' },
@@ -41,7 +41,7 @@ export class ConversionReportComponent {
   public modify_header_array: any =  {
     campaign_name: 'Campaign Name',
     landing_page_name: 'Landing Page Name',
-    // conversion_count: ' Conversion Count',
+    conversion_count: ' Conversion Count',
   }
   tablename = 'report_convertion';
 
@@ -105,10 +105,10 @@ export class ConversionReportComponent {
       this.login_user_details.roleval === 3
         ? {
           user_id: this.login_user_details.uidval,
-          // created_on: { $gte: this.startval, $lte: this.endval },
+          created_on: { $gte: this.startval, $lte: this.endval },
         }
         : {
-          // created_at: { $gte: this.startval, $lte: this.endval },
+          created_on: { $gte: this.startval, $lte: this.endval },
         },
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
@@ -191,7 +191,7 @@ export class ConversionReportComponent {
       this.apiservice
         .getHttpDataPost('click-conversion/click-list-count', {
           "condition": {
-            "limit": 5,
+            "limit": 10,
             "skip": 0
         },
         "searchcondition": {
@@ -217,7 +217,63 @@ export class ConversionReportComponent {
 
   buttonClick(val: any, butonval: any) {
     this.thisbutonclick = butonval
+    if (butonval === "all") {
+      // this.formLoader = true
+      console.log("startOf current moment's month:", this.startval, this.endval)
+      this.startval = 0
+      this.endval = 0
 
+      if (this.login_user_details.roleval === 3) {
+
+        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        console.log("aaaaa", this.libdata.basecondition);
+
+      }
+    }
+    if (butonval === "month") {
+      // this.formLoader = true
+
+      this.startval = moment().startOf('month').valueOf()
+      this.endval = moment().endOf('month').valueOf()
+      console.log("startOf current moment's month:", this.startval, this.endval)
+
+
+      if (this.login_user_details.roleval === 3) {
+
+        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        console.log("mmmm", this.libdata.basecondition);
+
+      }
+    }
+
+    if (butonval === "week") {
+      // this.formLoader = true
+
+      this.startval = moment().startOf('week').valueOf()
+      this.endval = moment().endOf('week').valueOf()
+      console.log("startOf current moment's week:", this.startval, this.endval)
+
+      if (this.login_user_details.roleval === 3) {
+
+        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        console.log("aaaaa", this.libdata.basecondition);
+
+      }
+    }
+    if (butonval === "today") {
+      // this.formLoader = true
+
+      this.startval = moment().startOf('day').valueOf()
+      this.endval = moment().endOf('day').valueOf()
+      console.log("startOf current moment's week:", this.startval, this.endval)
+
+      if (this.login_user_details.roleval === 3) {
+
+        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        console.log("aaaaa", this.libdata.basecondition);
+
+      }
+    }
 
 
 
@@ -227,7 +283,7 @@ export class ConversionReportComponent {
 
       let dataobj = {
         "condition": {
-          "limit": 5,
+          "limit": 10,
           "skip": 0
       },
         "searchcondition": {
