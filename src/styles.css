@@ -4206,6 +4206,8 @@ tbody tr td .actionbuttonwrapper button {
     justify-content: center;
     align-items: center;
     /* padding-bottom:53.25% */
+    height: 250px;
+    overflow: hidden;
 }
 .mainwrapper.dashbordwrapper .landing-page-right .action-block a:nth-of-type(1) i::before{
     content:"\f24d";
@@ -4231,8 +4233,11 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 .marketing-bannerwrapper img{
- width: 100%;
- height: 100%;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .banner-main-wrapper{
@@ -4270,6 +4275,27 @@ tbody tr td .actionbuttonwrapper button {
 .subtitle2 p {
     font-size: 16px;
     line-height: 22px;
+}
+
+.new_Wraper_share .marketing-sowrapper .sb-facebook {
+    background-color: #4267B2;
+}
+
+.new_Wraper_share .marketing-sowrapper .sb-twitter {
+    background-color: #00acee;
+}
+
+.new_Wraper_share .marketing-sowrapper .sb-linkedin {
+    background-color: #006fa6;
+}
+.new_Wraper_share .marketing-sowrapper share-buttons share-button button {
+    min-width: unset;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.new_Wraper_share .marketing-sowrapper .css_hide .eapps-social-share-buttons-inner a {
+    display: none !important;
 }
 
 .load_more_wraper{

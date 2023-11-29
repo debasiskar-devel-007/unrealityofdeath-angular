@@ -112,7 +112,7 @@
 
                   <!-- *********************************************** Banner Section Start*************************************************************** -->
 
-      <div class="wrapper">
+      <!-- <div class="wrapper">
         <div class="title-wrapper1">
           <h1>MARKETING BANNERS</h1>
         </div>
@@ -124,8 +124,8 @@
             banner). Posting for Linkedin does not allow ads related to Pharmacy.</p>
         </div>
 
-        <!-- (login_user_details.userinfo.has_betoparedes_access == 0 && banner.banner_name != 'Decision Doc AI') || 
-           (login_user_details.userinfo.has_betoparedes_access == 0 && banner.banner_name != 'Practice2Lab - Maximize Client Practice Revenue') -->
+        (login_user_details.userinfo.has_betoparedes_access == 0 && banner.banner_name != 'Decision Doc AI') || 
+           (login_user_details.userinfo.has_betoparedes_access == 0 && banner.banner_name != 'Practice2Lab - Maximize Client Practice Revenue')
 
         <div class="banner-main-wrapper">
 
@@ -145,8 +145,11 @@
                             [title]="banner.banner_name ? banner.banner_name : ''" [autoSetMeta]="false"
                             [image]="banner.thumbnail[0].imageUrl" 
                             [url]="share_url[bannerIndex]"
-                            [showText]="false"  id="sharebutton" [description]="">
+                            [showText]="false"  id="sharebutton">
                           </share-buttons>
+                          <div class="elfsight-app-2bcb9a48-eae3-4831-b513-ed489ea5816d css_hide" data-elfsight-app-lazy 
+                          [title]="banner.banner_name ? banner.banner_name : ''" [autoSetMeta]="false" [image]="banner.thumbnail[0].imageUrl" [url]="share_url[bannerIndex]"
+                          [showText]="false" id="sharebutton"></div>
 
                         </div>
                         <div class="marketing-select" *ngIf="banner.campaign_data.length > 0">
@@ -166,7 +169,7 @@
                   </div>
               </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- *********************************************** Banner Section End*************************************************************** -->
         </div>
