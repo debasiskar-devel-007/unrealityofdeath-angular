@@ -22,9 +22,9 @@
                 <button mat-raised-button color="primary" (click)="buttonClick($event,'all')"  style="font-size: 20px; margin: 10px"><i
                         class="fa-solid fa-rotate-right"></i></button>
             </div>
-            <!-- <ng-container *ngIf="formLoader">
+            <ng-container *ngIf="formLoader">
                 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-            </ng-container> -->
+            </ng-container>
             <div class="wrapper">
                 <div class="list-style1">
                     <div class="taxonomies_liststyle" >
@@ -41,10 +41,10 @@
                             (onLiblistingButtonChange)="onLiblistingButtonChange($event)">
                             >
                         </lib-listing>
-                        <!-- <div *ngIf="!(tabledatatalist.length > 0)" class="noFoundTextinner">
+                        <div *ngIf="!(tabledatatalist.length > 0)" class="noFoundTextinner">
                             <span>Oops !</span>
                              <p> NO Record Found</p>
-                          </div> -->
+                          </div>
                     </div>
                 </div>
             </div>
