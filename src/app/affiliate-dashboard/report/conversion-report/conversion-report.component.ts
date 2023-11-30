@@ -17,12 +17,12 @@ export class ConversionReportComponent {
   public thisbutonclick: string = 'month';
   public startval: any = moment().startOf('month').valueOf();
   public endval: any = moment().endOf('month').valueOf();
-
+  public listprogressBar: any = false;
   public login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')): {};
   public jwttokenformanagebanner = '';
   public api_url_for_managebanner = environment.api_url;
   tabledata_detail_skip: any = ['_id'];
-
+  public formLoader: boolean = false
   public taxonomy_updatetable: boolean = false;
   date_search_source_count: any = 10;
   date_search_endpoint: any = 'intake/assaylist';
@@ -76,7 +76,7 @@ export class ConversionReportComponent {
             startdatelabel: 'Created On Start Date',
             enddatelabel: 'Created On End Date',
             submit: 'Search',
-            field: 'created_at',
+            field: 'created_on',
             // value: {$gte: createdon_datetime, $lte: 1622962799000}
           },
         ],
@@ -232,20 +232,20 @@ export class ConversionReportComponent {
   buttonClick(val: any, butonval: any) {
     this.thisbutonclick = butonval
     if (butonval === "all") {
-      // this.formLoader = true
+      this.formLoader = true
       console.log("startOf current moment's month:", this.startval, this.endval)
       this.startval = 0
       this.endval = 0
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
     }
     if (butonval === "month") {
-      // this.formLoader = true
+      this.formLoader = true
 
       this.startval = moment().startOf('month').valueOf()
       this.endval = moment().endOf('month').valueOf()
@@ -254,14 +254,14 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("mmmm", this.libdata.basecondition);
 
       }
     }
 
     if (butonval === "week") {
-      // this.formLoader = true
+      this.formLoader = true
 
       this.startval = moment().startOf('week').valueOf()
       this.endval = moment().endOf('week').valueOf()
@@ -269,13 +269,13 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
     }
     if (butonval === "today") {
-      // this.formLoader = true
+      this.formLoader = true
 
       this.startval = moment().startOf('day').valueOf()
       this.endval = moment().endOf('day').valueOf()
@@ -283,7 +283,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -314,8 +314,8 @@ export class ConversionReportComponent {
       this.apiservice.getHttpDataPost('click-conversion/click-list', dataobj).subscribe((response) => {
         console.log("response login info", response);
         if (response.status === "success") {
-          // this.formLoader = false
-          // this.listprogressBar = true
+          this.formLoader = false
+          this.listprogressBar = true
           this.tabledatatalist = []
           setTimeout(() => {
             this.tabledatatalist = response.results.res
