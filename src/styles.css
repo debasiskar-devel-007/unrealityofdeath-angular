@@ -4198,16 +4198,9 @@ tbody tr td .actionbuttonwrapper button {
 .marketing-imgwrapper{padding:10px;background:#e4e7dd;border:1px solid #95998f;margin-bottom:8px}
 .marketing-videowrapper{padding:10px;background:#e4e7dd;border:10px solid #e4e7dd;margin-bottom:8px;position:relative;padding-bottom:53.25%}
 .marketing-bannerwrapper{
-    /* padding:10px; */
-    background:#e4e7dd;
-    border:10px solid #e4e7dd;
-    margin-bottom:8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding-bottom:53.25% */
-    height: 250px;
-    overflow: hidden;
+    background: #e4e7dd;
+    border: 10px solid #e4e7dd;
+    margin-bottom: 8px;
 }
 .mainwrapper.dashbordwrapper .landing-page-right .action-block a:nth-of-type(1) i::before{
     content:"\f24d";
@@ -4223,11 +4216,10 @@ tbody tr td .actionbuttonwrapper button {
 .twitter{background-color:#55acee;box-shadow:inset 5px 5px 10px #4891c9,inset -5px -5px 10px #4891c9,-4px -4px 9px #c2cab7,4px 4px 7px #757c6b}
 .linkedin{background-color:#0077b5;box-shadow:inset 5px 5px 10px #026599,inset -5px -5px 10px #026599,-4px -4px 9px #c2cab7,4px 4px 7px #757c6b}
 .banner-marketing-mainwrapper{
-  border-radius: 10px;
-   /* width: 100%; */
-   padding: 10px;
-   background-color: #aeb6a2;
-   margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #aeb6a2;
+    margin: 10px 1%;
   
 
 }
@@ -4237,13 +4229,15 @@ tbody tr td .actionbuttonwrapper button {
     width: 100%;
     max-width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center top;
+    cursor: pointer;
 }
 
 .banner-main-wrapper{
     display: flex !important;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     
     padding: 20px 20px 0 20px;
 
@@ -4253,7 +4247,7 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 .banner-main-wrapper .banner-marketing-mainwrapper{
-    width: 47.3%;
+    width: calc(48% - 20px);
 }
 .marketing-select .ng-star-inserted{
     width: 100%;
@@ -4290,9 +4284,10 @@ tbody tr td .actionbuttonwrapper button {
 }
 .new_Wraper_share .marketing-sowrapper share-buttons share-button button {
     min-width: unset;
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
+    margin: 3px;
 }
 .new_Wraper_share .marketing-sowrapper .css_hide .eapps-social-share-buttons-inner a {
     display: none !important;
@@ -4496,10 +4491,10 @@ tbody tr td .actionbuttonwrapper button {
 /* Deep Sarkar */
 
 .new_Wraper_share .marketing-select{
-    width: calc(90% - 150px);
+    width: calc(100% - 135px);
 }
 .new_Wraper_share .marketing-sowrapper{
-    width: auto;
+    width: 125px;
 }
 
 /* << ------------ CSS by Sanket ------------- >> */
@@ -4589,9 +4584,21 @@ tbody tr td .actionbuttonwrapper button {
 @media only screen and (max-width:767px){
 .select-block{width:calc(100%);margin:0 0 10px 0}
 .action-block{width:100%;justify-content:center}
-.marketing-mediawrapper{flex-wrap:wrap;flex-direction:column-reverse}
+.banner-main-wrapper .banner-marketing-mainwrapper{    width: calc(98% - 20px);
+}
+.banner-main-wrapper {
+    padding: 0;
+}
 .marketing-select{width:calc(100%);margin-left:0;margin-bottom:10px}
 .marketing-sowrapper{width:100%;justify-content:center}
+}
+@media only screen and (max-width:520px){
+    .marketing-mediawrapper.new_Wraper_share {
+        flex-direction: column-reverse;
+    }
+    .new_Wraper_share .marketing-sowrapper, .new_Wraper_share .marketing-select {
+        width: auto;
+    }
 }
 .wrapper .heading_sub_wrp{
     border-left: 5px solid #aeb6a2;
