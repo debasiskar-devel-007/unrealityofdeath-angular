@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
+import { PreviewComponent } from 'src/app/Common-components/preview/preview.component';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -211,7 +212,21 @@ export class ClickReportComponent {
         });
     }
   }
-  listenLiblistingChange(data: any) {}
+  listenLiblistingChange(data: any) {
+    console.log("aaaaaa=====>",data);
+    
+    if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
+      this.dialog.open(PreviewComponent, {
+        data: {
+          key: data.custombuttonclick.btninfo.previewlist
+          , value: data.custombuttonclick.data
+        }
+
+      });
+    }
+
+
+  }
   onLiblistingButtonChange(val: any) { }
 
   buttonClick(val: any, butonval: any) {
