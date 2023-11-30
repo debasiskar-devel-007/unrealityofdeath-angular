@@ -46,7 +46,7 @@ export class ClickReportComponent {
 
   sortdata: any = {
     type: 'desc',
-    field: '_id',
+    field: 'created_on',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
   };
 
