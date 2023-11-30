@@ -16,15 +16,15 @@ export class ClickReportComponent {
   public thisbutonclick: string = 'month';
   public startval: any = moment().startOf('month').valueOf();
   public endval: any = moment().endOf('month').valueOf();
-
+  public listprogressBar: any = false;
   public login_user_details = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')): {};
   public jwttokenformanagebanner = '';
   public api_url_for_managebanner = environment.api_url;
   tabledata_detail_skip: any = ['_id'];
-
+  public formLoader: boolean = false
   public taxonomy_updatetable: boolean = false;
   date_search_source_count: any = 10;
-  date_search_endpoint: any = 'intake/assaylist';
+  date_search_endpoint: any = 'click-conversion/click-list';
   date_search_source: any = 'users';
   datacollection: any = this.login_user_details.roleval === 3 ? 'click-conversion/click-list' : '';
     
@@ -47,7 +47,7 @@ export class ClickReportComponent {
 
   sortdata: any = {
     type: 'desc',
-    field: '_id',
+    field: 'affiliate_id',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name','click_count'] : [],
   };
 
@@ -232,7 +232,7 @@ export class ClickReportComponent {
   buttonClick(val: any, butonval: any) {
     this.thisbutonclick = butonval
     if (butonval === "all") {
-      // this.formLoader = true
+      this.formLoader = true
       console.log("startOf current moment's month:", this.startval, this.endval)
       this.startval = 0
       this.endval = 0
@@ -245,7 +245,7 @@ export class ClickReportComponent {
       }
     }
     if (butonval === "month") {
-      // this.formLoader = true
+      this.formLoader = true
 
       this.startval = moment().startOf('month').valueOf()
       this.endval = moment().endOf('month').valueOf()
@@ -261,7 +261,7 @@ export class ClickReportComponent {
     }
 
     if (butonval === "week") {
-      // this.formLoader = true
+      this.formLoader = true
 
       this.startval = moment().startOf('week').valueOf()
       this.endval = moment().endOf('week').valueOf()
@@ -275,7 +275,7 @@ export class ClickReportComponent {
       }
     }
     if (butonval === "today") {
-      // this.formLoader = true
+      this.formLoader = true
 
       this.startval = moment().startOf('day').valueOf()
       this.endval = moment().endOf('day').valueOf()
@@ -314,8 +314,8 @@ export class ClickReportComponent {
       this.apiservice.getHttpDataPost('click-conversion/click-list', dataobj).subscribe((response) => {
         console.log("response login info", response);
         if (response.status === "success") {
-          // this.formLoader = false
-          // this.listprogressBar = true
+          this.formLoader = false
+          this.listprogressBar = true
           this.tabledatatalist = []
           setTimeout(() => {
             this.tabledatatalist = response.results.res
