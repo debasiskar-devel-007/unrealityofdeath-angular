@@ -75,7 +75,7 @@ export class ClickReportComponent {
             startdatelabel: 'Created On Start Date',
             enddatelabel: 'Created On End Date',
             submit: 'Search',
-            field: 'created_at',
+            field: 'created_on',
             // value: {$gte: createdon_datetime, $lte: 1622962799000}
           },
         ],
@@ -240,7 +240,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -255,7 +255,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("mmmm", this.libdata.basecondition);
 
       }
@@ -270,7 +270,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -284,7 +284,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_at: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
