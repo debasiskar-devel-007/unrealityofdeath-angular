@@ -152,11 +152,11 @@
                           [showText]="false" id="sharebutton"></div> -->
 
                         </div>
-                        <div class="marketing-select" *ngIf="banner.campaign_data.length > 0">
+                        <div class="marketing-select">
                           
                           <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
-                            <mat-select [(value)]="banner.campaign_data[0].split('**##')[1]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_data[0].split('**##')[1]">
+                            <mat-select [(value)]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]">
                               <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let optionIndex = index">
                                 <mat-option (click)="bannerCampaignIndex(optionIndex,bannerIndex)" [value]="optionIndex">{{bannerCampaign}}</mat-option>
                               </ng-container>
@@ -174,7 +174,7 @@
       <!-- *********************************************** Banner Section End*************************************************************** -->
 
 
-      <!-- <div class="wrapper emailtemp_wrapper">
+      <div class="wrapper emailtemp_wrapper">
         <div class="title-wrapper1">
           <h1>EMAIL TEMPLATES</h1>
         </div>
@@ -204,9 +204,9 @@
                 
                 <mat-form-field>
                   <mat-label>Select Campaign</mat-label>
-                  <mat-select [value]="allCampaigns.campaign_url" [(ngModel)]="allCampaigns.campaign_url">
-                    <ng-container *ngFor="let allCampaigns of allCampaigns">
-                      <mat-option [value]="allCampaigns.campaign_url">{{allCampaigns.campaign_name}}</mat-option>
+                  <mat-select>
+                    <ng-container *ngFor="let campaigns of allCampaigns">
+                      <mat-option [value]="campaigns.campaign_url">{{campaigns.campaign_name}}</mat-option>
                     </ng-container>
                   </mat-select>
                 </mat-form-field>
@@ -218,7 +218,7 @@
           </div>
 
         </div>
-      </div> -->
+      </div>
         </div>
     </div>
 </div>

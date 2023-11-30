@@ -109,7 +109,7 @@ export class DashboardComponent {
 
 
     this.getBanner()
-    // this.fetchAllCampaign()
+    this.fetchAllCampaign()
   }
 
   dashboardCampaignListApi() {
