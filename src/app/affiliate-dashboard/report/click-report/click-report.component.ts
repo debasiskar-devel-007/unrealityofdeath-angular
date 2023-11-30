@@ -47,8 +47,13 @@ export class ClickReportComponent {
 
   sortdata: any = {
     type: 'desc',
+<<<<<<< HEAD
     field: 'affiliate_id',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name','click_count'] : [],
+=======
+    field: 'created_on',
+    options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
+>>>>>>> 13e5f96418c17eb4bf5d25c4aec227e20b1a1848
   };
 
   constructor(
