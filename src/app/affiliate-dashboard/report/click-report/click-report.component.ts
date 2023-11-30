@@ -217,6 +217,7 @@ export class ClickReportComponent {
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
+        panelClass: 'custom-modalbox',
         data: {
           key: data.custombuttonclick.btninfo.previewlist
           , value: data.custombuttonclick.data
