@@ -43,6 +43,8 @@ export class DashboardComponent {
 
   public campaignData: any = [];
 
+  public allCampaigns: any = [];
+
   public eventValue: any = '';
 
   public copiedVal: any = '';
@@ -107,6 +109,7 @@ export class DashboardComponent {
 
 
     this.getBanner()
+    // this.fetchAllCampaign()
   }
 
   dashboardCampaignListApi() {
@@ -154,6 +157,30 @@ export class DashboardComponent {
       }
     })
   }
+
+
+  // << -------------- All Campaign Fetch Function ---------------- >>
+
+  fetchAllCampaign() {
+
+    this.apiService.getHttpDataPost('marketing/all-campaign-data', {user_id: this.cookieData.uidval}).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        if(response.status == 'success' && response.response.length > 0) {
+          this.allCampaigns = response.response
+        }
+        
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+  }
+
+
+
+  // << -------------- All Campaign Fetch Function ---------------- >>
+
 
   bannerCampaignIndex(data: any, index: any) {
     console.log("data", data);
