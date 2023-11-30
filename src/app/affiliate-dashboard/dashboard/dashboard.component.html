@@ -144,7 +144,7 @@
                           <share-buttons theme="circles-dark" [include]="['facebook','twitter','linkedin']"
                             [title]="banner.banner_name ? banner.banner_name : ''" [autoSetMeta]="false"
                             [image]="banner.thumbnail[0].imageUrl" 
-                            [url]="share_url[bannerIndex]"
+                            [url]="banner.campaign_url_data[share_url[bannerIndex]? share_url[bannerIndex] : 0]"
                             [showText]="false" id="sharebutton">
                           </share-buttons>
                           <!-- <div class="elfsight-app-2bcb9a48-eae3-4831-b513-ed489ea5816d css_hide" data-elfsight-app-lazy 
@@ -157,8 +157,8 @@
                           <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
                             <mat-select [(value)]="banner.campaign_data[0].split('**##')[1]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_data[0].split('**##')[1]">
-                              <ng-container *ngFor="let bannerCampaign of banner.campaign_data">
-                                <mat-option (click)="bannerCampaignIndex(bannerCampaign.split('**##')[1],bannerIndex)" [value]="bannerCampaign.split('**##')[1]">{{bannerCampaign.split('**##')[0]}}</mat-option>
+                              <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let optionIndex = index">
+                                <mat-option (click)="bannerCampaignIndex(optionIndex,bannerIndex)" [value]="optionIndex">{{bannerCampaign}}</mat-option>
                               </ng-container>
                             </mat-select>
                           </mat-form-field>
@@ -174,12 +174,49 @@
       <!-- *********************************************** Banner Section End*************************************************************** -->
 
 
-      <div class="wrapper">
+      <div class="wrapper emailtemp_wrapper">
         <div class="title-wrapper1">
           <h1>EMAIL TEMPLATES</h1>
         </div>
         <div class="subtitle2">
-          <p><b>Important:</b> Emails <b>must</b> only be sent to friends, family, and associates you know personally. Absolutely <b>NO</b> third-party lists can be used. Access Partners must approve all cold outreach email campaigns.</p>
+          <p><strong>Important:</strong> Emails <strong>must</strong> only be sent to friends, family, and associates you know personally. Absolutely <strong>NO</strong> third-party lists can be used. Access Partners must approve all cold outreach email campaigns.</p>
+        </div>
+        <div class="banner-main-wrapper">
+          <div class="banner-marketing-mainwrapper">
+            <div class="emailtemp_innerwrp">
+            <h1>
+              ACCESS Discount HealthCare
+            </h1>
+            <h2>
+              PAY NOTHING FOR THE MOST PRESCRIBED GENERIC PRESCRIPTIONS!
+            </h2>
+            <a href="http://dev.pharmacysavings.aspireleadfire.com/souradip37">http://dev.pharmacysavings.aspireleadfire.com/souradip37</a>
+            <p>Access your pharmacy prescriptions at no cost every month for one low subscription fee! Your prescriptions are shipped direct to your door within 2-4 days and, if needed, can be picked up at 64,000 pharmacies nationwide.
+            </p>
+            <a href="http://dev.pharmacysavings.aspireleadfire.com/souradip37">http://dev.pharmacysavings.aspireleadfire.com/souradip37</a>
+            <div class="marketing-mediawrapper new_Wraper_share">
+              <div class="marketing-sowrapper">
+
+                <button>Copy</button>
+
+              </div>
+              <div class="marketing-select">
+                
+                <mat-form-field>
+                  <mat-label>Select Campaign</mat-label>
+                  <mat-select>
+                    <ng-container>
+                      <mat-option>Default Campaign</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+            </div>
+          </div>
+
+          </div>
+
         </div>
       </div>
         </div>
