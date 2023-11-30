@@ -109,6 +109,13 @@ export class LoginComponent {
 
                   this.router.navigateByUrl(`/affiliate-dashboard`);
                 }
+              } else {
+
+                this.matSnackBar.open(response.message, "Ok", {
+                  duration: 3000
+                })
+                this.loader = false;
+
               }
             },
 
