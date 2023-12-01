@@ -73,11 +73,6 @@ export class DashboardComponent {
           setDefaultObj: {},
         },
       });
-
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(result);
-        this.dashboardCampaignListApi()
-      })
     } else {
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
