@@ -114,7 +114,7 @@ export class ConversionReportComponent {
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
       { key: 'name', val: 'Name' },
-      { key: 'conversion_count', val: 'Click Count' },
+      { key: 'conversion_count', val: 'Conversion Count' },
     ],
     hideaction: false,
     hideeditbutton: true, // (hide edit button ) all these button options are optional not mandatory
