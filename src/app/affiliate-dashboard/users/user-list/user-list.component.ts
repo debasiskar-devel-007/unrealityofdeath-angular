@@ -60,7 +60,7 @@ export class UserListComponent {
     email: 'Email',
     phone: 'Phone No',
     status: 'Status',
-    created_on: 'Created On'
+    created_on: 'Joined On'
   }
 
 
@@ -84,8 +84,8 @@ export class UserListComponent {
 
     datesearch: [
       {
-        startdatelabel: 'Search By Created On Start Date',
-        enddatelabel: 'Search By Created On End Date',
+        startdatelabel: 'Search By Joined On Start Date',
+        enddatelabel: 'Search By Joined On End Date',
         submit: 'Search',
         field: 'created_on',
       },
@@ -106,7 +106,7 @@ export class UserListComponent {
       { key: "email", val: "Email" },
       { key: "phone", val: "Phone No" },
       { key: "status", val: "Status" },
-      { key: "created_on", val: "Created On" },
+      { key: "created_on", val: "Joined On" },
     ],
     updateendpoint: "user/user-status-change",
     hideeditbutton: false,
@@ -193,7 +193,8 @@ export class UserListComponent {
         panelClass: 'custom-modalbox',
         data: {
           key: data.custombuttonclick.btninfo.previewlist, 
-          value: data.custombuttonclick.data
+          value: data.custombuttonclick.data,
+          flagParam: 'affiliate-dashboard/user'
         }
 
       });
