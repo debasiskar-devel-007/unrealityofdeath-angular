@@ -48,7 +48,7 @@
                             <div class="landing-right-footer">
                                 <div class="copy-url-block">
                                     <span 
-                                    matTooltip="Copy Url" 
+                                    matTooltip="Copy URL" 
                                     (click)="copyToClipboard(selected_campaign_index[mainIndex]!= null?
                                     data.campaign_url[selected_campaign_index[mainIndex]] :
                                     data.campaign_url[0])"
@@ -94,7 +94,7 @@
                   (click)="copyToClipboard(selected_campaign_index[mainIndex]!= null?
                   data.campaign_url[selected_campaign_index[mainIndex]] :
                   data.campaign_url[0])" 
-                  matTooltip="Copy Url"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
+                  matTooltip="Copy URL"><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i></a>
                   <a matTooltip="QR Scanner"><i
                       class="fa fa-qrcode" aria-hidden="true"></i></a>
                   <a matTooltip="Create Campaign" (click)="campaignModal(data.opportunity_id)" [matBadge]="data.campaign_data ? data.campaign_data.length : 1"><i
@@ -156,7 +156,7 @@
                           
                           <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
-                            <mat-select [(value)]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]">
+                            <mat-select [value]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]" (ngModelChange)="valuechange(true)">
                               <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let optionIndex = index">
                                 <mat-option (click)="bannerCampaignIndex(optionIndex,bannerIndex)" [value]="optionIndex">{{bannerCampaign}}</mat-option>
                               </ng-container>
@@ -174,7 +174,7 @@
       <!-- *********************************************** Banner Section End*************************************************************** -->
 
 
-      <div class="wrapper emailtemp_wrapper">
+      <!-- <div class="wrapper emailtemp_wrapper">
         <div class="title-wrapper1">
           <h1>EMAIL TEMPLATES</h1>
         </div>
@@ -205,7 +205,7 @@
                 <mat-form-field>
                   <mat-label>Select Campaign</mat-label>
                   <mat-select>
-                    <ng-container *ngFor="let campaigns of allCampaigns">
+                    <ng-container *ngFor="let campaigns of allCampaigns; let allCampIndex = index">
                       <mat-option [value]="campaigns.campaign_url">{{campaigns.campaign_name}}</mat-option>
                     </ng-container>
                   </mat-select>
@@ -218,7 +218,7 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
         </div>
     </div>
 </div>

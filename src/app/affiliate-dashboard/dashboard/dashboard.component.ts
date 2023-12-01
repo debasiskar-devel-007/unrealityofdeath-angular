@@ -147,13 +147,20 @@ export class DashboardComponent {
   }
 
   getBanner() {
+    this.loader = true
     this.apiService.getHttpData('banner-management/fetch-all-banner').subscribe({
       next: (response: any) => {
         console.log("this is video data", response);
-        this.banner_data = response.results
+
+        if(response.status == 'success' && response.results.length > 0) {
+          this.banner_data = response.results
+        }
+        
+        this.loader = false
       },
       error: (error: any) => {
         console.log("this is video error", error);
+        this.loader = false
       }
     })
   }
