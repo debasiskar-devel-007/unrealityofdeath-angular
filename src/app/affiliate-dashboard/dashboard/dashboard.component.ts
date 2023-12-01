@@ -43,6 +43,8 @@ export class DashboardComponent {
 
   public campaignData: any = [];
 
+  public allCampaigns: any = [];
+
   public eventValue: any = '';
 
   public copiedVal: any = '';
@@ -107,6 +109,7 @@ export class DashboardComponent {
 
 
     this.getBanner()
+    this.fetchAllCampaign()
   }
 
   dashboardCampaignListApi() {
@@ -155,11 +158,37 @@ export class DashboardComponent {
     })
   }
 
-  bannerCampaignIndex(data: any, index: any) {
-    console.log("data", data);
+
+  // << -------------- All Campaign Fetch Function ---------------- >>
+
+  fetchAllCampaign() {
+
+    this.apiService.getHttpDataPost('marketing/all-campaign-data', {user_id: this.cookieData.uidval}).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        if(response.status == 'success' && response.response.length > 0) {
+          this.allCampaigns = response.response
+        }
+        
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+  }
+
+
+
+  // << -------------- All Campaign Fetch Function ---------------- >>
+
+
+  // bannerCampaignIndex(data: any, index: any) {
+  //   console.log("data", data);
+  bannerCampaignIndex(optionIndex: any, index: any) {
+    console.log("data", optionIndex);
     console.log("data", index);
 
-    this.share_url[index] = data
+    this.share_url[index] = optionIndex
 
     console.log("data", this.share_url);
   }
@@ -169,22 +198,22 @@ export class DashboardComponent {
     console.log(event);
     
 
-    const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
+    // const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
 
-    console.log("MatSelectChange", event.source);
-    console.log("MatSelectChange==", targetElement);
+    // console.log("MatSelectChange", event.source);
+    // console.log("MatSelectChange==", targetElement);
 
-    this.share_url = event.source
+    // this.share_url = event.source
 
-    // if(event.source._id)
-    console.log("bannner select field ", event.source._elementRef.nativeElement);
+    // // if(event.source._id)
+    // console.log("bannner select field ", event.source._elementRef.nativeElement);
 
-    let selectid = event.source._elementRef.nativeElement.id
+    // let selectid = event.source._elementRef.nativeElement.id
 
-    if (event.source._elementRef.nativeElement.id == selectid) {
+    // if (event.source._elementRef.nativeElement.id == selectid) {
 
-      targetElement.setAttribute("disabled", "false");
-    }
+    //   targetElement.setAttribute("disabled", "false");
+    // }
 
 
 

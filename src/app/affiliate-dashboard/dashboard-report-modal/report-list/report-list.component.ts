@@ -85,7 +85,7 @@ export class ReportListComponent implements OnChanges {
         this.libdata.basecondition.conversion = true
       }
 
-      this.apiService.getHttpDataPost('click-conversion/click-list',requestBody).subscribe({
+      this.apiService.getHttpDataPost('click-conversion/dashboard-click-list',requestBody).subscribe({
         next:(response)=>{
           // console.log('response===========>',response);
           this.tabledatatalist = response.results.res
@@ -97,7 +97,7 @@ export class ReportListComponent implements OnChanges {
           this.loader = false
         }
       })
-      this.apiService.getHttpDataPost('click-conversion/click-list-count',requestBody).subscribe({
+      this.apiService.getHttpDataPost('click-conversion/dashboard-click-list-count',requestBody).subscribe({
         next:(response)=>{
           console.log('response===========>',response);
           this.date_search_source_count = response.count
@@ -126,14 +126,14 @@ export class ReportListComponent implements OnChanges {
   editroute = '';
   updateendpoint = 'marketing/campaign-update';
   deleteendpoint = 'marketing/campaign-delete';
-  datacollection: any = 'click-conversion/click-list';
+  datacollection: any = 'click-conversion/dashboard-click-list';
   public listprogressBar: any = false;
   public api_url_for_managebanner = environment.api_url;
   public cookieData = this.cookieService.get('login_user_details')
     ? JSON.parse(this.cookieService.get('login_user_details'))
     : {};
-  searchendpoint = 'click-conversion/click-list';
-  date_search_endpoint: any = 'click-conversion/click-list';
+  searchendpoint = 'click-conversion/dashboard-click-list';
+  date_search_endpoint: any = 'click-conversion/dashboard-click-list';
   date_search_source: any = 'campaign';
   date_search_source_count: any = 0;
   Tabledata_header_skip: any = ['_id'];
