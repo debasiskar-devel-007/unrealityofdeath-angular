@@ -1,1 +1,53 @@
-<p>conversion-report works!</p>
+<app-header></app-header>
+<div class="mainwrapper">
+    <div class="new-container">
+        <div class="subwrapper">
+            <div class="sub-title wrapper">
+                <h2>Converstion Reoport List</h2>
+            </div>
+
+
+
+
+
+            <div class="button_container">
+                <button mat-raised-button color="primary" name="all"  (click)="buttonClick($event,'all')"  [ngClass]="thisbutonclick === 'all'? 'active' : ''" style="font-size: 20px; margin: 10px">ALL</button>
+                <button mat-raised-button color="primary" name="month" (click)="buttonClick($event,'month')"   [ngClass]="thisbutonclick === 'month'? 'active' : ''" style="font-size: 20px; margin: 10px">THIS
+                    MONTH</button>
+                <button mat-raised-button color="primary" name="week" (click)="buttonClick($event,'week')"  [ngClass]="thisbutonclick === 'week'? 'active' : ''" style="font-size: 20px; margin: 10px">THIS
+                    WEEK</button>
+                <button mat-raised-button color="primary" name="today" (click)="buttonClick($event,'today')"  [ngClass]="thisbutonclick === 'today'? 'active' : ''"
+                    style="font-size: 20px; margin: 10px">TODAY</button>
+                <!-- <button mat-raised-button color="primary" name ="conversion"  (click)="buttonClick($event,'conversion')" [ngClass]="thisbutonclick === 'conversion'? 'active' : ''"  style="font-size: 20px; margin: 10px">QUERY CONVERSION</button> -->
+                <button mat-raised-button color="primary" (click)="buttonClick($event,'all')"  style="font-size: 20px; margin: 10px"><i
+                        class="fa-solid fa-rotate-right"></i></button>
+            </div>
+            <ng-container *ngIf="formLoader">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </ng-container>
+            <div class="wrapper">
+                <div class="list-style1">
+                    <div class="taxonomies_liststyle" >
+                        <lib-listing *ngIf="tabledatatalist.length > 0" class="adminlisttable_v1"
+                            [datasource]="tabledatatalist" [modify_header_array]="modify_header_array"
+                            [apiurl]="api_url_for_managebanner" [date_search_source]="date_search_source"
+                            [date_search_endpoint]="date_search_endpoint" [sourcedata]="tablename"
+                            [statusarr]="statusarray" [detail_skip_array]="tabledata_detail_skip"
+                            [jwttoken]="jwttokenformanagebanner" [search_settings]="search_settings"
+                            [searchendpoint]="searchendpoint" [sortdata]="sortdata" [datacollection]="datacollection"
+                            [date_search_source_count]="date_search_source_count" [libdata]="libdata"
+                            [limitcond]="limitcond" [updatetable]="taxonomy_updatetable"
+                            (onLiblistingChange)="listenLiblistingChange($event)"
+                            (onLiblistingButtonChange)="onLiblistingButtonChange($event)">
+                            >
+                        </lib-listing>
+                        <div *ngIf="!(tabledatatalist.length > 0)" class="noFoundTextinner">
+                            <span>Oops !</span>
+                             <p> NO Record Found</p>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

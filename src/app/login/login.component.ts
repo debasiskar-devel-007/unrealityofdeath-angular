@@ -109,6 +109,13 @@ export class LoginComponent {
 
                   this.router.navigateByUrl(`/affiliate-dashboard`);
                 }
+              } else {
+
+                this.matSnackBar.open("Incorrect Username Or Password", "Ok", {
+                  duration: 3000
+                })
+                this.loader = false;
+
               }
             },
 

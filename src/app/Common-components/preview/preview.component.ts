@@ -17,9 +17,12 @@ export class PreviewComponent {
   public updated_on: any
   public created_at :any
 
+  public routeFlag: any
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<PreviewComponent>) {
     this.datakey = this.data.key
     this.datavalue = this.data.value
+    this.routeFlag = this.data.flagParam
     console.log("dtatadtaa====",this.data)
   }
 

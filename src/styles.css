@@ -194,6 +194,8 @@ body {
     margin: 30px 0 20px;
     display: block;
     text-decoration: none;
+    font-size: 18px;
+    text-align: right;
   }
   .login_formwrapper form a:hover {
     color: #f7e057;
@@ -3837,7 +3839,7 @@ tbody tr td .actionbuttonwrapper button {
     display: block;
     font-size: 16px;
     font-weight: 600;
-    margin: 0 0 0 auto;
+    margin: 5px;
     min-width: 150px;
     padding: 14px 10px;
     text-transform: inherit !important;
@@ -4152,7 +4154,7 @@ tbody tr td .actionbuttonwrapper button {
 .landing-page-right{width:calc(100% - 440px);margin-left:40px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
 .landing-page-right::after{content:'';height:94%;width:1px;background:#7d8376;position:absolute;left:-20px;top:50%;transform:translateY(-50%);box-shadow:1px 0 0 #d7decc}
 .landing-page-right h2{font-size:24px;margin-bottom:10px}
-.landing-page-right p{font-size:18px;line-height:26px;margin-bottom:10px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical}
+.landing-page-right p{font-size:18px;line-height:24px;margin-bottom:10px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical}
 .landing-right-footer{display:flex;justify-content:space-between;align-items:center}
 .landing-page-container{display:flex;background:#aeb6a2;padding:15px;border-radius:8px;border:1px solid #919787}
 .landing-page-wrapper{margin-bottom:10px}
@@ -4196,14 +4198,9 @@ tbody tr td .actionbuttonwrapper button {
 .marketing-imgwrapper{padding:10px;background:#e4e7dd;border:1px solid #95998f;margin-bottom:8px}
 .marketing-videowrapper{padding:10px;background:#e4e7dd;border:10px solid #e4e7dd;margin-bottom:8px;position:relative;padding-bottom:53.25%}
 .marketing-bannerwrapper{
-    /* padding:10px; */
-    background:#e4e7dd;
-    border:10px solid #e4e7dd;
-    margin-bottom:8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding-bottom:53.25% */
+    background: #e4e7dd;
+    border: 10px solid #e4e7dd;
+    margin-bottom: 8px;
 }
 .mainwrapper.dashbordwrapper .landing-page-right .action-block a:nth-of-type(1) i::before{
     content:"\f24d";
@@ -4219,24 +4216,28 @@ tbody tr td .actionbuttonwrapper button {
 .twitter{background-color:#55acee;box-shadow:inset 5px 5px 10px #4891c9,inset -5px -5px 10px #4891c9,-4px -4px 9px #c2cab7,4px 4px 7px #757c6b}
 .linkedin{background-color:#0077b5;box-shadow:inset 5px 5px 10px #026599,inset -5px -5px 10px #026599,-4px -4px 9px #c2cab7,4px 4px 7px #757c6b}
 .banner-marketing-mainwrapper{
-  border-radius: 10px;
-   /* width: 100%; */
-   padding: 10px;
-   background-color: #aeb6a2;
-   margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #aeb6a2;
+    margin: 10px 1%;
   
 
 }
 
 .marketing-bannerwrapper img{
- width: 100%;
- height: 100%;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    cursor: pointer;
 }
 
 .banner-main-wrapper{
     display: flex !important;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     
     padding: 20px 20px 0 20px;
 
@@ -4245,12 +4246,12 @@ tbody tr td .actionbuttonwrapper button {
     width: 45%;
 }
 
-.banner-main-wrapper .ng-star-inserted{
-    width: 49.3%;
+.banner-main-wrapper .banner-marketing-mainwrapper{
+    width: calc(48% - 20px);
 }
-.marketing-select .ng-star-inserted{
+/* .marketing-select .ng-star-inserted{
     width: 100%;
-}
+} */
  .ndfHFb-c4YZDc-Wrql6b {
     display: none;
     opacity: 0 !important;
@@ -4263,6 +4264,33 @@ tbody tr td .actionbuttonwrapper button {
     padding-left: 5px;
     margin-bottom: 10px;
     
+}
+
+.subtitle2 p {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.new_Wraper_share .marketing-sowrapper .sb-facebook {
+    background-color: #4267B2;
+}
+
+.new_Wraper_share .marketing-sowrapper .sb-twitter {
+    background-color: #00acee;
+}
+
+.new_Wraper_share .marketing-sowrapper .sb-linkedin {
+    background-color: #006fa6;
+}
+.new_Wraper_share .marketing-sowrapper share-buttons share-button button {
+    min-width: unset;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 3px;
+}
+.new_Wraper_share .marketing-sowrapper .css_hide .eapps-social-share-buttons-inner a {
+    display: none !important;
 }
 
 .load_more_wraper{
@@ -4463,10 +4491,10 @@ tbody tr td .actionbuttonwrapper button {
 /* Deep Sarkar */
 
 .new_Wraper_share .marketing-select{
-    width: calc(90% - 150px);
+    width: calc(100% - 135px);
 }
 .new_Wraper_share .marketing-sowrapper{
-    width: auto;
+    width: 125px;
 }
 
 /* << ------------ CSS by Sanket ------------- >> */
@@ -4530,6 +4558,62 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 
+/* ?////////////// Email Template CSS by Sanket ///////////// */
+
+
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp {
+    padding: 10px;
+    background: #e4e7dd;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp h1 {
+    font-size: 20px;
+    margin: 20px 0px 30px;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp h2 {
+    font-size: 20px;
+    margin: 0px 0px 30px;
+    line-height: 26px;
+    font-weight: 500;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp p {
+    font-size: 18px;
+    margin: 15px 0px;
+    line-height: 26px;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp a {
+    text-decoration: underline;
+    color: #1b75b2;
+    font-size: 19px;
+    word-break: break-word;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp a:hover {
+    color: #0e8bdf;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp .marketing-mediawrapper {
+    margin-top: 10px;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp .marketing-mediawrapper .marketing-sowrapper button {
+    width: 90%;
+    background: #7f2e0a;
+    outline: none;
+    color: #fff;
+    box-shadow: -4px -4px 9px #c2cab7, 4px 4px 7px #757c6b;
+    border: 1px solid #fc8f4e;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.wrapper.emailtemp_wrapper .emailtemp_innerwrp .marketing-mediawrapper .marketing-sowrapper button:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+
+/* ?////////////// Email Template CSS by Sanket ///////////// */
+
+
 /* ?////////////// Dashboard Report list ///////////// */
 
 
@@ -4556,9 +4640,21 @@ tbody tr td .actionbuttonwrapper button {
 @media only screen and (max-width:767px){
 .select-block{width:calc(100%);margin:0 0 10px 0}
 .action-block{width:100%;justify-content:center}
-.marketing-mediawrapper{flex-wrap:wrap;flex-direction:column-reverse}
+.banner-main-wrapper .banner-marketing-mainwrapper{    width: calc(98% - 20px);
+}
+.banner-main-wrapper {
+    padding: 0;
+}
 .marketing-select{width:calc(100%);margin-left:0;margin-bottom:10px}
 .marketing-sowrapper{width:100%;justify-content:center}
+}
+@media only screen and (max-width:520px){
+    .marketing-mediawrapper.new_Wraper_share {
+        flex-direction: column-reverse;
+    }
+    .new_Wraper_share .marketing-sowrapper, .new_Wraper_share .marketing-select {
+        width: auto;
+    }
 }
 .wrapper .heading_sub_wrp{
     border-left: 5px solid #aeb6a2;
