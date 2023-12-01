@@ -151,7 +151,7 @@ export class DashboardComponent {
     this.apiService.getHttpData('banner-management/fetch-all-banner').subscribe({
       next: (response: any) => {
         console.log("this is video data", response);
-        
+
         if(response.status == 'success' && response.results.length > 0) {
           this.banner_data = response.results
         }

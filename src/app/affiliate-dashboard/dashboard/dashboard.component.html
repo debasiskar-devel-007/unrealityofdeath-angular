@@ -156,7 +156,7 @@
                           
                           <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
-                            <mat-select [value]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]">
+                            <mat-select [value]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]" (ngModelChange)="valuechange(true)">
                               <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let optionIndex = index">
                                 <mat-option (click)="bannerCampaignIndex(optionIndex,bannerIndex)" [value]="optionIndex">{{bannerCampaign}}</mat-option>
                               </ng-container>
@@ -174,7 +174,7 @@
       <!-- *********************************************** Banner Section End*************************************************************** -->
 
 
-      <div class="wrapper emailtemp_wrapper">
+      <!-- <div class="wrapper emailtemp_wrapper">
         <div class="title-wrapper1">
           <h1>EMAIL TEMPLATES</h1>
         </div>
@@ -218,7 +218,7 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
         </div>
     </div>
 </div>
