@@ -156,7 +156,7 @@
                           
                           <mat-form-field>
                             <mat-label>Select Campaign</mat-label>
-                            <mat-select [(value)]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]">
+                            <mat-select [value]="banner.campaign_url_data[0]" (selectionChange)="bannerCampSelect($event)" [(ngModel)]="banner.campaign_url_data[0]">
                               <ng-container *ngFor="let bannerCampaign of banner.campaign_data; let optionIndex = index">
                                 <mat-option (click)="bannerCampaignIndex(optionIndex,bannerIndex)" [value]="optionIndex">{{bannerCampaign}}</mat-option>
                               </ng-container>
