@@ -53,7 +53,7 @@ export class DashboardReportModalComponent {
       "token": ""
     }
 
-    this.apiService.getHttpDataPost('click-conversion/click-list-count',requestBody).subscribe({
+    this.apiService.getHttpDataPost('click-conversion/dashboard-click-list-count',requestBody).subscribe({
       next:(response)=>{
         // console.log('response===========>',response);
         this.reportCounts.click = response.clickcount
