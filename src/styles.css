@@ -4212,7 +4212,6 @@ tbody tr td .actionbuttonwrapper button {
     content:"\f24d";
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit
 }
 .marketing-videowrapper embed,.marketing-videowrapper iframe,.marketing-videowrapper video{position:absolute;left:0;top:0;height:100%;width:100%}
 .marketing-sowrapper a{height:45px;width:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:7px;color:#fff;font-size:22px;cursor:pointer;transition:all .2s}
