@@ -20,8 +20,8 @@ const routes: Routes = [
         
       },
       "sort": {
-          "type": "desc",
-          "field": "created_on"
+          "type": "asc",
+          "field": "campaign_name"
       },
       "project": {},
       "token": ""
