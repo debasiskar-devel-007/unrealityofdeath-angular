@@ -55,6 +55,7 @@ export class DashboardComponent {
 
   public banner_data: any = []
   public share_url: any = []
+  public emailTemplateData: any = []
 
 
   ngOnInit() {
@@ -222,8 +223,18 @@ export class DashboardComponent {
     //   targetElement.setAttribute("disabled", "false");
     // }
 
+  }
 
+  emailOptionSelect(optionIndex:any,templateNumber:any){
+    console.log("optionIndex============>",optionIndex,templateNumber);
+    this.emailTemplateData[templateNumber] = optionIndex
+  }
 
+  copyEmailTemplate(idVal:any){
+    console.log("idVal===========>",idVal);
+    let htmlVal:any = document.getElementById(idVal)?.innerHTML
+    this.clipBoard.copy(htmlVal)
+    
   }
 
  

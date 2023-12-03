@@ -174,7 +174,7 @@
       <!-- *********************************************** Banner Section End*************************************************************** -->
 
 
-      <!-- <div class="wrapper emailtemp_wrapper">
+      <div class="wrapper emailtemp_wrapper">
         <div class="title-wrapper1">
           <h1>EMAIL TEMPLATES</h1>
         </div>
@@ -183,42 +183,45 @@
         </div>
         <div class="banner-main-wrapper">
           <div class="banner-marketing-mainwrapper">
-            <div class="emailtemp_innerwrp">
-            <h1>
-              ACCESS Discount HealthCare
-            </h1>
-            <h2>
-              PAY NOTHING FOR THE MOST PRESCRIBED GENERIC PRESCRIPTIONS!
-            </h2>
-            <a href="http://dev.pharmacysavings.aspireleadfire.com/souradip37">http://dev.pharmacysavings.aspireleadfire.com/souradip37</a>
-            <p>Access your pharmacy prescriptions at no cost every month for one low subscription fee! Your prescriptions are shipped direct to your door within 2-4 days and, if needed, can be picked up at 64,000 pharmacies nationwide.
-            </p>
-            <a href="http://dev.pharmacysavings.aspireleadfire.com/souradip37">http://dev.pharmacysavings.aspireleadfire.com/souradip37</a>
+            <div id="emailtemplate1">
+              <div class="emailtemp_innerwrp">
+              <h1>
+                ACCESS Discount HealthCare
+              </h1>
+              <h2>
+                PAY NOTHING FOR THE MOST PRESCRIBED GENERIC PRESCRIPTIONS!
+              </h2>
+              <a [href]="allCampaigns[emailTemplateData[0]? emailTemplateData[0] : 0].campaign_url">{{allCampaigns[emailTemplateData[0]? emailTemplateData[0] : 0].campaign_url}}</a>
+              <p>Access your pharmacy prescriptions at no cost every month for one low subscription fee! Your prescriptions are shipped direct to your door within 2-4 days and, if needed, can be picked up at 64,000 pharmacies nationwide.
+              </p>
+              <a [href]="allCampaigns[emailTemplateData[0]? emailTemplateData[0] : 0].campaign_url">{{allCampaigns[emailTemplateData[0]? emailTemplateData[0] : 0].campaign_url}}</a>
+            </div>
+            </div>
+
             <div class="marketing-mediawrapper new_Wraper_share">
               <div class="marketing-sowrapper">
 
-                <button>Copy</button>
+                <button (click)="copyEmailTemplate('emailtemplate1')">Copy</button>
 
               </div>
               <div class="marketing-select">
                 
                 <mat-form-field>
                   <mat-label>Select Campaign</mat-label>
-                  <mat-select>
+                  <mat-select [value]="allCampaigns[0].campaign_url">
                     <ng-container *ngFor="let campaigns of allCampaigns; let allCampIndex = index">
-                      <mat-option [value]="campaigns.campaign_url">{{campaigns.campaign_name}}</mat-option>
+                      <mat-option [value]="campaigns.campaign_url" (click)="emailOptionSelect(allCampIndex,0)">{{campaigns.campaign_name}}</mat-option>
                     </ng-container>
                   </mat-select>
                 </mat-form-field>
 
               </div>
             </div>
-          </div>
 
           </div>
 
         </div>
-      </div> -->
+      </div>
         </div>
     </div>
 </div>
