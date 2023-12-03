@@ -114,7 +114,7 @@ export class ConversionReportComponent {
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
       { key: 'name', val: 'Name' },
-      { key: 'click_count', val: 'Click Count' },
+      { key: 'conversion_count', val: 'Click Count' },
     ],
     hideaction: false,
     hideeditbutton: true, // (hide edit button ) all these button options are optional not mandatory
@@ -138,7 +138,7 @@ export class ConversionReportComponent {
         classname: 'previewButton',
         previewlist:
           this.login_user_details.roleval === 3
-            ? ['campaign_name', 'landing_page_name', 'click_count']
+            ? ['campaign_name', 'landing_page_name', 'conversion_count']
             : [],
       },
       // {

@@ -3657,7 +3657,7 @@ tbody tr td .actionbuttonwrapper button {
 
 /* Modal Common CSS */
 
-.custom-modalbox .uniqueurl_modal .sub-title h2 {
+.custom-modalbox .uniqueurl_modal .uniquemodal_heading h2 {
     margin: 0;
     text-align: center;
     background: #ad4c1e;
@@ -3665,6 +3665,7 @@ tbody tr td .actionbuttonwrapper button {
     padding: 10px 5px;
     border-radius: 5px;
     margin-bottom: 5px;
+    font-size: 2.2rem;
 }
 
 
@@ -3743,9 +3744,14 @@ tbody tr td .actionbuttonwrapper button {
     text-align: left;
     padding-left: 5px;
     margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
 }
 .uniqueurl_modal .error.valid {
     color: #692d00;
+}
+.uniqueurl_modal .email_cls .login-full-width input {
+    text-transform: lowercase;
 }
 
 /* Campaign Modal CSS */
@@ -4142,7 +4148,7 @@ tbody tr td .actionbuttonwrapper button {
 .landing-page-left{width:400px;display: flex;    align-items: center;
 }
 .img-wrapper{padding:10px;background:#e4e7dd;border:1px solid #95998f;width: 100%;
-    height: 250px;    overflow: hidden;
+    height: 200px;    overflow: hidden;
 }
 .img-wrapper img{
     display: block;
@@ -4206,7 +4212,6 @@ tbody tr td .actionbuttonwrapper button {
     content:"\f24d";
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit
 }
 .marketing-videowrapper embed,.marketing-videowrapper iframe,.marketing-videowrapper video{position:absolute;left:0;top:0;height:100%;width:100%}
 .marketing-sowrapper a{height:45px;width:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:7px;color:#fff;font-size:22px;cursor:pointer;transition:all .2s}

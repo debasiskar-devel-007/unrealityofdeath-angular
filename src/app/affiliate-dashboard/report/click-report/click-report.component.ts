@@ -46,8 +46,8 @@ export class ClickReportComponent {
   tablename = 'report_convertion';
 
   sortdata: any = {
-    type: 'desc',
-    field: 'created_on',
+    type: 'asc',
+    field: 'campaign_name',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
   };
 
@@ -105,10 +105,10 @@ export class ClickReportComponent {
       this.login_user_details.roleval === 3
         ? {
           affiliate_id: this.login_user_details.uidval,
-          created_on: { $gte: this.startval, $lte: this.endval },
+          created_on: { $gte: this.startval, $lte: this.endval < this.startval? this.endval + (1000+60+24) : this.endval},
         }
         : {
-          created_on: { $gte: this.startval, $lte: this.endval },
+          created_on: { $gte: this.startval, $lte: this.endval < this.startval? this.endval + (1000+60+24) : this.endval },
         },
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
@@ -196,6 +196,7 @@ export class ClickReportComponent {
         },
         "searchcondition": {
             "affiliate_id": this.login_user_details.uidval,
+            "created_on":{$gte: this.startval, $lte:this.endval}
             
         },
         "sort": {
@@ -206,7 +207,7 @@ export class ClickReportComponent {
         "token": ""
         })
         .subscribe((response: any) => {
-          if (response && response.count) {
+          if (response) {
             this.date_search_source_count = response.count; // role data count  save
           }
         });
