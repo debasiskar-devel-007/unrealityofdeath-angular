@@ -148,7 +148,7 @@ export class DashboardComponent {
 
   getBanner() {
     this.loader = true
-    this.apiService.getHttpData('banner-management/fetch-all-banner').subscribe({
+    this.apiService.getHttpData(`banner-management/fetch-all-banner/${this.cookieData.uidval}`).subscribe({
       next: (response: any) => {
         console.log("this is video data", response);
 
