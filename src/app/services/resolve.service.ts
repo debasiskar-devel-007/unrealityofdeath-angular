@@ -39,7 +39,7 @@ export class ResolveService {
       let startval = moment().startOf('month').valueOf()
       let endval = moment().endOf('month').valueOf()
       route.data['requestcondition']['searchcondition']['affiliate_id'] = cookieData.uidval
-      route.data['requestcondition']['searchcondition']['created_on'] = { "$gte": startval, "$lte": endval }
+      route.data['requestcondition']['searchcondition']['created_on'] = { "$gte": startval, "$lte": endval } ? { "$gte": startval, "$lte": endval } : undefined
     }
 
 
