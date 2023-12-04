@@ -48,7 +48,7 @@ export class ConversionReportComponent {
 
   sortdata: any = {
     type: 'desc',
-    field: 'created_on',
+    field: 'campaign_name',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
   };
 
@@ -99,7 +99,7 @@ export class ConversionReportComponent {
           },
         ],
   };
-  searchendpoint =  this.login_user_details.roleval === 3 ? 'reports/click-list-rep' : 'reports/conversion-list-admin';
+  searchendpoint =  this.login_user_details.roleval === 3 ? 'click-conversion/click-list' : '';
 
   libdata: any = {
     basecondition:
@@ -109,6 +109,8 @@ export class ConversionReportComponent {
           created_on: { $gte: this.startval, $lte: this.endval },
         }
         : {
+          affiliate_id: this.login_user_details.uidval,
+
           created_on: { $gte: this.startval, $lte: this.endval },
         },
     detailview_override: [
@@ -239,7 +241,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -254,7 +256,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
         console.log("mmmm", this.libdata.basecondition);
 
       }
@@ -269,7 +271,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -283,7 +285,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
         console.log("aaaaa", this.libdata.basecondition);
 
       }

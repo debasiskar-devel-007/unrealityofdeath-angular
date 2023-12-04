@@ -98,7 +98,7 @@ export class ClickReportComponent {
           },
         ],
   };
-  searchendpoint =  this.login_user_details.roleval === 3 ? 'reports/click-list-rep' : 'reports/conversion-list-admin';
+  searchendpoint =  this.login_user_details.roleval === 3 ? 'click-conversion/click-list' : '';
 
   libdata: any = {
     basecondition:
