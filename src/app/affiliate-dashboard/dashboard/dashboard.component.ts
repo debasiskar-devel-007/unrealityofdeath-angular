@@ -57,6 +57,7 @@ export class DashboardComponent {
 
   public banner_data: any = []
   public share_url: any = []
+  public emailTemplateData: any = []
 
 
   ngOnInit() {
@@ -149,13 +150,20 @@ export class DashboardComponent {
   }
 
   getBanner() {
-    this.apiService.getHttpData('banner-management/fetch-all-banner').subscribe({
+    this.loader = true
+    this.apiService.getHttpData(`banner-management/fetch-all-banner/${this.cookieData.uidval}`).subscribe({
       next: (response: any) => {
         console.log("this is video data", response);
-        this.banner_data = response.results
+
+        if(response.status == 'success' && response.results.length > 0) {
+          this.banner_data = response.results
+        }
+        
+        this.loader = false
       },
       error: (error: any) => {
         console.log("this is video error", error);
+        this.loader = false
       }
     })
   }
@@ -217,8 +225,18 @@ export class DashboardComponent {
     //   targetElement.setAttribute("disabled", "false");
     // }
 
+  }
 
+  emailOptionSelect(optionIndex:any,templateNumber:any){
+    console.log("optionIndex============>",optionIndex,templateNumber);
+    this.emailTemplateData[templateNumber] = optionIndex
+  }
 
+  copyEmailTemplate(idVal:any){
+    console.log("idVal===========>",idVal);
+    let htmlVal:any = document.getElementById(idVal)?.innerHTML
+    this.clipBoard.copy(htmlVal)
+    
   }
 
  
