@@ -627,12 +627,13 @@ body {
 }
 
 .adminlisttable_v1 .multipledeleteandupdatebuttan button {
-    border: solid 1px #ffbf83;
-    background: var(--orange-gradient);
     color: #fff;
     padding: 20px 26px;
     margin: 0 5px;
-    text-shadow: 1px 1px 1px #a1520a
+    background: #7f2e0a;
+    text-align: center;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
 }
 
 .adminlisttable_v1 .multipledeleteandupdatebuttan button .mdc-button__label::before {
@@ -1730,7 +1731,6 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     color: #fff !important;
     background: #7f2e0a;
     text-align: center;
-    border-radius: 8px;
     border: 1px solid #ff7f00;
     text-shadow: 1px 1px 1px #874403;
     box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
