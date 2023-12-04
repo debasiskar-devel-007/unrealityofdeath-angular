@@ -108,6 +108,7 @@ export class ClickReportComponent {
           created_on: { $gte: this.startval, $lte: this.endval < this.startval? this.endval + (1000+60+24) : this.endval},
         }
         : {
+          affiliate_id: this.login_user_details.uidval,
           created_on: { $gte: this.startval, $lte: this.endval < this.startval? this.endval + (1000+60+24) : this.endval },
         },
     detailview_override: [
@@ -241,7 +242,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -256,7 +257,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
         console.log("mmmm", this.libdata.basecondition);
 
       }
@@ -271,7 +272,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -285,7 +286,7 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
