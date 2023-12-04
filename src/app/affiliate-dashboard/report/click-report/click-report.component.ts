@@ -46,7 +46,7 @@ export class ClickReportComponent {
   tablename = 'report_convertion';
 
   sortdata: any = {
-    type: 'asc',
+    type: 'desc',
     field: 'campaign_name',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
   };
@@ -67,6 +67,7 @@ export class ClickReportComponent {
             enddatelabel: 'Created On End Date',
             submit: 'Search',
             field: 'created_on',
+
             // value: {$gte: createdon_datetime, $lte: 1622962799000}
           },
         ]
@@ -105,7 +106,7 @@ export class ClickReportComponent {
       this.login_user_details.roleval === 3
         ? {
           affiliate_id: this.login_user_details.uidval,
-          created_on: { $gte: this.startval, $lte: this.endval < this.startval? this.endval + (1000+60+24) : this.endval},
+          // created_on: {}
         }
         : {
           affiliate_id: this.login_user_details.uidval,
@@ -181,6 +182,8 @@ export class ClickReportComponent {
     ],
   };
   ngOnInit() {
+  
+
     this.activatedRoute.data.subscribe((response: any) => {
       console.log('activatedRoute========>', response);
       if (response?.data?.status === 'success') {
@@ -214,8 +217,12 @@ export class ClickReportComponent {
         });
     }
   }
+
   listenLiblistingChange(data: any) {
     console.log("aaaaaa=====>",data);
+    if(data.action === 'search'){
+      this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} , affiliate_id: this.login_user_details.uidval}
+    }
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
@@ -234,6 +241,7 @@ export class ClickReportComponent {
 
   buttonClick(val: any, butonval: any) {
     this.thisbutonclick = butonval
+    
     if (butonval === "all") {
       this.formLoader = true
       console.log("startOf current moment's month:", this.startval, this.endval)
