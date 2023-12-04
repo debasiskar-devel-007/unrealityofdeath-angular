@@ -21,6 +21,7 @@ import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component
 import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
 import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboard-report-modal.component';
 import { MatSelectChange } from '@angular/material/select';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +37,8 @@ export class DashboardComponent {
     public matSnackBar: MatSnackBar,
     public activatedRoute: ActivatedRoute,
     private clipBoard: Clipboard,
-    private elementRef: ElementRef, { nativeElement }: ElementRef<HTMLImageElement>
+    private elementRef: ElementRef, { nativeElement }: ElementRef<HTMLImageElement>,
+    public sanitizer: DomSanitizer
   ) { }
 
   public cookieData: any = {};
@@ -55,6 +57,7 @@ export class DashboardComponent {
 
   public banner_data: any = []
   public share_url: any = []
+  public emailTemplateData: any = []
 
 
   ngOnInit() {
@@ -148,7 +151,7 @@ export class DashboardComponent {
 
   getBanner() {
     this.loader = true
-    this.apiService.getHttpData('banner-management/fetch-all-banner').subscribe({
+    this.apiService.getHttpData(`banner-management/fetch-all-banner/${this.cookieData.uidval}`).subscribe({
       next: (response: any) => {
         console.log("this is video data", response);
 
@@ -222,8 +225,18 @@ export class DashboardComponent {
     //   targetElement.setAttribute("disabled", "false");
     // }
 
+  }
 
+  emailOptionSelect(optionIndex:any,templateNumber:any){
+    console.log("optionIndex============>",optionIndex,templateNumber);
+    this.emailTemplateData[templateNumber] = optionIndex
+  }
 
+  copyEmailTemplate(idVal:any){
+    console.log("idVal===========>",idVal);
+    let htmlVal:any = document.getElementById(idVal)?.innerHTML
+    this.clipBoard.copy(htmlVal)
+    
   }
 
  

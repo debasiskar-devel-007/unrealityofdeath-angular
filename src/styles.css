@@ -4594,10 +4594,10 @@ tbody tr td .actionbuttonwrapper button {
 .wrapper.emailtemp_wrapper .emailtemp_innerwrp a:hover {
     color: #0e8bdf;
 }
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp .marketing-mediawrapper {
+.wrapper.emailtemp_wrapper .marketing-mediawrapper {
     margin-top: 10px;
 }
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp .marketing-mediawrapper .marketing-sowrapper button {
+.wrapper.emailtemp_wrapper .marketing-mediawrapper .marketing-sowrapper button {
     width: 90%;
     background: #7f2e0a;
     outline: none;
@@ -4610,7 +4610,7 @@ tbody tr td .actionbuttonwrapper button {
     cursor: pointer;
     transition: all .2s;
 }
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp .marketing-mediawrapper .marketing-sowrapper button:active {
+.wrapper.emailtemp_wrapper .marketing-mediawrapper .marketing-sowrapper button:active {
     box-shadow: none;
     transform: translateY(5px);
 }
