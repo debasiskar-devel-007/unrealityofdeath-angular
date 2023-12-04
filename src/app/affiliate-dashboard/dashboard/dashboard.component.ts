@@ -60,11 +60,6 @@ export class DashboardComponent {
   public share_url: any = [];
   public emailTemplateData: any = [];
 
-  public appendArray: any = [];
-
-  skip = 0;
-  limit = 3;
-
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
@@ -186,16 +181,6 @@ export class DashboardComponent {
         },
       });
   }
-
-  // loadMore(skip: any, limit: any) {
-
-  //   this.skip = this.skip + skip;
-  //   this.limit = this.limit + limit;
-  //   this.appendArray = this.banner_data.slice(this.skip, this.limit);
-  //   console.log(this.appendArray, 'this.appendArray');
-    
-
-  // }
 
   // << -------------- All Campaign Fetch Function ---------------- >>
 
