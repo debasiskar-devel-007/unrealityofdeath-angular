@@ -220,7 +220,9 @@ export class ConversionReportComponent {
   }
   listenLiblistingChange(data: any) {
     console.log("aaaaaa=====>",data);
-    
+    if(data.action === 'search'){
+      this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} , affiliate_id: this.login_user_details.uidval}
+    }
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
