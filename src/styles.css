@@ -1679,6 +1679,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     border: 1px solid #4a5870; */
     border-radius: 5px;
     margin-bottom: 15px;
+    text-transform: capitalize;
 }
 
 .custom-modalbox mat-dialog-container .close-btn-modal,
@@ -1808,9 +1809,9 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     text-transform: none
 }
 
-.cdk-overlay-container {
+/* .cdk-overlay-container {
     text-transform: capitalize
-}
+} */
 
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content {
     padding: 0 20px 15px 20px !important;

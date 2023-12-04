@@ -60,6 +60,11 @@ export class DashboardComponent {
   public share_url: any = [];
   public emailTemplateData: any = [];
 
+  public appendArray: any = [];
+
+  skip = 0;
+  limit = 3;
+
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
@@ -182,6 +187,10 @@ export class DashboardComponent {
       });
   }
 
+  // loadMore(skip, limit) {
+
+  // }
+
   // << -------------- All Campaign Fetch Function ---------------- >>
 
   fetchAllCampaign() {
@@ -250,6 +259,7 @@ export class DashboardComponent {
     console.log('idVal===========>', idVal);
     let htmlVal: any = document.getElementById(idVal)?.innerHTML;
     this.clipBoard.copy(htmlVal);
+    this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
   }
 
   // << -------- Campaign Modal ----------- >>

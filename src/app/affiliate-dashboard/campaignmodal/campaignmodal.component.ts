@@ -462,12 +462,12 @@ export class addCampainModal {
               console.log('response', response);
               console.log('afterloader', this.loader);
               this.loader = false;
-              this.matSnackBar.open(response.message, 'ok', {
+              this.matSnackBar.open("Updated Successfully", 'OK', {
                 duration: 3000,
               });
               setTimeout(() => {
                 this.dialogRef.close();
-              }, 3000);
+              }, 2000);
             },
             error: (error: any) => {
               console.log('error --------->', error);
