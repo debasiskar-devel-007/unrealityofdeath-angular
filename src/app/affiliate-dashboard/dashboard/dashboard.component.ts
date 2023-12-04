@@ -77,6 +77,7 @@ export class DashboardComponent {
         },
       });
     } else {
+      this.loader = true
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: this.cookieData.uidval,
@@ -88,11 +89,15 @@ export class DashboardComponent {
             if (response.status === 'success') {
               if (response.results?.length > 0) {
                 this.dashboardCampaignListApi();
+                this.loader = false
               }
+            } else {
+              this.loader = false
             }
           },
           error: (error: any) => {
             console.log('error', error);
+            this.loader = false
           },
         });
     }
@@ -115,6 +120,7 @@ export class DashboardComponent {
   }
 
   dashboardCampaignListApi() {
+    this.loader = true;
     this.apiService
       .getHttpDataPost('marketing/dashboard-campaign-list', {
         user_id: this.cookieData.uidval,
@@ -124,10 +130,14 @@ export class DashboardComponent {
           console.log('response', response);
           if (response.response.length > 0) {
             this.campaignData = response.response;
+            this.loader = false;
+          } else {
+            this.loader = false;
           }
         },
         error: (error: any) => {
           console.log('error', error);
+          this.loader = false;
         },
       });
   }
@@ -144,9 +154,9 @@ export class DashboardComponent {
     console.log(this.selected_campaign_index, 'this.selected_campaign_index');
   }
 
-  valuechange(camp_index: any) {
-    console.log('func hit', camp_index);
-  }
+  // valuechange(camp_index: any) {
+  //   console.log('func hit', camp_index);
+  // }
 
   getBanner() {
     this.loader = true;
@@ -160,9 +170,10 @@ export class DashboardComponent {
 
           if (response.status == 'success' && response.results.length > 0) {
             this.banner_data = response.results;
-          }
-
-          this.loader = false;
+            this.loader = false;
+          } else {
+            this.loader = false;
+          }          
         },
         error: (error: any) => {
           console.log('this is video error', error);
@@ -174,6 +185,7 @@ export class DashboardComponent {
   // << -------------- All Campaign Fetch Function ---------------- >>
 
   fetchAllCampaign() {
+    this.loader = true;
     this.apiService
       .getHttpDataPost('marketing/all-campaign-data', {
         user_id: this.cookieData.uidval,
@@ -183,10 +195,14 @@ export class DashboardComponent {
           console.log(response);
           if (response.status == 'success' && response.response.length > 0) {
             this.allCampaigns = response.response;
+            this.loader = false;
+          } else {
+            this.loader = false;
           }
         },
         error: (error: any) => {
           console.log(error);
+          this.loader = false;
         },
       });
   }
@@ -204,26 +220,26 @@ export class DashboardComponent {
     console.log('data', this.share_url);
   }
 
-  bannerCampSelect(event: MatSelectChange) {
-    console.log(event);
+  // bannerCampSelect(event: MatSelectChange) {
+  //   console.log(event);
 
-    // const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
+  //   const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
 
-    // console.log("MatSelectChange", event.source);
-    // console.log("MatSelectChange==", targetElement);
+  //   console.log("MatSelectChange", event.source);
+  //   console.log("MatSelectChange==", targetElement);
 
-    // this.share_url = event.source
+  //   this.share_url = event.source
 
-    // // if(event.source._id)
-    // console.log("bannner select field ", event.source._elementRef.nativeElement);
+  //   // if(event.source._id)
+  //   console.log("bannner select field ", event.source._elementRef.nativeElement);
 
-    // let selectid = event.source._elementRef.nativeElement.id
+  //   let selectid = event.source._elementRef.nativeElement.id
 
-    // if (event.source._elementRef.nativeElement.id == selectid) {
+  //   if (event.source._elementRef.nativeElement.id == selectid) {
 
-    //   targetElement.setAttribute("disabled", "false");
-    // }
-  }
+  //     targetElement.setAttribute("disabled", "false");
+  //   }
+  // }
 
   emailOptionSelect(optionIndex: any, templateNumber: any) {
     console.log('optionIndex============>', optionIndex, templateNumber);
@@ -322,13 +338,13 @@ export class DashboardComponent {
         next: (response: any) => {
           console.log(response);
           if (response.status == 'success') {
-            this.loader = false;
             const dialogRef = this.dialog.open(allCampaignModal, {
               panelClass: ['custom-modalbox', 'campainlist_modalbox'],
               data: {
                 setDefaultObj: response.results.res,
               },
             });
+            this.loader = false;
           } else {
             this.loader = false;
           }
@@ -426,13 +442,16 @@ export class UniqueUrlModal {
       .getHttpDataPost('marketing/unique-name-check', { unique_name: params })
       .subscribe((responce) => {
         console.log('respodfdsfnce', responce);
-        this.unicLoader = false;
+        
         if (responce.status === 'success') {
           if (responce.has === false) {
             this.hasunic = 1;
           } else if (responce.has === true) {
             this.hasunic = 2;
           }
+          this.unicLoader = false;
+        } else {
+          this.unicLoader = false;
         }
       });
   }
@@ -453,6 +472,7 @@ export class UniqueUrlModal {
   }
 
   submit() {
+    this.loader = true;
     const login_user_details = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
       : {};
@@ -460,7 +480,6 @@ export class UniqueUrlModal {
     console.log(login_user_details);
 
     if (this.validflag == 1 && this.hasunic === 1) {
-      this.loader = true;
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: login_user_details.uidval,
@@ -470,7 +489,7 @@ export class UniqueUrlModal {
         .subscribe({
           next: (response: any) => {
             if (response.status === 'success') {
-              this.loader = false;
+              
               console.log('success', response);
               let oldcookie = JSON.parse(
                 this.cookieService.get('login_user_details')
@@ -493,10 +512,14 @@ export class UniqueUrlModal {
               setTimeout(() => {
                 this.dialogRef.close();
               }, 2000);
+              this.loader = false;
+            } else {
+              this.loader = false;
             }
           },
           error: (error: any) => {
             console.log('error', error);
+            this.loader = false;
           },
         });
     }
