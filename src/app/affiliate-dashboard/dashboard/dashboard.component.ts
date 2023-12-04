@@ -144,9 +144,9 @@ export class DashboardComponent {
     console.log(this.selected_campaign_index, 'this.selected_campaign_index');
   }
 
-  valuechange(camp_index: any) {
-    console.log('func hit', camp_index);
-  }
+  // valuechange(camp_index: any) {
+  //   console.log('func hit', camp_index);
+  // }
 
   getBanner() {
     this.loader = true;
@@ -204,26 +204,26 @@ export class DashboardComponent {
     console.log('data', this.share_url);
   }
 
-  bannerCampSelect(event: MatSelectChange) {
-    console.log(event);
+  // bannerCampSelect(event: MatSelectChange) {
+  //   console.log(event);
 
-    // const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
+  //   const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
 
-    // console.log("MatSelectChange", event.source);
-    // console.log("MatSelectChange==", targetElement);
+  //   console.log("MatSelectChange", event.source);
+  //   console.log("MatSelectChange==", targetElement);
 
-    // this.share_url = event.source
+  //   this.share_url = event.source
 
-    // // if(event.source._id)
-    // console.log("bannner select field ", event.source._elementRef.nativeElement);
+  //   // if(event.source._id)
+  //   console.log("bannner select field ", event.source._elementRef.nativeElement);
 
-    // let selectid = event.source._elementRef.nativeElement.id
+  //   let selectid = event.source._elementRef.nativeElement.id
 
-    // if (event.source._elementRef.nativeElement.id == selectid) {
+  //   if (event.source._elementRef.nativeElement.id == selectid) {
 
-    //   targetElement.setAttribute("disabled", "false");
-    // }
-  }
+  //     targetElement.setAttribute("disabled", "false");
+  //   }
+  // }
 
   emailOptionSelect(optionIndex: any, templateNumber: any) {
     console.log('optionIndex============>', optionIndex, templateNumber);

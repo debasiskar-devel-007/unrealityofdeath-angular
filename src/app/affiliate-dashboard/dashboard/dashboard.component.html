@@ -94,7 +94,6 @@
                     >
                     <mat-select
                       [value]="data.campaign_data[0].split('##~~')[1]"
-                      (selectionChange)="valuechange(mainIndex)"
                       [(ngModel)]="data.campaign_data[0].split('##~~')[1]"
                     >
                       <ng-container
@@ -215,8 +214,6 @@
                       <mat-label>Select Campaign</mat-label>
                       <mat-select
                         [value]="0"
-                        (selectionChange)="bannerCampSelect($event)"
-                        (ngModelChange)="valuechange(true)"
                       >
                         <ng-container
                           *ngFor="
@@ -252,7 +249,7 @@
           <p>
             <strong>Important:</strong> Emails <strong>must</strong> only be
             sent to friends, family, and associates you know personally.
-            Absolutely <strong>NO</strong> third-party lists can be used. Access
+            Absolutely <strong>NO</strong> third-party lists can be used. Unreality of Death
             Partners must approve all cold outreach email campaigns.
           </p>
         </div>
@@ -260,7 +257,7 @@
           <div class="banner-marketing-mainwrapper">
             <div id="emailtemplate1">
               <div class="emailtemp_innerwrp">
-                <h1>ACCESS Discount HealthCare</h1>
+                <h1>Unreality of Death</h1>
                 <h2>
                   PAY NOTHING FOR THE MOST PRESCRIBED GENERIC PRESCRIPTIONS!
                 </h2>
