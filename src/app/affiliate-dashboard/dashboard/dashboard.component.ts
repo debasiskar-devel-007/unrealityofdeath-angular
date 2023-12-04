@@ -174,7 +174,7 @@ export class DashboardComponent {
         next: (response: any) => {
           console.log('this is video data', response);
 
-          if (response.status == 'success' && response.results.length > 0) {
+          if (response?.status == 'success' && response?.results?.length > 0) {
             this.banner_data = response.results;
             this.loader = false;
           } else {
