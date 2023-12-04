@@ -501,7 +501,7 @@ export class addCampainModal {
               });
               setTimeout(() => {
                 this.dialogRef.close();
-              }, 4000);
+              }, 2000);
             },
             error: (error: any) => {
               this.loader = false;
