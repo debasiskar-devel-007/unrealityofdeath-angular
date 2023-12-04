@@ -250,6 +250,7 @@ export class DashboardComponent {
     console.log('idVal===========>', idVal);
     let htmlVal: any = document.getElementById(idVal)?.innerHTML;
     this.clipBoard.copy(htmlVal);
+    this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
   }
 
   // << -------- Campaign Modal ----------- >>
