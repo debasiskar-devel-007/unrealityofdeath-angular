@@ -4565,35 +4565,6 @@ tbody tr td .actionbuttonwrapper button {
 
 /* ?////////////// Email Template CSS by Sanket ///////////// */
 
-
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp {
-    padding: 10px;
-    background: #e4e7dd;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp h1 {
-    font-size: 20px;
-    margin: 20px 0px 30px;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp h2 {
-    font-size: 20px;
-    margin: 0px 0px 30px;
-    line-height: 26px;
-    font-weight: 500;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp p {
-    font-size: 18px;
-    margin: 15px 0px;
-    line-height: 26px;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp a {
-    text-decoration: underline;
-    color: #1b75b2;
-    font-size: 19px;
-    word-break: break-word;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp a:hover {
-    color: #0e8bdf;
-}
 .wrapper.emailtemp_wrapper .marketing-mediawrapper {
     margin-top: 10px;
 }
