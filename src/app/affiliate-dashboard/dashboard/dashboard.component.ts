@@ -21,6 +21,7 @@ import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component
 import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
 import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboard-report-modal.component';
 import { MatSelectChange } from '@angular/material/select';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +37,8 @@ export class DashboardComponent {
     public matSnackBar: MatSnackBar,
     public activatedRoute: ActivatedRoute,
     private clipBoard: Clipboard,
-    private elementRef: ElementRef, { nativeElement }: ElementRef<HTMLImageElement>
+    private elementRef: ElementRef, { nativeElement }: ElementRef<HTMLImageElement>,
+    public sanitizer: DomSanitizer
   ) { }
 
   public cookieData: any = {};
