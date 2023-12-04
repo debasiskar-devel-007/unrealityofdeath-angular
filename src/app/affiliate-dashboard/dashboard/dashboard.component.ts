@@ -60,11 +60,6 @@ export class DashboardComponent {
   public share_url: any = [];
   public emailTemplateData: any = [];
 
-  public appendArray: any = [];
-
-  skip = 0;
-  limit = 3;
-
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
@@ -186,10 +181,6 @@ export class DashboardComponent {
         },
       });
   }
-
-  // loadMore(skip, limit) {
-
-  // }
 
   // << -------------- All Campaign Fetch Function ---------------- >>
 
