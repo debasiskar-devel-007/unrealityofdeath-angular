@@ -269,7 +269,7 @@
                   [href]="
                     allCampaigns[
                       emailTemplateData[0] ? emailTemplateData[0] : 0
-                    ].campaign_url
+                    ]?.campaign_url
                   " style="text-decoration: underline;
     color: #1b75b2;
     font-size: 19px;
@@ -277,7 +277,7 @@
                   >{{
                     allCampaigns[
                       emailTemplateData[0] ? emailTemplateData[0] : 0
-                    ].campaign_url
+                    ]?.campaign_url
                   }}</a
                 >
                 <p style="font-size: 18px;
@@ -292,7 +292,7 @@
                   [href]="
                     allCampaigns[
                       emailTemplateData[0] ? emailTemplateData[0] : 0
-                    ].campaign_url
+                    ]?.campaign_url
                   " style="text-decoration: underline;
     color: #1b75b2;
     font-size: 19px;
@@ -300,7 +300,7 @@
                   >{{
                     allCampaigns[
                       emailTemplateData[0] ? emailTemplateData[0] : 0
-                    ].campaign_url
+                    ]?.campaign_url
                   }}</a
                 >
               </div>
@@ -315,7 +315,7 @@
               <div class="marketing-select">
                 <mat-form-field>
                   <mat-label>Select Campaign</mat-label>
-                  <mat-select [value]="allCampaigns[0].campaign_url">
+                  <mat-select [value]="allCampaigns[0]?.campaign_url">
                     <ng-container
                       *ngFor="
                         let campaigns of allCampaigns;
@@ -323,7 +323,7 @@
                       "
                     >
                       <mat-option
-                        [value]="campaigns.campaign_url"
+                        [value]="campaigns?.campaign_url"
                         (click)="emailOptionSelect(allCampIndex, 0)"
                         >{{ campaigns.campaign_name }}</mat-option
                       >

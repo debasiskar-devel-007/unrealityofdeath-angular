@@ -77,6 +77,7 @@ export class DashboardComponent {
         },
       });
     } else {
+      this.loader = true
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: this.cookieData.uidval,
@@ -88,11 +89,15 @@ export class DashboardComponent {
             if (response.status === 'success') {
               if (response.results?.length > 0) {
                 this.dashboardCampaignListApi();
+                this.loader = false
               }
+            } else {
+              this.loader = false
             }
           },
           error: (error: any) => {
             console.log('error', error);
+            this.loader = false
           },
         });
     }
@@ -115,6 +120,7 @@ export class DashboardComponent {
   }
 
   dashboardCampaignListApi() {
+    this.loader = true;
     this.apiService
       .getHttpDataPost('marketing/dashboard-campaign-list', {
         user_id: this.cookieData.uidval,
@@ -124,10 +130,14 @@ export class DashboardComponent {
           console.log('response', response);
           if (response.response.length > 0) {
             this.campaignData = response.response;
+            this.loader = false;
+          } else {
+            this.loader = false;
           }
         },
         error: (error: any) => {
           console.log('error', error);
+          this.loader = false;
         },
       });
   }
@@ -160,9 +170,10 @@ export class DashboardComponent {
 
           if (response.status == 'success' && response.results.length > 0) {
             this.banner_data = response.results;
-          }
-
-          this.loader = false;
+            this.loader = false;
+          } else {
+            this.loader = false;
+          }          
         },
         error: (error: any) => {
           console.log('this is video error', error);
@@ -174,6 +185,7 @@ export class DashboardComponent {
   // << -------------- All Campaign Fetch Function ---------------- >>
 
   fetchAllCampaign() {
+    this.loader = true;
     this.apiService
       .getHttpDataPost('marketing/all-campaign-data', {
         user_id: this.cookieData.uidval,
@@ -183,10 +195,14 @@ export class DashboardComponent {
           console.log(response);
           if (response.status == 'success' && response.response.length > 0) {
             this.allCampaigns = response.response;
+            this.loader = false;
+          } else {
+            this.loader = false;
           }
         },
         error: (error: any) => {
           console.log(error);
+          this.loader = false;
         },
       });
   }
