@@ -201,7 +201,7 @@ export class ClickReportComponent {
         },
         "sort": {
             "type": "desc",
-            "field": "created_on"
+            "field": "campaign_name"
         },
         "project": {},
         "token": ""
@@ -308,7 +308,7 @@ export class ClickReportComponent {
         },
         "sort": {
           "type": "desc",
-          "field": "created_on"
+          "field": "campaign_name"
         },
         "token": "",
         "project": {}
@@ -338,7 +338,7 @@ export class ClickReportComponent {
         },
         "sort": {
           "type": "desc",
-          "field": "created_on"
+          "field": "campaign_name"
         },
         "project": {},
         "token": ""
