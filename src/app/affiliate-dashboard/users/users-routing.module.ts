@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResolveService } from 'src/app/services/resolve.service';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserAddEditComponent } from './user-add-edit/user-add-edit.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
 
       endpoint: 'user-api/user-list-new',
     },
+  },
+  {
+    path: 'user-edit/:id',
+    component: UserAddEditComponent
   },
 ];
 
