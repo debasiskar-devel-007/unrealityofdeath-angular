@@ -79,6 +79,7 @@ export class DashboardComponent {
 
       dialogRef.afterClosed().subscribe((result) => {
         this.dashboardCampaignListApi()
+        this.getBanner()
       })
 
     } else {
