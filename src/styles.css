@@ -1724,14 +1724,16 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .mat-mdc-dialog-actions button {
-    background: var(--orange-gradient) !important;
-    text-shadow: 1px 1px 1px #874403;
     font-size: 2rem !important;
     padding: 2.3rem 2rem !important;
     line-height: 2.5rem !important;
     color: #fff !important;
-    border: 1px solid #f47620 !important;
-    box-shadow: -4px -2px 9px #f9fbff, 6px 5px 13px #d9cece
+    background: #7f2e0a;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
 }
 
 .mat-mdc-dialog-content {
