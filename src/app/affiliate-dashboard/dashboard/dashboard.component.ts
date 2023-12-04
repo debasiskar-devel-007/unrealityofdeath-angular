@@ -76,6 +76,11 @@ export class DashboardComponent {
           setDefaultObj: {},
         },
       });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        this.dashboardCampaignListApi()
+      })
+
     } else {
       this.loader = true
       this.apiService
@@ -288,7 +293,8 @@ export class DashboardComponent {
             });
 
             dialogRef.afterClosed().subscribe((result) => {
-              this.dashboardCampaignListApi();
+              this.dashboardCampaignListApi()
+              this.getBanner()
             });
           } else {
             this.loader = false;
