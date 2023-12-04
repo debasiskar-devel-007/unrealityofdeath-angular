@@ -82,6 +82,7 @@ export class ConversionReportComponent {
         ],
 
     textsearch:
+    
     this.login_user_details.roleval === 3
         ? [
           {
@@ -102,12 +103,14 @@ export class ConversionReportComponent {
   searchendpoint =  this.login_user_details.roleval === 3 ? 'click-conversion/click-list' : '';
 
   libdata: any = {
+    
     basecondition:
       this.login_user_details.roleval === 3
         ? {
           affiliate_id: this.login_user_details.uidval,
-          created_on: { $gte: this.startval, $lte: this.endval },
+          // created_on: { $gte: this.startval, $lte: this.endval },
         }
+        
         : {
           affiliate_id: this.login_user_details.uidval,
 
@@ -217,6 +220,7 @@ export class ConversionReportComponent {
   }
   listenLiblistingChange(data: any) {
     console.log("aaaaaa=====>",data);
+    
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
