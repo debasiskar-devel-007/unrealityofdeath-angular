@@ -1679,6 +1679,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     border: 1px solid #4a5870; */
     border-radius: 5px;
     margin-bottom: 15px;
+    text-transform: capitalize;
 }
 
 .custom-modalbox mat-dialog-container .close-btn-modal,
