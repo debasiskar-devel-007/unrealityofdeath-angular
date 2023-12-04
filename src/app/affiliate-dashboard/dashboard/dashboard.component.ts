@@ -37,9 +37,10 @@ export class DashboardComponent {
     public matSnackBar: MatSnackBar,
     public activatedRoute: ActivatedRoute,
     private clipBoard: Clipboard,
-    private elementRef: ElementRef, { nativeElement }: ElementRef<HTMLImageElement>,
+    private elementRef: ElementRef,
+    { nativeElement }: ElementRef<HTMLImageElement>,
     public sanitizer: DomSanitizer
-  ) { }
+  ) {}
 
   public cookieData: any = {};
 
@@ -51,14 +52,13 @@ export class DashboardComponent {
 
   public copiedVal: any = '';
   // public mainIndex: number = 0;
-  public selected_campaign_index: any = []
+  public selected_campaign_index: any = [];
 
   public loader: boolean = false;
 
-  public banner_data: any = []
-  public share_url: any = []
-  public emailTemplateData: any = []
-
+  public banner_data: any = [];
+  public share_url: any = [];
+  public emailTemplateData: any = [];
 
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
@@ -110,9 +110,8 @@ export class DashboardComponent {
       },
     });
 
-
-    this.getBanner()
-    this.fetchAllCampaign()
+    this.getBanner();
+    this.fetchAllCampaign();
   }
 
   dashboardCampaignListApi() {
@@ -135,257 +134,240 @@ export class DashboardComponent {
 
   copyToClipboard(url: string): void {
     this.clipBoard.copy(url);
-    this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
+    this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
   }
 
   selectedindex(index: any, camp_index: any) {
-    console.log("selectedindex hit", index, camp_index);
+    console.log('selectedindex hit', index, camp_index);
     // if(this.selected_campaign_index[camp_index]==null)
     this.selected_campaign_index[camp_index] = index;
-    console.log(this.selected_campaign_index, 'this.selected_campaign_index')
+    console.log(this.selected_campaign_index, 'this.selected_campaign_index');
   }
 
-  valuechange(camp_index: any) {
-    console.log("func hit", camp_index);
-  }
+  // valuechange(camp_index: any) {
+  //   console.log('func hit', camp_index);
+  // }
 
   getBanner() {
-    this.loader = true
-    this.apiService.getHttpData(`banner-management/fetch-all-banner/${this.cookieData.uidval}`).subscribe({
-      next: (response: any) => {
-        console.log("this is video data", response);
+    this.loader = true;
+    this.apiService
+      .getHttpData(
+        `banner-management/fetch-all-banner/${this.cookieData.uidval}`
+      )
+      .subscribe({
+        next: (response: any) => {
+          console.log('this is video data', response);
 
-        if(response.status == 'success' && response.results.length > 0) {
-          this.banner_data = response.results
-        }
-        
-        this.loader = false
-      },
-      error: (error: any) => {
-        console.log("this is video error", error);
-        this.loader = false
-      }
-    })
+          if (response.status == 'success' && response.results.length > 0) {
+            this.banner_data = response.results;
+          }
+
+          this.loader = false;
+        },
+        error: (error: any) => {
+          console.log('this is video error', error);
+          this.loader = false;
+        },
+      });
   }
-
 
   // << -------------- All Campaign Fetch Function ---------------- >>
 
   fetchAllCampaign() {
-
-    this.apiService.getHttpDataPost('marketing/all-campaign-data', {user_id: this.cookieData.uidval}).subscribe({
-      next: (response: any) => {
-        console.log(response);
-        if(response.status == 'success' && response.response.length > 0) {
-          this.allCampaigns = response.response
-        }
-        
-      },
-      error: (error: any) => {
-        console.log(error);
-      }
-    })
+    this.apiService
+      .getHttpDataPost('marketing/all-campaign-data', {
+        user_id: this.cookieData.uidval,
+      })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.status == 'success' && response.response.length > 0) {
+            this.allCampaigns = response.response;
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      });
   }
 
-
-
   // << -------------- All Campaign Fetch Function ---------------- >>
-
 
   // bannerCampaignIndex(data: any, index: any) {
   //   console.log("data", data);
   bannerCampaignIndex(optionIndex: any, index: any) {
-    console.log("data", optionIndex);
-    console.log("data", index);
+    console.log('data', optionIndex);
+    console.log('data', index);
 
-    this.share_url[index] = optionIndex
+    this.share_url[index] = optionIndex;
 
-    console.log("data", this.share_url);
+    console.log('data', this.share_url);
   }
 
-  bannerCampSelect(event: MatSelectChange) {
+  // bannerCampSelect(event: MatSelectChange) {
+  //   console.log(event);
 
-    console.log(event);
-    
+  //   const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
 
-    // const targetElement = this.elementRef.nativeElement.querySelector('#sharebutton');
+  //   console.log("MatSelectChange", event.source);
+  //   console.log("MatSelectChange==", targetElement);
 
-    // console.log("MatSelectChange", event.source);
-    // console.log("MatSelectChange==", targetElement);
+  //   this.share_url = event.source
 
-    // this.share_url = event.source
+  //   // if(event.source._id)
+  //   console.log("bannner select field ", event.source._elementRef.nativeElement);
 
-    // // if(event.source._id)
-    // console.log("bannner select field ", event.source._elementRef.nativeElement);
+  //   let selectid = event.source._elementRef.nativeElement.id
 
-    // let selectid = event.source._elementRef.nativeElement.id
+  //   if (event.source._elementRef.nativeElement.id == selectid) {
 
-    // if (event.source._elementRef.nativeElement.id == selectid) {
+  //     targetElement.setAttribute("disabled", "false");
+  //   }
+  // }
 
-    //   targetElement.setAttribute("disabled", "false");
-    // }
-
+  emailOptionSelect(optionIndex: any, templateNumber: any) {
+    console.log('optionIndex============>', optionIndex, templateNumber);
+    this.emailTemplateData[templateNumber] = optionIndex;
   }
 
-  emailOptionSelect(optionIndex:any,templateNumber:any){
-    console.log("optionIndex============>",optionIndex,templateNumber);
-    this.emailTemplateData[templateNumber] = optionIndex
+  copyEmailTemplate(idVal: any) {
+    console.log('idVal===========>', idVal);
+    let htmlVal: any = document.getElementById(idVal)?.innerHTML;
+    this.clipBoard.copy(htmlVal);
   }
-
-  copyEmailTemplate(idVal:any){
-    console.log("idVal===========>",idVal);
-    let htmlVal:any = document.getElementById(idVal)?.innerHTML
-    this.clipBoard.copy(htmlVal)
-    
-  }
-
- 
 
   // << -------- Campaign Modal ----------- >>
 
   campaignModal(campaignVal: any) {
     this.loader = true;
-    this.apiService.getHttpDataPost('marketing/campaign-list', {
-      condition: {
-        limit: 5,
-        skip: 0,
-      },
-      searchcondition: {
-        user_id: this.cookieData.uidval,
-        opportunity_id: campaignVal,
-      },
-      sort: {
-        type: 'desc',
-        field: 'created_on',
-      },
-      project: {},
-      token: '',
-    }).subscribe({
-      next: (response: any) => {
-        console.log(response);
-        if (response.status == 'success') {
+    this.apiService
+      .getHttpDataPost('marketing/campaign-list', {
+        condition: {
+          limit: 5,
+          skip: 0,
+        },
+        searchcondition: {
+          user_id: this.cookieData.uidval,
+          opportunity_id: campaignVal,
+        },
+        sort: {
+          type: 'desc',
+          field: 'created_on',
+        },
+        project: {},
+        token: '',
+      })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.status == 'success') {
+            this.loader = false;
+            const dialogRef = this.dialog.open(CampaignmodalComponent, {
+              panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+              data: {
+                setDefaultObj: response.results.res,
+                campaignVal: campaignVal,
+              },
+            });
+
+            dialogRef.afterClosed().subscribe((result) => {
+              this.dashboardCampaignListApi();
+            });
+          } else {
+            this.loader = false;
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
           this.loader = false;
-          const dialogRef = this.dialog.open(CampaignmodalComponent, {
-            panelClass: ['custom-modalbox', 'campainlist_modalbox'],
-            data: {
-              setDefaultObj: response.results.res,
-              campaignVal: campaignVal
-            }
-          })
-
-          dialogRef.afterClosed().subscribe(result => {
-            this.dashboardCampaignListApi()
-          })
-        } else {
-          this.loader = false;
-
-        }
-
-
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.loader = false;
-      }
-    })
+        },
+      });
   }
 
-// << -------- Campaign Modal ----------- >>
-
+  // << -------- Campaign Modal ----------- >>
 
   // << -------------- Landing Page Choose Modal ---------------- >>
 
   chooseLandingpage() {
-
     const dialogRef = this.dialog.open(chooseLandingpageModal, {
       panelClass: ['custom-modalbox', 'landingchoose-modalbox'],
-      data: this.campaignData
-    })
-
+      data: this.campaignData,
+    });
   }
 
   // << -------------- Landing Page Choose Modal ---------------- >>
 
-
   // << -------------- All Campaign Fetch Modal ---------------- >>
 
   allCampaignShow() {
-
     this.loader = true;
-    
-    this.apiService.getHttpDataPost('marketing/campaign-list', {
-      condition: {
-        limit: 5,
-        skip: 0,
-      },
-      searchcondition: {
-        user_id: this.cookieData.uidval,
-      },
-      sort: {
-        type: 'desc',
-        field: 'created_on',
-      },
-      project: {},
-      token: '',
-    }).subscribe({
-      next: (response: any) => {
-        console.log(response);
-        if (response.status == 'success') {
-          this.loader = false;
-          const dialogRef = this.dialog.open(allCampaignModal, {
-            panelClass: ['custom-modalbox', 'campainlist_modalbox'],
-            data: {
-              setDefaultObj: response.results.res,
-            }
-          })
-        } else {
-          this.loader = false;
-        }
 
-
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.loader = false;
-      }
-    })
-  
+    this.apiService
+      .getHttpDataPost('marketing/campaign-list', {
+        condition: {
+          limit: 5,
+          skip: 0,
+        },
+        searchcondition: {
+          user_id: this.cookieData.uidval,
+        },
+        sort: {
+          type: 'desc',
+          field: 'created_on',
+        },
+        project: {},
+        token: '',
+      })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.status == 'success') {
+            this.loader = false;
+            const dialogRef = this.dialog.open(allCampaignModal, {
+              panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+              data: {
+                setDefaultObj: response.results.res,
+              },
+            });
+          } else {
+            this.loader = false;
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+          this.loader = false;
+        },
+      });
   }
 
   // << -------------- All Campaign Fetch Modal ---------------- >>
 
-
-    // << -------------- Coming Soon Modal ---------------- >>
+  // << -------------- Coming Soon Modal ---------------- >>
 
   comingSoon() {
-
     const dialogRef = this.dialog.open(ComingsoonComponent, {
       panelClass: ['custom-modalbox', 'comingsoon-modalbox'],
-      data: ''
-    })
-
+      data: '',
+    });
   }
 
-    // << -------------- Coming Soon Modal ---------------- >>
+  // << -------------- Coming Soon Modal ---------------- >>
 
+  clickConversionModal(val: any) {
+    console.log('click conversion data==========>', val);
 
-  clickConversionModal(val:any) {
-    console.log("click conversion data==========>",val);
-    
     const dialogRef = this.dialog.open(DashboardReportModalComponent, {
       panelClass: ['custom-modalbox', 'campainlist_modalbox'],
       data: {
-        opportunity_data:{
+        opportunity_data: {
           base_name_identifier: val.base_name_identifier,
-          opportunities_id: val.opportunity_id
-        }
-      }
-    })
-
+          opportunities_id: val.opportunity_id,
+        },
+      },
+    });
   }
 
-    // << -------------- Coming Soon Modal ---------------- >>
-
+  // << -------------- Coming Soon Modal ---------------- >>
 }
 
 // << ------------------ Unique Url Modal Component ----------------- >>
@@ -407,7 +389,7 @@ export class UniqueUrlModal {
     private fb: FormBuilder,
     private cookieService: CookieService,
     private elementRef: ElementRef
-  ) { }
+  ) {}
 
   public unicUser_form: any;
   public validflag: number = 0;
@@ -523,9 +505,7 @@ export class UniqueUrlModal {
 
 // << ------------------ Unique Url Modal Component ----------------- >>
 
-
 // << ------------------ Landing Page Choose Modal Component ----------------- >>
-
 
 @Component({
   selector: 'chooseLandingpageModal',
@@ -533,9 +513,7 @@ export class UniqueUrlModal {
   standalone: true,
   imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
 })
-
 export class chooseLandingpageModal {
-
   public chooseLandingData: any = [];
 
   constructor(
@@ -546,74 +524,66 @@ export class chooseLandingpageModal {
     private cookieService: CookieService,
     private elementRef: ElementRef,
     public dialog: MatDialog
-  ) { 
+  ) {
     console.log(data);
     this.chooseLandingData = data;
-    
-   }
+  }
 
-   public cookieData: any = this.cookieService.get('login_user_details')
-   ? JSON.parse(this.cookieService.get('login_user_details'))
-   : {}
+  public cookieData: any = this.cookieService.get('login_user_details')
+    ? JSON.parse(this.cookieService.get('login_user_details'))
+    : {};
 
-   public loader: boolean = false;
+  public loader: boolean = false;
 
   ngOnInit() {}
 
   chosenLandingCampaign(idVal: any) {
-    console.log(idVal)
-    this.loader = true
+    console.log(idVal);
+    this.loader = true;
 
-    this.apiService.getHttpDataPost('marketing/campaign-list', {
-      condition: {
-        limit: 5,
-        skip: 0,
-      },
-      searchcondition: {
-        user_id: this.cookieData.uidval,
-        opportunity_id: idVal,
-      },
-      sort: {
-        type: 'desc',
-        field: 'created_on',
-      },
-      project: {},
-      token: '',
-    }).subscribe({
-      next: (response: any) => {
-        console.log(response);
-        if (response.status == 'success') {
-          const dialogRef = this.dialog.open(CampaignmodalComponent, {
-            panelClass: ['custom-modalbox', 'campainlist_modalbox'],
-            data: {
-              setDefaultObj: response.results.res,
-              campaignVal: idVal
-            }
-          })
+    this.apiService
+      .getHttpDataPost('marketing/campaign-list', {
+        condition: {
+          limit: 5,
+          skip: 0,
+        },
+        searchcondition: {
+          user_id: this.cookieData.uidval,
+          opportunity_id: idVal,
+        },
+        sort: {
+          type: 'desc',
+          field: 'created_on',
+        },
+        project: {},
+        token: '',
+      })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.status == 'success') {
+            const dialogRef = this.dialog.open(CampaignmodalComponent, {
+              panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+              data: {
+                setDefaultObj: response.results.res,
+                campaignVal: idVal,
+              },
+            });
 
-          this.loader = false
-          
-        } else {
-          this.loader = false
-
-        }
-
-
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.loader = false
-      }
-    })
-    
-
+            this.loader = false;
+          } else {
+            this.loader = false;
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+          this.loader = false;
+        },
+      });
   }
-
 }
 
-
 // << ------------------ Landing Page Choose Modal Component ----------------- >>
-
 
 // << ------------------ All Campaign Modal Component ----------------- >>
 
@@ -623,11 +593,8 @@ export class chooseLandingpageModal {
   standalone: true,
   imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
 })
-
 export class allCampaignModal {
-
   public campainAllData: any = [];
-
 
   constructor(
     public apiService: ApiservicesService,
@@ -637,94 +604,90 @@ export class allCampaignModal {
     private cookieService: CookieService,
     private elementRef: ElementRef,
     private clipBoard: Clipboard
-  ) { 
+  ) {
     console.log(data);
     this.campainAllData = data;
-    
-   }
+  }
 
-   public tabledatatalist: any = []
+  public tabledatatalist: any = [];
 
-   public formLoader: boolean = false;
-   public progressLoader: boolean = false;
-   public datasource: any;
-   tabledata_header_skip: any = ['_id'];
-   tabledata_detail_skip: any = ['_id', 'usertype'];
- 
-   updatetable: boolean = false;
-   tablename = 'campaign';
-   editroute = '';
-   updateendpoint = 'marketing/campaign-update';
-   deleteendpoint = 'marketing/campaign-delete';
-   datacollection: any = 'marketing/campaign-list';
-   public listprogressBar: any = false;
-   public api_url_for_managebanner = environment.api_url;
-   public cookieData = this.cookieService.get('login_user_details')
-     ? JSON.parse(this.cookieService.get('login_user_details'))
-     : {};
-   searchendpoint = 'marketing/campaign-list';
-   date_search_endpoint: any = 'marketing/campaign-list';
-   date_search_source: any = 'campaign';
-   date_search_source_count: any = 0;
-   Tabledata_header_skip: any = ['_id'];
-   limitcond: any = {
-     limit: 5,
-     skip: 0,
-     pagecount: 1,
-   };
-   statusarray: any = [
-     { val: 1, name: 'Active' },
-     { val: 0, name: 'Inactive' },
-   ];
-   rolearray: any = [];
-   modify_header_array: any = {
-     campaign_name: 'Campaign Name',
-     landing_page_name: 'Landing Page',
-     status: 'Status',
-     created_on: 'Created on',
-   };
- 
-   search_settings: any = {};
-   sortdata: any = {
-     type: 'desc',
-     field: 'created_on',
-     options: ['campaign_name', 'landing_page_name', 'status', 'created_on'],
-   };
- 
-   public customlistenbutton: any = {
-     flag: true,
-     tooltipflag: true,
-     buttons: [
-     ],
-   };
-   libdata: any = {
-     basecondition: {},
- 
-     detailview_override: [
-       
-     ],
-     hidedeletebutton: true,
-     hideviewbutton: true,
-     hideeditbutton: true,
-     hidestatustogglebutton: true,
-     hidemultipleselectbutton: true,
-     hideaction: false,
-     updateendpoint: 'marketing/campaign-status-change',
-     updateendpointmany: 'marketing/campaign-status-change',
-     deleteendpointmany: 'marketing/campaign-delete',
- 
-     tableheaders: [
-       'campaign_name',
-       'landing_page_name',
-       'created_on',
-       'status',
-     ],
- 
-     colpipes: [
-       { type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' },
-     ],
- 
-     custombuttons: [
+  public formLoader: boolean = false;
+  public progressLoader: boolean = false;
+  public datasource: any;
+  tabledata_header_skip: any = ['_id'];
+  tabledata_detail_skip: any = ['_id', 'usertype'];
+
+  updatetable: boolean = false;
+  tablename = 'campaign';
+  editroute = '';
+  updateendpoint = 'marketing/campaign-update';
+  deleteendpoint = 'marketing/campaign-delete';
+  datacollection: any = 'marketing/campaign-list';
+  public listprogressBar: any = false;
+  public api_url_for_managebanner = environment.api_url;
+  public cookieData = this.cookieService.get('login_user_details')
+    ? JSON.parse(this.cookieService.get('login_user_details'))
+    : {};
+  searchendpoint = 'marketing/campaign-list';
+  date_search_endpoint: any = 'marketing/campaign-list';
+  date_search_source: any = 'campaign';
+  date_search_source_count: any = 0;
+  Tabledata_header_skip: any = ['_id'];
+  limitcond: any = {
+    limit: 5,
+    skip: 0,
+    pagecount: 1,
+  };
+  statusarray: any = [
+    { val: 1, name: 'Active' },
+    { val: 0, name: 'Inactive' },
+  ];
+  rolearray: any = [];
+  modify_header_array: any = {
+    campaign_name: 'Campaign Name',
+    landing_page_name: 'Landing Page',
+    status: 'Status',
+    created_on: 'Created on',
+  };
+
+  search_settings: any = {};
+  sortdata: any = {
+    type: 'desc',
+    field: 'created_on',
+    options: ['campaign_name', 'landing_page_name', 'status', 'created_on'],
+  };
+
+  public customlistenbutton: any = {
+    flag: true,
+    tooltipflag: true,
+    buttons: [],
+  };
+  libdata: any = {
+    basecondition: {},
+
+    detailview_override: [],
+    hidedeletebutton: true,
+    hideviewbutton: true,
+    hideeditbutton: true,
+    hidestatustogglebutton: true,
+    hidemultipleselectbutton: true,
+    hideaction: false,
+    updateendpoint: 'marketing/campaign-status-change',
+    updateendpointmany: 'marketing/campaign-status-change',
+    deleteendpointmany: 'marketing/campaign-delete',
+
+    tableheaders: [
+      'campaign_name',
+      'landing_page_name',
+      'created_on',
+      'status',
+    ],
+
+    colpipes: [
+      { type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' },
+    ],
+
+    custombuttons: [
       //  {
       //    label: 'Edit',
       //    type: 'listner',
@@ -762,27 +725,27 @@ export class allCampaignModal {
       //    name: 'delete',
       //    classname: 'delete_btn',
       //  },
-       {
-         label: 'Copy',
-         type: 'listner',
-         id: 'copy_btn',
-         tooltip: 'Copy',
-         name: 'copy',
-         classname: 'copy_btn',
-       },
-     ],
-   };
-   public taxonomy_updatetable: boolean = false;
-   public jwttokenformanagebanner = '';
+      {
+        label: 'Copy',
+        type: 'listner',
+        id: 'copy_btn',
+        tooltip: 'Copy',
+        name: 'copy',
+        classname: 'copy_btn',
+      },
+    ],
+  };
+  public taxonomy_updatetable: boolean = false;
+  public jwttokenformanagebanner = '';
 
-   ngOnInit() {
+  ngOnInit() {
     this.libdata.basecondition = {
-      user_id: this.cookieData?.uidval
+      user_id: this.cookieData?.uidval,
     };
 
     this.tabledatatalist = this.campainAllData?.setDefaultObj
-    ? this.campainAllData?.setDefaultObj
-    : [];
+      ? this.campainAllData?.setDefaultObj
+      : [];
 
     this.apiService
       .getHttpDataPost('marketing/campaign-list-count', {
@@ -806,28 +769,17 @@ export class allCampaignModal {
           this.date_search_source_count = response.count;
         }
       });
+  }
 
-   }
-
-   onLiblistingButtonChange(val: any) {}
+  onLiblistingButtonChange(val: any) {}
   listenLiblistingChange(data: any = null) {
     console.log('test', data);
 
-
     if (data?.custombuttonclick?.btninfo.id == 'copy_btn') {
-
-      this.clipBoard.copy(data?.custombuttonclick?.data?.campaign_url)
-      this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
-
+      this.clipBoard.copy(data?.custombuttonclick?.data?.campaign_url);
+      this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
     }
   }
-
 }
 
 // << ------------------ All Campaign Modal Component ----------------- >>
-
-
-
-
-
-
