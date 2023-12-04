@@ -207,7 +207,7 @@ export class ClickReportComponent {
         "token": ""
         })
         .subscribe((response: any) => {
-          if (response && response.count) {
+          if (response) {
             this.date_search_source_count = response.count; // role data count  save
           }
         });
