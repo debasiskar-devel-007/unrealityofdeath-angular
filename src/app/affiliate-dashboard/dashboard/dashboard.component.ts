@@ -187,7 +187,13 @@ export class DashboardComponent {
       });
   }
 
-  // loadMore(skip, limit) {
+  // loadMore(skip: any, limit: any) {
+
+  //   this.skip = this.skip + skip;
+  //   this.limit = this.limit + limit;
+  //   this.appendArray = this.banner_data.slice(this.skip, this.limit);
+  //   console.log(this.appendArray, 'this.appendArray');
+    
 
   // }
 

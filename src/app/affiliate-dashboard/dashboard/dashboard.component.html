@@ -174,7 +174,7 @@
         <div class="banner-main-wrapper">
           <div
             class="banner-marketing-mainwrapper"
-            *ngFor="let banner of banner_data; let bannerIndex = index"
+            *ngFor="let banner of appendArray; let bannerIndex = index"
           >
             <div class="banner-marketing-container">
               <div class="banner-marketing-col">
@@ -236,9 +236,8 @@
               </div>
             </div>
           </div>
-          <!-- <button id="loadMore" (click)="loadMore(3, 3)" >showMore</button> -->
-
         </div>
+        <!-- <button id="loadMore" (click)="loadMore(3, 3)" >showMore</button> -->
       </div>
 
       <!-- *********************************************** Banner Section End*************************************************************** -->
