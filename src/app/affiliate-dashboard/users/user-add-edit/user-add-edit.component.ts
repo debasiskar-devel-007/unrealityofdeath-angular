@@ -222,6 +222,12 @@ export class UserAddEditComponent {
   listenFormFieldChange(val: any) {
     this.formValue = val.source?.data;
 
+    if(this.formValue.status == true){
+      this.formValue.status = 1;
+    } else if(this.formValue.status == false) {
+      this.formValue.status = 0;
+    }
+
     console.log('listenFormFieldChangeval', val);
 
     if (val.field == 'fromsubmit' && val.fieldval == 'success') {
