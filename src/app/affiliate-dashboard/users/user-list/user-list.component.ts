@@ -194,7 +194,7 @@ export class UserListComponent {
     console.log("onLiblistingButtonChange", data);
     console.log("this is table list data", this.tabledatatalist);
 
-    if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
+    if (data.action === "custombuttonclick" && data.custombuttonclick?.btninfo?.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
         panelClass: 'custom-modalbox',
         data: {
@@ -209,7 +209,7 @@ export class UserListComponent {
 
     // custom button click for Edit button  
 
-    if(data.custombuttonclick.btninfo.id == "edit_btn") {
+    if(data.action == "custombuttonclick" && data?.custombuttonclick?.btninfo?.id == "edit_btn" && data?.custombuttonclick?.data) {
 
       this.router.navigateByUrl(`affiliate-dashboard/user/user-edit/${data.custombuttonclick.data.uid}`)
       
