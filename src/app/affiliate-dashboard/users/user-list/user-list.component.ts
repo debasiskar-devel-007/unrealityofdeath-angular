@@ -171,7 +171,7 @@ export class UserListComponent {
     });
     // role list data count
     this.apiservice
-      .getHttpDataPost('user-api/user-list-count', {
+      .getHttpDataPost('user-api/user-list-new-count', {
         condition: {
           limit: 10,
           skip: 0,
