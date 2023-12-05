@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="mainwrapper">
+  <div class="new-container">
+    <mat-card class="main-title">
+      <h2>{{ isedit ? "Edit" : "Add" }} User</h2>
+    </mat-card>
+    <div class="subwrapper">
+      <div class="formStyle user-form">
+        <mat-card-content
+          class="addEditPageWrapper modify_extra practice_form_style form_title_style user_add_formwrp"
+        >
+          <!-- <ng-container *ngIf="addFormLoader">
+                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </ng-container> -->
+          <div class="AddEditBlog taxonomies_formstyle">
+            <div class="addEditForm">
+              <lib-showform
+                [formdata]="userformdata"
+                [formfieldrefresh]="formfieldrefresh"
+                [formfieldrefreshdata]="formfieldrefreshdata"
+                (onFormFieldChange)="listenFormFieldChange($event)"
+              >
+              </lib-showform>
+              <ng-container *ngIf="addFormLoader">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+              </ng-container>
+              <mat-progress-bar
+                *ngIf="loader"
+                mode="indeterminate"
+              ></mat-progress-bar>
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

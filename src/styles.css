@@ -1816,12 +1816,12 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     padding-bottom: 15px !important
 }
 
-.custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p,
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p {
     text-transform: capitalize;
     font-size: 1.6rem;
     color: #000;
 }
+
 
 .notebtncls {
     position: relative !important;
@@ -3766,7 +3766,7 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
 }
-.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p {
+.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.toogle-many .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.delete-single .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.delete-multiple .dialoghead .mat-mdc-dialog-content p {
     text-align: center;
     font-size: 2rem;
 }
@@ -4146,17 +4146,13 @@ tbody tr td .actionbuttonwrapper button {
 
 /* //////////////////// DASHBOARD CSS ///////////////////////// */
 
-.landing-page-left{width:400px;display: flex;    align-items: center;
+.landing-page-left{width:400px;display: flex;align-items: center;
 }
 .img-wrapper{padding:10px;background:#e4e7dd;border:1px solid #95998f;width: 100%;
-    height: 200px;    overflow: hidden;
 }
 .img-wrapper img{
     display: block;
     width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
 .landing-page-right{width:calc(100% - 440px);margin-left:40px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
 .landing-page-right::after{content:'';height:94%;width:1px;background:#7d8376;position:absolute;left:-20px;top:50%;transform:translateY(-50%);box-shadow:1px 0 0 #d7decc}

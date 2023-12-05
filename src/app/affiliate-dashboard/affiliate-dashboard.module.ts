@@ -9,6 +9,7 @@ import { DashboardReportModalComponent } from './dashboard-report-modal/dashboar
 import { ReportListComponent } from './dashboard-report-modal/report-list/report-list.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { SharerMethod } from 'ngx-sharebuttons';
 
 
 
@@ -24,8 +25,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     SharedModule,
     AffiliateDasboardRoutingModule,
     FormsModule,
-    ShareButtonsModule,
-    ShareIconsModule,
+    ShareButtonsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

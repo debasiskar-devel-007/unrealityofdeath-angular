@@ -13,6 +13,9 @@ import { LastLoginInfoComponent } from './Common-components/last-login-info/last
 import { PreviewComponent } from './Common-components/preview/preview.component';
 import { ComingsoonComponent } from './Common-components/comingsoon/comingsoon.component';
 import { AccountInfoComponent } from './my-account/account-info/account-info.component';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { SharerMethod } from 'ngx-sharebuttons';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 
 
 @NgModule({
@@ -31,7 +34,12 @@ import { AccountInfoComponent } from './my-account/account-info/account-info.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ShareButtonsModule.withConfig({
+      debug: true,
+      sharerMethod: SharerMethod.Window
+    }),
+    ShareIconsModule,
   ],
   providers: [AuthGuardService,AuthService],
   bootstrap: [AppComponent],

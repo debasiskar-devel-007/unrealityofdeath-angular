@@ -19,7 +19,7 @@ export class ResolveService {
     console.log("this is route data", route);
 
     let reqBody = route?.data?.['requestcondition'];
-    console.log("route==========>", route.routeConfig, route.params['_id'], state.url);
+    console.log("route==========>", route.routeConfig, route.params, state.url);
 
     const cookieData = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
 
@@ -32,7 +32,7 @@ export class ResolveService {
     if (state.url.includes('my-account/account-info')) {
       route.data['requestcondition']['uid'] = cookieData.uidval
     }
-    if (state.url.includes('user')) {
+    if (state.url == ('/affiliate-dashboard/user')) {
       route.data['requestcondition']['searchcondition']['affiliate_id'] = cookieData.uidval
     }
     if (state.url.includes('report/click-report') || state.url.includes('report/conversion-report') ) {
@@ -40,6 +40,9 @@ export class ResolveService {
       let endval = moment().endOf('month').valueOf()
       route.data['requestcondition']['searchcondition']['affiliate_id'] = cookieData.uidval
       route.data['requestcondition']['searchcondition']['created_on'] = { "$gte": startval, "$lte": endval } ? { "$gte": startval, "$lte": endval } : undefined
+    }
+    if (state.url.includes('/affiliate-dashboard/user/user-edit')) {
+      route.data['requestcondition']['uid'] = route.params['id']
     }
 
 

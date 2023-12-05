@@ -23,6 +23,8 @@ import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboa
 import { MatSelectChange } from '@angular/material/select';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import * as copy from 'copy-to-clipboard';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -40,7 +42,17 @@ export class DashboardComponent {
     private elementRef: ElementRef,
     { nativeElement }: ElementRef<HTMLImageElement>,
     public sanitizer: DomSanitizer
-  ) {}
+  ) {
+
+    const supports = 'loading' in HTMLImageElement.prototype;
+
+    if (supports) {
+      nativeElement.setAttribute('loading', 'lazy');
+    } else {
+      // fallback to IntersectionObserver
+    }
+
+  }
 
   public cookieData: any = {};
 
@@ -76,6 +88,12 @@ export class DashboardComponent {
           setDefaultObj: {},
         },
       });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        this.dashboardCampaignListApi()
+        this.getBanner()
+      })
+
     } else {
       this.loader = true
       this.apiService
@@ -168,7 +186,7 @@ export class DashboardComponent {
         next: (response: any) => {
           console.log('this is video data', response);
 
-          if (response.status == 'success' && response.results.length > 0) {
+          if (response?.status == 'success' && response?.results?.length > 0) {
             this.banner_data = response.results;
             this.loader = false;
           } else {
@@ -249,8 +267,16 @@ export class DashboardComponent {
   copyEmailTemplate(idVal: any) {
     console.log('idVal===========>', idVal);
     let htmlVal: any = document.getElementById(idVal)?.innerHTML;
-    this.clipBoard.copy(htmlVal);
-    this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
+    console.log(htmlVal);
+    
+    copy(htmlVal, {
+      debug: true,
+      format: 'text/html',
+      onCopy: (text) => {
+        console.log(text);
+      }
+    });
+    this.matSnackBar.open('Copied To Clipboard!', 'Ok', { duration: 2000 });
   }
 
   // << -------- Campaign Modal ----------- >>
@@ -288,7 +314,8 @@ export class DashboardComponent {
             });
 
             dialogRef.afterClosed().subscribe((result) => {
-              this.dashboardCampaignListApi();
+              this.dashboardCampaignListApi()
+              this.getBanner()
             });
           } else {
             this.loader = false;
