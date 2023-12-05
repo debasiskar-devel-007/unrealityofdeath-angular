@@ -211,7 +211,7 @@ export class UserListComponent {
 
     if(data.custombuttonclick.btninfo.id == "edit_btn") {
 
-      // this.router.navigateByUrl(`affiliate-dashboard/user/user-edit/${data.custombuttonclick.data.uid}`)
+      this.router.navigateByUrl(`affiliate-dashboard/user/user-edit/${data.custombuttonclick.data.uid}`)
       
 
     }

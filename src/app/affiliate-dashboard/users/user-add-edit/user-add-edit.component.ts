@@ -54,8 +54,8 @@ export class UserAddEditComponent {
       this.activateRoute.data.subscribe((response: any) => {
         console.log(" jewl data edit", response);
         if(response.data && response.data.status == "success"){
-          this.editFormData = response.data.results.res
-          this.update_id = response.data.results.res['_id']
+          this.editFormData = response.data.results[0]
+          this.update_id = response.data.results[0].uid
           this.forUpdate = true
          
         }
@@ -69,8 +69,10 @@ export class UserAddEditComponent {
 
   getStates() {
     this.apiService.getHttpData('user-api/fetch-states').subscribe((response: any) => {
-      if (response.results.res && response.results.res.length > 0) {
-        response.results.res.forEach((e: any, i: number) => {
+      console.log(response);
+      
+      if (response.results && response.results.length > 0) {
+        response.results.forEach((e: any, i: number) => {
           let obj = { val: e.abbreviation, name: e.name };
           this.stateList.push(obj)
         })
@@ -121,21 +123,10 @@ export class UserAddEditComponent {
           name: 'email',
           value: this.editFormData && this.editFormData.email? this.editFormData.email : '',
           type: 'email',
-          disabled:this.forUpdate,
+          disabled: this.forUpdate,
           validations: [
             { rule: 'required', message: 'Email is Required' },
             { rule: 'pattern', value: this.emailregex, message: "Must be a valid Email" }
-          ],
-        },
-        {
-          label: 'Secondary Email',
-          name: 's_email',
-          value: this.editFormData && this.editFormData.s_email ? this.editFormData.s_email : '',
-          type: 'email',
-          validations: [
-
-            { rule: 'pattern', value: this.emailregex, message: "Must be a valid Email" }
-
           ],
         },
         {
@@ -149,18 +140,6 @@ export class UserAddEditComponent {
             { rule: 'minLength', value: 14 ,message: "Formating Phone Number min 10"},
           ],
         },
-
-        {
-          label: 'Secondary Phone',
-          name: 's_phone',
-          value: this.editFormData && this.editFormData.s_phone ? this.editFormData.s_phone : '',
-          type: 'numberformat',
-          formatflag: true,
-           validations: [
-            { rule: 'minLength', value: 14 ,message: "Formating Secendory Phone Number min 10"},
-          ],
-        },
-
         {
           label: 'Address',
           name: 'address',
@@ -171,8 +150,7 @@ export class UserAddEditComponent {
             { rule: 'required', message: 'Address is Required' },
 
           ],
-        },
-        
+        },       
         {
           label: "State",
           name: "state",
@@ -206,19 +184,6 @@ export class UserAddEditComponent {
             { rule: 'pattern', value: this.zip_regex, message: "Must be a valid zip code" }
           ],
         },
-        {
-          label: 'User Type',
-          name: 'user_type',
-          value: this.editFormData && this.editFormData.user_type ? this.editFormData.user_type : '',
-          type: 'select',
-          class:'area',
-          multiple: false,
-          val: [{ val: 'is_admin', name: 'Admin' }, { val: 'is_rep', name: 'Rep' }],
-          validations: [
-            { rule: 'required', message: 'User Type is Required' },
-
-          ],
-        },
         !this.forUpdate && {
           label: 'Password',
           name: 'password',
@@ -245,7 +210,6 @@ export class UserAddEditComponent {
           customheadingflag: true,
 
         },
-
         {
           label: 'Active',
           name: 'status',
@@ -256,14 +220,6 @@ export class UserAddEditComponent {
         },
       ]
     }
-    
-
-    // if (this.editFormData) {
-    //   this.formfieldrefreshdata = {
-    //     field: "removefromcontrol",
-    //     value: ["password", "confirmpassword"],
-    //   };
-    // }
 
   }
 
@@ -272,40 +228,20 @@ export class UserAddEditComponent {
 
     this.formValue = val.source?.data
 
-    
-
     console.log("listenFormFieldChangeval", val)
-    if(val.field === "fromsubmit" && val.fieldval === "success"){
+    
+    if(val.field == "fromsubmit" && val.fieldval == "success"){
 
-
-
-      //  if(val.fromval.email === val.fromval.s_email ){
-      //   this.matSnackBar.open('Email and Seondary Email should be different','', {
-      //     duration: 3000
-      //   });
-      // }
-
-    //  if(val.fromval.phone === val.fromval.s_phone ){
-    //     this.matSnackBar.open('Phone and Seondary Phone should be different','', {
-    //       duration: 3000
-    //     });
-    //   }
-
-    if(val.fromval.password !== val.fromval.confirmpassword){
-        this.matSnackBar.open('Password & confim_password not match','', {
-          duration: 3000
-        });
-      } else{
 
         this.addFormLoader = true
-        if(this.update_id)this.formValue['_id'] = this.update_id
-        this.apiService.getHttpDataPost(this.update_id?"user/user-update":"user/user-add",this.formValue).subscribe({ 
+        if(this.update_id) this.formValue['uid'] = this.update_id
+        this.apiService.getHttpDataPost(this.update_id ? "user-api/user-edit" : "user/user-add", this.formValue).subscribe({ 
           next: (response: any) => {
           console.log(response);  
           if(response.status === "success"){
   
             if(this.forUpdate){
-              this.matSnackBar.open('Update Successfully','Ok', {
+              this.matSnackBar.open('Updated Successfully','Ok', {
                 duration: 3000
               });
             }
@@ -317,16 +253,22 @@ export class UserAddEditComponent {
             }
   
             setTimeout(() => {
-
-
               
-              this.router.navigateByUrl(`admin-dashboard/user`);
+              this.router.navigateByUrl(`affiliate-dashboard/user`);
             
             }, 3000);
   
           
             this.addFormLoader = false
   
+          } else {
+
+            this.matSnackBar.open('Something Went Wrong!!','', {
+              duration: 3000
+            });
+
+            this.addFormLoader = false
+          
           }
         },
         error: (error: any) => {
@@ -340,7 +282,7 @@ export class UserAddEditComponent {
       }
         )
         
-      }
+      
 
      
 
@@ -359,7 +301,7 @@ export class UserAddEditComponent {
     
 
       if (val.field && val.field == "formcancel") {
-        this.router.navigateByUrl(`admin-dashboard/user`)
+        this.router.navigateByUrl(`affiliate-dashboard/user`)
       }
     }
 
