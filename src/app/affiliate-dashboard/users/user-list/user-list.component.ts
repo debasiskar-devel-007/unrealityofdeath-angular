@@ -111,7 +111,7 @@ export class UserListComponent {
     hidedeletebutton: false,
     hideviewbutton: true,
     hidestatustogglebutton: false,
-    hidemultipleselectbutton: false,
+    hidemultipleselectbutton: true,
     hideaction: false,
     updateendpointmany: 'marketing/user-status-change',
     deleteendpointmany: 'marketing/user-delete',
