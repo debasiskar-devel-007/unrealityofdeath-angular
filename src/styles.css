@@ -1816,11 +1816,18 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     padding-bottom: 15px !important
 }
 
-.custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p,
+/* .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p,
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p {
     text-transform: capitalize;
     font-size: 1.6rem;
     color: #000;
+} */
+
+.custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p {
+    text-transform: capitalize;
+    font-size: 2rem;
+    color: #000;
+    text-align: center;
 }
 
 .notebtncls {
@@ -3766,7 +3773,7 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
 }
-.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p {
+.custom-modalbox .dialoghead .mat-mdc-dialog-content p {
     text-align: center;
     font-size: 2rem;
 }

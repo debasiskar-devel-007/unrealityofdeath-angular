@@ -25,10 +25,10 @@ export class UserListComponent {
   tabledata_header_skip: any = ["_id"];
   public tabledatatalist: any = [];
   updatetable: boolean = false;
-  tablename = "package";
-  editroute = 'admin-dashboard/user/edit-user';
-  updateendpoint = 'user/user-status-change';
-  deleteendpoint = 'user/user-delete';
+  tablename = "user";
+  editroute = 'affiliate-dashboard/user/user-edit';
+  updateendpoint = 'user-api/user-edit';
+  deleteendpoint = 'marketing/user-delete';
   datacollection: any = 'user-api/user-list-new';
   public listprogressBar: any = false;
   public api_url_for_managebanner = environment.api_url
@@ -108,15 +108,15 @@ export class UserListComponent {
       { key: "status", val: "Status" },
       { key: "created_on", val: "Joined On" },
     ],
-    updateendpoint: "user/user-status-change",
+    updateendpoint: "marketing/user-status-change",
     hideeditbutton: true,
     hidedeletebutton: false,
     hideviewbutton: true,
     hidestatustogglebutton: false,
     hidemultipleselectbutton: false,
     hideaction: false,
-    updateendpointmany: "user/user-status-change",
-    deleteendpointmany: "user/user-delete",
+    updateendpointmany: "marketing/user-status-change",
+    deleteendpointmany: "marketing/user-delete",
     tableheaders: ["fullname", "email", "phone", "status", "created_on"],
     colpipes: [{ type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' }],
     custombuttons: [
