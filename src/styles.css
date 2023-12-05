@@ -627,12 +627,13 @@ body {
 }
 
 .adminlisttable_v1 .multipledeleteandupdatebuttan button {
-    border: solid 1px #ffbf83;
-    background: var(--orange-gradient);
     color: #fff;
     padding: 20px 26px;
     margin: 0 5px;
-    text-shadow: 1px 1px 1px #a1520a
+    background: #7f2e0a;
+    text-align: center;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
 }
 
 .adminlisttable_v1 .multipledeleteandupdatebuttan button .mdc-button__label::before {
@@ -1674,10 +1675,9 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     text-align: center;
     font-size: 2.4rem;
     color: #fff;
-    /* text-shadow: 1px 1px 1px #053650;
-    border: 1px solid #4a5870; */
     border-radius: 5px;
     margin-bottom: 15px;
+    text-transform: capitalize;
 }
 
 .custom-modalbox mat-dialog-container .close-btn-modal,
@@ -1724,14 +1724,15 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .mat-mdc-dialog-actions button {
-    background: var(--orange-gradient) !important;
-    text-shadow: 1px 1px 1px #874403;
     font-size: 2rem !important;
     padding: 2.3rem 2rem !important;
     line-height: 2.5rem !important;
     color: #fff !important;
-    border: 1px solid #f47620 !important;
-    box-shadow: -4px -2px 9px #f9fbff, 6px 5px 13px #d9cece
+    background: #7f2e0a;
+    text-align: center;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
 }
 
 .mat-mdc-dialog-content {
@@ -1806,9 +1807,9 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     text-transform: none
 }
 
-.cdk-overlay-container {
+/* .cdk-overlay-container {
     text-transform: capitalize
-}
+} */
 
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content {
     padding: 0 20px 15px 20px !important;
@@ -4565,35 +4566,6 @@ tbody tr td .actionbuttonwrapper button {
 
 /* ?////////////// Email Template CSS by Sanket ///////////// */
 
-
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp {
-    padding: 10px;
-    background: #e4e7dd;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp h1 {
-    font-size: 20px;
-    margin: 20px 0px 30px;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp h2 {
-    font-size: 20px;
-    margin: 0px 0px 30px;
-    line-height: 26px;
-    font-weight: 500;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp p {
-    font-size: 18px;
-    margin: 15px 0px;
-    line-height: 26px;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp a {
-    text-decoration: underline;
-    color: #1b75b2;
-    font-size: 19px;
-    word-break: break-word;
-}
-.wrapper.emailtemp_wrapper .emailtemp_innerwrp a:hover {
-    color: #0e8bdf;
-}
 .wrapper.emailtemp_wrapper .marketing-mediawrapper {
     margin-top: 10px;
 }

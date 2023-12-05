@@ -20,7 +20,7 @@ const routes: Routes = [
         
       },
       "sort": {
-          "type": "asc",
+          "type": "desc",
           "field": "campaign_name"
       },
       "project": {},
@@ -46,7 +46,7 @@ const routes: Routes = [
       },
       "sort": {
           "type": "desc",
-          "field": "created_on"
+          "field": "campaign_name"
       },
       "project": {},
       "token": ""

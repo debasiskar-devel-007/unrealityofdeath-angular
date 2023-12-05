@@ -48,7 +48,7 @@ export class ConversionReportComponent {
 
   sortdata: any = {
     type: 'desc',
-    field: 'created_on',
+    field: 'campaign_name',
     options: this.login_user_details.roleval === 3 ? ['campaign_name', 'landing_page_name'] : [],
   };
 
@@ -82,6 +82,7 @@ export class ConversionReportComponent {
         ],
 
     textsearch:
+    
     this.login_user_details.roleval === 3
         ? [
           {
@@ -99,22 +100,26 @@ export class ConversionReportComponent {
           },
         ],
   };
-  searchendpoint =  this.login_user_details.roleval === 3 ? 'reports/click-list-rep' : 'reports/conversion-list-admin';
+  searchendpoint =  this.login_user_details.roleval === 3 ? 'click-conversion/click-list' : '';
 
   libdata: any = {
+    
     basecondition:
       this.login_user_details.roleval === 3
         ? {
           affiliate_id: this.login_user_details.uidval,
-          created_on: { $gte: this.startval, $lte: this.endval },
+          // created_on: { $gte: this.startval, $lte: this.endval },
         }
+        
         : {
+          affiliate_id: this.login_user_details.uidval,
+
           created_on: { $gte: this.startval, $lte: this.endval },
         },
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
       { key: 'name', val: 'Name' },
-      { key: 'conversion_count', val: 'Click Count' },
+      { key: 'conversion_count', val: 'Conversion Count' },
     ],
     hideaction: false,
     hideeditbutton: true, // (hide edit button ) all these button options are optional not mandatory
@@ -201,7 +206,7 @@ export class ConversionReportComponent {
         },
         "sort": {
             "type": "desc",
-            "field": "created_on"
+            "field": "campaign_name"
         },
         "project": {},
         "token": ""
@@ -215,6 +220,9 @@ export class ConversionReportComponent {
   }
   listenLiblistingChange(data: any) {
     console.log("aaaaaa=====>",data);
+    if(data.action === 'search'){
+      this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} , affiliate_id: this.login_user_details.uidval}
+    }
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
@@ -239,7 +247,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -254,7 +262,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
         console.log("mmmm", this.libdata.basecondition);
 
       }
@@ -269,7 +277,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -283,7 +291,7 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} }
+        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
         console.log("aaaaa", this.libdata.basecondition);
 
       }
@@ -306,7 +314,7 @@ export class ConversionReportComponent {
         },
         "sort": {
           "type": "desc",
-          "field": "created_on"
+          "field": "campaign_name"
         },
         "token": "",
         "project": {}
@@ -336,7 +344,7 @@ export class ConversionReportComponent {
         },
         "sort": {
           "type": "desc",
-          "field": "created_on"
+          "field": "campaign_name"
         },
         "project": {},
         "token": ""

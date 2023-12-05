@@ -109,7 +109,7 @@ export class UserListComponent {
       { key: "created_on", val: "Joined On" },
     ],
     updateendpoint: "user/user-status-change",
-    hideeditbutton: false,
+    hideeditbutton: true,
     hidedeletebutton: false,
     hideviewbutton: true,
     hidestatustogglebutton: false,
@@ -120,6 +120,12 @@ export class UserListComponent {
     tableheaders: ["fullname", "email", "phone", "status", "created_on"],
     colpipes: [{ type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' }],
     custombuttons: [
+      {label: 'Edit',
+        type: 'listner',
+        id: 'edit_btn',
+        tooltip: 'Edit',
+        name: 'edit',
+        classname: 'edit_btn'},
       {
         label: "Preview",
         type: 'listner',
@@ -202,6 +208,13 @@ export class UserListComponent {
     }
 
     // custom button click for Edit button  
+
+    if(data.custombuttonclick.btninfo.id == "edit_btn") {
+
+      // this.router.navigateByUrl(`affiliate-dashboard/user/user-edit/${data.custombuttonclick.data.uid}`)
+      
+
+    }
 
 
 
