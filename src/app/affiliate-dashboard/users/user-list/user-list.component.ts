@@ -213,11 +213,7 @@ export class UserListComponent {
 
       this.router.navigateByUrl(`affiliate-dashboard/user/user-edit/${data.custombuttonclick.data.uid}`)
       
-
     }
-
-
-
   }
 
 
