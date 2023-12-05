@@ -42,7 +42,17 @@ export class DashboardComponent {
     private elementRef: ElementRef,
     { nativeElement }: ElementRef<HTMLImageElement>,
     public sanitizer: DomSanitizer
-  ) {}
+  ) {
+
+    const supports = 'loading' in HTMLImageElement.prototype;
+
+    if (supports) {
+      nativeElement.setAttribute('loading', 'lazy');
+    } else {
+      // fallback to IntersectionObserver
+    }
+
+  }
 
   public cookieData: any = {};
 
