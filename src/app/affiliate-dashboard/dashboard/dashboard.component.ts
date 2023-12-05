@@ -23,6 +23,8 @@ import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboa
 import { MatSelectChange } from '@angular/material/select';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import * as copy from 'copy-to-clipboard';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -255,8 +257,16 @@ export class DashboardComponent {
   copyEmailTemplate(idVal: any) {
     console.log('idVal===========>', idVal);
     let htmlVal: any = document.getElementById(idVal)?.innerHTML;
-    this.clipBoard.copy(htmlVal);
-    this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
+    console.log(htmlVal);
+    
+    copy(htmlVal, {
+      debug: true,
+      format: 'text/html',
+      onCopy: (text) => {
+        console.log(text);
+      }
+    });
+    this.matSnackBar.open('Copied To Clipboard!', 'Ok', { duration: 2000 });
   }
 
   // << -------- Campaign Modal ----------- >>
