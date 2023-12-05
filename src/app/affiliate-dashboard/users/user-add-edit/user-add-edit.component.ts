@@ -222,9 +222,9 @@ export class UserAddEditComponent {
   listenFormFieldChange(val: any) {
     this.formValue = val.source?.data;
 
-    if(this.formValue.status == true){
+    if(this.formValue?.status == true){
       this.formValue.status = 1;
-    } else if(this.formValue.status == false) {
+    } else if(this.formValue?.status == false) {
       this.formValue.status = 0;
     }
 
