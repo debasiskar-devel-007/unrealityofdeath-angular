@@ -286,7 +286,7 @@ export class UserAddEditComponent {
 
               setTimeout(() => {
                 this.router.navigateByUrl(`affiliate-dashboard/user`);
-              }, 3000);
+              }, 2000);
 
               this.addFormLoader = false;
             } else {
