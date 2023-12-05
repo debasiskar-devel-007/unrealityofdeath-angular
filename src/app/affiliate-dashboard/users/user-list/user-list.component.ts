@@ -216,13 +216,6 @@ export class UserListComponent {
     }
   }
 
-
-
-
-
-
-
-
   onLiblistingButtonChange(data: any = null) {
     console.log("onLiblistingButtonChange", data);
 
