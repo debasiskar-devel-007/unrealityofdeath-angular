@@ -232,6 +232,10 @@ export class DashboardComponent {
 
   collapseBanner() {
 
+    this.matSnackBar.open('Less Data Loaded Successfully', 'Ok', {
+      duration: 3000
+    })
+
     const targetElement = this.elementRef.nativeElement.querySelector('#bannerSection');
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
