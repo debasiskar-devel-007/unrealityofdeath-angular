@@ -205,44 +205,6 @@ export class UserAddEditComponent {
             },
           ],
         },
-        !this.forUpdate && {
-          label: 'Password',
-          name: 'password',
-          type: 'password',
-          passwordflag: true,
-          value:
-            this.editFormData && this.editFormData.password
-              ? this.editFormData.password
-              : '',
-          validations: [
-            { rule: 'required', message: 'Password is required' },
-            {
-              rule: 'pattern',
-              value: this.passwordregex,
-              message: 'Must contain a Capital Letter and a Number',
-            },
-          ],
-        },
-        !this.forUpdate && {
-          label: 'Confirm Password',
-          name: 'confirmpassword',
-          type: 'password',
-          passwordflag: true,
-          value:
-            this.editFormData && this.editFormData.c_password
-              ? this.editFormData.c_password
-              : '',
-          validations: [
-            { rule: 'required', message: 'Confirm Password is required' },
-            { rule: 'match', message: "Confirm Password doesn't match" },
-            {
-              rule: 'pattern',
-              value: this.passwordregex,
-              message: 'Must contain a Capital Letter and a Number',
-            },
-          ],
-          customheadingflag: true,
-        },
         {
           label: 'Active',
           name: 'status',
@@ -259,6 +221,12 @@ export class UserAddEditComponent {
 
   listenFormFieldChange(val: any) {
     this.formValue = val.source?.data;
+
+    if(this.formValue?.status == true){
+      this.formValue.status = 1;
+    } else if(this.formValue?.status == false) {
+      this.formValue.status = 0;
+    }
 
     console.log('listenFormFieldChangeval', val);
 
@@ -286,7 +254,7 @@ export class UserAddEditComponent {
 
               setTimeout(() => {
                 this.router.navigateByUrl(`affiliate-dashboard/user`);
-              }, 3000);
+              }, 2000);
 
               this.addFormLoader = false;
             } else {

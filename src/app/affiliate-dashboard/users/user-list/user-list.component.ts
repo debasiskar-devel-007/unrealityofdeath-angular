@@ -111,7 +111,7 @@ export class UserListComponent {
     hidedeletebutton: false,
     hideviewbutton: true,
     hidestatustogglebutton: false,
-    hidemultipleselectbutton: false,
+    hidemultipleselectbutton: true,
     hideaction: false,
     updateendpointmany: 'marketing/user-status-change',
     deleteendpointmany: 'marketing/user-delete',
@@ -171,7 +171,7 @@ export class UserListComponent {
     });
     // role list data count
     this.apiservice
-      .getHttpDataPost('user-api/user-list-count', {
+      .getHttpDataPost('user-api/user-list-new-count', {
         condition: {
           limit: 10,
           skip: 0,
