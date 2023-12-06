@@ -3821,6 +3821,15 @@ tbody tr td .actionbuttonwrapper button {
 
 }
 
+/* << ----------- QR Modal CSS ------------ >> */
+
+.custom-modalbox.qr-modalbox {
+    width: min(90%, 365px) !important;
+}
+
+/* << ----------- QR Modal CSS ------------ >> */
+
+
 @media only screen and (max-width: 699px) {
 
     .custom-modalbox.landingchoose-modalbox .dialoghead .mat-mdc-dialog-content .landingchoose_img {

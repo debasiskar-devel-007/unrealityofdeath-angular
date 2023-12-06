@@ -24,6 +24,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import * as copy from 'copy-to-clipboard';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-dashboard',
@@ -445,6 +446,28 @@ export class DashboardComponent {
   }
 
   // << -------------- Coming Soon Modal ---------------- >>
+
+  // << ------------ QR Modal --------------- >>
+
+  showQrCode(val: any, index: any) {
+
+    console.log(val, index);
+
+    const url_index = ((index || index == 0) && this.selected_campaign_index.length > 0 && this.selected_campaign_index[index]) ? this.selected_campaign_index[index] : 0
+    
+    const dialogRef = this.dialog.open(QRCodeModal, {
+      data: {
+          ...val,
+          index: url_index
+      },
+      panelClass: ['custom-modalbox', 'qr-modalbox'],
+    })
+    
+
+  }
+
+  // << ------------ QR Modal --------------- >>
+
 
   clickConversionModal(val: any) {
     console.log('click conversion data==========>', val);
@@ -883,3 +906,37 @@ export class allCampaignModal {
 }
 
 // << ------------------ All Campaign Modal Component ----------------- >>
+
+// << ------------------ QRCode Modal Component ----------------- >>
+
+@Component({
+  selector: 'QRCodeModal',
+  templateUrl: 'qrcode-modal.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule, SharedModule, QRCodeModule, CommonModule],
+})
+
+export class QRCodeModal {
+
+  public dialogData: any = {};
+  public qrData: any = null;
+
+  constructor(
+    public apiService: ApiservicesService,
+    public dialogRef: MatDialogRef<QRCodeModal>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public matSnackBar: MatSnackBar,
+    private cookieService: CookieService,
+    private elementRef: ElementRef,
+    public dialog: MatDialog
+  ) {
+
+    console.log(data);
+    this.dialogData = data
+    this.qrData = this.dialogData.campaign_url[this.dialogData.index]
+  }
+
+}
+
+
+// << ------------------ QRCode Modal Component ----------------- >>
