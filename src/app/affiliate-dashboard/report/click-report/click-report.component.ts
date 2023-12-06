@@ -343,7 +343,7 @@ export class ClickReportComponent {
         },
         "searchcondition": {
           "affiliate_id": this.login_user_details.uidval,
-          "created_on": (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { created_on: { "$gte": this.startval, "$lte": this.endval } } : {},
+          "created_on": (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval }  : {},
         },
         "sort": {
           "type": "desc",
