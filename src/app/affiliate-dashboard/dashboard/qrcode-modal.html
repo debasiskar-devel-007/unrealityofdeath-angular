@@ -8,10 +8,14 @@
   <mat-icon>close</mat-icon>
 </button>
 <div class="dialoghead">
-    <h1 class="mat-mdc-dialog-title">Qr for: {{dialogData.landing_page_name}}</h1>
-    <mat-dialog-content>
-      <div class="subwrapper">
-        <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-      </div>
-    </mat-dialog-content>
-  </div>
+  <h1 class="mat-mdc-dialog-title">Qr for: {{dialogData.landing_page_name}}</h1>
+  <mat-dialog-content>
+    <div class="subwrapper">
+      <qrcode
+        [qrdata]="qrData"
+        [width]="256"
+        [errorCorrectionLevel]="'M'"
+      ></qrcode>
+    </div>
+  </mat-dialog-content>
+</div>
