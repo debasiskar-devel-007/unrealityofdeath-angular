@@ -69,6 +69,13 @@ export class DashboardComponent {
   public loader: boolean = false;
 
   public banner_data: any = [];
+
+  public banner_sliced_data: any = [];
+  public banner_slice: any = 4
+
+  public disable_loadmore: boolean = false;
+  public disable_showless: boolean = true;
+
   public share_url: any = [];
   public emailTemplateData: any = [];
 
@@ -186,18 +193,56 @@ export class DashboardComponent {
         next: (response: any) => {
           console.log('this is video data', response);
 
-          if (response?.status == 'success' && response?.results?.length > 0) {
-            this.banner_data = response.results;
-            this.loader = false;
-          } else {
-            this.loader = false;
-          }          
+            this.banner_data = response.results
+
+            if(this.banner_data.length > 0) {
+              this.banner_sliced_data = this.banner_data.slice(0, this.banner_slice)
+              console.log(this.banner_sliced_data);
+              
+            }
+            if(this.banner_data.length <= 4) {
+              this.disable_loadmore = true;
+            }
+                
         },
         error: (error: any) => {
           console.log('this is video error', error);
           this.loader = false;
         },
       });
+  }
+
+  loadBanner() {
+
+    this.matSnackBar.open('New Data Loaded Successfully', 'Ok', {
+      duration: 3000
+    })
+
+    this.disable_showless = false;
+    this.banner_slice = this.banner_slice + 4;
+    this.banner_sliced_data = this.banner_data.slice(0, this.banner_slice)
+
+    if(this.banner_data.length <= this.banner_slice) {
+      this.disable_loadmore = true;
+      this.disable_showless = false;
+
+    }
+
+  }
+
+  collapseBanner() {
+
+    const targetElement = this.elementRef.nativeElement.querySelector('#bannerSection');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+
+    this.banner_slice = 4
+    this.banner_sliced_data = this.banner_data.slice(0, this.banner_slice)
+
+    this.disable_loadmore = false;
+    this.disable_showless = true;
+
   }
 
   // << -------------- All Campaign Fetch Function ---------------- >>
