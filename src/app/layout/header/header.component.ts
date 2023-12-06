@@ -52,7 +52,9 @@ clickReportClick() {
    
   }
 
-  changePass(){}
+  changePass(){
+    this.router.navigateByUrl('/change-password')
+  }
 
   logout(){
     this.cookieService.deleteAll('login_user_details')

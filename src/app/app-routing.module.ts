@@ -26,7 +26,14 @@ resolve: { data: ResolveService },
     endpoint: 'user-api/fetch-login-detail'
   },
 
-  }
+  },
+  {
+    path: 'change-password',
+    loadChildren: () =>
+      import('./change-password/change-password.module').then(
+        (m) => m.ChangePasswordModule
+      )
+  },
 ];
 
 @NgModule({
