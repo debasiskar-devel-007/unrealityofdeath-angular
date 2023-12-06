@@ -3766,7 +3766,7 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
 }
-.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.toogle-many .dialoghead .mat-mdc-dialog-content p {
+.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.toogle-many .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.delete-single .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.delete-multiple .dialoghead .mat-mdc-dialog-content p {
     text-align: center;
     font-size: 2rem;
 }
