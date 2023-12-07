@@ -539,13 +539,13 @@ export class UniqueUrlModal {
     this.unicLoader = true;
     this.apiService
       .getHttpDataPost('marketing/unique-name-check', { unique_name: params })
-      .subscribe((responce) => {
-        console.log('respodfdsfnce', responce);
+      .subscribe((response) => {
+        console.log('respodfdsfnce', response);
 
-        if (responce.status === 'success') {
-          if (responce.has === false) {
+        if (response.status === 'success') {
+          if (response.has === false) {
             this.hasunic = 1;
-          } else if (responce.has === true) {
+          } else if (response.has === true) {
             this.hasunic = 2;
           }
           this.unicLoader = false;
