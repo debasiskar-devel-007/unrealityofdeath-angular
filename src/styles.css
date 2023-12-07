@@ -234,7 +234,7 @@ body {
 .mat-mdc-form-field-flex {
     color: #020202;
 }
-.login_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+.login_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix, .changepass_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix{
     padding-top: 10px;
     padding-bottom: 12px;
 }
@@ -244,7 +244,7 @@ body {
 .mat-mdc-form-field-subscript-wrapper {
     display: none;
 }
-.login_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple {display: none;}
+.login_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple, .changepass_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple{display: none;}
 .login_formwrapper input, .login_formwrapper input::placeholder {
     color: #968e97 !important;
     caret-color: #fff !important;
@@ -253,7 +253,7 @@ body {
 .login_formwrapper input:-webkit-autofill:focus {
     transition: background-color 0s 600000s, color 0s 600000s !important;
 }
-.login_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix {
+.login_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix, .changepass_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix{
     min-height: unset;
 }   
 
@@ -273,6 +273,59 @@ body {
 }
 
 /* << ------------------ Log In Form Field CSS by Sanket ---------------------- >> */
+
+
+/* << ---------------- Change Password CSS by Sanket ------------- >> */
+
+.changepass_mainwrapper {
+    overflow: hidden;
+    min-height: calc(100vh - 210px);
+    background: #27130b;
+}
+.changepass_subwrapper {
+    position: relative;
+    padding: 15px;
+    margin: 0;
+    width: calc(100% - 30px);
+}
+.changepass_heading {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.changepass_heading h2 {
+    margin: 0;
+    padding: 10px;
+    color: #e9eaec;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.3rem;
+}
+.changepass_formwrapper {
+    width: 800px;
+    max-width: calc(96% - 25px);
+    background-color: #e9eaec;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 25px;
+}
+.changepass_formwrapper .pass_msg {
+    margin: 0;
+    text-align: left;
+    color: #e9460e;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+.changepass_formwrapper .login-full-width {
+    margin-bottom: 30px;
+}
+.changepass_formwrapper .pass_cls .mdc-text-field {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    background: #fff !important;
+}
+
+/* << ---------------- Change Password CSS by Sanket ------------- >> */
+
 
 /* << ---------------- List CSS by Sanket ------------- >> */
 
@@ -1262,7 +1315,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .addEditPageWrapper .mdc-button,
-.addEditPageWrapper .mdc-button:hover {
+.addEditPageWrapper .mdc-button:hover, .changepass_formwrapper .forgetpass_buttonsec button, .changepass_formwrapper .forgetpass_buttonsec button:hover {
     margin: 5px;
     background: #7f2e0a !important;
     height: auto !important;
@@ -1343,7 +1396,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     -webkit-text-fill-color: transparent
 }
 
-.addEditPageWrapper .submitbtnsection {
+.addEditPageWrapper .submitbtnsection, .changepass_formwrapper .forgetpass_buttonsec {
     width: 100%;
     display: flex;
     justify-content: center;
