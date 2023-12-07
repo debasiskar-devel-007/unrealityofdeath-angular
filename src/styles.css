@@ -302,7 +302,7 @@ body {
 }
 .changepass_formwrapper {
     width: 800px;
-    max-width: calc(96% - 25px);
+    max-width: calc(96% - 50px);
     background-color: #e9eaec;
     margin: 0 auto;
     border-radius: 15px;
