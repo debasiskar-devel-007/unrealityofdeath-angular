@@ -313,6 +313,7 @@ body {
     text-align: left;
     color: #e9460e;
     font-size: 1.6rem;
+    margin-bottom: 30px;
 }
 .changepass_formwrapper .login-full-width {
     margin-bottom: 30px;
@@ -1314,7 +1315,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .addEditPageWrapper .mdc-button,
-.addEditPageWrapper .mdc-button:hover {
+.addEditPageWrapper .mdc-button:hover, .changepass_formwrapper .forgetpass_buttonsec button, .changepass_formwrapper .forgetpass_buttonsec button:hover {
     margin: 5px;
     background: #7f2e0a !important;
     height: auto !important;
@@ -1395,7 +1396,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     -webkit-text-fill-color: transparent
 }
 
-.addEditPageWrapper .submitbtnsection {
+.addEditPageWrapper .submitbtnsection, .changepass_formwrapper .forgetpass_buttonsec {
     width: 100%;
     display: flex;
     justify-content: center;
