@@ -30,6 +30,14 @@ export class ChangePasswordComponent {
     
   }
 
+  goBack() {
+    this.router.navigateByUrl('/affiliate-dashboard')
+  }
+
+  goToAccount() {
+    this.router.navigateByUrl('/my-account/account-info')
+  }
+
   handleInputChange(data:any){
     
   }

@@ -302,7 +302,7 @@ body {
 }
 .changepass_formwrapper {
     width: 800px;
-    max-width: calc(96% - 25px);
+    max-width: calc(96% - 50px);
     background-color: #e9eaec;
     margin: 0 auto;
     border-radius: 15px;
@@ -4363,18 +4363,6 @@ tbody tr td .actionbuttonwrapper button {
 .load_more_wraper button{
     margin: 7px;
 }
-.load_more_wraper .loadmoredisable{
-    background:gray ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
-    border-radius: 5px;
-    display: none;
-}
 
 .load_more_wraper button{
 
@@ -4402,21 +4390,6 @@ tbody tr td .actionbuttonwrapper button {
 .load_more_wraper .showlessactive, .load_more_wraper .loadmoreactive {
     display: block;
 }
-
-/* .load_more_wraper .showlessactive{
-
-    background:var(--blue-gradient) ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
-    border-radius: 5px;
-
-} */
 
 .productAssetActive{
     background:var(--blue-gradient) ;

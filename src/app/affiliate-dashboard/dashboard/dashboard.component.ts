@@ -111,7 +111,6 @@ export class DashboardComponent {
           next: (response: any) => {
             if (response.status === 'success') {
               if (response.results?.length > 0) {
-                this.dashboardCampaignListApi();
                 this.loader = false;
               }
             } else {
@@ -202,6 +201,8 @@ export class DashboardComponent {
           }
           if (this.banner_data.length <= 4) {
             this.disable_loadmore = true;
+          } else {
+            this.disable_loadmore = false;
           }
         },
         error: (error: any) => {
@@ -512,6 +513,7 @@ export class UniqueUrlModal {
   public unic_value: string = '';
   public unicLoader: any = false;
   public hasunic: any = 0;
+
   userQuestionUpdate = new Subject<string>();
 
   ngOnInit() {
@@ -526,6 +528,8 @@ export class UniqueUrlModal {
         ],
       ],
     });
+
+
 
     this.userQuestionUpdate
       .pipe(debounceTime(1000), distinctUntilChanged())
@@ -561,6 +565,8 @@ export class UniqueUrlModal {
     if (event) {
       this.unic_value = event;
 
+      console.log(this.unicUser_form);      
+
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
       } else if (this.unicUser_form.status == 'VALID') {
@@ -570,8 +576,8 @@ export class UniqueUrlModal {
     }
   }
 
-  submit() {
-    this.loader = true;
+  submit() {    
+    
     const login_user_details = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
       : {};
@@ -579,6 +585,7 @@ export class UniqueUrlModal {
     console.log(login_user_details);
 
     if (this.validflag == 1 && this.hasunic === 1) {
+      this.loader = true;
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: login_user_details.uidval,
