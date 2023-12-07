@@ -575,8 +575,8 @@ export class UniqueUrlModal {
     }
   }
 
-  submit() {
-    this.loader = true;
+  submit() {    
+    
     const login_user_details = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
       : {};
@@ -584,6 +584,7 @@ export class UniqueUrlModal {
     console.log(login_user_details);
 
     if (this.validflag == 1 && this.hasunic === 1) {
+      this.loader = true;
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: login_user_details.uidval,
