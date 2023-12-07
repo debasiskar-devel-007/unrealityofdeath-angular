@@ -522,7 +522,7 @@ export class UniqueUrlModal {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(16),
-          Validators.pattern(/^[a-z0-9-_]+$/),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%&*]{8,}$/),
         ],
       ],
     });
