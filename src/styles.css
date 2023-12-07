@@ -195,7 +195,6 @@ body {
     display: block;
     text-decoration: none;
     font-size: 18px;
-    text-align: right;
   }
   .login_formwrapper form a:hover {
     color: #f7e057;
@@ -3819,8 +3818,16 @@ tbody tr td .actionbuttonwrapper button {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-
 }
+
+/* << ----------- QR Modal CSS ------------ >> */
+
+.custom-modalbox.qr-modalbox {
+    width: min(90%, 365px) !important;
+}
+
+/* << ----------- QR Modal CSS ------------ >> */
+
 
 @media only screen and (max-width: 699px) {
 
@@ -4316,37 +4323,34 @@ tbody tr td .actionbuttonwrapper button {
     display: none;
 }
 
-.load_more_wraper .loadmoreactive{
+.load_more_wraper button{
 
-    background:var(--blue-gradient) ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
+    margin: 5px;
+    background: #7f2e0a !important;
+    height: auto !important;
+    font-size: 2.4rem;
     border-radius: 5px;
+    color: #fff !important;
+    cursor: pointer;
+    box-shadow: none;
+    padding: 1.2rem 2.5rem !important;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    min-height: inherit !important;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
+    transition: all .1s;
 
 }
 
 
-.load_more_wraper .showlessdisable{
-    background:gray ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
-    margin-left: 20px;
-    border-radius: 5px;
+.load_more_wraper .showlessdisable, .load_more_wraper .loadmoredisable{
     display: none;
 }
+.load_more_wraper .showlessactive, .load_more_wraper .loadmoreactive {
+    display: block;
+}
 
-.load_more_wraper .showlessactive{
+/* .load_more_wraper .showlessactive{
 
     background:var(--blue-gradient) ;
     border: none;
@@ -4359,7 +4363,7 @@ tbody tr td .actionbuttonwrapper button {
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
     border-radius: 5px;
 
-}
+} */
 
 .productAssetActive{
     background:var(--blue-gradient) ;

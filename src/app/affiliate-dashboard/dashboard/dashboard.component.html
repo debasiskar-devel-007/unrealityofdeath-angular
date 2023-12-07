@@ -47,7 +47,8 @@
                     data.landing_page_thumbnail?.length > 0
                       ? data.landing_page_thumbnail[0]?.imageUrl
                       : 'https://d37pbainmkhx6o.cloudfront.net/timothydesmond-assets/Placeholder_view_vector.svg'
-                  " loading="lazy"
+                  "
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -126,7 +127,9 @@
                     matTooltip="Copy URL"
                     ><i class="fa-regular fa-clone fa-rotate-90 fa-2xs"></i
                   ></a>
-                  <a matTooltip="QR Scanner"
+                  <a
+                    matTooltip="QR Scanner"
+                    (click)="showQrCode(data, mainIndex)"
                     ><i class="fa fa-qrcode" aria-hidden="true"></i
                   ></a>
                   <a
@@ -171,10 +174,10 @@
         <!-- (login_user_details.userinfo.has_betoparedes_access == 0 && banner.banner_name != 'Decision Doc AI') || 
            (login_user_details.userinfo.has_betoparedes_access == 0 && banner.banner_name != 'Practice2Lab - Maximize Client Practice Revenue') -->
 
-        <div class="banner-main-wrapper">
+        <div class="banner-main-wrapper" id="bannerSection">
           <div
             class="banner-marketing-mainwrapper"
-            *ngFor="let banner of banner_data; let bannerIndex = index"
+            *ngFor="let banner of banner_sliced_data; let bannerIndex = index"
           >
             <div class="banner-marketing-container">
               <div class="banner-marketing-col">
@@ -184,7 +187,8 @@
                       banner.thumbnail.length > 0
                         ? banner.thumbnail[0].imageUrl
                         : 'https://d37pbainmkhx6o.cloudfront.net/timothydesmond-assets/Placeholder_view_vector.svg'
-                    " loading="lazy"
+                    "
+                    loading="lazy"
                     alt=""
                   />
                 </div>
@@ -234,6 +238,22 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="load_more_wraper">
+          <button
+            (click)="collapseBanner()"
+            [ngClass]="disable_showless ? 'showlessdisable' : 'showlessactive'"
+            [disabled]="disable_showless"
+          >
+            Show Less
+          </button>
+          <button
+            (click)="loadBanner()"
+            [ngClass]="disable_loadmore ? 'loadmoredisable' : 'loadmoreactive'"
+            [disabled]="disable_loadmore"
+          >
+            Load More
+          </button>
         </div>
       </div>
 

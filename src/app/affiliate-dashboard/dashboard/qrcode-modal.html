@@ -1,0 +1,21 @@
+<button
+  mat-dialog-close
+  class="close-btn-modal"
+  mat-raised-button
+  matTooltip="Close"
+  matTooltipPosition="below"
+>
+  <mat-icon>close</mat-icon>
+</button>
+<div class="dialoghead">
+  <h1 class="mat-mdc-dialog-title">Qr for: {{dialogData.landing_page_name}}</h1>
+  <mat-dialog-content>
+    <div class="subwrapper">
+      <qrcode
+        [qrdata]="qrData"
+        [width]="256"
+        [errorCorrectionLevel]="'M'"
+      ></qrcode>
+    </div>
+  </mat-dialog-content>
+</div>
