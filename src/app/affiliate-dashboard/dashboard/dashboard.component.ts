@@ -111,7 +111,6 @@ export class DashboardComponent {
           next: (response: any) => {
             if (response.status === 'success') {
               if (response.results?.length > 0) {
-                this.dashboardCampaignListApi();
                 this.loader = false;
               }
             } else {
@@ -202,6 +201,8 @@ export class DashboardComponent {
           }
           if (this.banner_data.length <= 4) {
             this.disable_loadmore = true;
+          } else {
+            this.disable_loadmore = false;
           }
         },
         error: (error: any) => {
