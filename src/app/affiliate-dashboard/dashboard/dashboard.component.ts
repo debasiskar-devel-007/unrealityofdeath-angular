@@ -512,6 +512,7 @@ export class UniqueUrlModal {
   public unic_value: string = '';
   public unicLoader: any = false;
   public hasunic: any = 0;
+
   userQuestionUpdate = new Subject<string>();
 
   ngOnInit() {
@@ -522,10 +523,12 @@ export class UniqueUrlModal {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(16),
-          Validators.pattern(/^[a-z0-9-_]+$/),
+          Validators.pattern(/^(?!.*[A-Z\s]).*[a-z0-9_-]{6,16}$/),
         ],
       ],
     });
+
+
 
     this.userQuestionUpdate
       .pipe(debounceTime(1000), distinctUntilChanged())
@@ -560,6 +563,8 @@ export class UniqueUrlModal {
     this.validflag = 0;
     if (event) {
       this.unic_value = event;
+
+      console.log(this.unicUser_form);      
 
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
