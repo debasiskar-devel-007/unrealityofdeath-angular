@@ -25,6 +25,8 @@ export class ChangePasswordComponent {
 
   public loader: boolean = false;
   hide = true;
+  hide1 = true;
+  hide2 = true;
 
   ngOnInit() {
     
@@ -42,9 +44,17 @@ export class ChangePasswordComponent {
     
   }
 
-  handlevisibl(event:any){
+  handlevisible(event:any){
     event.preventDefault()
     this.hide = !this.hide
+   }
+   handlevisible1(event:any){
+    event.preventDefault()
+    this.hide1 = !this.hide1
+   }
+   handlevisible2(event:any){
+    event.preventDefault()
+    this.hide2 = !this.hide2
    }
 
 

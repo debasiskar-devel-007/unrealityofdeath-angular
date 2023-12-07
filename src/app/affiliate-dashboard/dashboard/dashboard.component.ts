@@ -524,7 +524,7 @@ export class UniqueUrlModal {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(16),
-          Validators.pattern(/^(?!.*[A-Z\s]).*[a-z0-9_-]{6,16}$/),
+          Validators.pattern(/^(?!\d)[\w-]{5,15}$/),
         ],
       ],
     });
@@ -540,6 +540,8 @@ export class UniqueUrlModal {
   }
 
   async chekUnicValue(params: any) {
+    console.log(params);
+    
     this.unicLoader = true;
     this.apiService
       .getHttpDataPost('marketing/unique-name-check', { unique_name: params })
