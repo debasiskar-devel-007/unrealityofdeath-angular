@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 
 @Component({
@@ -14,21 +13,31 @@ import { ApiservicesService } from 'src/app/services/apiservices.service';
 })
 export class ChangePasswordComponent {
 
-  public loginForm: FormGroup;
+  public changePassForm: FormGroup;
 
   constructor(private apiService: ApiservicesService, private cookieService: CookieService, public router: Router, public matSnackBar: MatSnackBar, public dialog: MatDialog) {
-    this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
+    this.changePassForm = new FormGroup({
+      oldpass: new FormControl(''),
+      newpass: new FormControl(''),
+      confpass: new FormControl(''),
     })
   }
 
+  public loader: boolean = false;
+  hide = true;
+
   ngOnInit() {
-    const dialogRef = this.dialog.open(ComingsoonComponent, {
-      panelClass: ['custom-modalbox', 'comingsoon-modalbox'],
-      data: '',
-    });
+    
   }
+
+  handleInputChange(data:any){
+    
+  }
+
+  handlevisibl(event:any){
+    event.preventDefault()
+    this.hide = !this.hide
+   }
 
 
 }
