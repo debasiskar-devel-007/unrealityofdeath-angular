@@ -524,7 +524,7 @@ export class UniqueUrlModal {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(16),
-          Validators.pattern(/^(?!\d)[\w-]{5,15}$/),
+          Validators.pattern(/^(?!\d)[\w-]{6,16}$/),
         ],
       ],
     });

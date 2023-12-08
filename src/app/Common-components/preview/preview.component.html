@@ -8,8 +8,8 @@
                 <p class="preview_data">
                 
                   
-                    <span *ngIf="!(routeFlag)"><strong>{{data === "created_on" ? "Create On" : data === "landing_page_name" ? "Landing Page Name" : data.replace("_"," ")}}:</strong></span> 
-                    <span *ngIf="routeFlag"><strong>{{data === "created_on" ? "Joined On" : data === "landing_page_name" ? "Landing Page Name": data.replace("_"," ")}}:</strong></span> 
+                    <span *ngIf="!(routeFlag)"><strong>{{data === "created_on" ? "Create On" : data === "landing_page_name" ? "Landing Page Name" : data === "fullname" ? "Name" : data.replace("_"," ")}}:</strong></span> 
+                    <span *ngIf="routeFlag"><strong>{{data === "created_on" ? "Joined On" : data === "landing_page_name" ? "Landing Page Name" : data === "fullname" ? "Name" : data.replace("_"," ")}}:</strong></span> 
                     
                     <span class="preview_value" >
                         {{data=="status"? 

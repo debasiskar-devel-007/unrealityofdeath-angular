@@ -37,6 +37,11 @@ export class ChangePasswordComponent {
   hide1 = true;
   hide2 = true;
 
+  public oldRequired: boolean = false;
+  public newRequired: boolean = false;
+  public confRequired: boolean = false;
+
+
   handlevisible(event: any) {
     event.preventDefault();
     this.hide = !this.hide;
@@ -59,73 +64,96 @@ export class ChangePasswordComponent {
   }
 
   changePassword() {
+    let formValues = this.changePassForm.value;
 
-    let formValues = this.changePassForm.value
+    if (
+      formValues.oldpass == '' ||
+      formValues.newpass == '' ||
+      formValues.confpass == ''
+    ) {
 
-    console.log(formValues);
-    if (formValues.oldpass == '' || formValues.newpass == '' || formValues.confpass) {
-      this.matSnackBar.open('You Need to Fill all the Fields to Proceed', 'Ok', {
-        duration: 5000
-      })
-      
-    } else if(formValues.oldpass == formValues.newpass) {
-      this.matSnackBar.open('Old Password and New Password cannot be same', 'Ok', {
-        duration: 5000,
-      });    
-    } else if(formValues.newpass !== formValues.confpass) {
-      this.matSnackBar.open('New Password and Confirm Password must be same', 'Ok', {
-        duration: 5000,
-      });    
-    
+      // this.oldRequired = true;
+      // this.newRequired = true;
+      // this.confRequired = true;
+
+      this.matSnackBar.open(
+        'You Need to Fill all the Fields to Proceed',
+        'Ok',
+        {
+          duration: 5000,
+        }
+      );
+    } else if (formValues.oldpass == formValues.newpass) {
+      this.matSnackBar.open(
+        'Old Password and New Password cannot be same',
+        'Ok',
+        {
+          duration: 5000,
+        }
+      );
+    } else if (formValues.newpass !== formValues.confpass) {
+      this.matSnackBar.open(
+        'New Password and Confirm Password must be same',
+        'Ok',
+        {
+          duration: 5000,
+        }
+      );
     } else {
-
       this.loader = true;
 
-    let reqBody = {
-      oldpassword: this.changePassForm?.value?.oldpass,
-      newpassword: this.changePassForm?.value?.newpass,
-      uid: this.cookieData?.uidval,
-      firstname: this.cookieData?.username.split(' ')[0],
-      lastname: this.cookieData?.username.split(' ')[1],
-      email: this.cookieData?.useremail,
-    };
+      let reqBody = {
+        oldpassword: this.changePassForm?.value?.oldpass,
+        newpassword: this.changePassForm?.value?.newpass,
+        uid: this.cookieData?.uidval,
+        firstname: this.cookieData?.username.split(' ')[0],
+        lastname: this.cookieData?.username.split(' ')[1],
+        email: this.cookieData?.useremail,
+      };
 
-    this.apiService
-      .getHttpDataPost('user-api/reset-password', reqBody)
-      .subscribe({
-        next: (response: any) => {
-          console.log(response);
+      this.apiService
+        .getHttpDataPost('user-api/reset-password', reqBody)
+        .subscribe({
+          next: (response: any) => {
+            console.log(response);
 
-          if (response.status === 'success') {
-            this.matSnackBar.open('Password Changed Successfully', '', {
+            if (response.status === 'success') {
+              this.matSnackBar.open('Password Changed Successfully', '', {
+                duration: 5000,
+              });
+
+              this.router.navigateByUrl('/affiliate-dashboard');
+
+              this.loader = false;
+            } else {
+              this.matSnackBar.open(
+                response?.message.length
+                  ? response.message
+                  : 'Something went Wrong!!',
+                '',
+                {
+                  duration: 5000,
+                }
+              );
+              this.loader = false;
+            }
+          },
+          error: (error: any) => {
+            console.log(error);
+            this.matSnackBar.open('Something went Wrong!!', '', {
               duration: 5000,
             });
-
-            this.router.navigateByUrl('/affiliate-dashboard');
-
             this.loader = false;
-          } else {
-            this.matSnackBar.open(
-              response?.message.length
-                ? response.message
-                : 'Something went Wrong!!',
-              '',
-              {
-                duration: 5000,
-              }
-            );
-            this.loader = false;
-          }
-        },
-        error: (error: any) => {
-          console.log(error);
-          this.matSnackBar.open('Something went Wrong!!', '', {
-            duration: 5000,
-          });
-          this.loader = false;
-        },
-      });
-
+          },
+        });
     }
+  }
+
+  fieldChange(event: any, field: any) {
+
+    console.log(event, field);
+
+    console.log(this.changePassForm.value);
+
   }
 }
