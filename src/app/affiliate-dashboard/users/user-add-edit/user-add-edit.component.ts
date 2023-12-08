@@ -76,7 +76,7 @@ export class UserAddEditComponent {
 
         if (response.results && response.results.length > 0) {
           response.results.forEach((e: any, i: number) => {
-            let obj = { val: e.abbreviation, name: e.name };
+            let obj = { val: this.editFormData.state.length > 2 ? e.name : e.abbreviation, name: e.name };
             this.stateList.push(obj);
           });
         }
