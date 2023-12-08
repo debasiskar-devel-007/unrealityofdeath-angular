@@ -41,7 +41,6 @@ export class ChangePasswordComponent {
   public newRequired: boolean = false;
   public confRequired: boolean = false;
 
-
   handlevisible(event: any) {
     event.preventDefault();
     this.hide = !this.hide;
@@ -71,7 +70,6 @@ export class ChangePasswordComponent {
       formValues.newpass == '' ||
       formValues.confpass == ''
     ) {
-
       // this.oldRequired = true;
       // this.newRequired = true;
       // this.confRequired = true;
@@ -150,10 +148,8 @@ export class ChangePasswordComponent {
   }
 
   fieldChange(event: any, field: any) {
-
     console.log(event, field);
 
     console.log(this.changePassForm.value);
-
   }
 }

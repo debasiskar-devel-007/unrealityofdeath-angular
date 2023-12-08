@@ -529,8 +529,6 @@ export class UniqueUrlModal {
       ],
     });
 
-
-
     this.userQuestionUpdate
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((value) => {
@@ -541,7 +539,7 @@ export class UniqueUrlModal {
 
   async chekUnicValue(params: any) {
     console.log(params);
-    
+
     this.unicLoader = true;
     this.apiService
       .getHttpDataPost('marketing/unique-name-check', { unique_name: params })
@@ -567,7 +565,7 @@ export class UniqueUrlModal {
     if (event) {
       this.unic_value = event;
 
-      console.log(this.unicUser_form);      
+      console.log(this.unicUser_form);
 
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
@@ -578,8 +576,7 @@ export class UniqueUrlModal {
     }
   }
 
-  submit() {    
-    
+  submit() {
     const login_user_details = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
       : {};
