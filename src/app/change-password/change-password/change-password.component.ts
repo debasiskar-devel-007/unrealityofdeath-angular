@@ -64,7 +64,7 @@ export class ChangePasswordComponent {
 
     console.log(formValues);
     if (formValues.oldpass == '' || formValues.newpass == '' || formValues.confpass) {
-      this.matSnackBar.open('You need to fill all the fields to proceed', 'Ok', {
+      this.matSnackBar.open('You Need to Fill all the Fields to Proceed', 'Ok', {
         duration: 5000
       })
       
