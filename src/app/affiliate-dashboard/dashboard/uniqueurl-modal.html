@@ -19,22 +19,22 @@
 
                             <mat-form-field class="login-full-width">
                                 <input matInput placeholder="Type Here" name="unique_identifier" [ngModel]="unic_value" (ngModelChange)="runing($event)"   formControlName="unique_identifier" required class="form_wrp-field" />
+                                
                             </mat-form-field>
-
                             <div style="height:50px ;width: 50px;">
                                 <mat-spinner *ngIf="unicLoader" style="height:50px ;width: 50px; margin-left: 10px;" ></mat-spinner>
                             </div>
                         </div>
                         
-                        <div *ngIf="validflag == 2">
-                            <span class="error">Invalid Field</span>
-                        </div>
-                        <div *ngIf="hasunic == 2">
-                            <span class="error">This username already taken</span>
-                        </div>
-                        <div *ngIf="hasunic == 1">
-                            <span class="error valid">This unique Name is available</span>
-                        </div>
+                        <ng-container *ngIf="validflag == 2">
+                            <span class="error">Invalid Uniquename</span>
+                        </ng-container>
+                        <ng-container *ngIf="hasunic == 2">
+                            <span class="error">This name is already taken</span>
+                        </ng-container>
+                        <ng-container *ngIf="hasunic == 1">
+                            <span class="error valid">This unique Name is Available</span>
+                        </ng-container>
 
 
 

@@ -23,6 +23,9 @@ import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboa
 import { MatSelectChange } from '@angular/material/select';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import * as copy from 'copy-to-clipboard';
+import { QRCodeModule } from 'angularx-qrcode';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -40,7 +43,15 @@ export class DashboardComponent {
     private elementRef: ElementRef,
     { nativeElement }: ElementRef<HTMLImageElement>,
     public sanitizer: DomSanitizer
-  ) {}
+  ) {
+    const supports = 'loading' in HTMLImageElement.prototype;
+
+    if (supports) {
+      nativeElement.setAttribute('loading', 'lazy');
+    } else {
+      // fallback to IntersectionObserver
+    }
+  }
 
   public cookieData: any = {};
 
@@ -57,6 +68,13 @@ export class DashboardComponent {
   public loader: boolean = false;
 
   public banner_data: any = [];
+
+  public banner_sliced_data: any = [];
+  public banner_slice: any = 4;
+
+  public disable_loadmore: boolean = false;
+  public disable_showless: boolean = true;
+
   public share_url: any = [];
   public emailTemplateData: any = [];
 
@@ -78,12 +96,11 @@ export class DashboardComponent {
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        this.dashboardCampaignListApi()
-        this.getBanner()
-      })
-
+        this.dashboardCampaignListApi();
+        this.getBanner();
+      });
     } else {
-      this.loader = true
+      this.loader = true;
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: this.cookieData.uidval,
@@ -94,16 +111,15 @@ export class DashboardComponent {
           next: (response: any) => {
             if (response.status === 'success') {
               if (response.results?.length > 0) {
-                this.dashboardCampaignListApi();
-                this.loader = false
+                this.loader = false;
               }
             } else {
-              this.loader = false
+              this.loader = false;
             }
           },
           error: (error: any) => {
             console.log('error', error);
-            this.loader = false
+            this.loader = false;
           },
         });
     }
@@ -174,18 +190,63 @@ export class DashboardComponent {
         next: (response: any) => {
           console.log('this is video data', response);
 
-          if (response?.status == 'success' && response?.results?.length > 0) {
-            this.banner_data = response.results;
-            this.loader = false;
+          this.banner_data = response.results;
+
+          if (this.banner_data.length > 0) {
+            this.banner_sliced_data = this.banner_data.slice(
+              0,
+              this.banner_slice
+            );
+            console.log(this.banner_sliced_data);
+          }
+          if (this.banner_data.length <= 4) {
+            this.disable_loadmore = true;
           } else {
-            this.loader = false;
-          }          
+            this.disable_loadmore = false;
+          }
         },
         error: (error: any) => {
           console.log('this is video error', error);
           this.loader = false;
         },
       });
+  }
+
+  loadBanner() {
+    this.matSnackBar.open('New Data Loaded Successfully', 'Ok', {
+      duration: 3000,
+    });
+
+    this.disable_showless = false;
+    this.banner_slice = this.banner_slice + 4;
+    this.banner_sliced_data = this.banner_data.slice(0, this.banner_slice);
+
+    if (this.banner_data.length <= this.banner_slice) {
+      this.disable_loadmore = true;
+      this.disable_showless = false;
+    }
+  }
+
+  collapseBanner() {
+    this.matSnackBar.open('Less Data Loaded Successfully', 'Ok', {
+      duration: 3000,
+    });
+
+    const targetElement =
+      this.elementRef.nativeElement.querySelector('#bannerSection');
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+
+    this.banner_slice = 4;
+    this.banner_sliced_data = this.banner_data.slice(0, this.banner_slice);
+
+    this.disable_loadmore = false;
+    this.disable_showless = true;
   }
 
   // << -------------- All Campaign Fetch Function ---------------- >>
@@ -255,8 +316,16 @@ export class DashboardComponent {
   copyEmailTemplate(idVal: any) {
     console.log('idVal===========>', idVal);
     let htmlVal: any = document.getElementById(idVal)?.innerHTML;
-    this.clipBoard.copy(htmlVal);
-    this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
+    console.log(htmlVal);
+
+    copy(htmlVal, {
+      debug: true,
+      format: 'text/html',
+      onCopy: (text) => {
+        console.log(text);
+      },
+    });
+    this.matSnackBar.open('Copied To Clipboard!', 'Ok', { duration: 2000 });
   }
 
   // << -------- Campaign Modal ----------- >>
@@ -294,8 +363,8 @@ export class DashboardComponent {
             });
 
             dialogRef.afterClosed().subscribe((result) => {
-              this.dashboardCampaignListApi()
-              this.getBanner()
+              this.dashboardCampaignListApi();
+              this.getBanner();
             });
           } else {
             this.loader = false;
@@ -377,6 +446,29 @@ export class DashboardComponent {
 
   // << -------------- Coming Soon Modal ---------------- >>
 
+  // << ------------ QR Modal --------------- >>
+
+  showQrCode(val: any, index: any) {
+    console.log(val, index);
+
+    const url_index =
+      (index || index == 0) &&
+      this.selected_campaign_index.length > 0 &&
+      this.selected_campaign_index[index]
+        ? this.selected_campaign_index[index]
+        : 0;
+
+    const dialogRef = this.dialog.open(QRCodeModal, {
+      data: {
+        ...val,
+        index: url_index,
+      },
+      panelClass: ['custom-modalbox', 'qr-modalbox'],
+    });
+  }
+
+  // << ------------ QR Modal --------------- >>
+
   clickConversionModal(val: any) {
     console.log('click conversion data==========>', val);
 
@@ -421,6 +513,7 @@ export class UniqueUrlModal {
   public unic_value: string = '';
   public unicLoader: any = false;
   public hasunic: any = 0;
+
   userQuestionUpdate = new Subject<string>();
 
   ngOnInit() {
@@ -431,10 +524,12 @@ export class UniqueUrlModal {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(16),
-          Validators.pattern(/^[a-z0-9-_]+$/),
+          Validators.pattern(/^(?!\d)[\w-]{5,15}$/),
         ],
       ],
     });
+
+
 
     this.userQuestionUpdate
       .pipe(debounceTime(1000), distinctUntilChanged())
@@ -445,16 +540,18 @@ export class UniqueUrlModal {
   }
 
   async chekUnicValue(params: any) {
+    console.log(params);
+    
     this.unicLoader = true;
     this.apiService
       .getHttpDataPost('marketing/unique-name-check', { unique_name: params })
-      .subscribe((responce) => {
-        console.log('respodfdsfnce', responce);
-        
-        if (responce.status === 'success') {
-          if (responce.has === false) {
+      .subscribe((response) => {
+        console.log('respodfdsfnce', response);
+
+        if (response.status === 'success') {
+          if (response.has === false) {
             this.hasunic = 1;
-          } else if (responce.has === true) {
+          } else if (response.has === true) {
             this.hasunic = 2;
           }
           this.unicLoader = false;
@@ -470,6 +567,8 @@ export class UniqueUrlModal {
     if (event) {
       this.unic_value = event;
 
+      console.log(this.unicUser_form);      
+
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
       } else if (this.unicUser_form.status == 'VALID') {
@@ -479,8 +578,8 @@ export class UniqueUrlModal {
     }
   }
 
-  submit() {
-    this.loader = true;
+  submit() {    
+    
     const login_user_details = this.cookieService.get('login_user_details')
       ? JSON.parse(this.cookieService.get('login_user_details'))
       : {};
@@ -488,6 +587,7 @@ export class UniqueUrlModal {
     console.log(login_user_details);
 
     if (this.validflag == 1 && this.hasunic === 1) {
+      this.loader = true;
       this.apiService
         .getHttpDataPost('marketing/create-unique_identifier', {
           uid: login_user_details.uidval,
@@ -497,7 +597,6 @@ export class UniqueUrlModal {
         .subscribe({
           next: (response: any) => {
             if (response.status === 'success') {
-              
               console.log('success', response);
               let oldcookie = JSON.parse(
                 this.cookieService.get('login_user_details')
@@ -814,3 +913,38 @@ export class allCampaignModal {
 }
 
 // << ------------------ All Campaign Modal Component ----------------- >>
+
+// << ------------------ QRCode Modal Component ----------------- >>
+
+@Component({
+  selector: 'QRCodeModal',
+  templateUrl: 'qrcode-modal.html',
+  standalone: true,
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+    SharedModule,
+    QRCodeModule,
+    CommonModule,
+  ],
+})
+export class QRCodeModal {
+  public dialogData: any = {};
+  public qrData: any = null;
+
+  constructor(
+    public apiService: ApiservicesService,
+    public dialogRef: MatDialogRef<QRCodeModal>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public matSnackBar: MatSnackBar,
+    private cookieService: CookieService,
+    private elementRef: ElementRef,
+    public dialog: MatDialog
+  ) {
+    console.log(data);
+    this.dialogData = data;
+    this.qrData = this.dialogData.campaign_url[this.dialogData.index];
+  }
+}
+
+// << ------------------ QRCode Modal Component ----------------- >>

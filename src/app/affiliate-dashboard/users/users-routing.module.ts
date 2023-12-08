@@ -29,12 +29,17 @@ const routes: Routes = [
   },
   {
     path: 'user-edit/:id',
-    component: UserAddEditComponent
+    component: UserAddEditComponent,
+    resolve: { data: ResolveService },
+    data: {
+      requestcondition: {},
+      endpoint: 'user-api/userdata-preview',
+    },
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UsersRoutingModule { }
+export class UsersRoutingModule {}

@@ -195,7 +195,6 @@ body {
     display: block;
     text-decoration: none;
     font-size: 18px;
-    text-align: right;
   }
   .login_formwrapper form a:hover {
     color: #f7e057;
@@ -235,7 +234,7 @@ body {
 .mat-mdc-form-field-flex {
     color: #020202;
 }
-.login_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+.login_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix, .changepass_formwrapper .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix{
     padding-top: 10px;
     padding-bottom: 12px;
 }
@@ -245,7 +244,7 @@ body {
 .mat-mdc-form-field-subscript-wrapper {
     display: none;
 }
-.login_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple {display: none;}
+.login_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple, .changepass_formwrapper .login-full-width .mdc-text-field .mdc-line-ripple{display: none;}
 .login_formwrapper input, .login_formwrapper input::placeholder {
     color: #968e97 !important;
     caret-color: #fff !important;
@@ -254,7 +253,7 @@ body {
 .login_formwrapper input:-webkit-autofill:focus {
     transition: background-color 0s 600000s, color 0s 600000s !important;
 }
-.login_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix {
+.login_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix, .changepass_formwrapper .mat-mdc-form-field .mat-mdc-form-field-infix{
     min-height: unset;
 }   
 
@@ -274,6 +273,59 @@ body {
 }
 
 /* << ------------------ Log In Form Field CSS by Sanket ---------------------- >> */
+
+
+/* << ---------------- Change Password CSS by Sanket ------------- >> */
+
+.changepass_mainwrapper {
+    overflow: hidden;
+    min-height: calc(100vh - 210px);
+    background: #27130b;
+}
+.changepass_subwrapper {
+    position: relative;
+    padding: 15px;
+    margin: 0;
+    width: calc(100% - 30px);
+}
+.changepass_heading {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.changepass_heading h2 {
+    margin: 0;
+    padding: 10px;
+    color: #e9eaec;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.3rem;
+}
+.changepass_formwrapper {
+    width: 800px;
+    max-width: calc(96% - 50px);
+    background-color: #e9eaec;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 25px;
+}
+.changepass_formwrapper .pass_msg {
+    margin: 0;
+    text-align: left;
+    color: #e9460e;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+.changepass_formwrapper .login-full-width {
+    margin-bottom: 30px;
+}
+.changepass_formwrapper .pass_cls .mdc-text-field {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    background: #fff !important;
+}
+
+/* << ---------------- Change Password CSS by Sanket ------------- >> */
+
 
 /* << ---------------- List CSS by Sanket ------------- >> */
 
@@ -1263,7 +1315,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
 }
 
 .addEditPageWrapper .mdc-button,
-.addEditPageWrapper .mdc-button:hover {
+.addEditPageWrapper .mdc-button:hover, .changepass_formwrapper .forgetpass_buttonsec button, .changepass_formwrapper .forgetpass_buttonsec button:hover {
     margin: 5px;
     background: #7f2e0a !important;
     height: auto !important;
@@ -1344,7 +1396,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     -webkit-text-fill-color: transparent
 }
 
-.addEditPageWrapper .submitbtnsection {
+.addEditPageWrapper .submitbtnsection, .changepass_formwrapper .forgetpass_buttonsec {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -1816,12 +1868,12 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     padding-bottom: 15px !important
 }
 
-.custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p,
 .custom-modalbox .mat-mdc-dialog-surface .dialoghead .mat-mdc-dialog-content p {
     text-transform: capitalize;
     font-size: 1.6rem;
     color: #000;
 }
+
 
 .notebtncls {
     position: relative !important;
@@ -3766,7 +3818,7 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
 }
-.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p {
+.custom-modalbox.manage-status .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.toogle-many .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.delete-single .dialoghead .mat-mdc-dialog-content p, .custom-modalbox.delete-multiple .dialoghead .mat-mdc-dialog-content p {
     text-align: center;
     font-size: 2rem;
 }
@@ -3819,8 +3871,16 @@ tbody tr td .actionbuttonwrapper button {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-
 }
+
+/* << ----------- QR Modal CSS ------------ >> */
+
+.custom-modalbox.qr-modalbox {
+    width: min(90%, 365px) !important;
+}
+
+/* << ----------- QR Modal CSS ------------ >> */
+
 
 @media only screen and (max-width: 699px) {
 
@@ -4146,17 +4206,13 @@ tbody tr td .actionbuttonwrapper button {
 
 /* //////////////////// DASHBOARD CSS ///////////////////////// */
 
-.landing-page-left{width:400px;display: flex;    align-items: center;
+.landing-page-left{width:400px;display: flex;align-items: center;
 }
 .img-wrapper{padding:10px;background:#e4e7dd;border:1px solid #95998f;width: 100%;
-    height: 200px;    overflow: hidden;
 }
 .img-wrapper img{
     display: block;
     width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
 .landing-page-right{width:calc(100% - 440px);margin-left:40px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
 .landing-page-right::after{content:'';height:94%;width:1px;background:#7d8376;position:absolute;left:-20px;top:50%;transform:translateY(-50%);box-shadow:1px 0 0 #d7decc}
@@ -4307,62 +4363,32 @@ tbody tr td .actionbuttonwrapper button {
 .load_more_wraper button{
     margin: 7px;
 }
-.load_more_wraper .loadmoredisable{
-    background:gray ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
+
+.load_more_wraper button{
+
+    margin: 5px;
+    background: #7f2e0a !important;
+    height: auto !important;
+    font-size: 2.4rem;
     border-radius: 5px;
+    color: #fff !important;
+    cursor: pointer;
+    box-shadow: none;
+    padding: 1.2rem 2.5rem !important;
+    border: 1px solid #ff7f00;
+    text-shadow: 1px 1px 1px #874403;
+    min-height: inherit !important;
+    box-shadow: -4px -2px 9px #fefffe, 3px 3px 13px #586760;
+    transition: all .1s;
+
+}
+
+
+.load_more_wraper .showlessdisable, .load_more_wraper .loadmoredisable{
     display: none;
 }
-
-.load_more_wraper .loadmoreactive{
-
-    background:var(--blue-gradient) ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
-    border-radius: 5px;
-
-}
-
-
-.load_more_wraper .showlessdisable{
-    background:gray ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
-    margin-left: 20px;
-    border-radius: 5px;
-    display: none;
-}
-
-.load_more_wraper .showlessactive{
-
-    background:var(--blue-gradient) ;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,.5);
-    border-radius: 5px;
-
+.load_more_wraper .showlessactive, .load_more_wraper .loadmoreactive {
+    display: block;
 }
 
 .productAssetActive{
