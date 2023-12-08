@@ -147,6 +147,17 @@ body {
   .email_cls .form_wrp-field {
     font-size: 17px !important;
   }
+
+  .error {
+    color: #ff0000;
+    display: block;
+    text-align: left;
+    padding-left: 5px;
+    font-size: 1.4rem;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
   
   a {
     color: inherit;

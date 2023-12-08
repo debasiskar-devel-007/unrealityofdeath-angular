@@ -50,16 +50,6 @@ export class ChangePasswordComponent {
     this.hide2 = !this.hide2;
   }
 
-  //  get oldpass() {
-  //   return this.changePassForm.get('oldpass')
-  //  }
-  //  get newpass() {
-  //   return this.changePassForm.get('newpass')
-  //  }
-  //  get confpass() {
-  //   return this.changePassForm.get('confpass')
-  //  }
-
   goBack() {
     this.router.navigateByUrl('/affiliate-dashboard');
   }
@@ -69,7 +59,27 @@ export class ChangePasswordComponent {
   }
 
   changePassword() {
-    this.loader = true;
+
+    let formValues = this.changePassForm.value
+
+    console.log(formValues);
+    if (formValues.oldpass == '' || formValues.newpass == '' || formValues.confpass) {
+      this.matSnackBar.open('You need to fill all the fields to proceed', 'Ok', {
+        duration: 5000
+      })
+      
+    } else if(formValues.oldpass === formValues.newpass) {
+      this.matSnackBar.open('Old Password and New Password cannot be same', 'Ok', {
+        duration: 5000,
+      });    
+    } else if(formValues.newpass !== formValues.confpass) {
+      this.matSnackBar.open('New Password and Confirm Password must be same', 'Ok', {
+        duration: 5000,
+      });    
+    
+    } else {
+
+      this.loader = true;
 
     let reqBody = {
       oldpassword: this.changePassForm?.value?.oldpass,
@@ -79,8 +89,6 @@ export class ChangePasswordComponent {
       lastname: this.cookieData?.username.split(' ')[1],
       email: this.cookieData?.useremail,
     };
-
-    console.log(this.changePassForm.controls);
 
     this.apiService
       .getHttpDataPost('user-api/reset-password', reqBody)
@@ -117,5 +125,7 @@ export class ChangePasswordComponent {
           this.loader = false;
         },
       });
+
+    }
   }
 }
