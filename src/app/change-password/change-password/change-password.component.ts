@@ -68,7 +68,7 @@ export class ChangePasswordComponent {
         duration: 5000
       })
       
-    } else if(formValues.oldpass === formValues.newpass) {
+    } else if(formValues.oldpass == formValues.newpass) {
       this.matSnackBar.open('Old Password and New Password cannot be same', 'Ok', {
         duration: 5000,
       });    
