@@ -16,7 +16,7 @@
           ><strong
             >{{
               data === "created_on"
-                ? "Create On"
+                ? "Created On"
                 : data === "landing_page_name"
                 ? "Landing Page Name"
                 : data === "fullname"
@@ -25,7 +25,7 @@
             }}:</strong
           ></span
         >
-        <span *ngIf="routeFlag"
+        <span *ngIf="routeFlag == 'affiliate-dashboard/user'"
           ><strong
             >{{
               data === "created_on"
@@ -38,6 +38,47 @@
             }}:</strong
           ></span
         >
+        <span *ngIf="routeFlag == 'click-conv-prev'"
+          ><strong
+            >{{
+              data === "created_on"
+                ? typeFlag == true
+                  ? "Clicked On"
+                  : "Converted On"
+                : data === "landing_page_name"
+                ? "Landing Page Name"
+                : data === "fullname"
+                ? "Name"
+                : data.replace("_", " ")
+            }}:</strong
+          ></span
+        >
+        <!-- <span *ngIf="typeFlag"
+          ><strong
+            >{{
+              data === "created_on"
+                ? "Clicked On"
+                : data === "landing_page_name"
+                ? "Landing Page Name"
+                : data === "fullname"
+                ? "Name"
+                : data.replace("_", " ")
+            }}:</strong
+          ></span
+        >
+        <span *ngIf="!typeFlag"
+          ><strong
+            >{{
+              data === "created_on"
+                ? "Conversed On"
+                : data === "landing_page_name"
+                ? "Landing Page Name"
+                : data === "fullname"
+                ? "Name"
+                : data.replace("_", " ")
+            }}:</strong
+          ></span
+        > -->
 
         <span class="preview_value">
           {{

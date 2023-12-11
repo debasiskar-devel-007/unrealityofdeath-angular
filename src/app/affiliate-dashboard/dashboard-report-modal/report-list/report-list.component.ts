@@ -39,6 +39,8 @@ export class ReportListComponent implements OnChanges {
     this.campainAllData = data;
   }
 
+  public typeClick: boolean = true;
+
   @Input() listType: any;
   @Input() opportunity_details_input: any;
 
@@ -69,6 +71,7 @@ export class ReportListComponent implements OnChanges {
     this.libdata.basecondition = this.opportunity_details;
     if (this.currentListType && this.currentListType == 'conversion') {
       this.libdata.basecondition.conversion = true;
+      this.typeClick = false;
     } else {
       delete this.libdata.basecondition.conversion;
     }
@@ -94,6 +97,7 @@ export class ReportListComponent implements OnChanges {
     };
     if (this.currentListType && this.currentListType == 'conversion') {
       this.libdata.basecondition.conversion = true;
+      this.typeClick = false;
     }
 
     this.apiService
@@ -253,6 +257,8 @@ export class ReportListComponent implements OnChanges {
         data: {
           key: data?.custombuttonclick?.btninfo?.previewlist,
           value: data?.custombuttonclick?.data,
+          flagParam: 'click-conv-prev',
+          typeCheck: this.typeClick,
         },
       });
     }
