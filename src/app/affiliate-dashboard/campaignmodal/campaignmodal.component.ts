@@ -222,54 +222,54 @@ export class CampaignmodalComponent {
 
   fetchlist() {
     this.apiService
-    .getHttpDataPost('marketing/campaign-list', {
-      condition: {
-        limit: 5,
-        skip: 0,
-      },
-      searchcondition: {
-        user_id: this.cookieData?.uidval,
-        opportunity_id: this.campainAllData?.campaignVal,
-      },
-      sort: {
-        type: 'desc',
-        field: 'created_on',
-      },
-      project: {},
-      token: '',
-    })
-    .subscribe((response: any) => {
-      if (response.results.res.length > 0) {
-        this.tabledatatalist = []
-        setTimeout(() => {
-          this.tabledatatalist = response.results.res;
-        })
-      }
-    });
+      .getHttpDataPost('marketing/campaign-list', {
+        condition: {
+          limit: 5,
+          skip: 0,
+        },
+        searchcondition: {
+          user_id: this.cookieData?.uidval,
+          opportunity_id: this.campainAllData?.campaignVal,
+        },
+        sort: {
+          type: 'desc',
+          field: 'created_on',
+        },
+        project: {},
+        token: '',
+      })
+      .subscribe((response: any) => {
+        if (response.results.res.length > 0) {
+          this.tabledatatalist = [];
+          setTimeout(() => {
+            this.tabledatatalist = response.results.res;
+          });
+        }
+      });
   }
   fetchlistCount() {
     this.apiService
-    .getHttpDataPost('marketing/campaign-list-count', {
-      condition: {
-        limit: 5,
-        skip: 0,
-      },
-      searchcondition: {
-        user_id: this.cookieData?.uidval,
-        opportunity_id: this.campainAllData?.campaignVal,
-      },
-      sort: {
-        type: 'desc',
-        field: 'created_on',
-      },
-      project: {},
-      token: '',
-    })
-    .subscribe((response: any) => {
-      if (response && response.count) {
-        this.date_search_source_count = response.count;
-      }
-    });
+      .getHttpDataPost('marketing/campaign-list-count', {
+        condition: {
+          limit: 5,
+          skip: 0,
+        },
+        searchcondition: {
+          user_id: this.cookieData?.uidval,
+          opportunity_id: this.campainAllData?.campaignVal,
+        },
+        sort: {
+          type: 'desc',
+          field: 'created_on',
+        },
+        project: {},
+        token: '',
+      })
+      .subscribe((response: any) => {
+        if (response && response.count) {
+          this.date_search_source_count = response.count;
+        }
+      });
   }
 
   onLiblistingButtonChange(val: any) {}
@@ -277,20 +277,25 @@ export class CampaignmodalComponent {
     console.log('test', data);
 
     if (data?.custombuttonclick?.btninfo.id == 'edit_btn') {
-      this.campainAdd( data.custombuttonclick.data.landing_page_name, data.custombuttonclick.data, 'edit')
-      console.log("aaaaaaaaaaa", data.custombuttonclick.data)
-
+      this.campainAdd(
+        data.custombuttonclick.data.landing_page_name,
+        data.custombuttonclick.data,
+        'edit'
+      );
+      console.log('aaaaaaaaaaa', data.custombuttonclick.data);
     }
-    if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
+    if (
+      data.action === 'custombuttonclick' &&
+      data.custombuttonclick.btninfo.id === 'preview_btn' &&
+      data.custombuttonclick.data
+    ) {
       this.dialog.open(PreviewComponent, {
         panelClass: 'custom-modalbox',
         data: {
-          key: data.custombuttonclick.btninfo.previewlist, 
-          value: data.custombuttonclick.data
-        }
-
+          key: data.custombuttonclick.btninfo.previewlist,
+          value: data.custombuttonclick.data,
+        },
       });
-
     }
     if (
       data.action === 'custombuttonclick' &&
@@ -301,26 +306,24 @@ export class CampaignmodalComponent {
         panelClass: 'custom-modalbox',
         data: data.custombuttonclick.data?.campaign_id,
       });
-      
+
       dialogRef.afterClosed().subscribe((result) => {
         console.log(result);
-        
-        this.fetchlist()
-        this.fetchlistCount()
+
+        this.fetchlist();
+        this.fetchlistCount();
       });
     }
 
     if (data?.custombuttonclick?.btninfo.id == 'copy_btn') {
-
-      this.clipBoard.copy(data?.custombuttonclick?.data?.campaign_url)
-      this.matSnackBar.open("Copied To Clipboard!", "ok", { duration: 2000, });
-
+      this.clipBoard.copy(data?.custombuttonclick?.data?.campaign_url);
+      this.matSnackBar.open('Copied To Clipboard!', 'ok', { duration: 2000 });
     }
   }
 
-  campainAdd(landingName: any, data: any = null, flag: any = "add") {
+  campainAdd(landingName: any, data: any = null, flag: any = 'add') {
     console.log(landingName);
-    
+
     const dialogRef = this.dialog.open(addCampainModal, {
       panelClass: 'custom-modalbox',
       data: {
@@ -337,9 +340,9 @@ export class CampaignmodalComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
-      
-      this.fetchlist()
-      this.fetchlistCount()
+
+      this.fetchlist();
+      this.fetchlistCount();
     });
   }
 }
@@ -353,8 +356,7 @@ export class CampaignmodalComponent {
   imports: [MatDialogModule, MatButtonModule, SharedModule, CommonModule],
 })
 export class addCampainModal {
-
-  public landingPageName: any = ""
+  public landingPageName: any = '';
 
   constructor(
     private cookieService: CookieService,
@@ -366,7 +368,7 @@ export class addCampainModal {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     console.log('data========>+', data);
-    this.landingPageName = data?.setDefaultObj?.landingName
+    this.landingPageName = data?.setDefaultObj?.landingName;
   }
 
   public configFormData = {};
@@ -454,7 +456,7 @@ export class addCampainModal {
             campaign_id: this.update_id,
             status: this.formValue.status ? 1 : 0,
             priority: 2,
-            ...this.formValue
+            ...this.formValue,
           })
           .subscribe({
             next: (response: any) => {
@@ -462,7 +464,7 @@ export class addCampainModal {
               console.log('response', response);
               console.log('afterloader', this.loader);
               this.loader = false;
-              this.matSnackBar.open("Updated Successfully", 'OK', {
+              this.matSnackBar.open('Updated Successfully', 'OK', {
                 duration: 3000,
               });
               setTimeout(() => {
