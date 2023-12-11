@@ -29,10 +29,10 @@
                         <ng-container *ngIf="validflag == 2">
                             <span class="error">Invalid Uniquename</span>
                         </ng-container>
-                        <ng-container *ngIf="hasunic == 2">
+                        <ng-container *ngIf="hasunic == 2 && unic_value.length > 5">
                             <span class="error">This name is already taken</span>
                         </ng-container>
-                        <ng-container *ngIf="hasunic == 1">
+                        <ng-container *ngIf="hasunic == 1 && (unic_value.length > 5 && unic_value.length <= 16)">
                             <span class="error valid">This unique Name is Available</span>
                         </ng-container>
 
