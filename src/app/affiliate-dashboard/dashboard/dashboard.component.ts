@@ -538,8 +538,12 @@ export class UniqueUrlModal {
   }
 
   async chekUnicValue(params: any) {
-    console.log(params);
+    console.log("chekUnicValue",params);
 
+    if (params.length < 6) {
+      this.hasunic = 0
+      return
+    }
     this.unicLoader = true;
     this.apiService
       .getHttpDataPost('marketing/unique-name-check', { unique_name: params })
@@ -563,15 +567,19 @@ export class UniqueUrlModal {
     this.hasunic = 0;
     this.validflag = 0;
     if (event) {
-      this.unic_value = event;
+      this.unic_value = event.toLowerCase();
 
-      console.log(this.unicUser_form);
+      console.log(this.unic_value);
 
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
       } else if (this.unicUser_form.status == 'VALID') {
         this.validflag = 1;
-        this.userQuestionUpdate.next(event);
+        if(this.unic_value.length > 5) {
+          console.log("length > 5", this.unic_value);
+          
+          this.userQuestionUpdate.next(this.unic_value);
+        }
       }
     }
   }
