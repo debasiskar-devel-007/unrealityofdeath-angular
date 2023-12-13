@@ -19,10 +19,13 @@ export class PreviewComponent {
 
   public routeFlag: any
 
+  public typeFlag: any;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<PreviewComponent>) {
     this.datakey = this.data.key
     this.datavalue = this.data.value
     this.routeFlag = this.data.flagParam
+    this.typeFlag = this.data?.typeCheck
     console.log("dtatadtaa====",this.data)
   }
 

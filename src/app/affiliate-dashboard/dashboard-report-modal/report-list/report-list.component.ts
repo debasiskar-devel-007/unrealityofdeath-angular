@@ -1,21 +1,33 @@
-import { Component, ElementRef, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { CampaignmodalComponent } from '../../campaignmodal/campaignmodal.component';
 import { DialogData } from 'listing-angular15';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+import { PreviewComponent } from 'src/app/Common-components/preview/preview.component';
 
 @Component({
   selector: 'app-report-list',
   templateUrl: './report-list.component.html',
-  styleUrls: ['./report-list.component.css']
+  styleUrls: ['./report-list.component.css'],
 })
 export class ReportListComponent implements OnChanges {
-  public currentListType: any = 'click'
-  public loader: boolean = false
-  public opportunity_details: any= null
+  public currentListType: any = 'click';
+  public loader: boolean = false;
+  public opportunity_details: any = null;
   constructor(
     public apiService: ApiservicesService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -27,90 +39,103 @@ export class ReportListComponent implements OnChanges {
     this.campainAllData = data;
   }
 
-  @Input() listType: any
-  @Input() opportunity_details_input: any
+  public typeClick: boolean = true;
+
+  @Input() listType: any;
+  @Input() opportunity_details_input: any;
 
   ngOnChanges(changes: SimpleChanges): void {
-
-    if (changes["listType"]?.currentValue || changes["opportunity_details_input"]?.currentValue) {
-
+    if (
+      changes['listType']?.currentValue ||
+      changes['opportunity_details_input']?.currentValue
+    ) {
       // console.log("this.currentListType========>",this.currentListType);
 
-      if(changes["opportunity_details_input"]?.currentValue){
-        this.opportunity_details = changes["opportunity_details_input"].currentValue
+      if (changes['opportunity_details_input']?.currentValue) {
+        this.opportunity_details =
+          changes['opportunity_details_input'].currentValue;
       }
 
-      if(this.currentListType != changes["listType"]?.currentValue ){
+      if (this.currentListType != changes['listType']?.currentValue) {
         // console.log("this.opportunity_details from list type==========>",this.opportunity_details);
-        this.currentListType = changes["listType"].currentValue
-        this.updateReportList()
-      }else if(this.opportunity_details){
+        this.currentListType = changes['listType'].currentValue;
+        this.updateReportList();
+      } else if (this.opportunity_details) {
         // console.log("this.opportunity_details from list else type==========>",this.opportunity_details);
-        this.fetchReports()
+        this.fetchReports();
       }
-
     }
-
   }
 
   updateReportList() {
-    this.libdata.basecondition = this.opportunity_details
-      if (this.currentListType && this.currentListType == 'conversion'){
-        this.libdata.basecondition.conversion = true
-      }else{
-        delete this.libdata.basecondition.conversion
-      }
-      this.updatetable = !this.updatetable
+    this.libdata.basecondition = this.opportunity_details;
+    if (this.currentListType && this.currentListType == 'conversion') {
+      this.libdata.basecondition.conversion = true;
+      this.typeClick = false;
+    } else {
+      delete this.libdata.basecondition.conversion;
+    }
+    this.updatetable = !this.updatetable;
   }
 
-
   fetchReports() {
-    this.loader = true
-    this.libdata.basecondition = this.opportunity_details
-    
-      const requestBody:any = {
-        "condition": {
-          "limit": 5,
-          "skip": 0
-        },
-        "searchcondition": this.opportunity_details,
-        "sort": {
-          "type": "desc",
-          "field": "created_on"
-        },
-        "project": {},
-        "token": ""
-      }
-      if (this.currentListType && this.currentListType == 'conversion'){
-        this.libdata.basecondition.conversion = true
-      }
+    this.loader = true;
+    this.libdata.basecondition = this.opportunity_details;
 
-      this.apiService.getHttpDataPost('click-conversion/dashboard-click-list',requestBody).subscribe({
-        next:(response)=>{
+    const requestBody: any = {
+      condition: {
+        limit: 5,
+        skip: 0,
+      },
+      searchcondition: this.opportunity_details,
+      sort: {
+        type: 'desc',
+        field: 'created_on',
+      },
+      project: {},
+      token: '',
+    };
+    if (this.currentListType && this.currentListType == 'conversion') {
+      this.libdata.basecondition.conversion = true;
+      this.typeClick = false;
+    }
+
+    this.apiService
+      .getHttpDataPost('click-conversion/dashboard-click-list', requestBody)
+      .subscribe({
+        next: (response) => {
           // console.log('response===========>',response);
-          this.tabledatatalist = response.results.res
-          this.loader = false
+          this.tabledatatalist = response.results.res;
+          this.loader = false;
         },
-        error:(err)=>{
-          console.log("err======>",err);
-          this.matSnackBar.open(err.message? err.message : 'Something went wrong', 'ok', {duration:5000} )
-          this.loader = false
-        }
-      })
-      this.apiService.getHttpDataPost('click-conversion/dashboard-click-list-count',requestBody).subscribe({
-        next:(response)=>{
-          console.log('response===========>',response);
-          this.date_search_source_count = response.count
+        error: (err) => {
+          console.log('err======>', err);
+          this.matSnackBar.open(
+            err.message ? err.message : 'Something went wrong',
+            'ok',
+            { duration: 5000 }
+          );
+          this.loader = false;
         },
-        error:(err)=>{
-          console.log("err======>",err);
-        }
-      })
+      });
+    this.apiService
+      .getHttpDataPost(
+        'click-conversion/dashboard-click-list-count',
+        requestBody
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('response===========>', response);
+          this.date_search_source_count = response.count;
+        },
+        error: (err) => {
+          console.log('err======>', err);
+        },
+      });
   }
 
   public tabledatatalist: any = [];
   public campainAllData: any = [];
-
 
   public formLoader: boolean = false;
   public progressLoader: boolean = false;
@@ -157,7 +182,7 @@ export class ReportListComponent implements OnChanges {
   sortdata: any = {
     type: 'desc',
     field: 'created_on',
-    options: ['campaign_name', 'landing_page_name','created_on'],
+    options: ['campaign_name', 'landing_page_name', 'created_on'],
   };
 
   public customlistenbutton: any = {
@@ -193,11 +218,7 @@ export class ReportListComponent implements OnChanges {
     updateendpointmany: 'marketing/campaign-status-change',
     deleteendpointmany: 'marketing/campaign-delete',
 
-    tableheaders: [
-      'campaign_name',
-      'landing_page_name',
-      'created_on'
-    ],
+    tableheaders: ['campaign_name', 'landing_page_name', 'created_on'],
 
     colpipes: [
       { type: 'datetime', col: 'created_on', format: 'MMMM D YYYY, h:mm A' },
@@ -213,25 +234,33 @@ export class ReportListComponent implements OnChanges {
         classname: 'previewButton',
         previewlist: [
           'campaign_name',
-          'campaign_url',
-          'description',
           'landing_page_name',
           'unique_name',
           'created_on',
-          'status',
         ],
       },
     ],
   };
 
-  onLiblistingButtonChange(val: any) { }
+  onLiblistingButtonChange(val: any) {}
 
   listenLiblistingChange(data: any = null) {
     console.log('listenLiblistingChange-------->', data);
 
+    if (
+      data?.action == 'custombuttonclick' &&
+      data?.custombuttonclick?.btninfo?.id == 'preview_btn' &&
+      data?.custombuttonclick?.data
+    ) {
+      this.dialog.open(PreviewComponent, {
+        panelClass: 'custom-modalbox',
+        data: {
+          key: data?.custombuttonclick?.btninfo?.previewlist,
+          value: data?.custombuttonclick?.data,
+          flagParam: 'click-conv-prev',
+          typeCheck: this.typeClick,
+        },
+      });
+    }
   }
-
-
-
-
 }
