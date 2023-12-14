@@ -574,6 +574,7 @@ export class UniqueUrlModal {
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
       } else if (this.unicUser_form.status == 'VALID') {
+        this.chekUnicValue(this.unic_value)
         this.validflag = 1;
         if (this.unic_value.length > 5) {
           console.log('length > 5', this.unic_value);
