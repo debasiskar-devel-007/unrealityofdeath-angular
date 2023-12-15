@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -8,12 +8,16 @@ import Chart from 'chart.js/auto';
 })
 export class PieChartComponent implements OnChanges {
 
-  constructor() { }
+  constructor(private _ngZone: NgZone) { 
+
+  }
 
   public chartData: any;
 
   ngOnInit(): void {
-    this.createChart();
+        this._ngZone.runOutsideAngular(() => {
+      this.createChart();
+    })
   }
 
   @Input() chart: any;
