@@ -98,6 +98,7 @@ export class DashboardComponent {
       dialogRef.afterClosed().subscribe((result) => {
         this.dashboardCampaignListApi();
         this.getBanner();
+        this.fetchAllCampaign();
       });
     } else {
       this.loader = true;
