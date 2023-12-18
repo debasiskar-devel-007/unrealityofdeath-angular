@@ -244,6 +244,16 @@ export class CampaignmodalComponent {
           setTimeout(() => {
             this.tabledatatalist = response.results.res;
           });
+
+          const targetElem = this.elementRef.nativeElement.querySelector('#modalcamplist');
+
+      if(targetElem) {        
+        targetElem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
         }
       });
   }
@@ -268,6 +278,16 @@ export class CampaignmodalComponent {
       .subscribe((response: any) => {
         if (response && response.count) {
           this.date_search_source_count = response.count;
+
+        const targetElem = this.elementRef.nativeElement.querySelector('#modalcamplist');
+
+        if(targetElem) {        
+        targetElem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
         }
       });
   }
@@ -344,15 +364,6 @@ export class CampaignmodalComponent {
       this.fetchlist();
       this.fetchlistCount();
 
-      const targetElem = this.elementRef.nativeElement.querySelector('#modalcamplist');
-
-      if(targetElem) {        
-        targetElem.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest',
-        });
-      }
     });
   }
 }
