@@ -346,9 +346,7 @@ export class CampaignmodalComponent {
 
       const targetElem = this.elementRef.nativeElement.querySelector('#modalcamplist');
 
-      if(targetElem) {
-        console.log(targetElem);
-        
+      if(targetElem) {        
         targetElem.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
