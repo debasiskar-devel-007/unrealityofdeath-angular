@@ -343,6 +343,18 @@ export class CampaignmodalComponent {
 
       this.fetchlist();
       this.fetchlistCount();
+
+      const targetElem = this.elementRef.nativeElement.querySelector('#modalcamplist');
+
+      if(targetElem) {
+        console.log(targetElem);
+        
+        targetElem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
     });
   }
 }
