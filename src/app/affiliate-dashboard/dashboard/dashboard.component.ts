@@ -98,6 +98,7 @@ export class DashboardComponent {
       dialogRef.afterClosed().subscribe((result) => {
         this.dashboardCampaignListApi();
         this.getBanner();
+        this.fetchAllCampaign();
       });
     } else {
       this.loader = true;
@@ -365,6 +366,7 @@ export class DashboardComponent {
             dialogRef.afterClosed().subscribe((result) => {
               this.dashboardCampaignListApi();
               this.getBanner();
+              this.fetchAllCampaign();
             });
           } else {
             this.loader = false;
@@ -524,7 +526,7 @@ export class UniqueUrlModal {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(16),
-          Validators.pattern(/^(?!\d)[\w-]{6,16}$/),
+          Validators.pattern(/^(?!.*[^a-zA-Z0-9-_])[a-zA-Z0-9_-]{6,16}$/),
         ],
       ],
     });
@@ -550,7 +552,7 @@ export class UniqueUrlModal {
       .subscribe((response) => {
         console.log('respodfdsfnce', response);
 
-        if (response.status === 'success') {
+        if (response.status === 'success' && this.unicUser_form.status != 'INVALID') {
           if (response.has === false) {
             this.hasunic = 1;
           } else if (response.has === true) {
@@ -569,11 +571,12 @@ export class UniqueUrlModal {
     if (event) {
       this.unic_value = event.toLowerCase();
 
-      console.log(this.unic_value);
+      console.log(this.unicUser_form);
 
       if (this.unicUser_form.status == 'INVALID') {
         this.validflag = 2;
       } else if (this.unicUser_form.status == 'VALID') {
+        this.chekUnicValue(this.unic_value)
         this.validflag = 1;
         if (this.unic_value.length > 5) {
           console.log('length > 5', this.unic_value);

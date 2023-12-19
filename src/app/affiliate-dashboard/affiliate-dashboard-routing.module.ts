@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResolveService } from '../services/resolve.service';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       import('./report/report.module').then(
         (m) => m.ReportModule
       )
+  },
+  {
+    path: 'pie-chart',
+    component: PieChartComponent
   },
 ];
 

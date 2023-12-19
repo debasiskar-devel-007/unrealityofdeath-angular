@@ -35,7 +35,7 @@
   
   
       <div class="list-style1">
-        <div #myElem class="taxonomies_liststyle" [ngClass]="listprogressBar == true ? 'hide' : 'show'">
+        <div #myElem id="modalcamplist" class="taxonomies_liststyle" [ngClass]="listprogressBar == true ? 'hide' : 'show'">
           <lib-listing class="adminlisttable_v1" *ngIf="tabledatatalist != null && tabledatatalist.length > 0"
             [datasource]="tabledatatalist" 
             [skip]="tabledata_header_skip" [modify_header_array]="modify_header_array"

@@ -10,6 +10,7 @@ import { ReportListComponent } from './dashboard-report-modal/report-list/report
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { SharerMethod } from 'ngx-sharebuttons';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 
 
@@ -18,7 +19,8 @@ import { SharerMethod } from 'ngx-sharebuttons';
     DashboardComponent,
     CampaignmodalComponent,
     DashboardReportModalComponent,
-    ReportListComponent
+    ReportListComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,

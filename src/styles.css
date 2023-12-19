@@ -4681,4 +4681,13 @@ tbody tr td .actionbuttonwrapper button {
 
 /* ////////////////////////// Dashboard CSS END /////////////////////// */
 
+/* << -------------- Pie Chart CSS -------------- >> */
 
+.piechart_heading {
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 10px;
+    width: fit-content;
+}
+
+/* << -------------- Pie Chart CSS -------------- >> */
