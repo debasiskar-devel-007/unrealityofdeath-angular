@@ -73,6 +73,7 @@ export class ReportListComponent implements OnChanges {
       this.libdata.basecondition.conversion = true;
       this.typeClick = false;
     } else {
+      this.typeClick = true;
       delete this.libdata.basecondition.conversion;
     }
     this.updatetable = !this.updatetable;
@@ -98,6 +99,9 @@ export class ReportListComponent implements OnChanges {
     if (this.currentListType && this.currentListType == 'conversion') {
       this.libdata.basecondition.conversion = true;
       this.typeClick = false;
+    } else {
+      this.typeClick = true;
+      delete this.libdata.basecondition.conversion;
     }
 
     this.apiService

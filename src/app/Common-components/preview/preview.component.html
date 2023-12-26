@@ -8,7 +8,7 @@
   <mat-icon>close</mat-icon>
 </button>
 <div class="dialoghead">
-  <h1 class="mat-mdc-dialog-title">preview</h1>
+  <h1 class="mat-mdc-dialog-title">{{typeFlag == true ? "Click Details View" : typeFlag == false ? "Conversion Details View" : "Preview"}}</h1>
   <mat-dialog-content>
     <ng-container *ngFor="let data of datakey">
       <p class="preview_data">
