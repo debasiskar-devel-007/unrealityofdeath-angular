@@ -1156,6 +1156,14 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
         width: 100%
     }
 }
+@media only screen and (max-width:370px) {
+.mat-mdc-button-base{
+    width: 100%;
+    margin-left: 0 !important;
+    margin-bottom: 10px;
+}
+
+}
 
 /* << ----------- List CSS by Sanket ------------- >> */
 
@@ -3557,7 +3565,7 @@ tbody tr td .actionbuttonwrapper button {
     }
 
     .adminlisttable_v1 tbody td:nth-child(2):before {
-        content: 'NO.';
+        content: 'NAME';
         color: #f58720 !important;
         float: none;
         display: block;
