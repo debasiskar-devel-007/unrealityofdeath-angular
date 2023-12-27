@@ -1156,11 +1156,11 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
         width: 100%
     }
 }
-@media only screen and (max-width:370px) {
-.mat-mdc-button-base{
+@media only screen and (max-width:380px) {
+.custom-modalbox.delete-multiple .mat-mdc-button-base, .custom-modalbox.delete-single .mat-mdc-button-base{
     width: 100%;
     margin-left: 0 !important;
-    margin-bottom: 10px;
+    margin: 5px;
 }
 
 }
