@@ -4657,6 +4657,21 @@ tbody tr td .actionbuttonwrapper button {
 .landing-page-left{width:100%}
 .landing-page-right{width:calc(100%);margin-left:0;margin-top:30px}
 .landing-page-right::after{height:1px;width:100%;left:0;top:-12px;transform:inherit;box-shadow:1px 1px 0 #d7decc}
+.step-wrapper{
+    flex-direction: column;
+}
+.steps{
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.steps:last-child {
+    margin-bottom:0;
+    border-radius: 10px;
+}
+.steps::after, .steps::before{
+display: none;
+}
+
 }
 @media only screen and (max-width:767px){
 .select-block{width:calc(100%);margin:0 0 10px 0}
