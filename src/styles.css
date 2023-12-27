@@ -3645,16 +3645,11 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 @media only screen and (max-width:560px) {
-    .list-style2 .lib-pager-class .pageformfield .mat-mdc-form-field {
+    .list-style2 .lib-pager-class .pageformfield .mat-mdc-form-field, .list-style1 .lib-pager-class .pageformfield .mat-mdc-form-field {
         width: 98%
     }
 }
 
-@media only screen and (max-width:469px) {
-    .list-style1 .lib-pager-class .pageformfield .mat-mdc-form-field {
-        width: 98%
-    }
-}
 
 @media only screen and (max-width:399px) {
 
