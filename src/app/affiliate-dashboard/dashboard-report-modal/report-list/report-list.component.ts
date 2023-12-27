@@ -72,6 +72,16 @@ export class ReportListComponent implements OnChanges {
     if (this.currentListType && this.currentListType == 'conversion') {
       this.libdata.basecondition.conversion = true;
       this.typeClick = false;
+      this.libdata.custombuttons[0].previewlist = 
+      [
+        'campaign_name',
+        'landing_page_name',
+        'affiliate_name',
+        'affiliate_number',
+        'affiliate_email',
+        'unique_name',
+        'created_on',
+      ]
     } else {
       this.typeClick = true;
       delete this.libdata.basecondition.conversion;
@@ -99,6 +109,16 @@ export class ReportListComponent implements OnChanges {
     if (this.currentListType && this.currentListType == 'conversion') {
       this.libdata.basecondition.conversion = true;
       this.typeClick = false;
+      this.libdata.custombuttons[0].previewlist = 
+      [
+        'campaign_name',
+        'landing_page_name',
+        'affiliate_name',
+        'affiliate_number',
+        'affiliate_email',
+        'unique_name',
+        'created_on',
+      ]
     } else {
       this.typeClick = true;
       delete this.libdata.basecondition.conversion;
@@ -239,12 +259,9 @@ export class ReportListComponent implements OnChanges {
         previewlist: [
           'campaign_name',
           'landing_page_name',
-          'affiliate_name',
-          'affiliate_number',
-          'affiliate_email',
           'unique_name',
           'created_on',
-        ],
+        ]
       },
     ],
   };
