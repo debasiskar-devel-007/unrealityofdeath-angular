@@ -239,7 +239,9 @@ export class ReportListComponent implements OnChanges {
         previewlist: [
           'campaign_name',
           'landing_page_name',
-          'fullname',
+          'affiliate_name',
+          'affiliate_number',
+          'affiliate_email',
           'unique_name',
           'created_on',
         ],

@@ -47,8 +47,12 @@
                   : "Converted On"
                 : data === "landing_page_name"
                 ? "Landing Page Name"
-                : data === "fullname"
+                : data === "affiliate_name"
                 ? "User Name"
+                : data === "affiliate_number"
+                ? "User Phone No"
+                : data === "affiliate_email"
+                ? "User Email"
                 : data.replace("_", " ")
             }}:</strong
           ></span
