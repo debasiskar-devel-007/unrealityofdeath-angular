@@ -1936,6 +1936,7 @@ app-email-template-add .addEditPageWrapper .form_field_wrapper {
     .sub-title h2 {
         margin-bottom: 12px !important;
     }
+
 }
 
 .filesdivcls {
@@ -3722,6 +3723,22 @@ tbody tr td .actionbuttonwrapper button {
 }
 .custom-modalbox .dialoghead .instructions-wrapper p span {
     width: calc(100% - 178px);
+}
+
+@media only screen and (max-width: 499px) {
+
+    /* << --------------- Campaign List Instruction in Modal Responsive -------------- >> */
+
+    .custom-modalbox .dialoghead .instructions-wrapper p {
+        flex-wrap: wrap;
+    }
+    .custom-modalbox .dialoghead .instructions-wrapper p span {
+        width: auto;
+        margin-top: 10px;
+    }
+
+    /* << --------------- Campaign List Instruction in Modal Responsive -------------- >> */
+
 }
 
 
