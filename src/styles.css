@@ -3666,6 +3666,17 @@ tbody tr td .actionbuttonwrapper button {
     .adminlisttable_v2 tbody tr td {
         display: block
     }
+
+    /* << --------------- Campaign Add Form in Modal Responsive -------------- >> */
+
+    .custom-modalbox.addCampaign_modalbox .addEditPageWrapper .form_field_wrapper {
+        width: 99%;
+    }
+    .custom-modalbox.addCampaign_modalbox .addEditPageWrapper .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
+        font-size: 14px;
+    }
+
+    /* << --------------- Campaign Add Form in Modal Responsive -------------- >> */
 }
 
 .custom-modalbox .dialoghead .modal_subtitle {
@@ -3893,6 +3904,9 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 /* << ----------- QR Modal CSS ------------ >> */
+
+
+
 
 
 @media only screen and (max-width: 699px) {
