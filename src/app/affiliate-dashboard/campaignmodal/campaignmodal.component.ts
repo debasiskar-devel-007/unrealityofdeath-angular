@@ -345,7 +345,7 @@ export class CampaignmodalComponent {
     console.log(landingName);
 
     const dialogRef = this.dialog.open(addCampainModal, {
-      panelClass: 'custom-modalbox',
+      panelClass: ['custom-modalbox', 'addCampaign_modalbox'],
       data: {
         heading: 'Alert!!',
         setDefaultObj: {

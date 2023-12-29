@@ -8,7 +8,15 @@
   <mat-icon>close</mat-icon>
 </button>
 <div class="dialoghead">
-  <h1 class="mat-mdc-dialog-title">{{typeFlag == true ? "Click Details View" : typeFlag == false ? "Conversion Details View" : "Preview"}}</h1>
+  <h1 class="mat-mdc-dialog-title">
+    {{
+      typeFlag == true
+        ? "Click Details View"
+        : typeFlag == false
+        ? "Conversion Details View"
+        : "Preview"
+    }}
+  </h1>
   <mat-dialog-content>
     <ng-container *ngFor="let data of datakey">
       <p class="preview_data">
@@ -38,13 +46,22 @@
             }}:</strong
           ></span
         >
-        <span *ngIf="routeFlag == 'click-conv-prev'"
+        <span *ngIf="routeFlag == 'click-conv-prev' && typeFlag"
           ><strong
             >{{
               data === "created_on"
-                ? typeFlag == true
-                  ? "Clicked On"
-                  : "Converted On"
+                ? "Clicked On"
+                : data === "landing_page_name"
+                ? "Landing Page Name"
+                : data.replace("_", " ")
+            }}:</strong
+          ></span
+        >
+        <span *ngIf="routeFlag == 'click-conv-prev' && !typeFlag"
+          ><strong
+            >{{
+              data === "created_on"
+                ? "Converted On"
                 : data === "landing_page_name"
                 ? "Landing Page Name"
                 : data === "affiliate_name"
