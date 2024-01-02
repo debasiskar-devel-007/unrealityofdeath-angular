@@ -33,7 +33,6 @@ export class LastLoginInfoComponent {
           this.userName = response.results[0].firstname + " " + response.results[0].lastname
           this.loginTime = this.datePipe.transform(response.results[0].login_time, 'MMM d, y, h:mm:ss a')
         }
-         
       },
       error: (error: any) => {
         console.log(error);
