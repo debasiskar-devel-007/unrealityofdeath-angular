@@ -13,7 +13,7 @@ export class LastLoginInfoComponent {
 
   constructor(public apiService: ApiservicesService, private cookieService: CookieService, private datePipe: DatePipe) {}
 
-  public user_profile_details:any = this.cookieService.get('login_user_details')? JSON.parse(this.cookieService.get('login_user_details')) : {}
+  public user_profile_details: any = this.cookieService.get('login_user_details') ? JSON.parse(this.cookieService.get('login_user_details')) : {}
 
   public userName: any = ""
   public loginTime: any = ""
