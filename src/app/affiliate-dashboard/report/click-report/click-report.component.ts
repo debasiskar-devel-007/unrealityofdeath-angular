@@ -58,6 +58,9 @@ export class ClickReportComponent {
     private apiservice: ApiservicesService,
     public dialog: MatDialog
   ) { }
+
+  public dateValFlag: boolean = false
+
   search_settings: any = {
     datesearch:
       this.login_user_details.roleval === 3
@@ -110,7 +113,6 @@ export class ClickReportComponent {
         }
         : {
           affiliate_id: this.login_user_details.uidval,
-          created_on: { $gte: this.startval, $lte: this.endval < this.startval? this.endval + (1000+60+24) : this.endval },
         },
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
@@ -187,6 +189,8 @@ export class ClickReportComponent {
     this.activatedRoute.data.subscribe((response: any) => {
       console.log('activatedRoute========>', response);
       if (response?.data?.status === 'success') {
+        this.buttonClick('', 'month')
+        this.dateValFlag = true
         this.tabledatatalist = response?.data?.results?.res ? response.data.results.res : [];
         console.log('tabledatatalist=====>', this.tabledatatalist);
       }
@@ -200,7 +204,6 @@ export class ClickReportComponent {
         },
         "searchcondition": {
             "affiliate_id": this.login_user_details.uidval,
-            "created_on":{$gte: this.startval, $lte:this.endval}
             
         },
         "sort": {
@@ -220,9 +223,6 @@ export class ClickReportComponent {
 
   listenLiblistingChange(data: any) {
     console.log("aaaaaa=====>",data);
-    if(data.action === 'search'){
-      this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} , affiliate_id: this.login_user_details.uidval}
-    }
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
@@ -241,7 +241,7 @@ export class ClickReportComponent {
 
   buttonClick(val: any, butonval: any) {
     this.thisbutonclick = butonval
-    
+    this.dateValFlag = false;
     if (butonval === "all") {
       this.formLoader = true
       console.log("startOf current moment's month:", this.startval, this.endval)
@@ -250,8 +250,14 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
-        console.log("aaaaa", this.libdata.basecondition);
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
+
+        setTimeout(() => {
+          this.dateValFlag = true;
+          this.formLoader = false;
+
+        }, 100);
 
       }
     }
@@ -265,8 +271,14 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
-        console.log("mmmm", this.libdata.basecondition);
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
+
+        setTimeout(() => {
+          this.dateValFlag = true;
+          this.formLoader = false;
+
+        }, 100);
 
       }
     }
@@ -280,9 +292,14 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
-        console.log("aaaaa", this.libdata.basecondition);
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
 
+        setTimeout(() => {
+          this.dateValFlag = true;
+          this.formLoader = false;
+
+        }, 100);
       }
     }
     if (butonval === "today") {
@@ -294,8 +311,14 @@ export class ClickReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
-        console.log("aaaaa", this.libdata.basecondition);
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
+
+        setTimeout(() => {
+          this.dateValFlag = true;
+          this.formLoader = false;
+
+        }, 100);
 
       }
     }

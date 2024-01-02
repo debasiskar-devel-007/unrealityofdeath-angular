@@ -28,7 +28,7 @@
             <div class="wrapper">
                 <div class="list-style1">
                     <div class="taxonomies_liststyle" >
-                        <lib-listing *ngIf="tabledatatalist.length > 0" class="adminlisttable_v1"
+                        <lib-listing *ngIf="tabledatatalist.length > 0 && dateValFlag" class="adminlisttable_v1"
                             [datasource]="tabledatatalist" [modify_header_array]="modify_header_array"
                             [apiurl]="api_url_for_managebanner" [date_search_source]="date_search_source"
                             [date_search_endpoint]="date_search_endpoint" [sourcedata]="tablename"

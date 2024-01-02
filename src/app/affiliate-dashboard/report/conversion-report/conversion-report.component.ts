@@ -59,6 +59,9 @@ export class ConversionReportComponent {
     private apiservice: ApiservicesService,
     public dialog: MatDialog
   ) { }
+
+  public dateValFlag: boolean = false
+
   search_settings: any = {
     datesearch:
       this.login_user_details.roleval === 3
@@ -68,7 +71,7 @@ export class ConversionReportComponent {
             enddatelabel: 'Created On End Date',
             submit: 'Search',
             field: 'created_on',
-            // value: {$gte: createdon_datetime, $lte: 1622962799000}
+            // value: { "$gte": this.startval, "$lte": this.endval }
           },
         ]
         : [
@@ -77,7 +80,7 @@ export class ConversionReportComponent {
             enddatelabel: 'Created On End Date',
             submit: 'Search',
             field: 'created_on',
-            // value: {$gte: createdon_datetime, $lte: 1622962799000}
+            // value: { "$gte": this.startval, "$lte": this.endval }
           },
         ],
 
@@ -108,13 +111,10 @@ export class ConversionReportComponent {
       this.login_user_details.roleval === 3
         ? {
           affiliate_id: this.login_user_details.uidval,
-          // created_on: { $gte: this.startval, $lte: this.endval },
         }
         
         : {
           affiliate_id: this.login_user_details.uidval,
-
-          created_on: { $gte: this.startval, $lte: this.endval },
         },
     detailview_override: [
       { key: 'conversionCount', val: 'Conversion Count' },
@@ -189,6 +189,8 @@ export class ConversionReportComponent {
     this.activatedRoute.data.subscribe((response: any) => {
       console.log('activatedRoute========>', response);
       if (response?.data?.status === 'success') {
+        this.buttonClick('', 'month')
+        this.dateValFlag = true
         this.tabledatatalist = response?.data?.results?.res ? response.data.results.res : [];
         console.log('tabledatatalist=====>', this.tabledatatalist);
       }
@@ -220,9 +222,6 @@ export class ConversionReportComponent {
   }
   listenLiblistingChange(data: any) {
     console.log("aaaaaa=====>",data);
-    if(data.action === 'search'){
-      this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} , affiliate_id: this.login_user_details.uidval}
-    }
     
     if (data.action === "custombuttonclick" && data.custombuttonclick.btninfo.id === "preview_btn" && data.custombuttonclick.data) {
       this.dialog.open(PreviewComponent, {
@@ -239,16 +238,24 @@ export class ConversionReportComponent {
 
   buttonClick(val: any, butonval: any) {
     this.thisbutonclick = butonval
+    this.dateValFlag = false
+
     if (butonval === "all") {
       this.formLoader = true
       console.log("startOf current moment's month:", this.startval, this.endval)
-      this.startval = 0
-      this.endval = 0
+      delete this.startval
+      delete this.endval
 
       if (this.login_user_details.roleval === 3) {
+        
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
-        console.log("aaaaa", this.libdata.basecondition);
+        setTimeout(() => {
+          this.dateValFlag = true;
+          this.formLoader = false;
+
+        }, 100);
 
       }
     }
@@ -259,11 +266,20 @@ export class ConversionReportComponent {
       this.endval = moment().endOf('month').valueOf()
       console.log("startOf current moment's month:", this.startval, this.endval)
 
-
+      
       if (this.login_user_details.roleval === 3) {
+        
+        console.log(this.search_settings, "this.search_settings======>");
+        
+        
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},  affiliate_id: this.login_user_details.uidval, }
-        console.log("mmmm", this.libdata.basecondition);
+        setTimeout(() => {
+          this.dateValFlag = true;
+          this.formLoader = false;
+
+        }, 100);
 
       }
     }
@@ -277,8 +293,13 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
-        console.log("aaaaa", this.libdata.basecondition);
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
+        setTimeout(() => {
+          this.dateValFlag = true
+          this.formLoader = false;
+
+        }, 100);
 
       }
     }
@@ -291,71 +312,15 @@ export class ConversionReportComponent {
 
       if (this.login_user_details.roleval === 3) {
 
-        this.libdata.basecondition = { created_on: (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {} ,  affiliate_id: this.login_user_details.uidval,}
-        console.log("aaaaa", this.libdata.basecondition);
+        this.search_settings.datesearch[0].value = {}
+        this.search_settings.datesearch[0].value = { "$gte": this.startval, "$lte": this.endval }
+        setTimeout(() => {
+          this.dateValFlag = true
+          this.formLoader = false;
+
+        }, 100);
 
       }
-    }
-
-
-
-
-    if (this.login_user_details.roleval === 3) {
-      console.log("abcd", Object.keys(this.startval).length, Object.keys(this.endval).length, this.startval, this.endval);
-
-      let dataobj = {
-        "condition": {
-          "limit": 10,
-          "skip": 0
-      },
-        "searchcondition": {
-         "affiliate_id": this.login_user_details.uidval,
-          "created_on": (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},
-        },
-        "sort": {
-          "type": "desc",
-          "field": "campaign_name"
-        },
-        "token": "",
-        "project": {}
-      }
-      this.apiservice.getHttpDataPost('click-conversion/click-list', dataobj).subscribe((response) => {
-        console.log("response login info", response);
-        if (response.status === "success") {
-          this.formLoader = false
-          this.listprogressBar = true
-          this.tabledatatalist = []
-          setTimeout(() => {
-            this.tabledatatalist = response.results.res
-            console.log("abcdef========>", this.tabledatatalist);
-          }, 50);
-        }
-
-      })
-      this.apiservice.getHttpDataPost(
-        'click-conversion/click-list-count', {
-        "condition": {
-          "limit": 10,
-          "skip": 0
-        },
-        "searchcondition": {
-          "affiliate_id": this.login_user_details.uidval,
-          "created_on": (this.startval && this.endval && this.startval > 0 && this.endval > 0) ? { "$gte": this.startval, "$lte": this.endval } : {},
-        },
-        "sort": {
-          "type": "desc",
-          "field": "campaign_name"
-        },
-        "project": {},
-        "token": ""
-      },
-      ).subscribe((response: any) => {
-
-        if (response && response.count) {
-          this.date_search_source_count = response.count;  // role data count  save 
-        }
-
-      })
     }
   }
 }
