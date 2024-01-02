@@ -22,7 +22,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
   declarations: [
     AppComponent,
     LoginComponent,
-    LastLoginInfoComponent,
+    // LastLoginInfoComponent,
     PreviewComponent,
     ComingsoonComponent,
     AccountInfoComponent

@@ -1,5 +1,5 @@
 /* .subwrapper{background:#dae4e0;padding:2.5rem;border-radius:8px;border:1px solid #fbfffd} */
-.last_login_wrapper{
+/* .last_login_wrapper{
     background:#edf3e5;
  
     box-shadow:1px 1px 5px #3e413a59;
@@ -37,13 +37,13 @@
 
 }
 
-/* .login_time i{
+.login_time i{
     margin-top: 5px;
-} */
+}
 
-/* .login_user i{
+.login_user i{
     margin-bottom: 1px;
-} */
+}
 .login_user i,.login_time i {
    background: var(--blue-gradient);
     padding: 5px;
@@ -90,4 +90,4 @@ font-size: 20px;
 }
 @media only screen and (max-width: 468px) {
     .login_user h4,.login_time h4 {font-size: 16px;margin: 5px;}
-}
+} */

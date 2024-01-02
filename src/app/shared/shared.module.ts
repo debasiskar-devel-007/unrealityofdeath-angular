@@ -5,6 +5,7 @@ import { FooterComponent } from 'src/app/layout/footer/footer.component';
 import { ListingAngular15Module } from 'listing-angular15';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../material/material.module';
+import { LastLoginInfoComponent } from '../Common-components/last-login-info/last-login-info.component';
 
 
 
@@ -12,7 +13,7 @@ import { DemoMaterialModule } from '../material/material.module';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    // LastLoginInfoComponent,
+    LastLoginInfoComponent,
 
   ],
   imports: [
@@ -28,6 +29,7 @@ import { DemoMaterialModule } from '../material/material.module';
     FooterComponent,
     ReactiveFormsModule,
     CommonModule,
+    LastLoginInfoComponent,
     
     
   ],

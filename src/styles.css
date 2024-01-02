@@ -4746,3 +4746,41 @@ tbody tr td .actionbuttonwrapper button {
 }
 
 /* << -------------- Pie Chart CSS -------------- >> */
+
+
+/* << ------------- Last Login CSS by Sanket ------------- >> */
+
+.dashboard_user_detail{    margin-bottom: 15px;
+    display: flex;  padding:15px; flex-wrap: wrap; 
+    justify-content: space-between; align-items: center; position: relative;    border-radius: 50px;
+    box-shadow: 5px 5px 2px -2px #a5a5a5;  background: rgb(183,38,9);
+    background: linear-gradient(190deg, rgba(183,38,9,1) 0%, rgba(102,32,0,1) 100%);
+}
+
+.dashboard_user_block1{ color: #fff;font-size: 22px;} 
+
+ .dashboard_user_block1:first-of-type{ margin-left: 0;}
+ .dashboard_user_block1:last-of-type{ margin-right: 0;}
+
+ .dashboard_user_block1 .fa {
+    border-radius: 50%; color: #624f4d;
+     background-color: #fff;
+    border: 2px solid #624f4d;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+    text-align: center; font-size: 22px;
+}
+
+.dashboard_user_blockCon{color: #fff; } 
+.dashboard_user_block1 strong{font-weight: 700;color: #e9eaec;}
+.dashboard_user_blockCon span{ display: inline-block;}
+
+
+@media screen and (max-width : 991px){
+
+    .dashboard_user_block1{margin: 8px; } 
+
+    .dashboard_user_detail{ border-radius: 15px;display: block; text-align: center;}
+}
