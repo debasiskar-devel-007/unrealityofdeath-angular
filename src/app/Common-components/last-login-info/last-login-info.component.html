@@ -2,18 +2,17 @@
   <div class="dashboard_user_block1">
     <div class="dashboard_user_blockCon">
       <i class="fa fa-user" aria-hidden="true"></i>
-      <strong>Welcome:</strong>
-      <span id="user_name_section"
-        ><span class="skeleton-box" style="width: 200px"></span
+      <strong>Welcome:</strong>&nbsp;<span id="user_name_section"
+        >{{userName}}<span *ngIf="showSkeleton" class="skeleton-box" style="width: 200px"></span
       ></span>
     </div>
   </div>
   <div class="dashboard_user_block1">
     <div class="dashboard_user_blockCon">
       <i class="fa fa-sign-in" aria-hidden="true"></i>
-      <strong>Last Login:</strong>
+      <strong>Last Login:</strong>&nbsp;
       <span id="login_time"
-        ><span class="skeleton-box" style="width: 300px"></span
+        >{{loginTime}}<span *ngIf="showSkeleton" class="skeleton-box" style="width: 300px"></span
       ></span>
     </div>
   </div>
