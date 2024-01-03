@@ -235,6 +235,19 @@ export class ClickReportComponent {
       });
     }
 
+    if(data.action === "search" && !data.searchcondition.created_on) {
+      if(this.thisbutonclick == "month") {
+        this.buttonClick('', 'month')
+      } else if(this.thisbutonclick == "week") {
+        this.buttonClick('', 'week')
+      } else if(this.thisbutonclick == "all") {
+        this.buttonClick('', 'all')
+      } else if(this.thisbutonclick == "today") {
+        this.buttonClick('', 'today')
+      } else {
+        this.buttonClick('', 'month')
+      }
+    } 
 
   }
   onLiblistingButtonChange(val: any) { }
@@ -245,8 +258,8 @@ export class ClickReportComponent {
     if (butonval === "all") {
       this.formLoader = true
       console.log("startOf current moment's month:", this.startval, this.endval)
-      this.startval = 0
-      this.endval = 0
+      delete this.startval
+      delete this.endval
 
       if (this.login_user_details.roleval === 3) {
 

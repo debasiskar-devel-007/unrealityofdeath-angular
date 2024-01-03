@@ -233,6 +233,20 @@ export class ConversionReportComponent {
 
       });
     }
+
+    if(data.action === "search" && !data.searchcondition.created_on) {
+      if(this.thisbutonclick == "month") {
+        this.buttonClick('', 'month')
+      } else if(this.thisbutonclick == "week") {
+        this.buttonClick('', 'week')
+      } else if(this.thisbutonclick == "all") {
+        this.buttonClick('', 'all')
+      } else if(this.thisbutonclick == "today") {
+        this.buttonClick('', 'today')
+      } else {
+        this.buttonClick('', 'month')
+      }
+    }    
   }
   onLiblistingButtonChange(val: any) { }
 
