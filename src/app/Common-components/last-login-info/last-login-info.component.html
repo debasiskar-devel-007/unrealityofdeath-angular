@@ -7,6 +7,14 @@
       ></span>
     </div>
   </div>
+  <div class="dashboard_user_block1" *ngIf="isAffiliateID">
+    <div class="dashboard_user_blockCon">
+      <i class="fa fa-id-card" aria-hidden="true"></i>
+      <strong>Affiliate ID:</strong>&nbsp;<span id="user_name_section"
+        >{{affiliateID}}<span *ngIf="showSkeleton" class="skeleton-box" style="width: 200px"></span
+      ></span>
+    </div>
+  </div>
   <div class="dashboard_user_block1">
     <div class="dashboard_user_blockCon">
       <i class="fa fa-sign-in" aria-hidden="true"></i>

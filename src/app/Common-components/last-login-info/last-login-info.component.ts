@@ -17,7 +17,10 @@ export class LastLoginInfoComponent {
 
   public userName: any = ""
   public loginTime: any = ""
+  public affiliateID: any = ""
   public showSkeleton: boolean = true
+
+  public isAffiliateID: boolean = false
 
   ngOnInit() {
     console.log(this.user_profile_details);
@@ -30,8 +33,10 @@ export class LastLoginInfoComponent {
 
         if (response && response.status == 'success') {
           this.showSkeleton = false
-          this.userName = response.results[0].firstname + " " + response.results[0].lastname
+          this.userName = response.results[0].fullname
           this.loginTime = this.datePipe.transform(response.results[0].login_time, 'MMM d, y, h:mm:ss a')
+
+          
         }
       },
       error: (error: any) => {
@@ -39,5 +44,12 @@ export class LastLoginInfoComponent {
         
       }
     })
+
+    if(this.user_profile_details?.affiliate_idval !== null) {
+      this.isAffiliateID = true
+      this.affiliateID = this.user_profile_details.affiliate_idval
+    } else {
+      this.isAffiliateID = false
+    }
   }
 }
