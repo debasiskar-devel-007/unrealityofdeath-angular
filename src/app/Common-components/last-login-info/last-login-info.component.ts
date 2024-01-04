@@ -20,7 +20,7 @@ export class LastLoginInfoComponent {
   public affiliateID: any = ""
   public showSkeleton: boolean = true
 
-  public isAffiliateID: boolean = false
+  public isAffiliateID: boolean = true
 
   ngOnInit() {
     console.log(this.user_profile_details);
@@ -37,7 +37,6 @@ export class LastLoginInfoComponent {
           this.loginTime = this.datePipe.transform(response.results[0].login_time, 'MMM d, y, h:mm:ss a')
 
           if(response.results[0]?.agent_code) {
-            this.isAffiliateID = true
             this.affiliateID = response.results[0].agent_code
           } else {
             this.isAffiliateID = false

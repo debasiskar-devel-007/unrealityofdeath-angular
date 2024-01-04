@@ -475,7 +475,7 @@ export class DashboardComponent {
     console.log('click conversion data==========>', val);
 
     const dialogRef = this.dialog.open(DashboardReportModalComponent, {
-      panelClass: ['custom-modalbox', 'campainlist_modalbox'],
+      panelClass: ['custom-modalbox', 'campainlist_modalbox', 'clckConvRep_modalbox'],
       data: {
         opportunity_data: {
           base_name_identifier: val.base_name_identifier,

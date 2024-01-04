@@ -3856,6 +3856,9 @@ tbody tr td .actionbuttonwrapper button {
 .custom-modalbox.campainlist_modalbox {
     width: min(90%, 1000px) !important;
 }
+.custom-modalbox.campainlist_modalbox.clckConvRep_modalbox {
+    max-height: 90vh;
+}
 .custom-modalbox .dialoghead.deletecamp_modalwrp .delete_sub_wrp {
     display: flex;justify-content: center;flex-wrap: wrap;
 }
