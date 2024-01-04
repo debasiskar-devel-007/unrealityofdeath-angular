@@ -34,6 +34,8 @@ export class DashboardReportModalComponent {
 
   public reportCounts:any = {click:0, convert:0}
 
+  public pieData: any = null
+
   ngOnInit(){
 
     // console.log("data.opportunity_data=======>",this.data.opportunity_data);
@@ -55,9 +57,14 @@ export class DashboardReportModalComponent {
 
     this.apiService.getHttpDataPost('click-conversion/dashboard-click-list-count',requestBody).subscribe({
       next:(response)=>{
-        // console.log('response===========>',response);
+        console.log('response===========>',response);
         this.reportCounts.click = response.clickcount
         this.reportCounts.convert = response.conversioncount
+
+        this.pieData = response
+
+
+        console.log("err======>",this.pieData);
       },
       error:(err)=>{
         console.log("err======>",err);

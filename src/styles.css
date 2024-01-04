@@ -4738,11 +4738,20 @@ tbody tr td .actionbuttonwrapper button {
 
 /* << -------------- Pie Chart CSS -------------- >> */
 
+#myChart {
+    display: unset !important;
+}
 .piechart_heading {
     border-radius: 4px;
     margin: 0 auto;
     padding: 10px;
     width: fit-content;
+}
+.piechart_wrapper {
+    margin: 10px 0;
+    background-color: #dfdfdf;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 /* << -------------- Pie Chart CSS -------------- >> */

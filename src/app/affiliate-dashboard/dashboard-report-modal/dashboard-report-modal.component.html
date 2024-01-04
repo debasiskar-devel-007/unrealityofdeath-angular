@@ -10,21 +10,22 @@
         <h4>Total Conversion Count:<span> {{reportCounts.convert}}</span></h4>
       </div>
 
-      <!-- <div class="dashboard_piechartwrp">
+      <ng-container *ngIf="pieData.clickcount && pieData.conversioncount">
+      <div class="dashboard_piechartwrp">
         <h2 class="piechart_heading">
           Click and Conversion Report in Pie Chart View
         </h2>
+
         <div class="piechart_wrapper">
           <div class="clickchart_wrapper">
             <app-pie-chart
-            [chartConfigInput]="{id: 1}"
+            [chartConfigInput]="pieData"
             ></app-pie-chart>
           </div>
-          <div class="conversionchart_wrapper">
-            <app-pie-chart [chartConfigInput]="{id: 2}"></app-pie-chart>
-          </div>
         </div>
-      </div> -->
+      </div>
+    </ng-container>
+
     <div class="inner_sub_wrp">
         <button [ngClass]="colorcode ? 'colorcode' : 'count_button_wrp'" (click)="fetchReports('click')">CLICK
           DETAILS</button>

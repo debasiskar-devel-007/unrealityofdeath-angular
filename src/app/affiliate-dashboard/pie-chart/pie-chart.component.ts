@@ -14,40 +14,45 @@ export class PieChartComponent implements OnChanges {
 
   public chartData: any;
 
+  public chartCurrVal: any = {}
+
   ngOnInit(): void {
         this._ngZone.runOutsideAngular(() => {
       this.createChart();
     })
   }
 
-  @Input() chart: any;
+  @Input() chartConfigInput: any;
 
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.chartCurrVal = changes['chartConfigInput'].currentValue
+    console.log(this.chartCurrVal);
+    
+  }
 
   createChart() {
     this.chartData = new Chart('myChart', {
-      type: 'pie', //this denotes tha type of chart
+      type: 'pie', //this denotes the type of chart
       data: {
         // values on X-Axis
-        labels: ['Red', 'Pink', 'Green', 'Yellow', 'Orange', 'Blue'],
+        labels: ['Conversion Report Data', 'Click Report Data'],
         datasets: [
           {
-            label: 'My First Dataset',
-            data: [300, 240, 100, 432, 253, 34],
+            label: 'Count',
+            data: [this.chartCurrVal?.conversioncount, this.chartCurrVal?.clickcount],
             backgroundColor: [
-              'red',
-              'pink',
-              'green',
-              'yellow',
-              'orange',
-              'blue',
+              '#7f2e0a',
+              '#27130b',
             ],
+            borderColor: ['#27130b', '#edf2f0'],
             hoverOffset: 4,
           },
         ],
       },
       options: {
-        aspectRatio: 2.5,
+        maintainAspectRatio: true,
+        aspectRatio: 3,
+        responsive: true,
       },
     });
   }
