@@ -1,5 +1,7 @@
 import { Component, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js/auto';
+import 'chartjs-plugin-datalabels';
+import { sum } from 'lodash';
 
 @Component({
   selector: 'app-pie-chart',
@@ -31,6 +33,7 @@ export class PieChartComponent implements OnChanges {
   }
 
   createChart() {
+
     this.chartData = new Chart('myChart', {
       type: 'pie', //this denotes the type of chart
       data: {
@@ -53,6 +56,22 @@ export class PieChartComponent implements OnChanges {
         maintainAspectRatio: true,
         aspectRatio: 3,
         responsive: true,
+
+        // plugins: {
+        //   datalabels: {
+        //     formatter: (value, context) =>  {
+
+        //       console.log(value, context);
+        //       let dataArr = context.chart.data.datasets[0].data;
+        //       let total = sum(dataArr);     // sum from lodash  
+        //       console.log(total);
+
+        //       let percentage = (value * 100 / total).toFixed(2) + "%";
+        //     return percentage;
+        //     },
+        //   },
+        // },
+        
       },
     });
   }
