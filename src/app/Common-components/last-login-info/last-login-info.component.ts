@@ -32,11 +32,18 @@ export class LastLoginInfoComponent {
         console.log(response);
 
         if (response && response.status == 'success') {
-          this.showSkeleton = false
+          
           this.userName = response.results[0].fullname
           this.loginTime = this.datePipe.transform(response.results[0].login_time, 'MMM d, y, h:mm:ss a')
 
-          
+          if(response.results[0]?.agent_code) {
+            this.isAffiliateID = true
+            this.affiliateID = response.results[0].agent_code
+          } else {
+            this.isAffiliateID = false
+          }
+
+          this.showSkeleton = false
         }
       },
       error: (error: any) => {
@@ -45,11 +52,6 @@ export class LastLoginInfoComponent {
       }
     })
 
-    if(this.user_profile_details?.affiliate_idval !== null) {
-      this.isAffiliateID = true
-      this.affiliateID = this.user_profile_details.affiliate_idval
-    } else {
-      this.isAffiliateID = false
-    }
+    
   }
 }
