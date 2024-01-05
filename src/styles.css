@@ -4587,7 +4587,7 @@ tbody tr td .actionbuttonwrapper button {
 
 /* ?////////////// Dashboard Report list ///////////// */
 
-.campaign_modalwrp .inner_sub_wrp .count_button_wrp {
+.campaign_modalwrp .inner_sub_wrp .clickcount_button_wrp, .campaign_modalwrp .inner_sub_wrp .count_button_wrp {
     padding: 6px;
     border: none;
     border-radius: 4px;

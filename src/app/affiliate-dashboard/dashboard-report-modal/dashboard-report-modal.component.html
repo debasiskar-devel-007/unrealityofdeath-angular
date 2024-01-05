@@ -27,9 +27,9 @@
     </ng-container>
 
     <div class="inner_sub_wrp">
-        <button [ngClass]="colorcode ? 'colorcode' : 'count_button_wrp'" (click)="fetchReports('click')">CLICK
+        <button class="clickcount_button_wrp" [ngClass]="colorcode ? 'colorcode' : 'count_button_wrp'" (click)="fetchReports('click')">CLICK
           DETAILS</button>
-        <button [ngClass]="colorcode ? 'count_button_wrp' : 'colorcode'" (click)="fetchReports('conversion')">CONVERSION
+        <button class="clickcount_button_wrp" [ngClass]="colorcode ? 'count_button_wrp' : 'colorcode'" (click)="fetchReports('conversion')">CONVERSION
           DETAILS</button>
       </div>
     <mat-dialog-content>

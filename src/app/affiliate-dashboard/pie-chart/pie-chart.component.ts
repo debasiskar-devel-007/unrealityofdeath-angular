@@ -42,7 +42,7 @@ export class PieChartComponent implements OnChanges {
         datasets: [
           {
             label: 'Count',
-            data: [this.chartCurrVal?.conversioncount, this.chartCurrVal?.clickcount],
+            data: [this.chartCurrVal?.conversioncount, (this.chartCurrVal?.clickcount - this.chartCurrVal?.conversioncount)],
             backgroundColor: [
               '#7f2e0a',
               '#27130b',
