@@ -16,6 +16,7 @@ import { AccountInfoComponent } from './my-account/account-info/account-info.com
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { SharerMethod } from 'ngx-sharebuttons';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { FrontendHeaderComponent } from './layout/frontend-header/frontend-header.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
     // LastLoginInfoComponent,
     PreviewComponent,
     ComingsoonComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    FrontendHeaderComponent
   ],
   imports: [
     BrowserModule,
