@@ -25,6 +25,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import * as copy from 'copy-to-clipboard';
 import { QRCodeModule } from 'angularx-qrcode';
+import { MetaserviceService } from 'src/app/metaservice/metaservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,6 +33,7 @@ import { QRCodeModule } from 'angularx-qrcode';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
+  public metadata = {};
   constructor(
     public router: Router,
     public cookieService: CookieService,
@@ -42,16 +44,38 @@ export class DashboardComponent {
     private clipBoard: Clipboard,
     private elementRef: ElementRef,
     { nativeElement }: ElementRef<HTMLImageElement>,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private metaservice: MetaserviceService
   ) {
     const supports = 'loading' in HTMLImageElement.prototype;
+
+    // ===============================================//
+    this.metadata = {
+      title: "Psyche And Singularity - Unreality of Death",
+      // keywords: "Orphism,  Pagan Personification, Polytheistic Narrative",
+      description:
+        "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
+      og_description:
+        "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
+      og_url: "https://www.unrealityofdeath.com/",
+      og_type: "website",
+      og_image:
+        "https://all-frontend-assets.s3.amazonaws.com/Timothy-Desmond-Nest/meta_og/td_affiliate_db_og_img.webp",
+    };
+    this.metaservice.setmeta(this.metadata);
+  
+ // ===============================================//
 
     if (supports) {
       nativeElement.setAttribute('loading', 'lazy');
     } else {
       // fallback to IntersectionObserver
     }
+
+    
   }
+
+ 
 
   public cookieData: any = {};
 
@@ -77,6 +101,8 @@ export class DashboardComponent {
 
   public share_url: any = [];
   public emailTemplateData: any = [];
+
+  
 
   ngOnInit() {
     this.cookieData = this.cookieService.get('login_user_details')
@@ -487,6 +513,10 @@ export class DashboardComponent {
 
   // << -------------- Coming Soon Modal ---------------- >>
 }
+
+
+// ===================================//
+
 
 // << ------------------ Unique Url Modal Component ----------------- >>
 
