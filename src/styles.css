@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 body,
 html {
     height: 100%
@@ -50,16 +53,26 @@ body {
   }
   
   /* ------------------------- Login scc start ------------------- */
+
+  /*========================= */
+  .login_main_sub {
+    min-height: calc(100vh - 145px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  /*========================= */
   .login_mainwrapper {
     background-image: url(https://d37pbainmkhx6o.cloudfront.net/Timothy-Desmond-Nest/login/login_bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
     width: 100%;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -171px; padding-top: 151px;
+    margin-top: -207px; padding-top: 151px; */
   }
   .login_subwrapper {
     background: #ffffff41;

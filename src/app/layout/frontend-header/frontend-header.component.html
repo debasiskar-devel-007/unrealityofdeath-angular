@@ -2,29 +2,33 @@
   <div class="common_width">
     <div class="header_sub_wrapper">
       <div class="header_logo">
-        <a href="/"><img src="https://d37pbainmkhx6o.cloudfront.net/Timothy-Desmond-Nest/Home/timothy_header_block/Timothy_desmond_header_main_logo.webp"></a>
+        <a href="https://psycheandsingularity.com"><img src="https://d37pbainmkhx6o.cloudfront.net/Timothy-Desmond-Nest/Home/timothy_header_block/Timothy_desmond_header_main_logo.webp"></a>
       </div>
 
-      <div class="header_link_block">
+      <div class="header_link_block header_link_show" fxShow="true" [ngClass]="{ header_link_show: navbarOpen }">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/bio">Bio</a></li>
-          <li><a href="/purchase">Online Course</a></li>
-          <li><a href="/class-summary">Class Summary</a></li>
+          <li><a href="https://psycheandsingularity.com">Home</a></li>
+          <li><a href="https://psycheandsingularity.com/bio">Bio</a></li>
+          <li><a href="https://psycheandsingularity.com/purchase">Online Course</a></li>
+          <li><a href="https://psycheandsingularity.com/class-summary">Class Summary</a></li>
           <li style="display: none"><a href="/retreat">Retreat</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/free-training">Free Training</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="https://psycheandsingularity.com/blog">Blog</a></li>
+          <li><a href="https://psycheandsingularity.com/free-training">Free Training</a></li>
+          <li><a href="https://psycheandsingularity.com/contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="header_social_icon_login_block">
         <div class="header_login_button_block loginFunction">
-          <a class="login_button">Login</a>
+          <a class="login_button" href="/">Login</a>
           <img
             src="https://d37pbainmkhx6o.cloudfront.net/Timothy-Desmond-Nest/Home/timothy_header_block/Timothy_banner_login_block_img.webp"
           />
         </div>
+        <div class="header_toggle_wrrpr" >
+            <button (click)="toggleNavbar()" fxShow="true" fxHide.gt-sm><i class="fa fa-bars"></i>
+            </button>
+            </div>
       </div>
     </div>
   </div>
