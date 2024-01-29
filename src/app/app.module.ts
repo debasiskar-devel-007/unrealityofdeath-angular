@@ -17,7 +17,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { SharerMethod } from 'ngx-sharebuttons';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { FrontendHeaderComponent } from './layout/frontend-header/frontend-header.component';
-import { MetaserviceComponent } from './metaservice/metaservice.component';
+
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { MetaserviceComponent } from './metaservice/metaservice.component';
     ComingsoonComponent,
     AccountInfoComponent,
     FrontendHeaderComponent,
-    MetaserviceComponent
+    
   ],
   imports: [
     BrowserModule,
