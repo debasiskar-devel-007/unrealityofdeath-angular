@@ -57,7 +57,7 @@ export class DashboardComponent {
         "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
       og_description:
         "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
-      og_url: "https://www.unrealityofdeath.com/",
+      og_url: "https://dev.backoffice.unrealityofdeath.com/",
       og_type: "website",
       og_image:
         "https://all-frontend-assets.s3.amazonaws.com/Timothy-Desmond-Nest/meta_og/td_affiliate_db_og_img.webp",
