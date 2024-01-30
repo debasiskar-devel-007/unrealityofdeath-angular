@@ -21,11 +21,12 @@ import { CampaignmodalComponent } from '../campaignmodal/campaignmodal.component
 import { ComingsoonComponent } from 'src/app/Common-components/comingsoon/comingsoon.component';
 import { DashboardReportModalComponent } from '../dashboard-report-modal/dashboard-report-modal.component';
 import { MatSelectChange } from '@angular/material/select';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 
 import * as copy from 'copy-to-clipboard';
 import { QRCodeModule } from 'angularx-qrcode';
-import { MetaserviceService } from 'src/app/metaservice/metaservice.service';
+// import { MetaserviceService } from 'src/app/metaservice/metaservice.service';
+// import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -45,24 +46,13 @@ export class DashboardComponent {
     private elementRef: ElementRef,
     { nativeElement }: ElementRef<HTMLImageElement>,
     public sanitizer: DomSanitizer,
-    private metaservice: MetaserviceService
+    // private metaservice: MetaserviceService
+    private meta: Meta
   ) {
     const supports = 'loading' in HTMLImageElement.prototype;
 
     // ===============================================//
-    this.metadata = {
-      title: "Psyche And Singularity - Unreality of Death",
-      // keywords: "Orphism,  Pagan Personification, Polytheistic Narrative",
-      description:
-        "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
-      og_description:
-        "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
-      og_url: "https://dev.backoffice.unrealityofdeath.com/",
-      og_type: "website",
-      og_image:
-        "https://all-frontend-assets.s3.amazonaws.com/Timothy-Desmond-Nest/meta_og/td_affiliate_db_og_img.webp",
-    };
-    this.metaservice.setmeta(this.metadata);
+    
   
  // ===============================================//
 
@@ -166,6 +156,23 @@ export class DashboardComponent {
 
     this.getBanner();
     this.fetchAllCampaign();
+
+    // this.metadata = {
+    //   title: "Psyche And Singularity - Unreality of Death",
+    //   // keywords: "Orphism,  Pagan Personification, Polytheistic Narrative",
+    //   description:
+    //     "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
+    //   og_description:
+    //     "Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.	",
+    //   og_url: "https://dev.backoffice.unrealityofdeath.com/",
+    //   og_type: "website",
+    //   og_image:
+    //     "https://all-frontend-assets.s3.amazonaws.com/Timothy-Desmond-Nest/meta_og/td_affiliate_db_og_img.webp",
+    // };
+    // this.metaservice.setmeta(this.metadata);
+
+  this.meta.addTag({ name: 'description', content: 'Empower your journey as a Psyche and Singularity affiliate with our intuitive and feature-rich affiliate dashboard. Unlock the potential of your affiliate partnership with our user-friendly dashboard.' });
+  this.meta.addTag({ property: 'og:title', content: 'Psyche And Singularity - Unreality of Death' });
   }
 
   dashboardCampaignListApi() {
